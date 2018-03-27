@@ -28,6 +28,8 @@ export CLASSPATH
 输入 java -version
 若显示java版本，则成功
 
+
+
 第二步：安装tomcat
 ---
 1、下载tomcat安装包 //.tar.gz
@@ -43,6 +45,8 @@ Mkdir tomcat
 进入tomcat/bin文件
 运行./startup.sh启动tomcat
 运行./shutdown.sh关闭tomcat
+
+
 
 第三步：安装mariadb
 ---
@@ -64,6 +68,8 @@ Mkdir tomcat
  yum install policycoreutils-python
  semanage port -a -t mysqld_port_t -p tcp 20500
  
+ 
+ 
  第四步：配置mariadb
 ---
 允许远程访问mariadb数据库
@@ -73,6 +79,8 @@ Mkdir tomcat
 最后配置好权限之后不应该忘记刷新使之生效
 1	flush privileges;
  再次访问就可以了吧。
+
+
 
 第五步：配置防火墙iptable
 ---
@@ -114,6 +122,8 @@ COMMIT
 4.查看本机关于IPTABLES的设置情况
 iptables -L -n
 
+
+
 第六步：建立数据库
 ---
 
@@ -145,6 +155,8 @@ PRIMARY KEY(id)
 获取表信息
 Select * from user;
 
+
+
 第七步：打包war
 ---
 将程序打包成war文件
@@ -160,6 +172,8 @@ war上传到/tomcat/webapps/
 点击注册测试一下能否连接到数据库
 可以用xshell打开数据库，看看刚刚注册的用户信息是否录入
 
+
+
 PS：如何删除上一个tomcat部署项目
 ---
 
@@ -172,6 +186,8 @@ PS：如何删除上一个tomcat部署项目
 1.stop tomcat服务器
 2.删除webapp下的该项目
 3.将work/Catalina/localhost目录下的该项目删除
+
+
 
 PS：安装jdbc驱动模块
 --
