@@ -3,8 +3,8 @@
 # 部署jsp+servlet+mysql的web项目
 ------
 ## 按照步骤来，完美搭建开发环境，可以开心的撸项目了
-### CSDN上有教程： 
-	[CSDN博客](https://blog.csdn.net/wsh596823919/article/details/79717993)
+## CSDN上有详细教程：
+	https://blog.csdn.net/wsh596823919/article/details/79717993
 ---
 ## 第一步：centos安装jdk
 1、下载jdk  我这里下载的是 jdk1.8.0_161.tar.gz
