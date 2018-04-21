@@ -20,7 +20,7 @@
 
         <!--导航条头部-->
         <div class="navbar-header">
-            <a href="http://localhost:8080/lifecatweb" target="_blank" class="navbar-brand">
+            <a href=index.jsp target="_blank" class="navbar-brand">
                 <img src="img/iconimage.png" height="44" width="152" style="margin-top: -13px;"/>
             </a>
 
@@ -50,12 +50,12 @@
             %>
             <ul class="nav navbar-nav navbar-right">
                 <%--上传寄语--%>
-                <li><a href="http://localhost:8080/lifecatweb/updiary.jsp"><span
+                <li><a href=updiary.jsp><span
                         class="glyphicon glyphicon-pencil"></span>书写寄语</a>
                 </li>
 
                 <%--上传图片--%>
-                <li><a href="http://localhost:8080/lifecatweb/upimage.jsp"><span
+                <li><a href=upimage.jsp><span
                         class="glyphicon glyphicon-pencil"></span>记录图片</a>
                 </li>
 
@@ -73,7 +73,7 @@
                     修改密码</a>
                 </li>
 
-                <li><a href="http://localhost:8080/lifecatweb/index.jsp"><span
+                <li><a href=index.jsp><span
                         class="glyphicon glyphicon-log-out"></span>退出</a>
                 </li>
             </ul>

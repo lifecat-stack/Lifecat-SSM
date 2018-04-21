@@ -33,7 +33,7 @@ public class UpDiaryModel extends MyModel {
         String diarydescription = (String) req.getParameter("diarydescription");
 
         String diarydate=MyDate.GetNowDate();
-        String diarypath="";
+        String diarypath= "http://"+ip+":8080/lifecatweb/diary";
 
         /* 获取session中的user对象 */
         User user = (User) req.getSession().getAttribute("User");
@@ -49,7 +49,7 @@ public class UpDiaryModel extends MyModel {
         bean.setDate(diarydate);
         bean.setPath(diarypath);
 
-         String page = "http://localhost:8080/lifecatweb/userhome.jsp";
+         String page = host_userhome;
 
         boolean success = dao.uploadDiary(bean);
 

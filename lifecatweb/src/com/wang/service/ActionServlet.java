@@ -1,5 +1,6 @@
 package com.wang.service;
 
+import com.wang.db.HOST;
 import com.wang.form.FormResult;
 import com.wang.model.ModelSelector;
 import com.wang.model.MyModel;
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @description 控制器:处理业务逻辑,调用模型model
  * @auther ten
  */
-public class ActionServlet extends HttpServlet {
+public class ActionServlet extends HttpServlet implements HOST {
     private static int flag=0;
 
     @Override
@@ -34,7 +35,7 @@ public class ActionServlet extends HttpServlet {
             /* 若有错误，转发到请求页面page */
             if (result.getIsError()) {
                 String page = req.getRequestURI();
-                page="http://localhost:8080/lifecatweb/index.jsp";
+                page=host_index;
 
                 //测试request.getRequestURI()能否重定向回请求界面
                 System.out.println("测试:请求URI为-->" + page);
@@ -66,7 +67,7 @@ public class ActionServlet extends HttpServlet {
         }else {
             System.out.println("post 请求为 null");
             if (flag==0) {
-                resp.sendRedirect("http://localhost:8080/lifecatweb/index.jsp");
+                resp.sendRedirect(host_index);
                 flag++;
             }
         }

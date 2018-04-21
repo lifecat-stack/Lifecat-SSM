@@ -18,8 +18,4 @@ public class MyDate {
         temp_str = sdf.format(dt);
         return temp_str;
     }
-
-//    public static void main(String[] args) {
-//        GetNowDate();
-//    }
 }

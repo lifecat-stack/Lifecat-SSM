@@ -8,15 +8,7 @@ import java.sql.SQLException;
  * @description 获取数据库连接 
  * @auther ten
  */
-public class Connections {
-	/* 数据库配置 */
-	/* 输入数据库所在的主机和数据库设置 */
-	static String ip = "127.0.0.1";
-	static int port = 3306;
-	static String database = "users";
-	static String encoding = "UTF-8";
-	static String loginName = "root";
-	static String password = "123456";
+public class Connections implements HOST{
 	
 	/* jdbc驱动 */
 	static {

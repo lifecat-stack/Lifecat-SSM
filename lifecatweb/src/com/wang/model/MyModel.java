@@ -2,6 +2,7 @@ package com.wang.model;
 
 import com.wang.bean.Bean;
 import com.wang.dao.DAO;
+import com.wang.db.HOST;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @description 接收req, resp对象，实现转发
  * @auther ten
  */
-public abstract class MyModel {
+public abstract class MyModel implements HOST {
     /**
      * 数据库操作:dao
      * Bean实体:bean

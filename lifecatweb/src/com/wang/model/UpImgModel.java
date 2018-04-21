@@ -31,8 +31,8 @@ public class UpImgModel extends MyModel {
         String imagename = (String) req.getParameter("imagename");
         String imagedescription = (String) req.getParameter("imagedescription");
 
-        String diarydate = MyDate.GetNowDate();
-        String diarypath = "/usr/local/upimage";
+        String imagedate = MyDate.GetNowDate();
+        String imagepath = "http://"+ip+":8080/lifecatweb/upimage";
 
         /* 获取session中的user对象 */
         User user = (User) req.getSession().getAttribute("User");
@@ -45,10 +45,10 @@ public class UpImgModel extends MyModel {
         bean.setId(userid);
         bean.setImagename(imagename);
         bean.setImagedescription(imagedescription);
-        bean.setImagedate(diarydate);
-        bean.setImagepath(diarypath);
+        bean.setImagedate(imagedate);
+        bean.setImagepath(imagepath);
 
-        String page = "http://localhost:8080/lifecatweb/userhome.jsp";
+        String page = host_userhome;
 
         boolean success = dao.uploadImage(bean);
 

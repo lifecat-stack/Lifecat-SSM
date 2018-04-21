@@ -54,14 +54,14 @@ public class RegisterModel extends MyModel {
         /* 若创建成功 */
         if (success) {
             System.out.println("注册成功");
-            page = "http://localhost:8080/lifecatweb/userhome.jsp";
+            page = host_userhome;
             req.getSession().setAttribute("User", bean);
 
         }
         /* 注册失败 */
         else {
             System.out.println("注册失败");
-            page = "http://localhost:8080/lifecatweb/index.jsp";
+            page = host_index;
         }
         try {
             resp.sendRedirect(page);

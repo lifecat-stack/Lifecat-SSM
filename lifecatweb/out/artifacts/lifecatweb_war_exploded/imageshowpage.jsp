@@ -1,6 +1,7 @@
 <%@ page import="com.wang.bean.Image" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.wang.model.GetImgModel" %>
+<%@ page import="static com.wang.db.HOST.ip" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 
@@ -35,7 +36,7 @@
                                 no_image.setImagename("成长相册" + i);
                                 no_image.setImagedescription("美好的午后，记录美好的时刻" + i);
                                 no_image.setImagedate("2018-" + i);
-                                no_image.setImagepath("http://localhost:8080/lifecatweb/upimage/image" + i + ".jpg");
+                                no_image.setImagepath("http://"+ip+":8080/lifecatweb/upimage/image" + i + ".jpg");
                                 images.add(no_image);
                             }
                         }

@@ -45,7 +45,7 @@ public class ModifyPswModel extends MyModel {
             userid = bean.getId();
         }
 
-        String page = "http://localhost:8080/lifecatweb/userhome.jsp";
+        String page = host_userhome;
 
         /* 获取数据库中对应的bean */
         String db_password = dao.queryPassword(userid);

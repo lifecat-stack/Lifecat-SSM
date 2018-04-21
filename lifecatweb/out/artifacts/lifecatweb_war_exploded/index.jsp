@@ -571,7 +571,7 @@ a.pic7:hover {
 
 				<div class="entry">
 					<span class="state">记录美好时刻</span> <a
-						href="http://www.wten10.cn/" target="_blank">访问官网</a>
+						href="http://47.106.11.84/" target="_blank">访问官网</a>
 				</div>
 			</div>
 		</div>

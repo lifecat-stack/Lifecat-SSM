@@ -53,7 +53,7 @@ public class SetMsgModel extends MyModel {
         bean.setBirthday(birthday);
         bean.setEmail(email);
 
-        String page = "http://localhost:8080/lifecatweb/userhome.jsp";
+        String page = host_userhome;
 
         boolean success = dao.insertUser(bean);
 

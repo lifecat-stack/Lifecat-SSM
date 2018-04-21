@@ -5,6 +5,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.wang.model.GetDiaryModel" %>
 <%@ page import="com.wang.model.GetImgModel" %>
+<%@ page import="static com.wang.db.HOST.*" %>
 
 <script>
     $(function () {
@@ -213,7 +214,7 @@
                                     no_diary.setName("成长寄语" + i);
                                     no_diary.setDescription("美好的午后，写下成长的寄语" + i);
                                     no_diary.setDate("2018-" + i);
-                                    no_diary.setPath("http://localhost:8080/lifecatweb/userhome.jsp");
+                                    no_diary.setPath(host_userhome);
                                     diaries.add(no_diary);
                                 }
                             }
@@ -255,7 +256,7 @@
 
                     </div>
                     <div class="col-md-11">
-                        <a href="http://localhost:8080/lifecatweb/imageshowpage.jsp"><h2>成长相册:</h2></a>
+                        <a href=imageshowpage.jsp><h2>成长相册:</h2></a>
                         <%--获取图片链接--%>
                         <%
                             ArrayList<Image> images = null;
@@ -272,7 +273,7 @@
                                     no_image.setImagename("成长相册" + i);
                                     no_image.setImagedescription("美好的午后，记录美好的时刻" + i);
                                     no_image.setImagedate("2018-" + i);
-                                    no_image.setImagepath("http://localhost:8080/lifecatweb/upimage/image" + i + ".jpg");
+                                    no_image.setImagepath("http://"+ip+":8080/lifecatweb/upimage/image" + i + ".jpg");
                                     images.add(no_image);
                                 }
                             }
