@@ -43,7 +43,7 @@
 
 
 
-第二步：centos安装tomcat
+## 第二步：centos安装tomcat
 1、下载tomcat安装包  tomcat  
 
     最好下载.tar.gz文件，版本tomcat7,8,9都可以
@@ -74,7 +74,7 @@
 
 
 
-第三步：安装mariadb（mysql）
+## 第三步：安装mariadb（mysql）
 mariadb其实就是mysql，只是mariadb他是开源的，他的命令也是mysql，都一样
 
 一、安装MariaDB   这里可以从官网下载 或者直接从仓库通过yum指令下载
@@ -108,7 +108,7 @@ mariadb其实就是mysql，只是mariadb他是开源的，他的命令也是mysq
 
 
 
-PS：配置远程访问mariadb
+### PS：配置远程访问mariadb
 如果你希望在本机上访问远程服务器，那么就要对服务器的mariadb进行远程配置
 
 1、允许远程访问mariadb数据库 首先配置允许访问的用户，采用授权的方式给用户权限 
@@ -123,7 +123,7 @@ flush privileges;
 
 
 
-第四步：配置防火墙iptable
+## 第四步：配置防火墙iptable
 centos默认的防火墙是Firewalls，我们把它卸载，然后配置我们的防火墙
 
 1.关闭默认的firewall防火墙 
@@ -170,7 +170,7 @@ centos默认的防火墙是Firewalls，我们把它卸载，然后配置我们�
     iptables -L -n
 
 
-第五步：建立mysql数据库
+## 第五步：建立mysql数据库
 以上配置若都完成了，那么就可以建立我们的数据库了
 
 1、登录mariadb 
@@ -193,7 +193,7 @@ sql常用命令如下：(大小写无所谓，但要统一)
     获取表信息 Select * from user;
 
 
-第六步：打包war
+## 第六步：打包war
 可以打开我当时自己写的一个网站，下载下来打开就可以直接部署了 https://github.com/kevinten10/java-web-servlet-mysql ，当然，里面的配置或者用户名之类的都是我的，你改成自己的就可以了
 
 如果你有javaweb的项目，那么需要把项目生成特殊的压缩形式.war，然后上传，tomcat会解压war然后将它作为项目运行
@@ -213,7 +213,7 @@ sql常用命令如下：(大小写无所谓，但要统一)
     就能打开你上传的项目了
 
 
-PS：如何删除上一个tomcat部署项目
+### PS：如何删除上一个tomcat部署项目
 1、删除/webapps/下的XXXX.war和xxxx项目文件
 
 2、删除/work/catalina/localhost/XXXX项目文件
@@ -227,7 +227,7 @@ PS：如何删除上一个tomcat部署项目
 3.将work/Catalina/localhost目录下的该项目删除
 
 
-PS：安装jdbc驱动模块
+### PS：安装jdbc驱动模块
 解决办法是要引入JDBC的driver。下载了"connector/j"的jar文件，然后在项目里新建文件夹lib，把MySQL的JDBC driver拖拽进来。  
 
 
