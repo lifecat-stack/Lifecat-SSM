@@ -1,7 +1,7 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.Diary;
-import com.spring.mapper.DiaryDAO;
+import com.spring.entity.old.Diary;
+import com.spring.mapper.old.DiaryDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

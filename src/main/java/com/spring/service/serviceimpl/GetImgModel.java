@@ -1,7 +1,7 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.Image;
-import com.spring.mapper.ImageDAO;
+import com.spring.entity.old.Image;
+import com.spring.mapper.old.ImageDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

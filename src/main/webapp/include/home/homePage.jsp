@@ -6,10 +6,10 @@
 <%@ page import="com.spring.service.serviceimpl.GetDiaryModel" %>
 <%@ page import="com.spring.service.serviceimpl.GetImgModel" %>
 <%@ page import="static com.spring.util.db.HOST.*" %>
-<%@ page import="com.spring.entity.Diary" %>
-<%@ page import="com.spring.entity.Image" %>
-<%@ page import="com.spring.entity.User" %>
-<%@ page import="com.spring.entity.UserMsg" %>
+<%@ page import="com.spring.entity.old.Diary" %>
+<%@ page import="com.spring.entity.old.Image" %>
+<%@ page import="com.spring.entity.old.User" %>
+<%@ page import="com.spring.entity.old.UserMsg" %>
 
 <script>
     $(function () {

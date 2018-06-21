@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.esotericsoftware.reflectasm:reflectasm:1.09">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/esotericsoftware/reflectasm/reflectasm/1.09/reflectasm-1.09.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/com/esotericsoftware/reflectasm/reflectasm/1.09/reflectasm-1.09-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/esotericsoftware/reflectasm/reflectasm/1.09/reflectasm-1.09-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

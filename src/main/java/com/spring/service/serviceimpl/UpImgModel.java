@@ -1,8 +1,8 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.Image;
-import com.spring.entity.User;
-import com.spring.mapper.ImageDAO;
+import com.spring.entity.old.Image;
+import com.spring.entity.old.User;
+import com.spring.mapper.old.ImageDAO;
 import com.spring.util.db.MyDate;
 
 import javax.servlet.http.HttpServletRequest;

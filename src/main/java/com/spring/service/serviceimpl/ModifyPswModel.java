@@ -1,9 +1,8 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.User;
-import com.spring.mapper.UserDAO;
+import com.spring.entity.old.User;
+import com.spring.mapper.old.UserDAO;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

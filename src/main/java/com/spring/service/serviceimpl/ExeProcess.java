@@ -1,6 +1,6 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.Bean;
+import com.spring.entity.old.Bean;
 
 public interface ExeProcess {
     /* 获取表单的提交数据 */

@@ -1,7 +1,7 @@
 package com.spring.service.serviceimpl;
 
-import com.spring.entity.UserMsg;
-import com.spring.mapper.UserMsgDAO;
+import com.spring.entity.old.UserMsg;
+import com.spring.mapper.old.UserMsgDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
