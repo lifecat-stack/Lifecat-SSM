@@ -25,13 +25,13 @@ README -- LifeCat
   |前端|Html CSS JavaScript
   |前端框架|bootstrap jQuery
   |后端框架|SSM
-  |设计模式|构建者模式 静态工厂模式 单例模式
+  |设计模式|构建者模式 静态工厂模式 单例模式 责任链模式
   |项目管理|maven
   |单元测试|Junit4
   |日志框架|slf4j
   |数据库|MySql-mariadb
 ******************************************************************************
- #### _@Web目录_
+ #### _@Web目录_ 
   * webapp
     * __include__
       * homePage.jsp     // 用户主页body内容部件
