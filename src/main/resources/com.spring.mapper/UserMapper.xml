@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.UserMapper">
+    <select id="queryUser" parameterType="String" resultMap="UserDO">
+        select user_id,user_name,user_password,user_level,user_gmt_create,user_gmt_modified from user where user_name = #{userName}
+    </select>
+</mapper>

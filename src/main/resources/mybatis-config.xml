@@ -25,24 +25,24 @@
         WARNING : 警告日志形式的详细信息
         FAILING : 映射失败，抛出异常和详细信息
         -->
-        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <!--<setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>-->
         <!-- ☆配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句。BATCH执行器重用语句和批量更新 -->
         <setting name="defaultExecutorType" value="SIMPLE"/>
         <!-- 设置超时时间，它决定驱动等待一个数据库响应的时间 -->
-        <setting name="defaultStatementTimeout" value="25000"/>
+        <!--<setting name="defaultStatementTimeout" value="25000"/>-->
         <!-- 设置查询返回值数量，可以被查询数值覆盖  -->
-        <setting name="defaultFetchSize" value="100"/>
+        <!--<setting name="defaultFetchSize" value="100"/>-->
         <!-- 允许在嵌套语句中使用分页-->
-        <setting name="safeRowBoundsEnabled" value="false"/>
+        <!--<setting name="safeRowBoundsEnabled" value="false"/>-->
         <!-- ☆是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。-->
-        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <!--<setting name="mapUnderscoreToCamelCase" value="false"/>-->
         <!--MyBatis 利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询。 默认值为 SESSION，这种情况下会缓存一个会话中执行的所有查询。 若设置值为 STATEMENT，本地会话仅用在语句执行上，对相同 SqlSession 的不同调用将不会共享数据。-->
-        <setting name="localCacheScope" value="SESSION"/>
+        <!--<setting name="localCacheScope" value="SESSION"/>-->
         <!-- 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。 某些驱动需要指定列的 JDBC 类型，多数情况直接用一般类型即可，比如 NULL、VARCHAR
         OTHER。-->
-        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <!--<setting name="jdbcTypeForNull" value="OTHER"/>-->
         <!-- 指定哪个对象的方法触发一次延迟加载。-->
-        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+        <!--<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>-->
     </settings>
 
     <!-- 别名定义 -->
@@ -84,23 +84,23 @@
     -->
     <environments default="development">
         <!-- 环境配置1 UNPOOLED -->
-        <environment id="development1">
-            <transactionManager type="JDBC"/>
-            <!-- <transactionManager type="MANAGED">
-                 <property name="closeConnection" value="false"/>
-                 </transactionManager> -->
-            <dataSource type="UNPOOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/xhm"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
-                <!-- 默认连接事务隔离级别 <property name="defaultTransactionIsolationLevel" value=""
-                    /> -->
-            </dataSource>
-        </environment>
+        <!--<environment id="development1">-->
+        <!--<transactionManager type="JDBC"/>-->
+        <!--&lt;!&ndash; <transactionManager type="MANAGED">-->
+        <!--<property name="closeConnection" value="false"/>-->
+        <!--</transactionManager> &ndash;&gt;-->
+        <!--<dataSource type="UNPOOLED">-->
+        <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/xhm"/>-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="root"/>-->
+        <!--&lt;!&ndash; 默认连接事务隔离级别 <property name="defaultTransactionIsolationLevel" value=""-->
+        <!--/> &ndash;&gt;-->
+        <!--</dataSource>-->
+        <!--</environment>-->
 
         <!-- 环境配置2 POOLED -->
-        <environment id="development2">
+        <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
@@ -125,23 +125,23 @@
         </environment>
 
         <!-- 环境配置3 JNDI -->
-        <environment id="development3">
-            <transactionManager type="JDBC"/>
-            <dataSource type="JNDI">
-                <property name="data_source" value="java:comp/env/jndi/mybatis"/>
-                <property name="env.encoding" value="UTF8"/>
-                <!-- <property name="initial_context" value=""/> <property name="env.encoding"
-                    value="UTF8"/> -->
-            </dataSource>
-        </environment>
+        <!--<environment id="development3">-->
+        <!--<transactionManager type="JDBC"/>-->
+        <!--<dataSource type="JNDI">-->
+        <!--<property name="data_source" value="java:comp/env/jndi/mybatis"/>-->
+        <!--<property name="env.encoding" value="UTF8"/>-->
+        <!--&lt;!&ndash; <property name="initial_context" value=""/> <property name="env.encoding"-->
+        <!--value="UTF8"/> &ndash;&gt;-->
+        <!--</dataSource>-->
+        <!--</environment>-->
     </environments>
 
     <!-- 映射文件，mapper的配置文件 -->
     <mappers>
         <!--直接映射到相应的mapper文件-->
-        <!--<mapper resource="com/xhm/mapper/UserMapper.xml"/>-->
+        <!--<com.spring.mapper resource="com/xhm/com.spring.mapper/UserMapper.xml"/>-->
         <!--扫描包路径下所有xxMapper.xml文件-->
-        <package name="com.spring.mapper"/>
+        <mapper resource="com/spring/mapper/userMapper.xml"/>
     </mappers>
 
 </configuration>

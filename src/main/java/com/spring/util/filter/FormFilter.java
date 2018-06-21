@@ -6,17 +6,18 @@ import com.spring.util.form.MyForm;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
+
 /**
  * @name FormFilter
  * @description 表单验证过滤器
  * @auther ten
  */
 public class FormFilter implements Filter {
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
     /**
      * @name doFilter
      * @description 验证表单过滤器
@@ -46,5 +47,9 @@ public class FormFilter implements Filter {
              /* 转发req到servlet */
         filterChain.doFilter(servletRequest,servletResponse);
         }
+    }
+
+    public void destroy() {
+
     }
 }

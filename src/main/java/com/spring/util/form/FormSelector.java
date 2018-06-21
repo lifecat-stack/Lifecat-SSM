@@ -8,28 +8,27 @@ package com.spring.util.form;
 public class FormSelector {
     public static MyForm select(String action) {
         MyForm form;
-        switch (action) {
-            case "Login":
-                form = new LoginForm();
-                break;
-            case "Register":
-                form = new RegisterForm();
-                break;
-            case "ModifyPsw":
-                form = new ModifyPswForm();
-                break;
-            case "SetMsg":
-                form = new SetMsgForm();
-                break;
-            case "UpImg":
-                form = new UpImgForm();
-                break;
-            case "UpDiary":
-                form = new UpDiaryForm();
-                break;
-            default:
-                System.out.println("FormSelector没有此表单项");
-                form = null;
+        if ("Login".equals(action)) {
+            form = new LoginForm();
+
+        } else if ("Register".equals(action)) {
+            form = new RegisterForm();
+
+        } else if ("ModifyPsw".equals(action)) {
+            form = new ModifyPswForm();
+
+        } else if ("SetMsg".equals(action)) {
+            form = new SetMsgForm();
+
+        } else if ("UpImg".equals(action)) {
+            form = new UpImgForm();
+
+        } else if ("UpDiary".equals(action)) {
+            form = new UpDiaryForm();
+
+        } else {
+            System.out.println("FormSelector没有此表单项");
+            form = null;
         }
         return form;
     }
