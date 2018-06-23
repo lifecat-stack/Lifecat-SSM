@@ -1,7 +1,5 @@
 package com.spring.service;
 
-import com.wang.service.serviceimpl.ServiceResult;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

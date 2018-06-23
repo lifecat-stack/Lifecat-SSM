@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.UserIconDO;
-import com.wang.service.Service;
+
+import com.spring.entity.UserIconDO;
+import com.spring.service.Service;
 
 /**
  * 用户头像上传

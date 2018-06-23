@@ -1,6 +1,7 @@
 package com.spring.service.service;
 
-import com.wang.service.Service;
+
+import com.spring.service.Service;
 
 /**
  * 图片分类

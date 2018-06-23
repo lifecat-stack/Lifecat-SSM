@@ -1,12 +1,12 @@
 package com.spring.service.serviceimpl;
 
-import com.wang.bean.doo.UserDO;
-import com.wang.bean.dto.UserDTO;
-import com.wang.constant.Page;
-import com.wang.dao.DAOFactory;
-import com.wang.dao.dao.UserDAO;
-import com.wang.dao.jdbcimpl.JdbcDAOFactory;
-import com.wang.service.Service;
+import com.spring.entity.UserDO;
+import com.spring.mapper.mapper.UserMapper;
+import com.spring.service.Service;
+import com.spring.service.ServiceResult;
+import com.spring.service.service.UserLoginService;
+import com.spring.util.SqlSessionFactoryUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,56 +23,45 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-class UserLoginServiceImpl implements Service {
+public class UserLoginServiceImpl implements UserLoginService {
 
     private Logger logger = LoggerFactory.getLogger(UserLoginServiceImpl.class);
 
-    private UserLoginServiceImpl() {
+    public UserLoginServiceImpl() {
     }
 
     static Service newService() {
         return new UserLoginServiceImpl();
     }
 
-
     @Override
     public ServiceResult execute(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
+    }
 
-        String userName = req.getParameter("userName");
-        String userPassword = req.getParameter("userPassword");
-
-        // 获取DAO实例
-        DAOFactory factory = new JdbcDAOFactory();
-        UserDAO dao = factory.getUserDAO();
-
-        // DAO查询user
-        UserDO userDO = null;
-        boolean success = false;
+    @Override
+    public boolean isUserExisted(String userName) {
+        SqlSession sqlSession = null;
         try {
-            userDO = dao.queryUser(userName);
-            success = true;
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            long count = userMapper.isUserExistedByName(userName);
+            logger.info(String.valueOf(count));
         } catch (SQLException e) {
+            logger.warn("failure");
             e.printStackTrace();
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
         }
+        return true;
+    }
 
-        if (!success) {
-            return new ServiceResult.Builder(false)
-                    .errormsg("数据库查询异常").page(Page.PAGE_INDEX).build();
-        }
+    @Override
+    public UserDO queryUserByName(String userName) {
 
-        if (userDO == null) {
-            return new ServiceResult.Builder(false)
-                    .errormsg("数据库无此用户").page(Page.PAGE_INDEX).build();
-        }
-
-        if (!userPassword.equals(userDO.getUserPassword())) {
-            return new ServiceResult.Builder(false)
-                    .errormsg("密码错误").page(Page.PAGE_INDEX).build();
-        }
-
-        UserDTO user = new UserDTO.Builder(userDO.getUserId(), userDO.getUserName()).build();
-        req.getSession().setAttribute("user", user);
-        return new ServiceResult.Builder(true).page(Page.PAGE_USERHOME).build();
+        return null;
     }
 }
 

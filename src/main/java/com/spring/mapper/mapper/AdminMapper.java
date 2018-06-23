@@ -29,7 +29,7 @@ public interface AdminMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    AdminDO queryAdmin(String adminName) throws SQLException;
+    AdminDO queryAdminByName(String adminName) throws SQLException;
 
     /**
      * 注册 :

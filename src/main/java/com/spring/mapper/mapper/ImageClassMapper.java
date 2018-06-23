@@ -5,4 +5,5 @@ package com.spring.mapper.mapper;
  * @auther ten
  */
 public interface ImageClassMapper {
+    // TODO
 }

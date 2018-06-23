@@ -21,7 +21,7 @@ public interface ImageMapper {
      * @return image_id
      * @throws SQLException e
      */
-    int insertImage(ImageDO imageDO) throws SQLException;
+    int insertImageAndGetKey(ImageDO imageDO) throws SQLException;
 
     /**
      * 图片删除 :
@@ -30,17 +30,15 @@ public interface ImageMapper {
      * @param imageId imageId
      * @throws SQLException e
      */
-    void deleteImage(int imageId) throws SQLException;
+    void deleteImageById(int imageId) throws SQLException;
 
     /**
      * 图片内容更新 :
      * 通过Image_id更新image信息
      *
-     * @param imageId imageId
-     * @param newText newText
      * @throws SQLException e
      */
-    void updateImageText(int imageId, String newText) throws SQLException;
+    void updateImageText(ImageDO imageDO) throws SQLException;
 
     /**
      * 图片单个查询 :
@@ -53,7 +51,7 @@ public interface ImageMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    ImageDO queryImage(int imageId) throws SQLException;
+    ImageDO queryImageByImageId(int imageId) throws SQLException;
 
     /**
      * 图片全部查询 :
@@ -66,7 +64,7 @@ public interface ImageMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    List<ImageDO> queryImageList(int userId) throws SQLException;
+    List<ImageDO> queryImageListByUserId(int userId) throws SQLException;
 
     /**
      * 图片分类查询 :
@@ -80,5 +78,5 @@ public interface ImageMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    List<ImageDO> queryImageClass(int userId, int classId) throws SQLException;
+    List<ImageDO> queryImageClassById(int userId, int classId) throws SQLException;
 }

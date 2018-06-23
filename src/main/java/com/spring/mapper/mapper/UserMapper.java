@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * dao - user
  * <p>
- * 1. 查询user queryUser()
+ * 1. 查询user queryUserByName()
  * 2. 插入user insertUser()
  * 3. 查询密码 queryUserPassword()
  * 4. 更新密码 updateUserPassword()
@@ -25,7 +25,7 @@ public interface UserMapper {
      * @param userDO UserDO
      * @throws SQLException e
      */
-    int insertUser(UserDO userDO) throws SQLException;
+    int insertUserAndGetKey(UserDO userDO) throws SQLException;
 
     /**
      * 登录 :
@@ -38,7 +38,7 @@ public interface UserMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    UserDO queryUser(String userName) throws SQLException;
+    UserDO queryUserByName(String userName) throws SQLException;
 
     /**
      * 注册-用户是否存在 :
@@ -48,7 +48,7 @@ public interface UserMapper {
      * @param userName 用户名
      * @return boolean 用户名是否存在
      */
-    boolean isUserExisted(String userName) throws SQLException;
+    boolean isUserExistedByName(String userName) throws SQLException;
 
     /**
      * 密码更新 :
@@ -58,14 +58,13 @@ public interface UserMapper {
      * @return user_password
      * @throws SQLException e
      */
-    String queryUserPassword(String userName) throws SQLException;
+    String queryUserPasswordByName(String userName) throws SQLException;
 
     /**
      * 密码更新 :
      * 更新用户密码
      *
-     * @param password 新密码
      * @throws SQLException e
      */
-    void updateUserPassword(Integer userId, String password) throws SQLException;
+    void updateUserPassword(UserDO userDO) throws SQLException;
 }

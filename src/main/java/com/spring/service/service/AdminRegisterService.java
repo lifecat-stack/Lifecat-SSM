@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.AdminDO;
-import com.wang.service.Service;
+
+import com.spring.entity.AdminDO;
+import com.spring.service.Service;
 
 /**
  * 管理员注册

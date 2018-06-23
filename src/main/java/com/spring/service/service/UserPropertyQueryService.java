@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.UserPropertyDO;
-import com.wang.service.Service;
+
+import com.spring.entity.UserPropertyDO;
+import com.spring.service.Service;
 
 /**
  * 查询用户资料

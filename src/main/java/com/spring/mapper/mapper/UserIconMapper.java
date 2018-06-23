@@ -39,6 +39,6 @@ public interface UserIconMapper {
      * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    String queryUserIcon(Integer userId) throws SQLException;
+    String queryUserIconByUserId(Integer userId) throws SQLException;
 
 }

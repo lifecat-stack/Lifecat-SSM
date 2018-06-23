@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.DiaryDO;
-import com.wang.service.Service;
+
+import com.spring.entity.DiaryDO;
+import com.spring.service.Service;
 
 /**
  * 日记上传

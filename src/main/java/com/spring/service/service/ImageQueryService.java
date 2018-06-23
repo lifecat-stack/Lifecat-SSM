@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.ImageDO;
-import com.wang.service.Service;
+
+import com.spring.entity.ImageDO;
+import com.spring.service.Service;
 
 /**
  * 图片单个查询

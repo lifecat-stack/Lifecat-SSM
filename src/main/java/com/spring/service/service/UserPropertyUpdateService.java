@@ -1,7 +1,8 @@
 package com.spring.service.service;
 
-import com.wang.bean.doo.UserDO;
-import com.wang.service.Service;
+
+import com.spring.entity.UserDO;
+import com.spring.service.Service;
 
 /**
  * 用户资料更新
