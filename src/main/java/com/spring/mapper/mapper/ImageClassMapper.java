@@ -1,4 +1,4 @@
-package com.spring.mapper;
+package com.spring.mapper.mapper;
 /**
  * dao - image class
  *
