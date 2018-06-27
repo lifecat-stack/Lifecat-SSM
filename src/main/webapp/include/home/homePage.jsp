@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@page import="com.spring.bean.*" %>
-<%@ page import="com.spring.service.serviceimpl.GetMsgModel" %>
+<%@ page import="com.spring.service.impl.GetMsgModel" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.spring.service.serviceimpl.GetDiaryModel" %>
-<%@ page import="com.spring.service.serviceimpl.GetImgModel" %>
+<%@ page import="com.spring.service.impl.GetDiaryModel" %>
+<%@ page import="com.spring.service.impl.GetImgModel" %>
 <%@ page import="static com.spring.util.db.HOST.*" %>
 <%@ page import="com.spring.entity.old.Diary" %>
 <%@ page import="com.spring.entity.old.Image" %>

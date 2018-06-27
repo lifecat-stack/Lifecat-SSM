@@ -1,6 +1,6 @@
 package com.spring.util;
 
-import com.spring.mapper.mapper.UserMapper;
+import com.spring.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

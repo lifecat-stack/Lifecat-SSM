@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.mapper.DiaryMapper">
+<mapper namespace="com.spring.mapper.DiaryMapper">
 
     <insert id="insertDiaryAndGetKey" parameterType="userDO" useGeneratedKeys="true" keyProperty="userId">
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.mapper.AdminMapper">
+<mapper namespace="com.spring.mapper.AdminMapper">
 
     <insert id="insertAdmin" parameterType="adminDO" useGeneratedKeys="true" keyProperty="adminId">
         insert into admin (admin_name, admin_password, admin_levle, admin_gmt_create, admin_gmt_modified

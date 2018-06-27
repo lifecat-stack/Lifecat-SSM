@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.mapper.ImageMapper">
+<mapper namespace="com.spring.mapper.ImageMapper">
 
     <insert id="insertImageAndGetKey" parameterType="imageDO" useGeneratedKeys="true" keyProperty="imageId">
         INSERT INTO image (image_text, image_path, is_deleted, user_id, class_id, image_gmt_create, image_gmt_modified)

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.mapper.UserMapper">
+<mapper namespace="com.spring.mapper.UserMapper">
 
     <insert id="insertUserAndGetKey" parameterType="userDO" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO user (user_name, user_password, user_level, user_gmt_create, user_gmt_modified)

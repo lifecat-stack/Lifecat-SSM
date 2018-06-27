@@ -1,6 +1,6 @@
 <%@ page import="com.spring.entity.old.Image" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.spring.service.serviceimpl.GetImgModel" %>
+<%@ page import="com.spring.service.impl.GetImgModel" %>
 <%@ page import="static com.spring.util.db.HOST.ip" %>
 <%@ page import="com.spring.entity.old.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

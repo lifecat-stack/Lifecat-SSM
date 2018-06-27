@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.mapper.UserIconMapper">
+<mapper namespace="com.spring.mapper.UserIconMapper">
 
     <insert id="insertUserIcon" parameterType="userIconDO">
         insert into user_icon (user_id, icon_path, icon_gmt_create, icon_gmt_modified)
