@@ -50,12 +50,12 @@
             %>
             <ul class="nav navbar-nav navbar-right">
                 <%--上传寄语--%>
-                <li><a href=../WEB-INF/updiary.jsp><span
+                <li><a href=../WEB-INF/jsp/updiary.jsp><span
                         class="glyphicon glyphicon-pencil"></span>书写寄语</a>
                 </li>
 
                 <%--上传图片--%>
-                <li><a href=../WEB-INF/upimage.jsp><span
+                <li><a href=../WEB-INF/jsp/upimage.jsp><span
                         class="glyphicon glyphicon-pencil"></span>记录图片</a>
                 </li>
 

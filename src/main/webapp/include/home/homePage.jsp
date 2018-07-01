@@ -260,7 +260,7 @@
 
                     </div>
                     <div class="col-md-11">
-                        <a href=../../WEB-INF/imageshowpage.jsp><h2>成长相册:</h2></a>
+                        <a href=../../WEB-INF/jsp/imageshowpage.jsp><h2>成长相册:</h2></a>
                         <%--获取图片链接--%>
                         <%
                             ArrayList<Image> images = null;
