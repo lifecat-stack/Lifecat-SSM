@@ -26,14 +26,14 @@ public class DispatcherServlet {
     @RequestMapping(value = "/user_login", method = RequestMethod.POST)
     public ModelAndView userLoing(@RequestParam("userName") String userName,
                                   @RequestParam("userPassword") String userPassword) {
-
+        return null;
     }
 
     /**
      * user property update
      */
     @RequestMapping(value = "/user_property_update", method = RequestMethod.POST)
-    public ModelAndView userPropertyUpdate(@SessionAttributes("userId") Integer userId) {
-
+    public ModelAndView userPropertyUpdate(Integer userId) {
+        return null;
     }
 }

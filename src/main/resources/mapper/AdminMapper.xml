@@ -5,8 +5,8 @@
 <mapper namespace="com.spring.mapper.AdminMapper">
 
     <insert id="insertAdmin" parameterType="adminDO" useGeneratedKeys="true" keyProperty="adminId">
-        insert into admin (admin_name, admin_password, admin_levle, admin_gmt_create, admin_gmt_modified
-        values (#{adminName}, #{adminPassword}, #{adminLevel}, #{adminGmtCreate}, #{adminGmtCreate})
+        insert into admin (admin_name, admin_password, admin_levle, admin_gmt_create, admin_gmt_modified)
+        values(#{adminName}, #{adminPassword}, #{adminLevel}, #{adminGmtCreate}, #{adminGmtCreate})
     </insert>
 
     <select id="queryAdminByName" parameterType="string" resultType="adminDO">

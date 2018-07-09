@@ -7,7 +7,7 @@
     <!--配置Spring IoC配置文件路径-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/src/main/webapp/WEB-INF/applicationContext.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!--配置ContextLoaderListener用以初始化Spring IoC容器-->
@@ -20,6 +20,11 @@
         <!--注意：MVC框架会根据servlet-name配置，找到xml座位配置文件载入Web工程中，需要dispatcher-servlet.xml文件-->
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- spring mvc的配置文件 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
         <!--使得Dispatcher在服务器启动的时候就初始化-->
         <load-on-startup>2</load-on-startup>
     </servlet>
@@ -28,38 +33,7 @@
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <!--拦截所有*.do后缀-->
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <!--<welcome-file-list>-->
-    <!--<welcome-file>index.jsp</welcome-file>-->
-    <!--</welcome-file-list>-->
-
-    <!--<filter>-->
-    <!--<filter-name>EncodingFilter</filter-name>-->
-    <!--<filter-class>com.spring.util.filter.EncodingFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>EncodingFilter</filter-name>-->
-    <!--<url-pattern>/service/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!--<filter>-->
-    <!--<filter-name>FormFilter</filter-name>-->
-    <!--<filter-class>com.spring.util.filter.FormFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>FormFilter</filter-name>-->
-    <!--<url-pattern>/service/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!--<servlet>-->
-    <!--<servlet-name>ActionService</servlet-name>-->
-    <!--<servlet-class>com.spring.controller.ActionServlet</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>ActionService</servlet-name>-->
-    <!--<url-pattern>/service/*</url-pattern>-->
-    <!--</servlet-mapping>-->
 
 </web-app>
