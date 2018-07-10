@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.ImageDO;
-import com.spring.service.util.Service;
 
 import java.util.List;
 
@@ -15,6 +14,6 @@ import java.util.List;
  * @date 2018/5/24
  * @auther ten
  */
-public interface ImageListQueryService extends Service {
+public interface ImageListQueryService{
     List<ImageDO> queryImageListByUserId(int userId);
 }

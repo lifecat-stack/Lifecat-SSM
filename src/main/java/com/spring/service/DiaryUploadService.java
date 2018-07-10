@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.DiaryDO;
-import com.spring.service.util.Service;
 
 /**
  * 日记上传
@@ -13,6 +12,6 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface DiaryUploadService extends Service {
+public interface DiaryUploadService{
     void uploadDiary(DiaryDO diaryDO);
 }

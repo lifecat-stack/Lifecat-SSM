@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.UserDO;
-import com.spring.service.util.Service;
 
 /**
  * 用户资料更新
@@ -13,6 +12,6 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface UserPropertyUpdateService extends Service {
+public interface UserPropertyUpdateService{
     void updateUserProperty(UserDO userDO);
 }

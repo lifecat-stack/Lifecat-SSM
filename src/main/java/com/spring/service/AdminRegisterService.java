@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.AdminDO;
-import com.spring.service.util.Service;
 
 /**
  * 管理员注册
@@ -10,7 +9,7 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface AdminRegisterService extends Service {
+public interface AdminRegisterService{
     /**
      * 查询账号是否存在
      *

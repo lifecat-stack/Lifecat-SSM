@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>lifecatweb</artifactId>
+    <artifactId>ssm-lifecat</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>

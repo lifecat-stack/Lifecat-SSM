@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.UserPropertyDO;
-import com.spring.service.util.Service;
 
 /**
  * 查询用户资料
@@ -13,6 +12,6 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface UserPropertyQueryService extends Service {
+public interface UserPropertyQueryService{
     UserPropertyDO queryUserProperty(int userId);
 }

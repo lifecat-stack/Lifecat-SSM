@@ -30,9 +30,7 @@
         where image_id = #{imageId} and is_deleted = '1'
     </select>
 
-
-    // TODO
-    <select id="queryImageListByUserId" parameterType="int" resultType="role">
+    <select id="queryImageListByUserId" parameterType="int" resultType="imageDO">
         SELECT
             image_id,
             image_text,
@@ -40,7 +38,7 @@
             image_gmt_create
         from image
         where user_id = '" + userId + "' and is_deleted = '1'</select>
-    <select id="queryImageClassById" parameterType="string" resultType="role">
+    <select id="queryImageClassById" parameterType="string" resultType="imageDO">
         SELECT
             image_id,
             image_text,

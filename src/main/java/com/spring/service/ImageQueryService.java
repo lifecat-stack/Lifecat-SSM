@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.ImageDO;
-import com.spring.service.util.Service;
 
 /**
  * 图片单个查询
@@ -10,6 +9,6 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface ImageQueryService extends Service {
+public interface ImageQueryService{
     ImageDO queryImage(String imageName);
 }

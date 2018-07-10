@@ -5,10 +5,14 @@
 <mapper namespace="com.spring.mapper.DiaryMapper">
 
     <insert id="insertDiaryAndGetKey" parameterType="userDO" useGeneratedKeys="true" keyProperty="userId">
-
+        insert into admin (admin_name, admin_password, admin_levle, admin_gmt_create, admin_gmt_modified)
+        values (#{adminName}, #{adminPassword}, #{adminLevel}, #{adminGmtCreate}, #{adminGmtCreate})
     </insert>
 
     <update id="updateDiary" parameterType="diaryDO">
+        UPDATE image
+        set is_deleted = '0'
+        where image_id = #{imageId}
     </update>
 
     <delete id="deleteDiaryById" parameterType="int">
@@ -18,10 +22,15 @@
     </delete>
 
     <select id="queryDiaryByName" parameterType="string" resultType="diaryDO">
+        select count(admin_id)
+        from admin
+        where admin_name = #{adminName}
     </select>
 
-
-    // TODO
     <select id="queryDiaryListByUserId" parameterType="userDO">
+        select count(admin_id)
+        from admin
+        where admin_name = #{adminName}
     </select>
+
 </mapper>

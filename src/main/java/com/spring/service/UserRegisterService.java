@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.UserDO;
-import com.spring.service.util.Service;
 
 /**
  * 用户注册
@@ -10,7 +9,7 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface UserRegisterService extends Service {
+public interface UserRegisterService{
 
     boolean isUserExisted(String userName);
 

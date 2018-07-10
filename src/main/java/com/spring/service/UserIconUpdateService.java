@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.UserIconDO;
-import com.spring.service.util.Service;
 
 /**
  * 用户头像上传
@@ -13,6 +12,6 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface UserIconUpdateService extends Service {
+public interface UserIconUpdateService{
     void updateUserIcon(UserIconDO userIconDO);
 }

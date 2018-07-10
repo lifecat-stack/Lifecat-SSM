@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import com.spring.entity.DiaryDO;
-import com.spring.service.util.Service;
 
 import java.util.List;
 
@@ -14,6 +13,6 @@ import java.util.List;
  * @date 2018/5/24
  * @auther ten
  */
-public interface DiaryListQueryService extends Service {
+public interface DiaryListQueryService{
     List<DiaryDO> queryDiaryListByUserId(int userId);
 }

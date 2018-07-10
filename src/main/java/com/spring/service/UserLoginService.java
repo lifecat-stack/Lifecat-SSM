@@ -2,7 +2,6 @@ package com.spring.service;
 
 
 import com.spring.entity.UserDO;
-import com.spring.service.util.Service;
 
 /**
  * 用户登录
@@ -13,7 +12,7 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface UserLoginService extends Service {
+public interface UserLoginService{
     /**
      * 查询账号是否存在
      *

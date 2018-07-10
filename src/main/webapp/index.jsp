@@ -66,201 +66,201 @@
 
 <body>
 
-<!-- 登录窗口 -->
-<div id="login" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-title">
-                <h1 class="text-center">登录</h1>
-            </div>
-            <div class="modal-body">
+<%--<!-- 登录窗口 -->--%>
+<%--<div id="login" class="modal fade">--%>
+    <%--<div class="modal-dialog">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-body">--%>
+                <%--<button class="close" data-dismiss="modal">--%>
+                    <%--<span>&times;</span>--%>
+                <%--</button>--%>
+            <%--</div>--%>
+            <%--<div class="modal-title">--%>
+                <%--<h1 class="text-center">登录</h1>--%>
+            <%--</div>--%>
+            <%--<div class="modal-body">--%>
 
-                <form class="form-group" action="index.jsp/user_login.do"
-                      method="post">
-                    <div class="form-group">
-                        <label for="userName">账号</label> <input class="form-control"
-                                                                type="text" placeholder="请输入账号" name="userName"
-                                                                id="userName">
-                    </div>
-                    <div class="form-group">
-                        <label for="userPassword">密码</label> <input class="form-control"
-                                                                    placeholder="请输入密码" name="userPassword"
-                                                                    id="userPassword"
-                                                                    type="password">
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-primary" type="submit">登录</button>
-                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                    </div>
-                    <a href="" data-toggle="modal" data-dismiss="modal"
-                       data-target="#register">还没有账号？点我注册</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                <%--<form class="form-group" action="/user_login.do"--%>
+                      <%--method="post">--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="userName">账号</label> <input class="form-control"--%>
+                                                                <%--type="text" placeholder="请输入账号" name="userName"--%>
+                                                                <%--id="userName">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="userPassword">密码</label> <input class="form-control"--%>
+                                                                    <%--placeholder="请输入密码" name="userPassword"--%>
+                                                                    <%--id="userPassword"--%>
+                                                                    <%--type="password">--%>
+                    <%--</div>--%>
+                    <%--<div class="text-right">--%>
+                        <%--<button class="btn btn-primary" type="submit">登录</button>--%>
+                        <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
+                    <%--</div>--%>
+                    <%--<a href="" data-toggle="modal" data-dismiss="modal"--%>
+                       <%--data-target="#register">还没有账号？点我注册</a>--%>
+                <%--</form>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
-<!-- 注册窗口 -->
-<div id="register" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-title">
-                <h1 class="text-center">注册</h1>
-            </div>
-            <div class="modal-body">
-                <!-- 注册表单 -->
-                <form class="form-group" action="index.jsp/user_register.do" method="post">
-                    <div class="form-group">
-                        <label for="rUserName">注册账号</label> <input class="form-control"
-                                                                   type="text" placeholder="请输入想注册的账号" name="rUserName"
-                                                                   id="rUserName">
-                    </div>
-                    <div class="form-group">
-                        <label for="rUserPassword1">密码</label> <input class="form-control"
-                                                                      placeholder="请输入密码" name="rUserPassword1"
-                                                                      id="rUserPassword1"
-                                                                      type="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="rUserPassword2">确认密码</label> <input class="form-control"
-                                                                        placeholder="请确认密码" name="rUserPassword2"
-                                                                        id="rUserPassword2"
-                                                                        type="password">
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-primary" type="submit">注册</button>
-                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                    </div>
-                    <a href="" data-toggle="modal" data-dismiss="modal"
-                       data-target="#login">已有账号？点我登录</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<!-- 注册窗口 -->--%>
+<%--<div id="register" class="modal fade">--%>
+    <%--<div class="modal-dialog">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-body">--%>
+                <%--<button class="close" data-dismiss="modal">--%>
+                    <%--<span>&times;</span>--%>
+                <%--</button>--%>
+            <%--</div>--%>
+            <%--<div class="modal-title">--%>
+                <%--<h1 class="text-center">注册</h1>--%>
+            <%--</div>--%>
+            <%--<div class="modal-body">--%>
+                <%--<!-- 注册表单 -->--%>
+                <%--<form class="form-group" action="/user_register.do" method="post">--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="rUserName">注册账号</label> <input class="form-control"--%>
+                                                                   <%--type="text" placeholder="请输入想注册的账号" name="rUserName"--%>
+                                                                   <%--id="rUserName">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="rUserPassword1">密码</label> <input class="form-control"--%>
+                                                                      <%--placeholder="请输入密码" name="rUserPassword1"--%>
+                                                                      <%--id="rUserPassword1"--%>
+                                                                      <%--type="password">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="rUserPassword2">确认密码</label> <input class="form-control"--%>
+                                                                        <%--placeholder="请确认密码" name="rUserPassword2"--%>
+                                                                        <%--id="rUserPassword2"--%>
+                                                                        <%--type="password">--%>
+                    <%--</div>--%>
+                    <%--<div class="text-right">--%>
+                        <%--<button class="btn btn-primary" type="submit">注册</button>--%>
+                        <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
+                    <%--</div>--%>
+                    <%--<a href="" data-toggle="modal" data-dismiss="modal"--%>
+                       <%--data-target="#login">已有账号？点我登录</a>--%>
+                <%--</form>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
-<!-- 管理员登录窗口 -->
-<div id="admin" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-title">
-                <h1 class="text-center">管理员登录</h1>
-            </div>
-            <div class="modal-body">
-                <!-- 登录表单 -->
-                <form class="form-group" action="index.jsp/admin_login.do" method="post">
-                    <div class="form-group">
-                        <label for="adminName">账号</label> <input class="form-control"
-                                                                 type="text" placeholder="请输入账号" name="adminName"
-                                                                 id="adminName">
-                    </div>
-                    <div class="form-group">
-                        <label for="adminPassword">密码</label> <input class="form-control"
-                                                                     placeholder="请输入密码" name="adminPassword"
-                                                                     id="adminPassword"
-                                                                     type="password">
-                    </div>
+<%--<!-- 管理员登录窗口 -->--%>
+<%--<div id="admin" class="modal fade">--%>
+    <%--<div class="modal-dialog">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-body">--%>
+                <%--<button class="close" data-dismiss="modal">--%>
+                    <%--<span>&times;</span>--%>
+                <%--</button>--%>
+            <%--</div>--%>
+            <%--<div class="modal-title">--%>
+                <%--<h1 class="text-center">管理员登录</h1>--%>
+            <%--</div>--%>
+            <%--<div class="modal-body">--%>
+                <%--<!-- 登录表单 -->--%>
+                <%--<form class="form-group" action="/admin_login.do" method="post">--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="adminName">账号</label> <input class="form-control"--%>
+                                                                 <%--type="text" placeholder="请输入账号" name="adminName"--%>
+                                                                 <%--id="adminName">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label for="adminPassword">密码</label> <input class="form-control"--%>
+                                                                     <%--placeholder="请输入密码" name="adminPassword"--%>
+                                                                     <%--id="adminPassword"--%>
+                                                                     <%--type="password">--%>
+                    <%--</div>--%>
 
-                    <div class="text-right">
-                        <button class="btn btn-primary" type="submit">登录</button>
-                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                    <%--<div class="text-right">--%>
+                        <%--<button class="btn btn-primary" type="submit">登录</button>--%>
+                        <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
+                    <%--</div>--%>
+                <%--</form>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
-<!-- 主界面窗口 -->
-<div id="main" class="main">
-    <!--页眉-->
-    <div class="header">
-        <div class="nav">
-            <!--左侧：logo图像-->
-            <div class="logo">
-                <img src="images/welcomelogo.png"/>
-            </div>
-            <!--右侧：访问链接-->
-            <div class="entry">
-                <span class="state">LifeCat-记录美好时刻</span> <a
-                    href="http://47.106.11.84/" target="_blank">访问官网</a>
-            </div>
-        </div>
-    </div>
+<%--<!-- 主界面窗口 -->--%>
+<%--<div id="main" class="main">--%>
+    <%--<!--页眉-->--%>
+    <%--<div class="header">--%>
+        <%--<div class="nav">--%>
+            <%--<!--左侧：logo图像-->--%>
+            <%--<div class="logo">--%>
+                <%--<img src="images/welcomelogo.png"/>--%>
+            <%--</div>--%>
+            <%--<!--右侧：访问链接-->--%>
+            <%--<div class="entry">--%>
+                <%--<span class="state">LifeCat-记录美好时刻</span> <a--%>
+                    <%--href="http://47.106.11.84/" target="_blank">访问官网</a>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
-    <!--页面中心内容部分-->
-    <div class="container">
-        <div class="content">
-            <div class="wrap">
-                <!-- 页面中心文字部分 -->
-                <div class="slogan"></div>
+    <%--<!--页面中心内容部分-->--%>
+    <%--<div class="container">--%>
+        <%--<div class="content">--%>
+            <%--<div class="wrap">--%>
+                <%--<!-- 页面中心文字部分 -->--%>
+                <%--<div class="slogan"></div>--%>
 
-                <!-- 页面中心按钮部分 -->
-                <div class="mid">
-                    <div class="main-entry">
-                        <a data-toggle="modal" data-target="#login" href="" class="developer-login">
-                            <span class="title">
-                                <i class="developer"></i>立即登录</span><s></s> </a>
-                        <a data-toggle="modal" data-target="#register" href="" class="personal-login">
-                            <span class="title">
-                                <i class="developer"></i>立即注册</span><s></s> </a>
-                    </div>
-                    <div class="main-entry">
-                        <a data-toggle="modal" data-target="#admin" href="" class="developer-login">
-                            <span class="title">
-                                <i class="developer2"></i>管理员登录</span><s></s> </a>
-                        <a data-toggle="modal" data-target="#experience" href="" class="personal-login">
-                            <span class="title">
-                                <i class="developer2"></i>立即体验</span><s></s> </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <%--<!-- 页面中心按钮部分 -->--%>
+                <%--<div class="mid">--%>
+                    <%--<div class="main-entry">--%>
+                        <%--<a data-toggle="modal" data-target="#login" href="" class="developer-login">--%>
+                            <%--<span class="title">--%>
+                                <%--<i class="developer"></i>立即登录</span><s></s> </a>--%>
+                        <%--<a data-toggle="modal" data-target="#register" href="" class="personal-login">--%>
+                            <%--<span class="title">--%>
+                                <%--<i class="developer"></i>立即注册</span><s></s> </a>--%>
+                    <%--</div>--%>
+                    <%--<div class="main-entry">--%>
+                        <%--<a data-toggle="modal" data-target="#admin" href="" class="developer-login">--%>
+                            <%--<span class="title">--%>
+                                <%--<i class="developer2"></i>管理员登录</span><s></s> </a>--%>
+                        <%--<a data-toggle="modal" data-target="#experience" href="" class="personal-login">--%>
+                            <%--<span class="title">--%>
+                                <%--<i class="developer2"></i>立即体验</span><s></s> </a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
-        <!--背景图片-->
-        <div class="back">
-            <div class="items">
-                <div class="item item1"
-                     style="background-image:url(images/background1.jpg)"></div>
-                <div class="item item2"
-                     style="background-image:url(images/background2.jpg)"></div>
-                <div class="item item3"
-                     style="background-image:url(images/background3.jpg)"></div>
-            </div>
-        </div>
-    </div>
+        <%--<!--背景图片-->--%>
+        <%--<div class="back">--%>
+            <%--<div class="items">--%>
+                <%--<div class="item item1"--%>
+                     <%--style="background-image:url(images/background1.jpg)"></div>--%>
+                <%--<div class="item item2"--%>
+                     <%--style="background-image:url(images/background2.jpg)"></div>--%>
+                <%--<div class="item item3"--%>
+                     <%--style="background-image:url(images/background3.jpg)"></div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
-    <!--页脚-->
-    <div class="footer">
-        <div class="ownership">
-            <span> &copy;2018 - <strong>成长相册-lifecat</strong> - TEN</span>
-        </div>
-    </div>
-</div>
+    <%--<!--页脚-->--%>
+    <%--<div class="footer">--%>
+        <%--<div class="ownership">--%>
+            <%--<span> &copy;2018 - <strong>成长相册-lifecat</strong> - TEN</span>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
-<script>
+<%--<script>--%>
 
-</script>
+<%--</script>--%>
 
-<!--引用外部js库：背景滚动-->
-<script type="text/javascript" src="js/myjs/rollbackground.js"></script>
-<!--引用外部js库：jQuery-->
-<script src="js/t19ctgxcrlxxxxxxxx.js"></script>
+<%--<!--引用外部js库：背景滚动-->--%>
+<%--<script type="text/javascript" src="js/myjs/rollbackground.js"></script>--%>
+<%--<!--引用外部js库：jQuery-->--%>
+<%--<script src="js/t19ctgxcrlxxxxxxxx.js"></script>--%>
 
 </body>
 </html>

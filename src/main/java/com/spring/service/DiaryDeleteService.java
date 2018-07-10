@@ -1,8 +1,6 @@
 package com.spring.service;
 
 
-import com.spring.service.util.Service;
-
 /**
  * 日记删除
  * <p>
@@ -12,7 +10,7 @@ import com.spring.service.util.Service;
  * @date 2018/5/24
  * @auther ten
  */
-public interface DiaryDeleteService extends Service {
+public interface DiaryDeleteService{
     // TODO
     void deleteDiary();
 }
