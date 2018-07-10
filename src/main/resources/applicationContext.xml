@@ -16,8 +16,8 @@
 
     <!--通过注解，将Service的生命周期纳入Spring的管理-->
     <context:annotation-config/>
-    <context:component-scan base-package="com.spring.service.impl"/>
     <context:component-scan base-package="com.spring.service"/>
+    <context:component-scan base-package="com.spring.mapper"/>
 
     <!--配置数据源-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
