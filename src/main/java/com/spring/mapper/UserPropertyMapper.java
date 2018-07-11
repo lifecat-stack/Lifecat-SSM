@@ -20,18 +20,16 @@ public interface UserPropertyMapper {
      * 插入UserPropertyDO到user_property表
      *
      * @param userPropertyDO userPropertyDO
-     * @throws SQLException e
      */
-    void insertUserProperty(UserPropertyDO userPropertyDO) throws SQLException;
+    void insertUserProperty(UserPropertyDO userPropertyDO);
 
     /**
      * 资料更新 :
      * 更新user_property表
      *
      * @param userPropertyDO userPropertyDO
-     * @throws SQLException e
      */
-    void updateUserProperty(UserPropertyDO userPropertyDO) throws SQLException;
+    void updateUserProperty(UserPropertyDO userPropertyDO);
 
     /**
      * 资料查询 :
@@ -41,8 +39,7 @@ public interface UserPropertyMapper {
      *
      * @param userId 用户ID
      * @return UserPropertyDO UserPropertyDO
-     * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    UserPropertyDO queryUserPropertyById(Integer userId) throws SQLException;
+    UserPropertyDO queryUserPropertyById(Integer userId);
 }

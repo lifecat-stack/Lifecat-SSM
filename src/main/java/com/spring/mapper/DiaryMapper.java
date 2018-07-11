@@ -17,28 +17,27 @@ public interface DiaryMapper {
      * 返回自增长主键diary_id
      *
      * @param diaryDO diaryDO
-     * @return diary_id
-     * @throws SQLException e
+     * @return diary_i
      */
-    int insertDiaryAndGetKey(DiaryDO diaryDO) throws SQLException;
+    int insertDiaryAndGetKey(DiaryDO diaryDO);
 
     /**
      * 日记更新 :
      * 根据diary_id进行内容的更新
      *
      * @param diaryDO diaryDO
-     * @throws SQLException e
+     *                e
      */
-    void updateDiary(DiaryDO diaryDO) throws SQLException;
+    void updateDiary(DiaryDO diaryDO);
 
     /**
      * 日记删除 :
      * 根据diary_id进行删除
      *
      * @param diaryId diaryId
-     * @throws SQLException e
+     *                e
      */
-    void deleteDiaryById(Integer diaryId) throws SQLException;
+    void deleteDiaryById(Integer diaryId);
 
 
     /**
@@ -49,10 +48,9 @@ public interface DiaryMapper {
      *
      * @param diaryName 图片名
      * @return DiaryDO DiaryDO
-     * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    DiaryDO queryDiaryByName(String diaryName) throws SQLException;
+    DiaryDO queryDiaryByName(String diaryName);
 
     /**
      * 日记全部查询 :
@@ -62,8 +60,7 @@ public interface DiaryMapper {
      *
      * @param userId 用户ID
      * @return {@literal List<DiaryDO> List}
-     * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    List<DiaryDO> queryDiaryListByUserId(Integer userId) throws SQLException;
+    List<DiaryDO> queryDiaryListByUserId(Integer userId);
 }

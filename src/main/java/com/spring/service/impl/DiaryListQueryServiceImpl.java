@@ -1,9 +1,11 @@
 package com.spring.service.impl;
 
 import com.spring.entity.DiaryDO;
+import com.spring.mapper.DiaryMapper;
 import com.spring.service.DiaryListQueryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +28,16 @@ public class DiaryListQueryServiceImpl implements DiaryListQueryService {
 
     private Logger logger = LoggerFactory.getLogger(DiaryListQueryServiceImpl.class);
 
+    @Autowired
+    private DiaryMapper diaryMapper;
 
     @Override
     public List<DiaryDO> queryDiaryListByUserId(int userId) {
-        return null;
+        try {
+            return diaryMapper.queryDiaryListByUserId(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<DiaryDO>();
     }
 }

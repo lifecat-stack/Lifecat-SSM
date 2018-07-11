@@ -27,10 +27,8 @@
         where admin_name = #{adminName}
     </select>
 
-    <select id="queryDiaryListByUserId" parameterType="userDO">
-        select count(admin_id)
-        from admin
-        where admin_name = #{adminName}
+    <select id="queryDiaryListByUserId" parameterType="int" resultType="">
+       SELECT diary_id,diary_name,diary_text,diary_gmt_modified from diary where user_id = #{userId} and is_deleted = '1'"
     </select>
 
 </mapper>

@@ -21,11 +21,11 @@ public interface UserMapper {
      * 注册 :
      * 插入UserDO到user表
      * 返回自增主键user_id
-      *
+     *
      * @param userDO UserDO
-     * @throws SQLException e
+     *               e
      */
-    int insertUserAndGetKey(UserDO userDO) throws SQLException;
+    int insertUserAndGetKey(UserDO userDO);
 
     /**
      * 登录 :
@@ -35,10 +35,10 @@ public interface UserMapper {
      *
      * @param userName 用户名
      * @return UserDO UserDO
-     * @throws SQLException         e
+
      * @throws NullPointerException 记录不存在
      */
-    UserDO queryUserByName(String userName) throws SQLException;
+    UserDO queryUserByName(String userName);
 
     /**
      * 注册-用户是否存在 :
@@ -48,7 +48,7 @@ public interface UserMapper {
      * @param userName 用户名
      * @return boolean 用户名是否存在
      */
-    boolean isUserExistedByName(String userName) throws SQLException;
+    boolean isUserExistedByName(String userName);
 
     /**
      * 密码更新 :
@@ -56,15 +56,13 @@ public interface UserMapper {
      *
      * @param userName 用户名
      * @return user_password
-     * @throws SQLException e
      */
-    String queryUserPasswordByName(String userName) throws SQLException;
+    String queryUserPasswordByName(String userName);
 
     /**
      * 密码更新 :
      * 更新用户密码
-     *
-     * @throws SQLException e
+     * <p>
      */
-    void updateUserPassword(UserDO userDO) throws SQLException;
+    void updateUserPassword(UserDO userDO);
 }

@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import com.spring.entity.DiaryDO;
 import com.spring.entity.UserDO;
 import com.spring.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/diary")
@@ -54,8 +57,15 @@ public class DiaryController {
 
     @RequestMapping("/diary_list_query")
     public ModelAndView diaryListQuery(@ModelAttribute("user") UserDO userDO) {
+        // 获取用户ID
+        int userId = 1;
+
+        List<DiaryDO> diaryList = diaryListQueryService.queryDiaryListByUserId(userId);
+        assert diaryList != null;
+
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.addObject("diaryList", diaryList);
+        mv.setViewName("userhome");
         return mv;
     }
 

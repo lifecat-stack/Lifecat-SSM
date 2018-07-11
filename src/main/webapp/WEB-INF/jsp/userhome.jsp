@@ -257,7 +257,7 @@
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-md-1">
-                        <form method="get" action="diary_list_query.do">
+                        <form method="get" action="diary/diary_list_query.do">
                             <button type="submit">刷新</button>
                         </form>
                         <button id="diary-insert" class="row">
@@ -266,7 +266,7 @@
                         <button id="diary-delete" class="row">
                             删除所选
                         </button>
-                        <form method="get" action="diary_all_delete.do">
+                        <form method="get" action="diary/diary_all_delete.do">
                             <button id="diary-delete-all" class="row">删除全部</button>
                         </form>
                     </div>

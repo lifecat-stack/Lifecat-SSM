@@ -15,9 +15,8 @@ public interface AdminMapper {
      * 插入AdminDO到admin表
      *
      * @param adminDO AdminDO
-     * @throws SQLException e
      */
-    void insertAdmin(AdminDO adminDO) throws SQLException;
+    void insertAdmin(AdminDO adminDO);
 
     /**
      * 登录 :
@@ -26,10 +25,9 @@ public interface AdminMapper {
      *
      * @param adminName 用户名
      * @return AdminDO AdminDO
-     * @throws SQLException         e
      * @throws NullPointerException 记录不存在
      */
-    AdminDO queryAdminByName(String adminName) throws SQLException;
+    AdminDO queryAdminByName(String adminName);
 
     /**
      * 注册 :
@@ -39,5 +37,5 @@ public interface AdminMapper {
      * @param adminName 用户名
      * @return boolean 用户名是否存在
      */
-    boolean isAdminExisted(String adminName) throws SQLException;
+    boolean isAdminExisted(String adminName);
 }
