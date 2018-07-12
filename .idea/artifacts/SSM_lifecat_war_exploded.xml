@@ -42,6 +42,8 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:${jackson.version}" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.8.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

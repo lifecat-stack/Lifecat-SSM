@@ -1,16 +1,24 @@
 package com.spring.controller;
 
+import com.spring.entity.DiaryDO;
 import com.spring.service.AdminLoginService;
 import com.spring.service.AdminRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class DispatcherController {
+
+    @RequestMapping(value = "/ajaxGet", method = RequestMethod.GET)
+    @ResponseBody
+    public DiaryDO ajaxTest() {
+        DiaryDO diaryDO = new DiaryDO();
+        System.out.println("json test and method is:");
+        diaryDO.setDiaryName("json test and method is:");
+        return diaryDO;
+    }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {

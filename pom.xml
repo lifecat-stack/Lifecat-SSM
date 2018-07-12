@@ -153,6 +153,18 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <!--jackson-->
+        <!-- Jackson JSON Mapper -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.8.4</version>
+        </dependency>
     </dependencies>
 
 </project>
