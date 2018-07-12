@@ -17,28 +17,33 @@ public class DispatcherController {
         return "index";
     }
 
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String home() {
+        return "home";
+    }
+
     @RequestMapping(value = "/userhome", method = RequestMethod.GET)
     public String userhome() {
         return "userhome";
     }
 
     @RequestMapping(value = "/admin")
-    public String admin(){
+    public String admin() {
         return "forward:/admin";
     }
 
     @RequestMapping(value = "/user")
-    public String user(){
+    public String user() {
         return "forward:/user";
     }
 
     @RequestMapping(value = "/diary")
-    public String diary(){
+    public String diary() {
         return "forward:/diary";
     }
 
     @RequestMapping(value = "/image")
-    public String image(){
+    public String image() {
         return "forward:/image";
     }
 

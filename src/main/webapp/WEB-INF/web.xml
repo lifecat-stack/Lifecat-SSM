@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!---欢迎页面配置 -->
+    <!--定义首页列单.-->
+    <welcome-file-list>
+        <!--用来指定首页文件名称.我们可以用<welcome-file>指定几个首页,而服务器会依照设定的顺序来找首页.-->
+        <welcome-file>/WEB-INF/view/home.html</welcome-file>
+    </welcome-file-list>
+
     <!--全局范围内环境参数初始化-->
     <context-param>
         <!--参数名称-->
@@ -40,6 +47,24 @@
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
+    <!--在spring之前截获对资源的访问-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+
     <!---servlet配置-->
     <!--用来声明一个servlet的数据 -->
     <servlet>
@@ -57,6 +82,7 @@
         <!--设置是否启用异步支持-->
         <async-supported>true</async-supported>
     </servlet>
+
     <!--用来定义servlet所对应的URL-->
     <servlet-mapping>
         <!--指定servlet的名称-->
@@ -80,26 +106,19 @@
         <mime-type>application/mspowerpoint</mime-type>
     </mime-mapping>
 
-    <!---欢迎页面配置 -->
-    <!--定义首页列单.-->
-    <welcome-file-list>
-        <!--用来指定首页文件名称.我们可以用<welcome-file>指定几个首页,而服务器会依照设定的顺序来找首页.-->
-        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
-    </welcome-file-list>
-
     <!--配置错误页面-->
     <error-page>  <!--将错误代码(Error Code)或异常(Exception)的种类对应到web应用资源路径.-->
         <!--HTTP Error code,例如: 404、403-->
         <error-code>404</error-code>
         <!--用来设置发生错误或异常时要显示的页面-->
-        <location>/error.html</location>
+        <location>/WEB-INF/view/error.html</location>
     </error-page>
 
     <error-page>
         <!--设置可能会发生的java异常类型,例如:java.lang.Exception-->
         <exception-type>java.lang.Exception</exception-type>
         <!--用来设置发生错误或异常时要显示的页面-->
-        <location>/ExceptionError.html</location>
+        <location>/WEB-INF/view/ExceptionError.html</location>
     </error-page>
 
 </web-app>
