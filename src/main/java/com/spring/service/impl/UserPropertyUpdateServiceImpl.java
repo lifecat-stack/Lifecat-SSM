@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("userPropertyUpdateServiceImpl")
+@Service("userPropertyUpdateService")
 public class UserPropertyUpdateServiceImpl implements UserPropertyUpdateService {
 
     private Logger logger = LoggerFactory.getLogger(UserPropertyUpdateServiceImpl.class);

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("imageDeleteServiceImpl")
+@Service("imageDeleteService")
 public class ImageDeleteServiceImpl implements ImageDeleteService {
     private Logger logger = LoggerFactory.getLogger(ImageDeleteServiceImpl.class);
 

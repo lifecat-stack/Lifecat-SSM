@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("diaryListQueryServiceImpl")
+@Service("diaryListQueryService")
 public class DiaryListQueryServiceImpl implements DiaryListQueryService {
 
     private Logger logger = LoggerFactory.getLogger(DiaryListQueryServiceImpl.class);
@@ -33,11 +33,8 @@ public class DiaryListQueryServiceImpl implements DiaryListQueryService {
 
     @Override
     public List<DiaryDO> queryDiaryListByUserId(int userId) {
-        try {
-            return diaryMapper.queryDiaryListByUserId(userId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<DiaryDO>();
+
+        return diaryMapper.queryDiaryListByUserId(userId);
+
     }
 }

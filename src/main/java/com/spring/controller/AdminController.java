@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
     @Autowired
-    private AdminLoginService loginService;
+    private AdminLoginService adminLoginService;
     @Autowired
-    private AdminRegisterService registerService;
+    private AdminRegisterService adminRegisterService;
 
     @RequestMapping("/admin_login")
     public ModelAndView adminLogin() {

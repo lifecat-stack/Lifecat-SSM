@@ -14,12 +14,10 @@ public interface DiaryMapper {
     /**
      * 日记上传 :
      * 插入DiaryDO到diary表
-     * 返回自增长主键diary_id
      *
      * @param diaryDO diaryDO
-     * @return diary_i
      */
-    int insertDiaryAndGetKey(DiaryDO diaryDO);
+    void insertDiary(DiaryDO diaryDO);
 
     /**
      * 日记更新 :

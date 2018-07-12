@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("diaryDeleteServiceImpl")
+@Service("diaryDeleteService")
 public class DiaryDeleteServiceImpl implements DiaryDeleteService {
     private Logger logger = LoggerFactory.getLogger(DiaryDeleteServiceImpl.class);
 

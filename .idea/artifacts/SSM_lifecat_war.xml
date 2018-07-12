@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="SSM-lifecat:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/SSM_lifecat_war</output-path>
-    <root id="archive" name="SSM-lifecat_war.war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ssm-lifecat-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="SSM-lifecat:war exploded" />
     </root>
   </artifact>

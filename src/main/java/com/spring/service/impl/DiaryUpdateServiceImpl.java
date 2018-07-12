@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("diaryUpdateServiceImpl")
+@Service("diaryUpdateService")
 public class DiaryUpdateServiceImpl implements DiaryUpdateService {
     private Logger logger = LoggerFactory.getLogger(DiaryUpdateServiceImpl.class);
 

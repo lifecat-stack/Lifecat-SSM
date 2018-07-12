@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("userRegisterServiceImpl")
+@Service("userRegisterService")
 public class UserRegisterServiceImpl implements UserRegisterService {
 
     private Logger logger = LoggerFactory.getLogger(UserRegisterServiceImpl.class);

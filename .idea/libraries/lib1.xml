@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="lib1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lifecatweb/web/WEB-INF/lib/jstl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lifecatweb/web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

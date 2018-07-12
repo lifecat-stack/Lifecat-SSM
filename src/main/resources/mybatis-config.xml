@@ -33,7 +33,7 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/lifecat"/>
                 <property name="username" value="root"/>
                 <property name="password" value="wangshihao"/>
@@ -57,8 +57,7 @@
 
     <mappers>
         <!--扫描包路径下所有xxMapper.xml文件-->
-        <!--<package name="com.spring.mapper.mapperimpl"/>-->
-        <mapper resource="mapper/UserMapper.xml"/>
+        <package name="classpath:mapper"/>
     </mappers>
 
 </configuration>

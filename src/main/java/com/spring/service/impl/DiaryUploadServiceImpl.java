@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("diaryUploadServiceImpl")
+@Service("diaryUploadService")
 public class DiaryUploadServiceImpl implements DiaryUploadService {
 
     private Logger logger = LoggerFactory.getLogger(DiaryUploadServiceImpl.class);

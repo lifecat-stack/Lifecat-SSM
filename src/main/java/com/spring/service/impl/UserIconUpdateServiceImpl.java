@@ -20,7 +20,7 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("userIconUpdateServiceImpl")
+@Service("userIconUpdateService")
 public class UserIconUpdateServiceImpl implements UserIconUpdateService {
     private Logger logger = LoggerFactory.getLogger(UserIconUpdateServiceImpl.class);
 

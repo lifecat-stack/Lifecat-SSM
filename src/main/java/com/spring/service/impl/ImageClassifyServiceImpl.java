@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("imageClassifyServiceImpl")
+@Service("imageClassifyService")
 public class ImageClassifyServiceImpl implements ImageClassifyService {
     private Logger logger = LoggerFactory.getLogger(ImageClassifyServiceImpl.class);
 

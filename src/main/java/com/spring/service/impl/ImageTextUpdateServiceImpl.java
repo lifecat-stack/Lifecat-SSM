@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("imageTextUpdateServiceImpl")
+@Service("imageTextUpdateService")
 public class ImageTextUpdateServiceImpl implements ImageTextUpdateService {
     private Logger logger = LoggerFactory.getLogger(ImageTextUpdateServiceImpl.class);
 

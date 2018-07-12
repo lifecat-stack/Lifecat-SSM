@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("adminLoginServiceImpl")
+@Service("adminLoginService")
 public class AdminLoginServiceImpl implements AdminLoginService {
     /**
      * 日志
