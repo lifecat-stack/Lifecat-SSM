@@ -8,35 +8,6 @@
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
-<style type="text/css">
-    /*home css*/
-    body {
-        min-height: 800px;
-        height: auto;
-    }
-
-    .item {
-        display: none;
-    }
-
-    .show {
-        display: block;
-    }
-
-    .content-div {
-        width: 100%;
-        height: 100%;
-    }
-
-    object {
-        width: 100%;
-        height: 100%;
-    }
-
-    .main-tap {
-        height: 800px;
-    }
-</style>
 <body>
 <div class="container-fluid">
 
@@ -202,17 +173,17 @@
 <script>
     $('#test').on('click', function () {
         $.ajax({
-            url: 'ajaxHtml',
+            url: 'home-tap/main',
             type: 'GET',
             dataType: "html",
             success: function (html) {
                 var text = $('#test-text');
-                var htmlcode = '<code>' + html + '</code>';
-                text.html(htmlcode);
+                text.html(html);
             }
         })
-    })
+    });
 </script>
+
 <!--<script src="/ssm/js/myjs/tap-loader.js"></script>-->
 <!--<script src="/ssm/js/myjs/tap-switch.js"></script>-->
 
