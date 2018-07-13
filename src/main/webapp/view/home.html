@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>LifeCat-SSM管理系统</title>
+    <link rel="stylesheet" href="/ssm/css/bootstrap/3.3.6/bootstrap.css"/>
+    <link rel="stylesheet" href="/ssm/css/mycss/home-base.css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+    /*home css*/
+    body {
+        min-height: 800px;
+        height: auto;
+    }
+
+    .item {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .content-div {
+        width: 100%;
+        height: 100%;
+    }
+
+    object {
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-tap {
+        height: 800px;
+    }
+</style>
+<body>
+<div class="container-fluid">
+
+    <!--nav部分-->
+    <nav class="navbar navbar-default row no-yj  navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!--Left-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#nav-list-left" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">LifeCat-SSM管理系统</a>
+            </div>
+
+            <!--Right-->
+            <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <!--1、提醒-->
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="glyphicon glyphicon-bell">
+                                <i class="label label-warning label-nav">
+                                    66
+                                </i>
+                            </i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="#">
+                                    提醒
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--2、通知-->
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="glyphicon glyphicon-envelope">
+                                <i class="label label-success label-nav">
+                                    6
+                                </i>
+                            </i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="#">
+                                    通知
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--3、资料-->
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 50px">
+                            <img class="img-circle pull-left img-responsive nav-user-img"
+                                 src="/ssm/images/user/user.jpg"/>
+                            <span class="pull-left nav-username">
+                                管理员
+                            </span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right clearfix" style="padding-top: 0">
+                            <li class="user-li-head">
+                                <span>
+                                    <img class="img-circle nav-user-img-xiala center-block"
+                                         src="/ssm/images/user/user.jpg"/>
+                                </span>
+                                <p></p>
+                                <p class="text-center">
+                                    <span>
+                                        LifeCat
+                                    </span>
+                                </p>
+                                <p class="text-center">
+                                    <span>
+                                        Kevinten
+                                    </span>
+                                </p>
+                                <p class="text-center">
+                                    <small>
+                                        <span>
+                                            2018-07-13
+                                        </span>
+                                    </small>
+                                </p>
+                            </li>
+                            <li style="padding: 10px 20px 20px;">
+
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat no-yj">
+                                        资料
+                                    </a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat no-yj">
+                                        注销
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--body部分-->
+    <div class="row" style="margin-top:70px">
+
+        <!--左侧Tap切换栏-->
+        <div class="  nav-left col-md-2 no-padding" id="nav-list-left">
+            <div class="user-panel">
+                <img src="/ssm/images/user/user.jpg" class="img-circle center-block"/>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li>
+                        <a id="main-href" href="#">控制盘</a>
+                    </li>
+                    <li>
+                        <a id="admin-href" href="#">管理员</a>
+                    </li>
+                    <li>
+                        <a id="user-href" href="#">用户管理</a>
+                    </li>
+                    <li>
+                        <a id="diary-href" href="#">日记管理</a>
+                    </li>
+                    <li>
+                        <a id="image-href" href="#">图片管理</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--主Tap页面-->
+        <div id="main-tap" class="main-right col-md-10 col-md-offset-2 main-tap">
+            <button id="test">测试html</button>
+            <div id="test-text" class="col-lg-12 content-div show">
+                为什么不显示
+            </div>
+            <!--&lt;!&ndash;加载时show&ndash;&gt;-->
+            <!--<div id="div-main" class="col-lg-12 content-div show"></div>-->
+            <!--&lt;!&ndash;加载时item&ndash;&gt;-->
+            <!--<div id="div-admin" class="col-lg-12 content-div item"></div>-->
+            <!--<div id="div-user" class="col-lg-12 content-div item"></div>-->
+            <!--<div id="div-diary" class="col-lg-12 content-div item"></div>-->
+            <!--<div id="div-image" class="col-lg-12 content-div item"></div>-->
+        </div>
+
+    </div>
+</div>
+<script>
+    $('#test').on('click', function () {
+        $.ajax({
+            url: 'ajaxHtml',
+            type: 'GET',
+            dataType: "html",
+            success: function (html) {
+                var text = $('#test-text');
+                var htmlcode = '<code>' + html + '</code>';
+                text.html(htmlcode);
+            }
+        })
+    })
+</script>
+<!--<script src="/ssm/js/myjs/tap-loader.js"></script>-->
+<!--<script src="/ssm/js/myjs/tap-switch.js"></script>-->
+
+</body>
+</html>
+

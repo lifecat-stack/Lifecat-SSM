@@ -8,7 +8,7 @@
         <id property="diaryId" column="diary_id"/>
         <result property="userId" column="user_id"/>
         <result property="diaryName" column="diary_name"/>
-        <result property="diaryText" column="diaryText"/>
+        <result property="diaryText" column="diary_text"/>
         <result property="diaryGmtCreate" column="diary_gmt_create"/>
         <result property="diaryGmtModified" column="diary_gmt_modified"/>
     </resultMap>

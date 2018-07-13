@@ -33,8 +33,7 @@ public class DiaryListQueryServiceImpl implements DiaryListQueryService {
 
     @Override
     public List<DiaryDO> queryDiaryListByUserId(int userId) {
-
+        logger.debug("DiaryListQueryServiceImpl execute");
         return diaryMapper.queryDiaryListByUserId(userId);
-
     }
 }

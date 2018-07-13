@@ -8,7 +8,7 @@
     <!--定义首页列单.-->
     <welcome-file-list>
         <!--用来指定首页文件名称.我们可以用<welcome-file>指定几个首页,而服务器会依照设定的顺序来找首页.-->
-        <welcome-file>/WEB-INF/view/home.html</welcome-file>
+        <welcome-file>/view/home.html</welcome-file>
     </welcome-file-list>
 
     <!--全局范围内环境参数初始化-->
@@ -111,14 +111,14 @@
         <!--HTTP Error code,例如: 404、403-->
         <error-code>404</error-code>
         <!--用来设置发生错误或异常时要显示的页面-->
-        <location>/WEB-INF/view/error.html</location>
+        <location>/view/error.html</location>
     </error-page>
 
     <error-page>
         <!--设置可能会发生的java异常类型,例如:java.lang.Exception-->
         <exception-type>java.lang.Exception</exception-type>
         <!--用来设置发生错误或异常时要显示的页面-->
-        <location>/WEB-INF/view/ExceptionError.html</location>
+        <location>/view/exception.html</location>
     </error-page>
 
 </web-app>

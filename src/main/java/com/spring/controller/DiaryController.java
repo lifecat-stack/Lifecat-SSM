@@ -3,19 +3,30 @@ package com.spring.controller;
 import com.spring.entity.DiaryDO;
 import com.spring.entity.UserDO;
 import com.spring.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * diary模块controller
+ *
+ * @version v1
+ * @date 2018/7/13
+ * @auther ten
+ */
 @Controller
-@RequestMapping("/diary")
+@RequestMapping("/diary/v1")
 public class DiaryController {
+
+    private Logger logger = LoggerFactory.getLogger(DiaryController.class);
+
+    @Autowired
+    private DiaryQueryService diaryQueryService;
     @Autowired
     private DiaryListQueryService diaryListQueryService;
     @Autowired
@@ -25,48 +36,56 @@ public class DiaryController {
     @Autowired
     private DiaryDeleteService diaryDeleteService;
 
-    @RequestMapping("/diary_upload")
-    public ModelAndView diaryUpload(@RequestParam("diaryName") String diaryName,
-                                    @RequestParam("diaryText") String diaryText,
-                                    @ModelAttribute("user") UserDO userDO) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
-        return mv;
+    /**
+     * get 'diary' by diaryId
+     */
+    @ResponseBody
+    @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.GET)
+    public DiaryDO diaryQuery(@PathVariable("diaryId") String diaryId) {
+        logger.info("diary get diaryId is:" + diaryId);
+        assert diaryId != null;
+        return diaryQueryService.queryDiaryByDiaryId(Integer.parseInt(diaryId));
     }
 
-    @RequestMapping("/diary_delete")
-    public ModelAndView diaryDelete(String diaryId) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
-        return mv;
+    /**
+     * get 'diary list' by userId
+     */
+    @ResponseBody
+    @RequestMapping(value = "/diaries/{userId}", method = RequestMethod.GET)
+    public List<DiaryDO> diariesQuery(@PathVariable("userId") String userId) {
+        logger.info("diaries get userId is:" + userId);
+        assert userId != null;
+        return diaryListQueryService.queryDiaryListByUserId(Integer.parseInt(userId));
     }
 
-    @RequestMapping("/diary_all_delete")
-    public ModelAndView diaryAllDelete(@ModelAttribute("user") UserDO userDO) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
-        return mv;
+    /**
+     * post 'diary' to database
+     */
+    @RequestMapping(value = "/diary", method = RequestMethod.POST)
+    public String diaryUpload(@RequestParam("diaryName") String diaryName,
+                              @RequestParam("diaryText") String diaryText,
+                              @RequestParam("userId") String userId) {
+        logger.info("diary post");
+        assert diaryName != null;
+        assert diaryText != null;
+        assert userId != null;
+        diaryUploadService.uploadDiary(diaryName, diaryText, userId);
+        return "home";
     }
 
-    @RequestMapping("/diary_update")
-    public ModelAndView diaryUpdate(String diaryId, String diaryName, String diaryText) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
-        return mv;
+    /**
+     * delete 'diary' from database by diaryId
+     */
+    @RequestMapping(value = "/diary", method = RequestMethod.DELETE)
+    public void diaryDelete() {
+        logger.info("diary delete");
     }
 
-    @RequestMapping("/diary_list_query")
-    public ModelAndView diaryListQuery(@ModelAttribute("user") UserDO userDO) {
-        // 获取用户ID
-        int userId = 1;
-
-        List<DiaryDO> diaryList = diaryListQueryService.queryDiaryListByUserId(userId);
-        assert diaryList != null;
-
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("diaryList", diaryList);
-        mv.setViewName("userhome");
-        return mv;
+    /**
+     * put 'diary' to database by diary param
+     */
+    @RequestMapping(value = "/diary", method = RequestMethod.PUT)
+    public void diaryUpdate() {
+        logger.info("diary put");
     }
-
 }

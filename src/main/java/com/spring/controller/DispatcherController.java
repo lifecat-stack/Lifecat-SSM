@@ -18,31 +18,19 @@ public class DispatcherController {
     @Autowired
     private DiaryMapper diaryMapper;
 
-    @ResponseBody
-    @RequestMapping(value = "/ajaxGet", method = RequestMethod.GET)
-    public List<DiaryDO> ajaxTest() {
-        List<DiaryDO> diaryList = new ArrayList<DiaryDO>();
-        System.out.println("ajax json controller get");
-        for (int i = 0; i < 4; i++) {
-            DiaryDO diaryDO = new DiaryDO();
-            diaryDO.setDiaryId(i);
-            diaryDO.setUserId(i);
-            diaryDO.setDiaryName("json test diaryName" + i);
-            diaryDO.setdiaryText("json test diaryText" + i);
-            diaryDO.setdiaryGmtCreate("2018-01-01 00:00:00" + i);
-            diaryDO.setdiaryGmtModified("2019-01-01 00:00:00" + i);
-            diaryList.add(diaryDO);
-        }
-
-        return diaryList;
+    @RequestMapping(value = "/home-tap/main")
+    public String resource() {
+        System.out.println("resoutce");
+        return "home-tap/main";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/mybatisGet", method = RequestMethod.GET)
-    public List<DiaryDO> mybatisGet() {
-        System.out.println("mybatis get");
-
-        return diaryMapper.queryDiaryListByUserId(1);
+    /**
+     * 测试ajax获取html
+     */
+    @RequestMapping(value = "/ajaxHtml")
+    public String ajax(){
+        System.out.println("ajax html");
+        return "home-tap/main";
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -52,6 +40,7 @@ public class DispatcherController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
+        System.out.println("home");
         return "home";
     }
 
@@ -70,9 +59,9 @@ public class DispatcherController {
         return "forward:/user";
     }
 
-    @RequestMapping(value = "/diary")
+    @RequestMapping(value = "/diaries")
     public String diary() {
-        return "forward:/diary";
+        return "forward:/diaries";
     }
 
     @RequestMapping(value = "/image")

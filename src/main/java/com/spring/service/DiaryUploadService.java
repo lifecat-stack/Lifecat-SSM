@@ -13,5 +13,5 @@ import com.spring.entity.DiaryDO;
  * @auther ten
  */
 public interface DiaryUploadService{
-    void uploadDiary(DiaryDO diaryDO);
+    void uploadDiary(String diaryName,String diaryText,String userId);
 }
