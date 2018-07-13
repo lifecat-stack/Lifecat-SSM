@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
+import com.spring.mapper.DiaryMapper;
 import com.spring.service.AdminLoginService;
 import com.spring.service.AdminRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +9,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class DispatcherController {
 
-    @RequestMapping(value = "/ajaxGet", method = RequestMethod.GET)
+    @Autowired
+    private DiaryMapper diaryMapper;
+
     @ResponseBody
-    public DiaryDO ajaxTest() {
-        DiaryDO diaryDO = new DiaryDO();
-        System.out.println("json test and method is:");
-        diaryDO.setDiaryName("json test and method is:");
-        return diaryDO;
+    @RequestMapping(value = "/ajaxGet", method = RequestMethod.GET)
+    public List<DiaryDO> ajaxTest() {
+        List<DiaryDO> diaryList = new ArrayList<DiaryDO>();
+        System.out.println("ajax json controller get");
+        for (int i = 0; i < 4; i++) {
+            DiaryDO diaryDO = new DiaryDO();
+            diaryDO.setDiaryId(i);
+            diaryDO.setUserId(i);
+            diaryDO.setDiaryName("json test diaryName" + i);
+            diaryDO.setdiaryText("json test diaryText" + i);
+            diaryDO.setdiaryGmtCreate("2018-01-01 00:00:00" + i);
+            diaryDO.setdiaryGmtModified("2019-01-01 00:00:00" + i);
+            diaryList.add(diaryDO);
+        }
+
+        return diaryList;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/mybatisGet", method = RequestMethod.GET)
+    public List<DiaryDO> mybatisGet() {
+        System.out.println("mybatis get");
+
+        return diaryMapper.queryDiaryListByUserId(1);
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

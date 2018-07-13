@@ -515,7 +515,20 @@
             <!--测试栏-->
             <div class="col-md-12">
                 <button id="test-btn">测试</button>
-                <textarea class="table" id="test" cols="10" rows="10"></textarea>
+                <button id="test-btn2">mybatis测试</button>
+                <table class="table" cols="10" rows="10">
+                    <thead>
+                    <th>diaryId</th>
+                    <th>userId</th>
+                    <th>diaryName</th>
+                    <th>diaryText</th>
+                    <th>diaryGmtCreate</th>
+                    <th>diaryGmtModified</th>
+                    </thead>
+                    <tbody id="test">
+
+                    </tbody>
+                </table>
             </div>
 
 
@@ -561,31 +574,71 @@
         console.log('document load');
 
         $.ajax({
+            headers: {
+                Accept: "application/json;charset=utf-8"
+            },
             type: "GET",
             url: "ajaxGet",
-            contentType: "application/json;charset=utf-8;",
-            data: {
-                method: "query"
-            },
+            data: {},
             dataType: "json",//返回的数据类型
             success: function (data) {
-                var test = data.diaryName;
-                console.log('json test is' + test);
-                // var html = '';
-                // for (var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
-                //     html = html + '<tr>';
-                //     html = html + '<td>' + data[i].id + '</td>';
-                //     html = html + '<td>' + data[i].username + '</td>';
-                //     html = html + '<td>' + data[i].password + '</td>';
-                //     html = html + '<td>' + data[i].power + '</td>';
-                //     html = html + '<td>' + data[i].name + '</td>';
-                //     html = html + '<td>' + data[i].time + '</td>';
-                //     html = html + '</tr>';
-                // }
-                $('#test').val(test);//通过jquery方式获取table，并把tr,td的html输出到table中
+                var diaryId = data.diaryId;
+                var userId = data.userId;
+                var diaryName = data.diaryName;
+                var diaryText = data.diaryText;
+                var diaryGmtCreate = data.diaryGmtCreate;
+                var diaryGmtModified = data.diaryGmtModified;
+
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html = html + '<tr>';
+                    html = html + '<td>' + data[i].diaryId + '</td>';
+                    html = html + '<td>' + data[i].userId + '</td>';
+                    html = html + '<td>' + data[i].diaryName + '</td>';
+                    html = html + '<td>' + data[i].diaryText + '</td>';
+                    html = html + '<td>' + data[i].diaryGmtCreate + '</td>';
+                    html = html + '<td>' + data[i].diaryGmtModified + '</td>';
+                    html = html + '</tr>';
+                }
+
+                $('#test').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中
             },
             error: function () {
-                console.log()
+                console.log();
+                alert("查询失败！");
+            }
+        });
+    });
+
+    $('#test-btn2').on('click', function () {
+        console.log('mybatis get');
+
+        $.ajax({
+            headers: {
+                Accept: "application/json;charset=utf-8"
+            },
+            type: "GET",
+            url: "mybatisGet",
+            data: {},
+            dataType: "json",//返回的数据类型
+            success: function (data) {
+
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html = html + '<tr>';
+                    html = html + '<td>' + data[i].diaryId + '</td>';
+                    html = html + '<td>' + data[i].userId + '</td>';
+                    html = html + '<td>' + data[i].diaryName + '</td>';
+                    html = html + '<td>' + data[i].diaryText + '</td>';
+                    html = html + '<td>' + data[i].diaryGmtCreate + '</td>';
+                    html = html + '<td>' + data[i].diaryGmtModified + '</td>';
+                    html = html + '</tr>';
+                }
+
+                $('#test').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中
+            },
+            error: function () {
+                console.log();
                 alert("查询失败！");
             }
         });

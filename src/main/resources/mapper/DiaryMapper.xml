@@ -6,6 +6,7 @@
 
     <resultMap id="DiaryList" type="diaryDO">
         <id property="diaryId" column="diary_id"/>
+        <result property="userId" column="user_id"/>
         <result property="diaryName" column="diary_name"/>
         <result property="diaryText" column="diaryText"/>
         <result property="diaryGmtCreate" column="diary_gmt_create"/>
@@ -41,6 +42,7 @@
     <select id="queryDiaryListByUserId" parameterType="int" resultMap="DiaryList">
         SELECT
             diary_id,
+            user_id,
             diary_name,
             diary_text,
             diary_gmt_create,
