@@ -25,42 +25,42 @@ public class UserController {
     @RequestMapping("/user_login")
     public ModelAndView userLogin() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/user_register")
     public ModelAndView userRegister() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/user_password_update")
     public ModelAndView userPasswordUpdate() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/user_property_update")
     public ModelAndView userPropertyUpdate() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/user_icon_update")
     public ModelAndView userIconUpdate() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/user_property_query")
     public ModelAndView userPropertyQuery() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 

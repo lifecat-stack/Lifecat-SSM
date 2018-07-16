@@ -21,6 +21,11 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
 
 
     @Override
+    public boolean adminRegister(String adminName, String adminPassword) {
+        return false;
+    }
+
+    @Override
     public boolean isAdminExisted(String adminName) {
         return false;
     }

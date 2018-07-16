@@ -27,49 +27,49 @@ public class ImageController {
     @RequestMapping("/image_query")
     public ModelAndView imageQuery() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_list_query")
     public ModelAndView imageListQuery() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_class_query")
     public ModelAndView imageClassQuery() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_upload")
     public ModelAndView imageUpload() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_delete")
     public ModelAndView imageDelete() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_text_update")
     public ModelAndView imageTextUpdate() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 
     @RequestMapping("/image_classify")
     public ModelAndView imageClassify() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("login");
         return mv;
     }
 

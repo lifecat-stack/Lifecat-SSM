@@ -42,8 +42,8 @@ $.func = {
 $(document).on('click', "#diary-query", $.func.flush());
 
 // 添加
-$(document).on('click', '#diary-upload',function () {
-     layer.open({
+$(document).on('click', '#diary-upload', function () {
+    layer.open({
         type: 2,
         title: '添加日记',
         maxmin: true,
