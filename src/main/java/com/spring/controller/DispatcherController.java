@@ -18,6 +18,9 @@ public class DispatcherController {
     @Autowired
     private DiaryMapper diaryMapper;
 
+    /**
+     * 测试home-tap的获取
+     */
     @RequestMapping(value = "/home-tap/main")
     public String resource() {
         System.out.println("resoutce");
@@ -28,7 +31,7 @@ public class DispatcherController {
      * 测试ajax获取html
      */
     @RequestMapping(value = "/ajaxHtml")
-    public String ajax(){
+    public String ajax() {
         System.out.println("ajax html");
         return "home-tap/main";
     }
