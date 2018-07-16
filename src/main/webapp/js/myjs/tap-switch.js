@@ -1,32 +1,81 @@
 // home-main-tap的div切换
 
-// 1、隐藏所有组件
-function flush() {
-    $('#main-tap div').removeClass('show');
-    $('#main-tap div').addClass('item');
-}
-
-// 2、展示选择组件
 $('#main-href').on('click', function () {
-    flush();
-    $('#div-main').addClass('show');
+    $.ajax({
+        url: 'home-tap/main',
+        type: 'GET',
+        dataType: "html",
+        success: function (html) {
+            var text = $('#home-tap-div');
+            text.html(html);
+        },
+        error: function () {
+            layer.msg("请求失败:(")
+        }
+    })
+
 });
+
 $('#admin-href').on('click', function () {
-    flush();
-    $('#div-admin').addClass('show');
+    $.ajax({
+        url: 'home-tap/admin',
+        type: 'GET',
+        dataType: "html",
+        success: function (html) {
+            var text = $('#home-tap-div');
+            text.html(html);
+        },
+        error: function () {
+            layer.msg("请求失败:(")
+        }
+    })
+
 });
 
 $('#user-href').on('click', function () {
-    flush();
-    $('#div-user').addClass('show');
+    $.ajax({
+        url: 'home-tap/user',
+        type: 'GET',
+        dataType: "html",
+        success: function (html) {
+            var text = $('#home-tap-div');
+            text.html(html);
+        },
+        error: function () {
+            layer.msg("请求失败:(")
+        }
+    })
+
 });
 
 $('#diary-href').on('click', function () {
-    flush();
-    $('#div-diary').addClass('show');
+    $.ajax({
+        url: 'home-tap/diary',
+        type: 'GET',
+        dataType: "html",
+        success: function (html) {
+            var text = $('#home-tap-div');
+            text.html(html);
+        },
+        error: function () {
+            layer.msg("请求失败:(")
+        }
+    })
+
 });
 
 $('#image-href').on('click', function () {
-    flush();
-    $('#div-image').addClass('show');
+    $.ajax({
+        url: 'home-tap/image',
+        type: 'GET',
+        dataType: "html",
+        success: function (html) {
+            var text = $('#home-tap-div');
+            text.html(html);
+        },
+        error: function () {
+            layer.msg("请求失败:(")
+        }
+    })
+
 });

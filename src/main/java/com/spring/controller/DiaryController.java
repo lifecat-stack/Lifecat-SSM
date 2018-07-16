@@ -76,16 +76,26 @@ public class DiaryController {
     /**
      * delete 'diary' from database by diaryId
      */
-    @RequestMapping(value = "/diary", method = RequestMethod.DELETE)
-    public void diaryDelete() {
+    @ResponseBody
+    @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.DELETE)
+    public String diaryDelete(@PathVariable("diaryId") String diaryId) {
         logger.info("diary delete");
+        assert diaryId != null;
+        diaryDeleteService.deleteDiary(Integer.parseInt(diaryId));
+        return "delete success";
     }
 
     /**
      * put 'diary' to database by diary param
      */
     @RequestMapping(value = "/diary", method = RequestMethod.PUT)
-    public void diaryUpdate() {
+    public void diaryUpdate(@RequestParam("id") String diaryId,
+                            @RequestParam("name") String diaryName,
+                            @RequestParam("text") String diaryText) {
         logger.info("diary put");
+        assert diaryId != null;
+        assert diaryName != null;
+        assert diaryText != null;
+
     }
 }

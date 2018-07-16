@@ -24,6 +24,11 @@ public class AdminLoginServiceImpl implements AdminLoginService {
     private static final Logger logger = LoggerFactory.getLogger(AdminLoginServiceImpl.class);
 
     @Override
+    public boolean adminLogin(String adminName, String adminPassword) {
+        return false;
+    }
+
+    @Override
     public boolean isAdminExisted(String adminName) {
         return false;
     }

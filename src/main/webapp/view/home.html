@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="/ssm/css/mycss/home-base.css"/>
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/ssm/js/layer/layer.js"></script>
 </head>
+
 <body>
 <div class="container-fluid">
-
     <!--nav部分-->
     <nav class="navbar navbar-default row no-yj  navbar-fixed-top">
         <div class="container-fluid">
@@ -155,37 +156,13 @@
 
         <!--主Tap页面-->
         <div id="main-tap" class="main-right col-md-10 col-md-offset-2 main-tap">
-            <button id="test">测试html</button>
-            <div id="test-text" class="col-lg-12 content-div show">
-                为什么不显示
-            </div>
-            <!--&lt;!&ndash;加载时show&ndash;&gt;-->
-            <!--<div id="div-main" class="col-lg-12 content-div show"></div>-->
-            <!--&lt;!&ndash;加载时item&ndash;&gt;-->
-            <!--<div id="div-admin" class="col-lg-12 content-div item"></div>-->
-            <!--<div id="div-user" class="col-lg-12 content-div item"></div>-->
-            <!--<div id="div-diary" class="col-lg-12 content-div item"></div>-->
-            <!--<div id="div-image" class="col-lg-12 content-div item"></div>-->
+            <div id="home-tap-div" class="col-lg-12 content-div show"></div>
         </div>
 
     </div>
 </div>
-<script>
-    $('#test').on('click', function () {
-        $.ajax({
-            url: 'home-tap/main',
-            type: 'GET',
-            dataType: "html",
-            success: function (html) {
-                var text = $('#test-text');
-                text.html(html);
-            }
-        })
-    });
-</script>
 
-<!--<script src="/ssm/js/myjs/tap-loader.js"></script>-->
-<!--<script src="/ssm/js/myjs/tap-switch.js"></script>-->
+<script src="/ssm/js/myjs/tap-switch.js"></script>
 
 </body>
 </html>

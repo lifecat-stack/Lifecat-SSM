@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user/v1")
 public class UserController {
     @Autowired
     private UserLoginService userLoginService;

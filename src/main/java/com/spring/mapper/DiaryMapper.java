@@ -35,7 +35,7 @@ public interface DiaryMapper {
      * @param diaryId diaryId
      *                e
      */
-    void deleteDiaryById(Integer diaryId);
+    void deleteDiaryById(int diaryId);
 
 
     /**

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>LifeCat-Admin</title>
+    <link rel="stylesheet" href="/ssm/css/bootstrap/3.3.6/bootstrap.css"/>
+    <link rel="stylesheet" href="/ssm/css/mycss/home-base.css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="table-responsive">
+
+        <h2>修改当前日记</h2>
+
+        <form>
+            <div class="form-group">
+				<textarea class="form-control" rows="1" cols="20" name="diaryId"
+                          id="diaryid"></textarea>
+            </div>
+            <div class="form-group">
+				<textarea class="form-control" rows="1" cols="20" name="diaryName"
+                          id="diaryname"></textarea>
+            </div>
+            <div class="form-group">
+				<textarea class="form-control" rows="10" cols="20" name="diaryText"
+                          id="diarytext"></textarea>
+            </div>
+            <button id="diary-submit" class="btn btn-primary btn-md btn-block">提交更新</button>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script src="/ssm/js/myjs/diary-update.js"></script>
+
+</html>

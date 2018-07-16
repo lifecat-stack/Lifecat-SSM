@@ -12,5 +12,5 @@ package com.spring.service;
  */
 public interface DiaryDeleteService{
     // TODO
-    void deleteDiary();
+    void deleteDiary(int diaryId);
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/image")
+@RequestMapping("/image/v1")
 public class ImageController {
     @Autowired
     private ImageQueryService imageQueryService;

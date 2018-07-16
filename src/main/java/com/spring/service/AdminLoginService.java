@@ -9,6 +9,7 @@ import com.spring.entity.AdminDO;
  * @auther ten
  */
 public interface AdminLoginService{
+    boolean adminLogin(String adminName,String adminPassword);
     /**
      * 账号是否存在
      *

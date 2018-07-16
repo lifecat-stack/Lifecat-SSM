@@ -40,7 +40,7 @@
             });
         });
 
-        $('#test-btn2').on('click', function () {
+        $('#diary-query').on('click', function () {
             console.log('mybatis get');
             var userId = 1;
             $.ajax({

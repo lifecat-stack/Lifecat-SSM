@@ -1,8 +1,10 @@
 package com.spring.service.impl;
 
+import com.spring.mapper.DiaryMapper;
 import com.spring.service.DiaryDeleteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +22,15 @@ import java.sql.SQLException;
  */
 @Service("diaryDeleteService")
 public class DiaryDeleteServiceImpl implements DiaryDeleteService {
+
     private Logger logger = LoggerFactory.getLogger(DiaryDeleteServiceImpl.class);
 
+    @Autowired
+    private DiaryMapper diaryMapper;
 
     @Override
-    public void deleteDiary() {
-
+    public void deleteDiary(int diaryId) {
+        logger.info("DiaryDeleteServiceImpl execute");
+        diaryMapper.deleteDiaryById(diaryId);
     }
 }

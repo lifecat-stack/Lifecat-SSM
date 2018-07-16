@@ -10,6 +10,7 @@ import com.spring.entity.AdminDO;
  * @auther ten
  */
 public interface AdminRegisterService{
+    boolean adminRegister(String adminName,String adminPassword);
     /**
      * 查询账号是否存在
      *
