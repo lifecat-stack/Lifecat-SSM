@@ -1,8 +1,11 @@
 package com.spring.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.spring.entity.DiaryDO;
 import com.spring.entity.UserDO;
 import com.spring.service.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * diary模块controller
@@ -60,15 +64,20 @@ public class DiaryController {
 
     /**
      * post 'diary' to database
+     * <p>
+     * TODO 获取POST数据
      */
     @RequestMapping(value = "/diary", method = RequestMethod.POST)
-    public String diaryUpload(@RequestParam("diaryName") String diaryName,
-                              @RequestParam("diaryText") String diaryText,
-                              @RequestParam("userId") String userId) {
-        logger.debug("diary post");
-        assert diaryName != null;
-        assert diaryText != null;
-        assert userId != null;
+    public String diaryUpload(@RequestBody String param) {
+        System.out.println(param);
+
+        String diaryName = "name";
+        String diaryText = "text";
+        String userId = "1";
+        logger.info("diary post" + diaryName + diaryText + userId);
+//        assert diaryName != null;
+//        assert diaryText != null;
+//        assert userId != null;
         diaryUploadService.uploadDiary(diaryName, diaryText, userId);
         return "home";
     }
