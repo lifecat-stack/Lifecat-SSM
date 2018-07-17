@@ -42,7 +42,7 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.GET)
     public DiaryDO diaryQuery(@PathVariable("diaryId") String diaryId) {
-        logger.info("diary get diaryId is:" + diaryId);
+        logger.debug("diary get diaryId is:" + diaryId);
         assert diaryId != null;
         return diaryQueryService.queryDiaryByDiaryId(Integer.parseInt(diaryId));
     }
@@ -53,7 +53,7 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping(value = "/diaries/{userId}", method = RequestMethod.GET)
     public List<DiaryDO> diariesQuery(@PathVariable("userId") String userId) {
-        logger.info("diaries get userId is:" + userId);
+        logger.debug("diaries get userId is:" + userId);
         assert userId != null;
         return diaryListQueryService.queryDiaryListByUserId(Integer.parseInt(userId));
     }
@@ -65,7 +65,7 @@ public class DiaryController {
     public String diaryUpload(@RequestParam("diaryName") String diaryName,
                               @RequestParam("diaryText") String diaryText,
                               @RequestParam("userId") String userId) {
-        logger.info("diary post");
+        logger.debug("diary post");
         assert diaryName != null;
         assert diaryText != null;
         assert userId != null;
@@ -79,7 +79,7 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.DELETE)
     public String diaryDelete(@PathVariable("diaryId") String diaryId) {
-        logger.info("diary delete");
+        logger.debug("diary delete");
         assert diaryId != null;
         diaryDeleteService.deleteDiary(Integer.parseInt(diaryId));
         return "delete success";
@@ -92,7 +92,7 @@ public class DiaryController {
     public void diaryUpdate(@RequestParam("id") String diaryId,
                             @RequestParam("name") String diaryName,
                             @RequestParam("text") String diaryText) {
-        logger.info("diary put");
+        logger.debug("diary put");
         assert diaryId != null;
         assert diaryName != null;
         assert diaryText != null;

@@ -12,24 +12,27 @@ public class DispatcherController {
 
     private static Logger logger = LoggerFactory.getLogger(DispatcherController.class);
 
-    @Autowired
-    private DiaryMapper diaryMapper;
-
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
-        return "login";
+        logger.debug("index requeset");
+        return "index";
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
-        System.out.println("home");
+        logger.debug("home request");
         return "home";
     }
 
-    @RequestMapping(value = "/userhome", method = RequestMethod.GET)
-    public String userhome() {
-        return "userhome";
+    @RequestMapping(value = "/userror", method = RequestMethod.GET)
+    public String userror() {
+        logger.debug("userror request");
+        return "userror";
     }
 
-
+    @RequestMapping(value = "/exception", method = RequestMethod.GET)
+    public String exception() {
+        logger.debug("exception request");
+        return "exception";
+    }
 }

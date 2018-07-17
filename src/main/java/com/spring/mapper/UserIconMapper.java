@@ -37,6 +37,6 @@ public interface UserIconMapper {
      * e
      * @throws NullPointerException 记录不存在
      */
-    String queryUserIconByUserId(Integer userId);
+    UserIconDO queryUserIconByUserId(Integer userId);
 
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/admin/v1")
 public class AdminController {
 
-    private Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private AdminLoginService adminLoginService;

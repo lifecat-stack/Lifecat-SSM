@@ -16,7 +16,7 @@
         where user_id = #{userId}
     </update>
 
-    <select id="queryUserIconByUserId" parameterType="int" resultType="string">
+    <select id="queryUserIconByUserId" parameterType="int" resultType="userIconDO">
         select icon_path
         from user_icon
         where user_id = #{userId}

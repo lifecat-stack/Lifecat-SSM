@@ -2,7 +2,7 @@ package com.spring.mapper;
 
 
 import com.spring.entity.UserDO;
-
+import java.util.List;
 import java.sql.SQLException;
 
 /**
@@ -17,6 +17,8 @@ import java.sql.SQLException;
  * @auther ten
  */
 public interface UserMapper {
+    List<UserDO> queryUserList();
+
     /**
      * 注册 :
      * 插入UserDO到user表

@@ -4,6 +4,26 @@
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.UserMapper">
 
+    <resultMap id="UserList" type="userDO">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="userLevel" column="user_level"/>
+        <result property="userGmtCreate" column="user_gmt_create"/>
+        <result property="userGmtModified" column="user_gmt_modified"/>
+    </resultMap>
+
+    <select id="queryUserList" resultMap="UserList">
+        select
+            user_id,
+            user_name,
+            user_password,
+            user_level,
+            user_gmt_create,
+            user_gmt_modified
+        from user;
+    </select>
+
     <insert id="insertUserAndGetKey" parameterType="userDO" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO user (user_name, user_password, user_level, user_gmt_create, user_gmt_modified)
         VALUES (#{userName}, #{userPassword}, #{userLevel}, #{userGmtCreate}, #{userGmtModified})
