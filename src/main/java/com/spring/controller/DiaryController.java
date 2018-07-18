@@ -3,6 +3,7 @@ package com.spring.controller;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.spring.entity.DiaryDO;
 import com.spring.entity.UserDO;
+import com.spring.exception.DiaryNotFoundException;
 import com.spring.handler.DiaryNotFoundExceptionHandler;
 import com.spring.service.*;
 import org.json.JSONException;
@@ -17,13 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Map;
 
-/**
- * diary模块controller
- *
- * @version v1
- * @date 2018/7/13
- * @auther ten
- */
+
 @Controller
 @RequestMapping("/diary/v1")
 public class DiaryController {
@@ -33,35 +28,29 @@ public class DiaryController {
     @Autowired
     private DiaryService diaryService;
 
-    /**
-     * get 'diary' by diaryId
-     */
     @ResponseBody
-    @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.GET)
-    public DiaryDO diaryQuery(@PathVariable("diaryId") String diaryId) {
-        logger.debug("diary get diaryId is:" + diaryId);
-        assert diaryId != null;
-        return diaryService.queryDiaryByDiaryId(Integer.parseInt(diaryId));
+    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
+    public List<DiaryDO> getDiaryList(@PathVariable("userId") String userId) {
+        int id = Integer.parseInt(userId);
+        List<DiaryDO> diaryList = diaryService.queryDiaryListByUserId(id);
+        if (diaryList == null) {
+            throw new DiaryNotFoundException(id);
+        }
+        return diaryList;
     }
 
-    /**
-     * get 'diary list' by userId
-     */
     @ResponseBody
-    @RequestMapping(value = "/diaries/{userId}", method = RequestMethod.GET)
-    public List<DiaryDO> diariesQuery(@PathVariable("userId") String userId) {
-        logger.debug("diaries get userId is:" + userId);
-        assert userId != null;
-        return diaryService.queryDiaryListByUserId(Integer.parseInt(userId));
+    @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET, produces = "application/json")
+    public DiaryDO getDiary(@PathVariable("diaryName") String diaryName) {
+        DiaryDO diary = diaryService.queryDiaryByDiaryName(diaryName);
+        if (diary == null) {
+            throw new DiaryNotFoundException(diaryName);
+        }
+        return diary;
     }
 
-    /**
-     * post 'diary' to database
-     * <p>
-     * TODO 获取POST数据
-     */
-    @RequestMapping(value = "/diary", method = RequestMethod.POST)
-    public String diaryUpload(@RequestBody String param) {
+    @RequestMapping(method = RequestMethod.POST)
+    public String postDiary(@RequestBody String param) {
         System.out.println(param);
 
         String diaryName = "name";
@@ -75,35 +64,13 @@ public class DiaryController {
         return "home";
     }
 
-    /**
-     * delete 'diary' from database by diaryId
-     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public void putDiary() {
+    }
+
     @ResponseBody
-    @RequestMapping(value = "/diary/{diaryId}", method = RequestMethod.DELETE)
-    public String diaryDelete(@PathVariable("diaryId") String diaryId) {
-        logger.debug("diary delete");
-        assert diaryId != null;
-        diaryService.deleteDiary(Integer.parseInt(diaryId));
-        return "delete success";
+    @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
+    public String deleteDiary(@PathVariable("diaryId") String diaryId) {
+        return null;
     }
-
-    /**
-     * put 'diary' to database by diary param
-     */
-    @RequestMapping(value = "/diary", method = RequestMethod.PUT)
-    public void diaryUpdate(@RequestParam("id") String diaryId,
-                            @RequestParam("name") String diaryName,
-                            @RequestParam("text") String diaryText) {
-        logger.debug("diary put");
-        assert diaryId != null;
-        assert diaryName != null;
-        assert diaryText != null;
-
-    }
-
-//
-//    @ExceptionHandler(DiaryNotFoundExceptionHandler.class)
-//    public String handleDiaryNotFound(){
-//
-//    }
 }

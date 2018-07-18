@@ -13,31 +13,31 @@ public class TapController {
 
     @RequestMapping(value = "/main")
     public String main() {
-        logger.debug("/home-tap/main request");
+        logger.info("request to /home-tap/main");
         return "home-tap/main";
     }
 
     @RequestMapping(value = "/admin")
     public String admin() {
-        logger.debug("/home-tap/admin request");
+        logger.info(" request to /home-tap/admin");
         return "home-tap/admin";
     }
 
     @RequestMapping(value = "/user")
     public String user() {
-        logger.debug("/home-tap/user request");
+        logger.info("request to /home-tap/user");
         return "home-tap/user";
     }
 
     @RequestMapping(value = "/diary")
     public String diary() {
-        logger.debug("/home-tap/diary request");
+        logger.info(" request to /home-tap/diary");
         return "home-tap/diary";
     }
 
     @RequestMapping(value = "/image")
     public String image() {
-        logger.debug("/home-tap/image request");
+        logger.info(" request to /home-tap/image");
         return "home-tap/image";
     }
 }

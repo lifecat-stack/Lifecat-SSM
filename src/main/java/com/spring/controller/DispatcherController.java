@@ -1,9 +1,7 @@
 package com.spring.controller;
 
-import com.spring.mapper.DiaryMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,25 +12,25 @@ public class DispatcherController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
-        logger.debug("index requeset");
+        logger.info("request to index");
         return "index";
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
-        logger.debug("home request");
+        logger.info("request to home");
         return "home";
     }
 
-    @RequestMapping(value = "/userror", method = RequestMethod.GET)
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String userror() {
-        logger.debug("userror request");
-        return "userror";
+        logger.info("request to error");
+        return "error";
     }
 
     @RequestMapping(value = "/exception", method = RequestMethod.GET)
     public String exception() {
-        logger.debug("exception request");
+        logger.info("request to exception");
         return "exception";
     }
 }

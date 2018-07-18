@@ -5,19 +5,23 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class DiaryNotFoundException extends RuntimeException {
-    private static final String ERROR_MSG = "Diary not found";
 
-    private Integer diaryId;
+    private String ERROR_MSG;
 
-    public DiaryNotFoundException(int diaryId) {
-        this.diaryId = diaryId;
+    private String diaryName;
+    private int userId;
+
+    public DiaryNotFoundException(String diaryName) {
+        this.diaryName = diaryName;
+        ERROR_MSG = "Diary not found by diaryName : " + diaryName;
     }
 
-    public int getDiaryId() {
-        return diaryId;
+    public DiaryNotFoundException(int userId) {
+        this.userId = userId;
+        ERROR_MSG = "Diary List not found by userId : " + userId;
     }
 
-    public static String getErrorMsg() {
+    public String getErrorMsg() {
         return ERROR_MSG;
     }
 }

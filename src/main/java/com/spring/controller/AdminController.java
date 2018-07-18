@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import com.spring.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,41 +16,30 @@ public class AdminController {
     private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
-    private AdminLoginService adminLoginService;
-    @Autowired
-    private AdminRegisterService adminRegisterService;
+    private AdminService adminService;
 
-    /**
-     * admin login
-     */
-    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String adminLogin(@RequestParam("adminName") String adminName,
-                             @RequestParam("adminPassword") String adminPassword) {
-        logger.debug("admin login");
-        assert adminName != null;
-        assert adminPassword != null;
-        boolean success = adminLoginService.adminLogin(adminName, adminPassword);
-        if (success) {
-            return "home";
-        } else {
-            return "login";
-        }
+    @RequestMapping(method = RequestMethod.GET)
+    public String getAdmin() {
+        // TODO
+        return "home";
     }
 
-    /**
-     * admin register
-     */
-    @RequestMapping(value = "/admin/register", method = RequestMethod.POST)
-    public String adminRegister(@RequestParam("adminName") String adminName,
-                                @RequestParam("adminPassword") String adminPassword) {
-        logger.debug("admin register");
-        assert adminName != null;
-        assert adminPassword != null;
-        boolean success = adminRegisterService.adminRegister(adminName, adminPassword);
-        if (success) {
-            return "home";
-        } else {
-            return "login";
-        }
+    @RequestMapping(method = RequestMethod.POST)
+    public String postAdmin() {
+        // TODO
+        return "home";
     }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public String putAdmin() {
+        // TODO
+        return "home";
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public String deleteAdmin() {
+        // TODO
+        return "home";
+    }
+
 }

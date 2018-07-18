@@ -1,7 +1,6 @@
 package com.spring.service;
 
-import com.spring.dto.Result;
-import com.spring.dto.UserDTO;
+import com.spring.entity.UserDO;
 
 import java.util.List;
 
@@ -15,33 +14,33 @@ public interface UserService {
     /**
      * 获取所有user信息
      */
-    public Result<List<UserDTO>> getUserList();
+    List<UserDO> getUserList();
 
     /**
      * 获取user信息
      *
      * @param userId 用户ID
      */
-    public Result<UserDTO> getUserById(int userId);
+    UserDO getUserById(int userId);
 
     /**
      * 创建user信息
      *
-     * @param userDTO 用户DTO
+     * @param userDO 用户DO
      */
-    public Result postUser(UserDTO userDTO);
+    String  postUser(UserDO userDO);
 
     /**
      * 更新user信息
      *
-     * @param userDTO 用户DTO
+     * @param userDO 用户DO
      */
-    public Result putUser(UserDTO userDTO);
+    String  putUser(UserDO userDO);
 
     /**
      * 删除user信息
      *
      * @param userId 用户ID
      */
-    public Result deleteUserById(int userId);
+    String  deleteUserById(int userId);
 }

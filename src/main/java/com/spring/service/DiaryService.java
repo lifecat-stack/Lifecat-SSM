@@ -22,9 +22,9 @@ public interface DiaryService {
     /**
      * 查询Diary
      *
-     * @param diaryId diary_id
+     * @param diaryName diary_name
      */
-    DiaryDO queryDiaryByDiaryId(int diaryId);
+    DiaryDO queryDiaryByDiaryName(String diaryName);
 
     /**
      * 上传Diary

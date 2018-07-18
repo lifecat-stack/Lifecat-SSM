@@ -24,7 +24,7 @@ public interface ImageService {
      *
      * @param imageName image_name
      */
-    ImageDO queryImage(String imageName);
+    ImageDO queryImageByName(String imageName);
 
     /**
      * 查询Image List

@@ -1,7 +1,5 @@
 package com.spring.service.impl;
 
-import com.spring.dto.Code;
-import com.spring.dto.Result;
 import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
 import com.spring.entity.UserIconDO;

@@ -1,7 +1,8 @@
 package com.spring.controller;
 
-import com.spring.dto.Result;
 import com.spring.dto.UserDTO;
+import com.spring.entity.UserDO;
+import com.spring.exception.UserNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,55 +21,42 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /**
-     * 获取所有user信息
-     */
     @ResponseBody
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public Result<List<UserDTO>> getUserList() {
-        logger.debug("user list request");
-        return userService.getUserList();
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+    public List<UserDO> getUserList() {
+        List<UserDO> userList = userService.getUserList();
+        if (userList == null) {
+            throw new UserNotFoundException();
+        }
+        return userList;
     }
 
-    /**
-     * 获取user信息 by userId
-     */
     @ResponseBody
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    public Result getUser(@RequestParam("userId") String userId) {
-
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = "application/json")
+    public UserDO getUser(@PathVariable("userId") String userId) {
         int id = Integer.parseInt(userId);
-        return userService.deleteUserById(id);
+        UserDO userDO = userService.getUserById(id);
+        if (userDO == null) {
+            throw new UserNotFoundException(id);
+        }
+        return userDO;
     }
 
-    /**
-     * 创建user信息 by userDTO
-     */
-    @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public Result postUser(@RequestBody UserDTO userDTO) {
-
-        return userService.postUser(userDTO);
+    @RequestMapping(method = RequestMethod.POST)
+    public String postUser(@RequestBody UserDTO userDTO) {
+        // TODO
+        return null;
     }
 
-    /**
-     * 更新user信息 by userDTO
-     */
-    @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.PUT)
-    public Result putUser(@RequestBody UserDTO userDTO) {
-
-        return userService.putUser(userDTO);
+    @RequestMapping(method = RequestMethod.PUT)
+    public String putUser(@RequestBody UserDTO userDTO) {
+        // TODO
+        return null;
     }
 
-    /**
-     * 删除user信息 by userId
-     */
-    @ResponseBody
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE)
-    public Result deleteUser(@RequestParam("userId")String userId) {
-
-        int id = Integer.parseInt(userId);
-        return userService.deleteUserById(id);
+    @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+    public String deleteUser(@PathVariable("userId") String userId) {
+        // TODO
+        return null;
     }
 }

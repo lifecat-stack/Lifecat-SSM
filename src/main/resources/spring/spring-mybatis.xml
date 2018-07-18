@@ -17,6 +17,10 @@
     <context:component-scan base-package="com.spring.entity"/>
     <context:component-scan base-package="com.spring.dto"/>
 
+    <!--aop配置-->
+    <context:component-scan base-package="com.spring.aspect"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
     <!--2 加载数据资源属性文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
