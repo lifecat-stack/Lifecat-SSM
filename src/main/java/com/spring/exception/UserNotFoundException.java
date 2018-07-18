@@ -8,15 +8,15 @@ public class UserNotFoundException extends RuntimeException {
 
     private String ERROR_MSG;
 
-    private int userId;
+    private String userName;
 
     public UserNotFoundException() {
         ERROR_MSG = "User List not found";
     }
 
-    public UserNotFoundException(int userId) {
-        this.userId = userId;
-        ERROR_MSG = "User not found by userId : " + userId;
+    public UserNotFoundException(String userName) {
+        this.userName = userName;
+        ERROR_MSG = "User not found by userName : " + userName;
     }
 
     public String getErrorMsg() {

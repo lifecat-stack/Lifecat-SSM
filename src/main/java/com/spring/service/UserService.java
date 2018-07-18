@@ -19,9 +19,9 @@ public interface UserService {
     /**
      * 获取user信息
      *
-     * @param userId user_id
+     * @param userName user_name
      */
-    UserDO readUserById(int userId);
+    UserDO readUserByName(String userName);
 
     /**
      * 创建user信息

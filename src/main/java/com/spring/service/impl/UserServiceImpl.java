@@ -1,19 +1,16 @@
 package com.spring.service.impl;
 
-import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
-import com.spring.entity.UserIconDO;
-import com.spring.entity.UserPropertyDO;
 import com.spring.mapper.UserIconMapper;
 import com.spring.mapper.UserMapper;
 import com.spring.mapper.UserPropertyMapper;
 import com.spring.service.UserService;
+import com.spring.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,29 +26,37 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserIconMapper userIconMapper;
 
+    @Autowired
+    private DateTimeUtil dateTimeUtil;
 
     @Override
     public List<UserDO> readUserList() {
-        return userMapper.queryUserList();
+        return userMapper.selectUserList();
     }
 
     @Override
-    public UserDO readUserById(int userId) {
-        return null;
+    public UserDO readUserByName(String userName) {
+        return userMapper.selectUserByName(userName);
     }
 
     @Override
     public void createUser(UserDO userDO) {
-
+        String create, modified;
+        create = modified = dateTimeUtil.getCurrentTime();
+        userDO.setUserGmtCreate(create);
+        userDO.setUserGmtModified(modified);
+        userMapper.insertUser(userDO);
     }
 
     @Override
     public void updateUser(UserDO userDO) {
-
+        String modified = dateTimeUtil.getCurrentTime();
+        userDO.setUserGmtModified(modified);
+        userMapper.updateUser(userDO);
     }
 
     @Override
     public void deleteUserById(int userId) {
-
+        userMapper.deleteUserById(userId);
     }
 }

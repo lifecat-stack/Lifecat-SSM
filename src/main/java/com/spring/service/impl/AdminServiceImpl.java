@@ -2,6 +2,7 @@ package com.spring.service.impl;
 
 import com.spring.mapper.AdminMapper;
 import com.spring.service.AdminService;
+import com.spring.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,4 +16,6 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Autowired
+    private DateTimeUtil dateTimeUtil;
 }

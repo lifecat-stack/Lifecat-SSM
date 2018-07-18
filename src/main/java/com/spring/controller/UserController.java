@@ -32,12 +32,11 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public UserDO getUser(@PathVariable("userId") String userId) {
-        int id = Integer.parseInt(userId);
-        UserDO userDO = userService.readUserById(id);
+    @RequestMapping(value = "/{userName}", method = RequestMethod.GET, produces = "application/json")
+    public UserDO getUser(@PathVariable("userName") String userName) {
+        UserDO userDO = userService.readUserByName(userName);
         if (userDO == null) {
-            throw new UserNotFoundException(id);
+            throw new UserNotFoundException(userName);
         }
         return userDO;
     }

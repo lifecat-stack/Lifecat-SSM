@@ -31,7 +31,7 @@ public interface ImageService {
      * @param userId  user_id
      * @param classId class_id
      */
-    List<ImageDO> readImageByClassId(int userId, int classId);
+    List<ImageDO> readImageListByClassId(int userId, int classId);
 
     /**
      * 上传Image

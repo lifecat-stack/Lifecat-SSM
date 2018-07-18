@@ -48,7 +48,7 @@ public class ImageController {
                                            @PathVariable("classId") String classId) {
         int userid = Integer.parseInt(userId);
         int classid = Integer.parseInt(classId);
-        List<ImageDO> imageList = imageService.readImageByClassId(userid, classid);
+        List<ImageDO> imageList = imageService.readImageListByClassId(userid, classid);
         if (imageList == null) {
             throw new ImageNotFoundException(userid, classid);
         }

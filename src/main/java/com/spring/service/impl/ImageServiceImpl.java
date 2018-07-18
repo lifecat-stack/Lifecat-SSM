@@ -5,6 +5,7 @@ import com.spring.mapper.ImageClassMapper;
 import com.spring.mapper.ImageFeatureMapper;
 import com.spring.mapper.ImageMapper;
 import com.spring.service.ImageService;
+import com.spring.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,39 +25,47 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageClassMapper imageClassMapper;
 
+    @Autowired
+    private DateTimeUtil dateTimeUtil;
 
     @Override
     public ImageDO readImageByName(String imageName) {
-        return null;
+        return imageMapper.selectImageByName(imageName);
     }
 
     @Override
     public List<ImageDO> readImageListByUserId(int userId) {
-        return null;
+        return imageMapper.selectImageListByUserId(userId);
     }
 
     @Override
-    public List<ImageDO> readImageByClassId(int userId, int classId) {
-        return null;
+    public List<ImageDO> readImageListByClassId(int userId, int classId) {
+        return imageMapper.selectImageListByClassId(userId, classId);
     }
 
     @Override
     public void createImage(ImageDO imageDO) {
-
+        String create, modified;
+        create = modified = dateTimeUtil.getCurrentTime();
+        imageDO.setImageGmtCreate(create);
+        imageDO.setImageGmtModified(modified);
+        imageMapper.insertImage(imageDO);
     }
 
     @Override
     public void updateImage(ImageDO imageDO) {
-
+        String modified = dateTimeUtil.getCurrentTime();
+        imageDO.setImageGmtModified(modified);
+        imageMapper.updateImage(imageDO);
     }
 
     @Override
     public void deleteImageById(int imageId) {
-
+        imageMapper.deleteImageById(imageId);
     }
 
     @Override
     public void classifyImage() {
-
+        // TODO
     }
 }
