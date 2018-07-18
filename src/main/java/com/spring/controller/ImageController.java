@@ -8,26 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.*;
+
 @Controller
 @RequestMapping("/image/v1")
 public class ImageController {
 
     private static Logger logger = LoggerFactory.getLogger(ImageController.class);
 
+    private ImageService imageService;
+
     @Autowired
-    private ImageQueryService imageQueryService;
-    @Autowired
-    private ImageListQueryService imageListQueryService;
-    @Autowired
-    private ImageClassQueryService imageClassQueryService;
-    @Autowired
-    private ImageUploadService imageUploadService;
-    @Autowired
-    private ImageDeleteService imageDeleteService;
-    @Autowired
-    private ImageTextUpdateService imageTextUpdateService;
-    @Autowired
-    private ImageClassifyService imageClassifyService;
+    public ImageController(ImageService imageService) {
+        this.imageService = imageService;
+    }
 
     @RequestMapping("/image_query")
     public ModelAndView imageQuery() {

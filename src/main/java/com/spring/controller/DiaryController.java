@@ -3,6 +3,7 @@ package com.spring.controller;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.spring.entity.DiaryDO;
 import com.spring.entity.UserDO;
+import com.spring.handler.DiaryNotFoundExceptionHandler;
 import com.spring.service.*;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,15 +31,7 @@ public class DiaryController {
     private Logger logger = LoggerFactory.getLogger(DiaryController.class);
 
     @Autowired
-    private DiaryQueryService diaryQueryService;
-    @Autowired
-    private DiaryListQueryService diaryListQueryService;
-    @Autowired
-    private DiaryUploadService diaryUploadService;
-    @Autowired
-    private DiaryUpdateService diaryUpdateService;
-    @Autowired
-    private DiaryDeleteService diaryDeleteService;
+    private DiaryService diaryService;
 
     /**
      * get 'diary' by diaryId
@@ -48,7 +41,7 @@ public class DiaryController {
     public DiaryDO diaryQuery(@PathVariable("diaryId") String diaryId) {
         logger.debug("diary get diaryId is:" + diaryId);
         assert diaryId != null;
-        return diaryQueryService.queryDiaryByDiaryId(Integer.parseInt(diaryId));
+        return diaryService.queryDiaryByDiaryId(Integer.parseInt(diaryId));
     }
 
     /**
@@ -59,7 +52,7 @@ public class DiaryController {
     public List<DiaryDO> diariesQuery(@PathVariable("userId") String userId) {
         logger.debug("diaries get userId is:" + userId);
         assert userId != null;
-        return diaryListQueryService.queryDiaryListByUserId(Integer.parseInt(userId));
+        return diaryService.queryDiaryListByUserId(Integer.parseInt(userId));
     }
 
     /**
@@ -78,7 +71,7 @@ public class DiaryController {
 //        assert diaryName != null;
 //        assert diaryText != null;
 //        assert userId != null;
-        diaryUploadService.uploadDiary(diaryName, diaryText, userId);
+        diaryService.uploadDiary(diaryName, diaryText, userId);
         return "home";
     }
 
@@ -90,7 +83,7 @@ public class DiaryController {
     public String diaryDelete(@PathVariable("diaryId") String diaryId) {
         logger.debug("diary delete");
         assert diaryId != null;
-        diaryDeleteService.deleteDiary(Integer.parseInt(diaryId));
+        diaryService.deleteDiary(Integer.parseInt(diaryId));
         return "delete success";
     }
 
@@ -107,4 +100,10 @@ public class DiaryController {
         assert diaryText != null;
 
     }
+
+//
+//    @ExceptionHandler(DiaryNotFoundExceptionHandler.class)
+//    public String handleDiaryNotFound(){
+//
+//    }
 }

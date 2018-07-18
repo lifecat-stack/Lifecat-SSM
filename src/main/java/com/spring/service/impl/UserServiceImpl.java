@@ -25,7 +25,7 @@ import java.util.List;
  * @date 2018/5/24
  * @auther ten
  */
-@Service("userServiceImpl")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
