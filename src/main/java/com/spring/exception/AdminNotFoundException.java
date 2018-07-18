@@ -11,6 +11,8 @@ public class AdminNotFoundException extends RuntimeException {
     private int adminId;
 
     public AdminNotFoundException(int adminId) {
+        System.out.println("resource not found exception");
+
         this.adminId = adminId;
         ERROR_MSG = "Admin not found by adminId : " + adminId;
     }

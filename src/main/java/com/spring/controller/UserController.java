@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{userName}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET, produces = "application/json")
     public UserDO getUser(@PathVariable("userName") String userName) {
         UserDO userDO = userService.readUserByName(userName);
         if (userDO == null) {

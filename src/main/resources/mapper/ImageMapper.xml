@@ -14,7 +14,7 @@
         <result property="imageGmtModified" column="image_gmt_modified"/>
     </resultMap>
 
-    <select id="selectImageByName" parameterType="String" resultType="imageDO">
+    <select id="selectImageByText" parameterType="String" resultType="imageDO">
         SELECT
             image_id,
             user_id,
@@ -27,7 +27,7 @@
         where is_deleted = '1' and image_text = #{imageText}
     </select>
 
-    <select id="selectImageListByUserId" parameterType="int" resultType="ImageList">
+    <select id="selectImageListByUserId" parameterType="int" resultMap="ImageList">
         SELECT
             image_id,
             user_id,
@@ -40,7 +40,7 @@
         where user_id = #{userId} and is_deleted = '1'
     </select>
 
-    <select id="selectImageListByClassId" parameterType="int" resultType="ImageList">
+    <select id="selectImageListByClassId" parameterType="int" resultMap="ImageList">
         SELECT
             image_id,
             user_id,

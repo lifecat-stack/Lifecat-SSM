@@ -13,16 +13,22 @@ public class ImageNotFoundException extends RuntimeException {
     private int classId;
 
     public ImageNotFoundException(String imageName) {
+        System.out.println("resource not found exception");
+
         this.imageName = imageName;
         ERROR_MSG = "Image not found by imageName : " + imageName;
     }
 
     public ImageNotFoundException(int userId) {
+        System.out.println("resource not found exception");
+
         this.userId = userId;
         ERROR_MSG = "Image List not found by userId : " + userId;
     }
 
     public ImageNotFoundException(int userId, int classId) {
+        System.out.println("resource not found exception");
+
         this.userId = userId;
         this.classId = classId;
         ERROR_MSG = "Image Class List not found by userId : " + userId + " and classId : " + classId;

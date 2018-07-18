@@ -11,10 +11,14 @@ public class UserNotFoundException extends RuntimeException {
     private String userName;
 
     public UserNotFoundException() {
+        System.out.println("resource not found exception");
+
         ERROR_MSG = "User List not found";
     }
 
     public UserNotFoundException(String userName) {
+        System.out.println("resource not found exception");
+
         this.userName = userName;
         ERROR_MSG = "User not found by userName : " + userName;
     }
