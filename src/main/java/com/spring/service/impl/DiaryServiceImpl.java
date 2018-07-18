@@ -20,8 +20,7 @@ public class DiaryServiceImpl implements DiaryService {
     @Autowired
     private DiaryMapper diaryMapper;
 
-    @Autowired
-    private DateTimeUtil dateTimeUtil;
+    private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
     @Override
     public List<DiaryDO> readDiaryListByUserId(int userId) {

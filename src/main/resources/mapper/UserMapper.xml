@@ -13,7 +13,7 @@
         <result property="userGmtModified" column="user_gmt_modified"/>
     </resultMap>
 
-    <select id="queryUserList" resultMap="UserList">
+    <select id="selectUserList" resultMap="UserList">
         select
             user_id,
             user_name,
@@ -24,14 +24,10 @@
         from user;
     </select>
 
-    <insert id="insertUserAndGetKey" parameterType="userDO" useGeneratedKeys="true" keyProperty="userId">
-        INSERT INTO user (user_name, user_password, user_level, user_gmt_create, user_gmt_modified)
-        VALUES (#{userName}, #{userPassword}, #{userLevel}, #{userGmtCreate}, #{userGmtModified})
-    </insert>
-
-    <select id="queryUserByName" parameterType="string" resultType="userDO">
+    <select id="selectUserByName" parameterType="String" resultType="userDO">
         select
             user_id,
+            user_name,
             user_password,
             user_level,
             user_gmt_create,
@@ -40,21 +36,34 @@
         where user_name = #{userName}
     </select>
 
-    <select id="isUserExistedByName" parameterType="string" resultType="boolean">
-        select count(user_id) as count
-        from user
-        where user_name = #{userName}
-    </select>
+    <insert id="insertUser" parameterType="userDO">
+        INSERT INTO user (
+            user_name,
+            user_password,
+            user_level,
+            user_gmt_create,
+            user_gmt_modified)
+        VALUES (
+            #{userName},
+            #{userPassword},
+            #{userLevel},
+            #{userGmtCreate},
+            #{userGmtModified})
+    </insert>
 
-    <select id="queryUserPasswordByName" parameterType="string" resultType="userDO">
-        select user_password
-        from user
-        where user_name = #{serName}
-    </select>
-
-    <update id="updateUserPassword" parameterType="userDO">
+    <update id="updateUser" parameterType="userDO">
         update user
-        set user_password = #{userPassword}
+        set
+            user_name         = #{userName},
+            user_password     = #{userPassword},
+            user_level        = #{userLevel},
+            user_gmt_modified = #{userGmtModified}
         where user_id = #{userId}
     </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user
+        where user_id = #{userId}
+    </delete>
+
 </mapper>

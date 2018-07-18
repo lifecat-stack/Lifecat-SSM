@@ -178,7 +178,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.0.7.RELEASE</version>
+            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>

@@ -45,7 +45,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.0" />
           <element id="library" level="project" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.12" />
         </element>
       </element>

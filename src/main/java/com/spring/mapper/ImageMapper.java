@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ImageMapper {
 
-    ImageDO selectImageByName(String imageName);
+    ImageDO selectImageByText(String imageText);
 
     List<ImageDO> selectImageListByUserId(int userId);
 

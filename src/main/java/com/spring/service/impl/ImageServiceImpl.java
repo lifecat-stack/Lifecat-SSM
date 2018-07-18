@@ -25,12 +25,11 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageClassMapper imageClassMapper;
 
-    @Autowired
-    private DateTimeUtil dateTimeUtil;
+    private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
     @Override
-    public ImageDO readImageByName(String imageName) {
-        return imageMapper.selectImageByName(imageName);
+    public ImageDO readImageByText(String imageText) {
+        return imageMapper.selectImageByText(imageText);
     }
 
     @Override

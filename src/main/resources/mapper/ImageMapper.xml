@@ -4,10 +4,85 @@
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.ImageMapper">
 
-    <insert id="insertImageAndGetKey" parameterType="imageDO" useGeneratedKeys="true" keyProperty="imageId">
-        INSERT INTO image (image_text, image_path, is_deleted, user_id, class_id, image_gmt_create, image_gmt_modified)
-        VALUES (#{imageText}, #{imagePath}, #{deleted}, #{userId}, #{classId}, #{imageGmtCreate}, #{imageGmtModified})
+    <resultMap id="ImageList" type="imageDO">
+        <id property="imageId" column="image_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="classId" column="class_id"/>
+        <result property="imageText" column="image_text"/>
+        <result property="imagePath" column="image_path"/>
+        <result property="imageGmtCreate" column="image_gmt_create"/>
+        <result property="imageGmtModified" column="image_gmt_modified"/>
+    </resultMap>
+
+    <select id="selectImageByName" parameterType="String" resultType="imageDO">
+        SELECT
+            image_id,
+            user_id,
+            class_id,
+            image_text,
+            image_path,
+            image_gmt_create,
+            image_gmt_modified
+        from image
+        where is_deleted = '1' and image_text = #{imageText}
+    </select>
+
+    <select id="selectImageListByUserId" parameterType="int" resultType="ImageList">
+        SELECT
+            image_id,
+            user_id,
+            class_id,
+            image_text,
+            image_path,
+            image_gmt_create,
+            image_gmt_modified
+        from image
+        where user_id = #{userId} and is_deleted = '1'
+    </select>
+
+    <select id="selectImageListByClassId" parameterType="int" resultType="ImageList">
+        SELECT
+            image_id,
+            user_id,
+            class_id,
+            image_text,
+            image_path,
+            image_gmt_create,
+            image_gmt_modified
+        from image
+        where user_id = #{userId}
+              and class_id = #{classId}
+              and is_deleted = '1'
+    </select>
+
+    <insert id="insertImage" parameterType="imageDO">
+        INSERT INTO image (
+            image_text,
+            image_path,
+            is_deleted,
+            user_id,
+            class_id,
+            image_gmt_create,
+            image_gmt_modified)
+        VALUES (
+            #{imageText},
+            #{imagePath},
+            #{deleted},
+            #{userId},
+            #{classId},
+            #{imageGmtCreate},
+            #{imageGmtModified})
     </insert>
+
+    <update id="updateImage" parameterType="imageDO">
+        UPDATE image
+        set
+            class_id           = #{classId},
+            image_text         = #{imageText},
+            image_path         = #{imagePath},
+            image_gmt_modified = #{imageGmtModified}
+        where image_id = #{imageId}
+    </update>
 
     <delete id="deleteImageById" parameterType="int">
         UPDATE image
@@ -15,35 +90,4 @@
         where image_id = #{imageId}
     </delete>
 
-    <update id="updateImageText" parameterType="imageDO">
-        UPDATE image
-        set image_text = #{imageText}
-        where image_id = #{imageId}
-    </update>
-
-    <select id="queryImageByImageId" parameterType="int" resultType="imageDO">
-        SELECT
-            image_text,
-            image_path,
-            image_gmt_create
-        from image
-        where image_id = #{imageId} and is_deleted = '1'
-    </select>
-
-    <select id="queryImageListByUserId" parameterType="int" resultType="imageDO">
-        SELECT
-            image_id,
-            image_text,
-            image_path,
-            image_gmt_create
-        from image
-        where user_id = '" + userId + "' and is_deleted = '1'</select>
-    <select id="queryImageClassById" parameterType="string" resultType="imageDO">
-        SELECT
-            image_id,
-            image_text,
-            image_path,
-            image_gmt_create
-        from image
-        where user_id = '" + userId + "' and class_id = '" + classId + "' and is_deleted = '1'  </select>
 </mapper>

@@ -53,7 +53,7 @@ public class DiaryController {
 //        assert diaryName != null;
 //        assert diaryText != null;
 //        assert userId != null;
-        diaryService.createDiary(diaryName, diaryText, userId);
+//        diaryService.createDiary(diaryName, diaryText, userId);
         return "home";
     }
 

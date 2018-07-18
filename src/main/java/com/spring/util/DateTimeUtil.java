@@ -1,5 +1,6 @@
 package com.spring.util;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -10,7 +11,6 @@ import java.util.Date;
  *
  * @auther ten
  */
-@Component
 public class DateTimeUtil {
 
     private static volatile DateTimeUtil INSTANCE = null;

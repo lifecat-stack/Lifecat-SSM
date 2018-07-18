@@ -16,6 +16,5 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
-    @Autowired
-    private DateTimeUtil dateTimeUtil;
+    private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 }

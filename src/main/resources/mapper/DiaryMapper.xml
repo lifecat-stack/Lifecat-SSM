@@ -13,9 +13,47 @@
         <result property="diaryGmtModified" column="diary_gmt_modified"/>
     </resultMap>
 
+    <select id="selectDiaryByDiaryName" parameterType="String" resultType="diaryDO">
+        select
+            diary_id,
+            diary_name,
+            diary_text,
+            user_id,
+            diary_gmt_create,
+            diary_gmt_modified
+        from diary
+        where diary_name = #{diaryName}
+              and is_deleted = '1'
+    </select>
+
+    <select id="selectDiaryListByUserId" parameterType="int" resultMap="DiaryList">
+        SELECT
+            diary_id,
+            user_id,
+            diary_name,
+            diary_text,
+            diary_gmt_create,
+            diary_gmt_modified
+        from diary
+        where user_id = #{userId}
+              and is_deleted = '1'
+    </select>
+
     <insert id="insertDiary" parameterType="diaryDO">
-        insert into diary (diary_name, diary_text, is_deleted, user_id, diary_gmt_create, diary_gmt_modified)
-        values (#{diaryName}, #{diaryText}, #{deleted}, #{userId}, #{diaryGmtCreate}, #{diaryGmtModified})
+        insert into diary (
+            diary_name,
+            diary_text,
+            is_deleted,
+            user_id,
+            diary_gmt_create,
+            diary_gmt_modified)
+        values (
+            #{diaryName},
+            #{diaryText},
+            #{deleted},
+            #{userId},
+            #{diaryGmtCreate},
+            #{diaryGmtModified})
     </insert>
 
     <update id="updateDiary" parameterType="diaryDO">
@@ -31,24 +69,5 @@
         set is_deleted = '0'
         where diary_id = #{diaryId}
     </delete>
-
-    <select id="queryDiaryByName" parameterType="string" resultType="diaryDO">
-        select (diary_id, diary_name, diary_text, user_id, diary_gmt_create, diary_gmt_modified)
-        from diary
-        where diary_name = #{diaryName}
-              and is_deleted = '1'
-    </select>
-
-    <select id="queryDiaryListByUserId" parameterType="int" resultMap="DiaryList">
-        SELECT
-            diary_id,
-            user_id,
-            diary_name,
-            diary_text,
-            diary_gmt_create,
-            diary_gmt_modified
-        from diary
-        where user_id = #{userId} and is_deleted = '1'
-    </select>
 
 </mapper>

@@ -26,8 +26,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserIconMapper userIconMapper;
 
-    @Autowired
-    private DateTimeUtil dateTimeUtil;
+    private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
     @Override
     public List<UserDO> readUserList() {

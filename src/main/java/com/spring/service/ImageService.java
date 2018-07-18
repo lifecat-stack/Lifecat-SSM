@@ -14,9 +14,9 @@ public interface ImageService {
     /**
      * 查询Image
      *
-     * @param imageName image_name
+     * @param imageText image_text
      */
-    ImageDO readImageByName(String imageName);
+    ImageDO readImageByText(String imageText);
 
     /**
      * 查询Image List

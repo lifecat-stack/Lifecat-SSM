@@ -24,7 +24,7 @@ public class ImageController {
     @ResponseBody
     @RequestMapping(value = "/{imageName}", method = RequestMethod.GET, produces = "application/json")
     public ImageDO getImage(@PathVariable("imageName") String imageName) {
-        ImageDO imageDO = imageService.readImageByName(imageName);
+        ImageDO imageDO = imageService.readImageByText(imageName);
         if (imageDO == null) {
             throw new ImageNotFoundException(imageName);
         }
