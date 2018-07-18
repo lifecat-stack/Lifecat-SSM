@@ -24,7 +24,7 @@ public class ImageController {
     @ResponseBody
     @RequestMapping(value = "/{imageName}", method = RequestMethod.GET, produces = "application/json")
     public ImageDO getImage(@PathVariable("imageName") String imageName) {
-        ImageDO imageDO = imageService.queryImageByName(imageName);
+        ImageDO imageDO = imageService.readImageByName(imageName);
         if (imageDO == null) {
             throw new ImageNotFoundException(imageName);
         }
@@ -35,7 +35,7 @@ public class ImageController {
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
     public List<ImageDO> getImageList(@PathVariable("userId") String userId) {
         int id = Integer.parseInt(userId);
-        List<ImageDO> imageList = imageService.queryImageListByUserId(id);
+        List<ImageDO> imageList = imageService.readImageListByUserId(id);
         if (imageList == null) {
             throw new ImageNotFoundException(id);
         }
@@ -48,7 +48,7 @@ public class ImageController {
                                            @PathVariable("classId") String classId) {
         int userid = Integer.parseInt(userId);
         int classid = Integer.parseInt(classId);
-        List<ImageDO> imageList = imageService.queryImageByClass(userid, classid);
+        List<ImageDO> imageList = imageService.readImageByClassId(userid, classid);
         if (imageList == null) {
             throw new ImageNotFoundException(userid, classid);
         }

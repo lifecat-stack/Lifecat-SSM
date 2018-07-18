@@ -17,23 +17,21 @@ public interface DiaryService {
      *
      * @param userId user_id
      */
-    List<DiaryDO> queryDiaryListByUserId(int userId);
+    List<DiaryDO> readDiaryListByUserId(int userId);
 
     /**
      * 查询Diary
      *
      * @param diaryName diary_name
      */
-    DiaryDO queryDiaryByDiaryName(String diaryName);
+    DiaryDO readDiaryByDiaryName(String diaryName);
 
     /**
      * 上传Diary
      *
-     * @param diaryName diary_name
-     * @param diaryText diary_text
-     * @param userId    user_id
+     * @param diaryDO DO
      */
-    void uploadDiary(String diaryName, String diaryText, String userId);
+    void createDiary(DiaryDO diaryDO);
 
     /**
      * 更新Diary
@@ -47,5 +45,5 @@ public interface DiaryService {
      *
      * @param diaryId diary_id
      */
-    void deleteDiary(int diaryId);
+    void deleteDiaryById(int diaryId);
 }

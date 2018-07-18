@@ -19,18 +19,19 @@ public class DiaryServiceImpl implements DiaryService {
     @Autowired
     private DiaryMapper diaryMapper;
 
+
     @Override
-    public List<DiaryDO> queryDiaryListByUserId(int userId) {
+    public List<DiaryDO> readDiaryListByUserId(int userId) {
         return null;
     }
 
     @Override
-    public DiaryDO queryDiaryByDiaryId(int diaryId) {
+    public DiaryDO readDiaryByDiaryName(String diaryName) {
         return null;
     }
 
     @Override
-    public void uploadDiary(String diaryName, String diaryText, String userId) {
+    public void createDiary(DiaryDO diaryDO) {
 
     }
 
@@ -40,7 +41,7 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public void deleteDiary(int diaryId) {
+    public void deleteDiaryById(int diaryId) {
 
     }
 }

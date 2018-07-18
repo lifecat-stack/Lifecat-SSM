@@ -24,41 +24,39 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageClassMapper imageClassMapper;
 
-    @Override
-    public void uploadImage(ImageDO imageDO) {
-        // TODO
-    }
 
     @Override
-    public ImageDO queryImage(String imageName) {
-        // TODO
+    public ImageDO readImageByName(String imageName) {
         return null;
     }
 
     @Override
-    public List<ImageDO> queryImageListByUserId(int userId) {
-        // TODO
+    public List<ImageDO> readImageListByUserId(int userId) {
         return null;
     }
 
     @Override
-    public List<ImageDO> queryImageByClass(int userId, int classId) {
-        // TODO
+    public List<ImageDO> readImageByClassId(int userId, int classId) {
         return null;
     }
 
     @Override
-    public void updateImageText(ImageDO imageDO) {
-        // TODO
+    public void createImage(ImageDO imageDO) {
+
+    }
+
+    @Override
+    public void updateImage(ImageDO imageDO) {
+
     }
 
     @Override
     public void deleteImageById(int imageId) {
-        // TODO
+
     }
 
     @Override
     public void classifyImage() {
-        // TODO
+
     }
 }

@@ -24,7 +24,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
     public List<UserDO> getUserList() {
-        List<UserDO> userList = userService.getUserList();
+        List<UserDO> userList = userService.readUserList();
         if (userList == null) {
             throw new UserNotFoundException();
         }
@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = "application/json")
     public UserDO getUser(@PathVariable("userId") String userId) {
         int id = Integer.parseInt(userId);
-        UserDO userDO = userService.getUserById(id);
+        UserDO userDO = userService.readUserById(id);
         if (userDO == null) {
             throw new UserNotFoundException(id);
         }

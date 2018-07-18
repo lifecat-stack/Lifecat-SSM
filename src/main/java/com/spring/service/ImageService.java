@@ -1,6 +1,5 @@
 package com.spring.service;
 
-import com.spring.dto.ImageDTO;
 import com.spring.entity.ImageDO;
 
 import java.util.List;
@@ -13,25 +12,18 @@ import java.util.List;
  */
 public interface ImageService {
     /**
-     * 上传Image
-     *
-     * @param imageDO DO
-     */
-    void uploadImage(ImageDO imageDO);
-
-    /**
      * 查询Image
      *
      * @param imageName image_name
      */
-    ImageDO queryImageByName(String imageName);
+    ImageDO readImageByName(String imageName);
 
     /**
      * 查询Image List
      *
      * @param userId user_id
      */
-    List<ImageDO> queryImageListByUserId(int userId);
+    List<ImageDO> readImageListByUserId(int userId);
 
     /**
      * 查询Image List by Class
@@ -39,14 +31,21 @@ public interface ImageService {
      * @param userId  user_id
      * @param classId class_id
      */
-    List<ImageDO> queryImageByClass(int userId, int classId);
+    List<ImageDO> readImageByClassId(int userId, int classId);
+
+    /**
+     * 上传Image
+     *
+     * @param imageDO DO
+     */
+    void createImage(ImageDO imageDO);
 
     /**
      * 更新图片内容
      *
-     * @param imageDO 更新image_text
+     * @param imageDO DO
      */
-    void updateImageText(ImageDO imageDO);
+    void updateImage(ImageDO imageDO);
 
     /**
      * 删除Image

@@ -14,33 +14,33 @@ public interface UserService {
     /**
      * 获取所有user信息
      */
-    List<UserDO> getUserList();
+    List<UserDO> readUserList();
 
     /**
      * 获取user信息
      *
-     * @param userId 用户ID
+     * @param userId user_id
      */
-    UserDO getUserById(int userId);
+    UserDO readUserById(int userId);
 
     /**
      * 创建user信息
      *
-     * @param userDO 用户DO
+     * @param userDO DO
      */
-    String  postUser(UserDO userDO);
+    void createUser(UserDO userDO);
 
     /**
      * 更新user信息
      *
-     * @param userDO 用户DO
+     * @param userDO DO
      */
-    String  putUser(UserDO userDO);
+    void updateUser(UserDO userDO);
 
     /**
      * 删除user信息
      *
-     * @param userId 用户ID
+     * @param userId user_id
      */
-    String  deleteUserById(int userId);
+    void deleteUserById(int userId);
 }

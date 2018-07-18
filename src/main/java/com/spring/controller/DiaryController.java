@@ -1,22 +1,15 @@
 package com.spring.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.spring.entity.DiaryDO;
-import com.spring.entity.UserDO;
 import com.spring.exception.DiaryNotFoundException;
-import com.spring.handler.DiaryNotFoundExceptionHandler;
 import com.spring.service.*;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
 
 
 @Controller
@@ -32,7 +25,7 @@ public class DiaryController {
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
     public List<DiaryDO> getDiaryList(@PathVariable("userId") String userId) {
         int id = Integer.parseInt(userId);
-        List<DiaryDO> diaryList = diaryService.queryDiaryListByUserId(id);
+        List<DiaryDO> diaryList = diaryService.readDiaryListByUserId(id);
         if (diaryList == null) {
             throw new DiaryNotFoundException(id);
         }
@@ -42,7 +35,7 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET, produces = "application/json")
     public DiaryDO getDiary(@PathVariable("diaryName") String diaryName) {
-        DiaryDO diary = diaryService.queryDiaryByDiaryName(diaryName);
+        DiaryDO diary = diaryService.readDiaryByDiaryName(diaryName);
         if (diary == null) {
             throw new DiaryNotFoundException(diaryName);
         }
@@ -60,7 +53,7 @@ public class DiaryController {
 //        assert diaryName != null;
 //        assert diaryText != null;
 //        assert userId != null;
-        diaryService.uploadDiary(diaryName, diaryText, userId);
+        diaryService.createDiary(diaryName, diaryText, userId);
         return "home";
     }
 
