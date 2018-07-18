@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.ImageDO;
-import com.spring.exception.ImageNotFoundException;
+import com.spring.exception.impl.ImageNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

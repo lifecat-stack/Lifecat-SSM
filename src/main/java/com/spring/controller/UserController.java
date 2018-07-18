@@ -2,7 +2,7 @@ package com.spring.controller;
 
 import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
-import com.spring.exception.UserNotFoundException;
+import com.spring.exception.impl.UserNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

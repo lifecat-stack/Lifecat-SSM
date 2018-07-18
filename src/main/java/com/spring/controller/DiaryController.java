@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
-import com.spring.exception.DiaryNotFoundException;
+import com.spring.exception.impl.DiaryNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

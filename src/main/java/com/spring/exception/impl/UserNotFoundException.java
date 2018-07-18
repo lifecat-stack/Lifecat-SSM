@@ -1,10 +1,8 @@
-package com.spring.exception;
+package com.spring.exception.impl;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.spring.exception.ResourceNotFoundException;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException extends RuntimeException implements ResourceNotFoundException {
 
     private String ERROR_MSG;
 
@@ -23,6 +21,7 @@ public class UserNotFoundException extends RuntimeException {
         ERROR_MSG = "User not found by userName : " + userName;
     }
 
+    @Override
     public String getErrorMsg() {
         return ERROR_MSG;
     }

@@ -1,0 +1,14 @@
+package com.spring.exception;
+
+public class Error {
+
+    private String message;
+
+    public Error(String message) {
+        this.message = message;
+    }
+
+    public String getSuccess() {
+        return message;
+    }
+}

@@ -1,10 +1,8 @@
-package com.spring.exception;
+package com.spring.exception.impl;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.spring.exception.ResourceNotFoundException;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class DiaryNotFoundException extends RuntimeException {
+public class DiaryNotFoundException extends RuntimeException implements ResourceNotFoundException {
 
     private String ERROR_MSG;
 
@@ -25,6 +23,7 @@ public class DiaryNotFoundException extends RuntimeException {
         ERROR_MSG = "Diary List not found by userId : " + userId;
     }
 
+    @Override
     public String getErrorMsg() {
         return ERROR_MSG;
     }
