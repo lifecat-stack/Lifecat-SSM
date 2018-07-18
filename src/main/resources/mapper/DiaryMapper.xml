@@ -13,7 +13,7 @@
         <result property="diaryGmtModified" column="diary_gmt_modified"/>
     </resultMap>
 
-    <select id="selectDiaryByDiaryName" parameterType="String" resultType="diaryDO">
+    <select id="selectDiaryByDiaryName" parameterType="java.lang.String" resultType="diaryDO">
         select
             diary_id,
             diary_name,
@@ -22,11 +22,11 @@
             diary_gmt_create,
             diary_gmt_modified
         from diary
-        where diary_name = #{diaryName}
+        where diary_name = #{diaryName,jdbcType=VARCHAR}
               and is_deleted = '1'
     </select>
 
-    <select id="selectDiaryListByUserId" parameterType="int" resultMap="DiaryList">
+    <select id="selectDiaryListByUserId" parameterType="java.lang.Integer" resultMap="DiaryList">
         SELECT
             diary_id,
             user_id,

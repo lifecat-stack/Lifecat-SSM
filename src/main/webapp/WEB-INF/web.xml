@@ -4,37 +4,30 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!---欢迎页面配置 -->
-    <!--定义首页列单.-->
     <welcome-file-list>
-        <!--用来指定首页文件名称.我们可以用<welcome-file>指定几个首页,而服务器会依照设定的顺序来找首页.-->
         <welcome-file>/view/home.html</welcome-file>
     </welcome-file-list>
 
     <!--全局范围内环境参数初始化-->
     <context-param>
-        <!--参数名称-->
         <param-name>contextConfigLocation</param-name>
-        <!--参数取值-->
         <param-value>classpath:spring/spring-mybatis.xml</param-value>
     </context-param>
 
-    <!--以下配置的加载顺序:先 ServletContext >> context-param >> listener >> filter >> servlet >>  spring-->
 
-    <!--过滤器配置-->
-    <!--例:编码过滤器-->
-    <filter>      <!-- 用来声明filter的相关设定,过滤器可以截取和修改一个Servlet或JSP页面的请求或从一个Servlet或JSP页面发出的响应-->
-        <filter-name>encodingFilter</filter-name>     <!--指定filter的名字-->
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> <!--定义filter的类的名称-->
-        <async-supported>true</async-supported>     <!--设置是否启用异步支持-->
-        <init-param><!--用来定义参数,若在Servlet可以使用下列方法来获得:String param_name=getServletContext().getInitParamter("param-name里面的值");-->
-            <param-name>encoding</param-name>   <!--参数名称-->
-            <param-value>UTF-8</param-value> <!--参数值-->
+    <!--编码过滤器-->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
         </init-param>
     </filter>
-    <filter-mapping><!--用来定义filter所对应的URL-->
-        <filter-name>encodingFilter</filter-name>     <!--指定对应filter的名字-->
-        <url-pattern>/*</url-pattern>       <!--指定filter所对应的URL-->
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <!--监听器配置-->

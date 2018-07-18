@@ -24,7 +24,7 @@
         from user;
     </select>
 
-    <select id="selectUserByName" parameterType="String" resultType="userDO">
+    <select id="selectUserByName" parameterType="java.lang.String" resultType="userDO">
         select
             user_id,
             user_name,
@@ -33,7 +33,7 @@
             user_gmt_create,
             user_gmt_modified
         from user
-        where user_name = #{userName}
+        where user_name = #{userName,jdbcType=VARCHAR}
     </select>
 
     <insert id="insertUser" parameterType="userDO">
