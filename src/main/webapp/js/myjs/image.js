@@ -46,7 +46,7 @@ $(document).on('click', "#image-read", $.func.flush());
 $(document).on('click', "#image-create",function () {
      layer.open({
         type: 2,
-        title: '添加日记',
+        title: '上传图片',
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],

@@ -13,84 +13,40 @@
 <div class="col-md-6 show">
     <div class="panel panel-default">
         <div class="panel-heading">
-            输入框
+            日记更新
         </div>
         <div class="panel-body">
 
-            <div class="col-md-6">
-
-                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Go!</button>
-                                    </span>
-                    <input type="text" class="form-control" placeholder="Search for..."/>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..."/>
-                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Go!</button>
-                                    </span>
-                </div>
-            </div>
+            <!--日记名-->
             <div class="col-md-12">
-                <br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Username"
+                    <span class="input-group-addon" id="basic-addon1">标题</span>
+                    <input name="diaryName" type="text" class="form-control" placeholder="diaryName"
                            aria-describedby="basic-addon1"/>
                 </div>
-                <br/>
+            </div>
+
+            <br>
+
+            <!--内容-->
+            <div class="col-md-12">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Recipient's username"
-                           aria-describedby="basic-addon2"/>
-                    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                    <span class="input-group-addon" id="basic-addon2">内容</span>
+                    <textarea name="diaryText" rows="10" class="form-control" placeholder="diaryText"
+                              aria-describedby="basic-addon1"></textarea>
                 </div>
-                <br/>
+            </div>
+
+            <br>
+
+            <!--提交按钮-->
+            <div class="col-md-12">
                 <div class="input-group">
-                    <span class="input-group-addon">$</span>
-                    <label>
-                        <input type="text" class="form-control"
-                               aria-label="Amount (to the nearest dollar)"/>
-                    </label>
-                    <span class="input-group-addon">.00</span>
-                </div>
-                <br/>
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Action <span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                    <label>
-                        <input type="text" class="form-control" aria-label="..."/>
-                    </label>
-                </div>
-                <br/>
-                <div class="input-group">
-                    <label>
-                        <input type="text" class="form-control" aria-label="..."/>
-                    </label>
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Action <span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
+                    <div class="col-md-3"></div>
+                    <span class="col-md-6 input-group-btn">
+                        <button id="admin-update" class="btn btn-info" type="button">更新</button>
+                    </span>
+                    <div class="col-md-3"></div>
                 </div>
             </div>
 

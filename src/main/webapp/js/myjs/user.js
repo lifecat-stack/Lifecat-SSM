@@ -44,7 +44,7 @@ $(document).on('click', "#user-read", $.func.flush());
 $(document).on('click', '#user-create', function () {
     layer.open({
         type: 2,
-        title: '添加日记',
+        title: '添加用户',
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],
@@ -91,7 +91,7 @@ $(document).on('click', ".user-update", function () {
 
     layer.open({
         type: 2,
-        title: '修改日记',
+        title: '更新用户信息',
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],
