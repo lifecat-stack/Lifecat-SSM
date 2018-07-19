@@ -20,7 +20,7 @@ $('#image-upload').on('click', function () {
             console.log("diary name:" + name + " text:" + text);
 
             $.ajax({
-                url: "diary/v1/diary",
+                url: "/ssm/diary/v1/diary",
                 type: 'post',
                 contentType: 'charset=utf-8',
                 data: {diaryName: name, diaryText: text, userId: userId},

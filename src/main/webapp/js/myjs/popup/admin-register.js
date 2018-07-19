@@ -16,7 +16,7 @@ $('#admin-register').on('click', function () {
 
         if (success) {
             $.ajax({
-                url: "admin/v1",
+                url: "/ssm/admin/v1",
                 type: 'post',
                 contentType: 'charset=utf-8;application/json',
                 dataType: "json",

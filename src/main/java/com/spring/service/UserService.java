@@ -28,7 +28,7 @@ public interface UserService {
      *
      * @param userDO DO
      */
-    void createUser(UserDO userDO);
+    int createUser(UserDO userDO);
 
     /**
      * 更新user信息

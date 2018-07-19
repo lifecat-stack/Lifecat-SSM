@@ -16,7 +16,7 @@ $('#user-update').on('click', function () {
 
         if (success) {
             $.ajax({
-                url: "user/v1",
+                url: "/ssm/user/v1",
                 type: 'put',
                 contentType: 'charset=utf-8;application/json',
                 dataType: "json",

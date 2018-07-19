@@ -3,7 +3,7 @@ $.func = {
     flush: function () {
         var userId = 1;
         $.ajax({
-            url: "diary/v1/list/" + userId,
+            url: "/ssm/diary/v1/list/" + userId,
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"
@@ -62,7 +62,7 @@ $(document).on('click', ".diary-delete", function () {
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "diary/v1/" + id,
+        url: "/ssm/diary/v1/" + id,
         type: 'delete',
         dataType: "json",
         data: {},

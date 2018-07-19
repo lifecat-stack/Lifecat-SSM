@@ -49,10 +49,12 @@ public class UserController {
         return userDO;
     }
 
+    @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public String postUser(@RequestBody UserDTO userDTO) {
-        // TODO
-        return null;
+    public String postUser(@RequestBody UserDO userDO) {
+        int result = userService.createUser(userDO);
+        System.out.println("插入操作的行数"+result);
+        return String.valueOf(result);
     }
 
     @RequestMapping(method = RequestMethod.PUT)

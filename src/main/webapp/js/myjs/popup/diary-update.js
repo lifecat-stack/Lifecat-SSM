@@ -20,7 +20,7 @@ $(function () {
 
 $('#diary-update').on('click', function () {
 
-        console.log("diary update");
+        console.log("/ssm/diary update");
 
         var did = $('#diaryid').val();
         var name = $('#diaryname').val();

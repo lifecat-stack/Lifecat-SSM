@@ -3,7 +3,7 @@ $.func = {
     flush: function () {
         var userId = 1;
         $.ajax({
-            url: "image/v1/list/" + userId,
+            url: "/ssm/image/v1/list/" + userId,
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"
@@ -63,7 +63,7 @@ $(document).on('click', ".image-delete", function () {
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "image/v1/" + id,
+        url: "/ssm/image/v1/" + id,
         type: 'delete',
         dataType: "json",
         data: {},

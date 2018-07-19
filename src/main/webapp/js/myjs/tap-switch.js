@@ -2,7 +2,7 @@
 
 $('#main-href').on('click', function () {
     $.ajax({
-        url: 'home-tap/main',
+        url: '/ssm/home-tap/main',
         type: 'GET',
         dataType: "html",
         success: function (html) {
@@ -18,7 +18,7 @@ $('#main-href').on('click', function () {
 
 $('#admin-href').on('click', function () {
     $.ajax({
-        url: 'home-tap/admin',
+        url: '/ssm/home-tap/admin',
         type: 'GET',
         dataType: "html",
         success: function (html) {
@@ -34,7 +34,7 @@ $('#admin-href').on('click', function () {
 
 $('#user-href').on('click', function () {
     $.ajax({
-        url: 'home-tap/user',
+        url: '/ssm/home-tap/user',
         type: 'GET',
         dataType: "html",
         success: function (html) {
@@ -50,7 +50,7 @@ $('#user-href').on('click', function () {
 
 $('#diary-href').on('click', function () {
     $.ajax({
-        url: 'home-tap/diary',
+        url: '/ssm/home-tap/diary',
         type: 'GET',
         dataType: "html",
         success: function (html) {
@@ -66,7 +66,7 @@ $('#diary-href').on('click', function () {
 
 $('#image-href').on('click', function () {
     $.ajax({
-        url: 'home-tap/image',
+        url: '/ssm/home-tap/image',
         type: 'GET',
         dataType: "html",
         success: function (html) {

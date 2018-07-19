@@ -12,7 +12,7 @@ public interface UserMapper {
 
     UserDO selectUserByName(Map<String,String> userMap);
 
-    void insertUser(UserDO userDO);
+    int insertUser(UserDO userDO);
 
     void updateUser(UserDO userDO);
 

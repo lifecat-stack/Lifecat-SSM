@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url: 'home-tap/main',
+        url: '/ssm/home-tap/main',
         type: 'GET',
         dataType: "html",
         success: function (html) {

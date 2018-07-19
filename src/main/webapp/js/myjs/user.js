@@ -2,7 +2,7 @@ $.func = {
     // 获取users信息
     flush: function () {
         $.ajax({
-            url: "user/v1/list",
+            url: "/ssm/user/v1/list",
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"
@@ -61,7 +61,7 @@ $(document).on('click', ".user-delete", function () {
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "user/v1/" + id,
+        url: "/ssm/user/v1/" + id,
         type: 'delete',
         dataType: "json",
         data: {},

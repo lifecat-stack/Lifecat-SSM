@@ -45,12 +45,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(UserDO userDO) {
+    public int createUser(UserDO userDO) {
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         userDO.setUserGmtCreate(create);
         userDO.setUserGmtModified(modified);
-        userMapper.insertUser(userDO);
+        userDO.setUserLevel("user");
+
+        return userMapper.insertUser(userDO);
     }
 
     @Override

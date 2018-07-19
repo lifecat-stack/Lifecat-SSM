@@ -5,7 +5,7 @@ $.func = {
 
         var userId = 1;
         $.ajax({
-            url: "admin/v1/list",
+            url: "/ssm/admin/v1/list",
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"

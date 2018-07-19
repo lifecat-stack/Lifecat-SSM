@@ -16,7 +16,7 @@ $('#user-login').on('click', function () {
 
         if (success) {
             $.ajax({
-                url: "user/v1/login",
+                url: "/ssm/user/v1/login",
                 type: 'post',
                 contentType: 'charset=utf-8;application/json',
                 dataType: "json",
