@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.exception.impl.AdminNotFoundException;
+import com.spring.exception.impl.ServiceNotLoaderException;
 import com.spring.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,15 @@ public class AdminController {
 
     private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
+    private final AdminService adminService;
+
     @Autowired
-    private AdminService adminService;
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+        if (this.adminService == null){
+            throw new ServiceNotLoaderException(adminService.getClass().getName());
+        }
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getAdmin() {

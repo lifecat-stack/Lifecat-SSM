@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import com.spring.entity.ImageDO;
 import com.spring.exception.impl.ImageNotFoundException;
+import com.spring.exception.impl.ServiceNotLoaderException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,15 @@ public class ImageController {
 
     private static Logger logger = LoggerFactory.getLogger(ImageController.class);
 
+    private final ImageService imageService;
+
     @Autowired
-    private ImageService imageService;
+    public ImageController(ImageService imageService) {
+        this.imageService = imageService;
+        if (this.imageService == null){
+            throw new ServiceNotLoaderException(imageService.getClass().getName());
+        }
+    }
 
     @ResponseBody
     @RequestMapping(value = "/{imageName}", method = RequestMethod.GET, produces = "application/json")

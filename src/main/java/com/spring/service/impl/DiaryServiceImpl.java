@@ -5,12 +5,15 @@ import com.spring.mapper.DiaryMapper;
 import com.spring.service.DiaryService;
 import com.spring.service.ImageService;
 import com.spring.util.DateTimeUtil;
+import com.spring.util.MybatisStringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("diaryService")
 public class DiaryServiceImpl implements DiaryService {
@@ -29,7 +32,9 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public DiaryDO readDiaryByDiaryName(String diaryName) {
-        return diaryMapper.selectDiaryByDiaryName(diaryName);
+        Map<String, String> map = new HashMap<>(2);
+        map.put("diaryName", diaryName);
+        return diaryMapper.selectDiaryByDiaryName(map);
     }
 
     @Override

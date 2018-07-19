@@ -17,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-
         <org.springframework.security.version>3.1.6.RELEASE</org.springframework.security.version>
         <org.springframework.version>4.3.7.RELEASE</org.springframework.version>
     </properties>
@@ -99,7 +98,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.2.3</version>
+            <version>3.2.6</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

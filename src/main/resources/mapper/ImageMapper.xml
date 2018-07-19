@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.ImageMapper">
 
     <resultMap id="ImageList" type="imageDO">
@@ -14,15 +14,15 @@
         <result property="imageGmtModified" column="image_gmt_modified"/>
     </resultMap>
 
-    <select id="selectImageByText" parameterType="String" resultType="imageDO">
+    <select id="selectImageByText" parameterType="map" resultType="imageDO">
         SELECT
-            image_id,
-            user_id,
-            class_id,
-            image_text,
-            image_path,
-            image_gmt_create,
-            image_gmt_modified
+            image_id as imageId,
+            user_id as userId,
+            class_id as classId,
+            image_text as imageText,
+            image_path as imagePath,
+            image_gmt_create as imageGmtCreate,
+            image_gmt_modified as imageGmtModified
         from image
         where is_deleted = '1' and image_text = #{imageText}
     </select>
@@ -40,7 +40,7 @@
         where user_id = #{userId} and is_deleted = '1'
     </select>
 
-    <select id="selectImageListByClassId" parameterType="int" resultMap="ImageList">
+    <select id="selectImageListByClassId" parameterType="map" resultMap="ImageList">
         SELECT
             image_id,
             user_id,
@@ -71,7 +71,7 @@
             #{userId},
             #{classId},
             #{imageGmtCreate},
-            #{imageGmtModified})
+            ##{imageGmtModified})
     </insert>
 
     <update id="updateImage" parameterType="imageDO">

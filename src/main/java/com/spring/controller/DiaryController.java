@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
 import com.spring.exception.impl.DiaryNotFoundException;
+import com.spring.exception.impl.ServiceNotLoaderException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,15 @@ public class DiaryController {
 
     private Logger logger = LoggerFactory.getLogger(DiaryController.class);
 
+    private final DiaryService diaryService;
+
     @Autowired
-    private DiaryService diaryService;
+    public DiaryController(DiaryService diaryService) {
+        this.diaryService = diaryService;
+        if (this.diaryService == null){
+            throw new ServiceNotLoaderException(diaryService.getClass().getName());
+        }
+    }
 
     @ResponseBody
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")

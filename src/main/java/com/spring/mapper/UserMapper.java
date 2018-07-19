@@ -4,13 +4,13 @@ package com.spring.mapper;
 import com.spring.entity.UserDO;
 
 import java.util.List;
-import java.sql.SQLException;
+import java.util.Map;
 
 
 public interface UserMapper {
     List<UserDO> selectUserList();
 
-    UserDO selectUserByName(String userName);
+    UserDO selectUserByName(Map<String,String> userMap);
 
     void insertUser(UserDO userDO);
 

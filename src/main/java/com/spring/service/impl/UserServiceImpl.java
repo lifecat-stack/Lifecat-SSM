@@ -6,12 +6,15 @@ import com.spring.mapper.UserMapper;
 import com.spring.mapper.UserPropertyMapper;
 import com.spring.service.UserService;
 import com.spring.util.DateTimeUtil;
+import com.spring.util.MybatisStringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service("userService")
@@ -26,6 +29,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserIconMapper userIconMapper;
 
+
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
     @Override
@@ -35,7 +39,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO readUserByName(String userName) {
-        return userMapper.selectUserByName(userName);
+        Map<String, String> map = new HashMap<>(2);
+        map.put("userName", userName);
+        return userMapper.selectUserByName(map);
     }
 
     @Override

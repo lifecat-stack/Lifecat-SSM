@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.DiaryMapper">
 
     <resultMap id="DiaryList" type="diaryDO">
@@ -13,20 +13,7 @@
         <result property="diaryGmtModified" column="diary_gmt_modified"/>
     </resultMap>
 
-    <select id="selectDiaryByDiaryName" parameterType="java.lang.String" resultType="diaryDO">
-        select
-            diary_id,
-            diary_name,
-            diary_text,
-            user_id,
-            diary_gmt_create,
-            diary_gmt_modified
-        from diary
-        where diary_name = #{diaryName,jdbcType=VARCHAR}
-              and is_deleted = '1'
-    </select>
-
-    <select id="selectDiaryListByUserId" parameterType="java.lang.Integer" resultMap="DiaryList">
+    <select id="selectDiaryListByUserId" parameterType="int" resultMap="DiaryList">
         SELECT
             diary_id,
             user_id,
@@ -36,6 +23,19 @@
             diary_gmt_modified
         from diary
         where user_id = #{userId}
+              and is_deleted = '1'
+    </select>
+
+    <select id="selectDiaryByDiaryName" parameterType="map" resultType="diaryDO">
+        select
+            diary_id as diaryId,
+            diary_name as diaryName,
+            diary_text as diaryText,
+            user_id as userId,
+            diary_gmt_create as diaryGmtCreate,
+            diary_gmt_modified as diaryGmtModified
+        from diary
+        where diary_name = #{diaryName}
               and is_deleted = '1'
     </select>
 

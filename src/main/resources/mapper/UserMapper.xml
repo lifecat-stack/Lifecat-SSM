@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.UserMapper">
 
     <resultMap id="UserList" type="userDO">
@@ -24,16 +24,16 @@
         from user;
     </select>
 
-    <select id="selectUserByName" parameterType="java.lang.String" resultType="userDO">
+    <select id="selectUserByName" parameterType="map" resultType="userDO">
         select
-            user_id,
-            user_name,
-            user_password,
-            user_level,
-            user_gmt_create,
-            user_gmt_modified
+            user_id as userId,
+            user_name as userName,
+            user_password as userPassword,
+            user_level as userLevel,
+            user_gmt_create as userGmtCreate,
+            user_gmt_modified as userGmtModified
         from user
-        where user_name = #{userName,jdbcType=VARCHAR}
+        where user_name = #{userName}
     </select>
 
     <insert id="insertUser" parameterType="userDO">

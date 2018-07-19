@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
+import com.spring.exception.impl.ServiceNotLoaderException;
 import com.spring.exception.impl.UserNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
@@ -18,8 +19,15 @@ public class UserController {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+        if (this.userService == null){
+            throw new ServiceNotLoaderException(userService.getClass().getName());
+        }
+    }
 
     @ResponseBody
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
