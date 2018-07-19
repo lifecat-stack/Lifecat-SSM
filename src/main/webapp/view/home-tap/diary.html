@@ -21,6 +21,28 @@
             <a id="diary-upload" href="#"><i class="glyphicon glyphicon glyphicon-plus"></i></a>
         </div>
         <div class="panel-body">
+
+            <!--导航栏-->
+            <div class="col-lg-6">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Diary</a></li>
+                    <li class="active">Data</li>
+                </ol>
+            </div>
+
+            <!--搜索框-->
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input name="search-diary" type="text" class="form-control" placeholder="Search diary name"
+                           aria-describedby="basic-addon2"/>
+                    <span class="input-group-btn">
+                        <button id="search-btn" class="btn btn-primary" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+
+            <!--动态table 获取json数据-->
             <table class="table table-bordered tb-hover">
                 <thead>
                 <tr>
@@ -43,6 +65,7 @@
 </div>
 
 <script src="/ssm/js/myjs/diary.js"></script>
+<script src="/ssm/js/myjs/search/diary-search.js"></script>
 
 </body>
 </html>

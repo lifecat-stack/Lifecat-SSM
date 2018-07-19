@@ -21,6 +21,28 @@
             <a id="user-create" href="#"><i class="glyphicon glyphicon glyphicon-plus"></i></a>
         </div>
         <div class="panel-body">
+
+            <!--导航栏-->
+            <div class="col-lg-6">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">User</a></li>
+                    <li class="active">Data</li>
+                </ol>
+            </div>
+
+            <!--搜索框-->
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input name="search-user" type="text" class="form-control" placeholder="Search user name"
+                           aria-describedby="basic-addon2"/>
+                    <span class="input-group-btn">
+                        <button id="search-btn" class="btn btn-primary" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+
+            <!--动态table 获取json数据-->
             <table class="table table-bordered tb-hover">
                 <thead>
                 <tr>
@@ -35,14 +57,35 @@
                 </thead>
                 <tbody id="user-table">
                 <!--插入json数据-->
-                </tr>
                 </tbody>
             </table>
+
+            <!--分页按钮，默认隐藏-->
+            <div id="paging-button" class="hidden">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
 <script src="/ssm/js/myjs/user.js"></script>
+<script src="/ssm/js/myjs/search/user-search.js"></script>
 
 </body>
 </html>
