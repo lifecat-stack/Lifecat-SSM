@@ -35,12 +35,12 @@ public interface UserService {
      *
      * @param userDO DO
      */
-    void updateUser(UserDO userDO);
+    int updateUser(UserDO userDO);
 
     /**
      * 删除user信息
      *
      * @param userId user_id
      */
-    void deleteUserById(int userId);
+    int deleteUserById(int userId);
 }

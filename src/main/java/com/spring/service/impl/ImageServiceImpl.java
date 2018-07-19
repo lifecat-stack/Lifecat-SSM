@@ -51,28 +51,29 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void createImage(ImageDO imageDO) {
+    public int createImage(ImageDO imageDO) {
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtCreate(create);
         imageDO.setImageGmtModified(modified);
-        imageMapper.insertImage(imageDO);
+        return imageMapper.insertImage(imageDO);
     }
 
     @Override
-    public void updateImage(ImageDO imageDO) {
+    public int updateImage(ImageDO imageDO) {
         String modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtModified(modified);
-        imageMapper.updateImage(imageDO);
+        return imageMapper.updateImage(imageDO);
     }
 
     @Override
-    public void deleteImageById(int imageId) {
-        imageMapper.deleteImageById(imageId);
+    public int deleteImageById(int imageId) {
+        return imageMapper.deleteImageById(imageId);
     }
 
     @Override
-    public void classifyImage() {
+    public int classifyImage() {
         // TODO
+        return 1;
     }
 }

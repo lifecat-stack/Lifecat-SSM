@@ -38,23 +38,23 @@ public interface ImageService {
      *
      * @param imageDO DO
      */
-    void createImage(ImageDO imageDO);
+    int createImage(ImageDO imageDO);
 
     /**
      * 更新图片内容
      *
      * @param imageDO DO
      */
-    void updateImage(ImageDO imageDO);
+    int updateImage(ImageDO imageDO);
 
     /**
      * 删除Image
      *
      * @param imageId image_id
      */
-    void deleteImageById(int imageId);
+    int deleteImageById(int imageId);
 
     // TODO 外部接口 图片分类
-    void classifyImage();
+    int classifyImage();
 
 }

@@ -12,9 +12,9 @@ public interface DiaryMapper {
 
     DiaryDO selectDiaryByDiaryName(Map<String, String> map);
 
-    void insertDiary(DiaryDO diaryDO);
+    int insertDiary(DiaryDO diaryDO);
 
-    void updateDiary(DiaryDO diaryDO);
+    int updateDiary(DiaryDO diaryDO);
 
-    void deleteDiaryById(int diaryId);
+    int deleteDiaryById(int diaryId);
 }

@@ -56,14 +56,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(UserDO userDO) {
+    public int updateUser(UserDO userDO) {
         String modified = dateTimeUtil.getCurrentTime();
         userDO.setUserGmtModified(modified);
-        userMapper.updateUser(userDO);
+        return userMapper.updateUser(userDO);
     }
 
     @Override
-    public void deleteUserById(int userId) {
-        userMapper.deleteUserById(userId);
+    public int deleteUserById(int userId) {
+        return userMapper.deleteUserById(userId);
     }
 }

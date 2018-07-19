@@ -38,23 +38,23 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public void createDiary(DiaryDO diaryDO) {
+    public int createDiary(DiaryDO diaryDO) {
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         diaryDO.setdiaryGmtCreate(create);
         diaryDO.setdiaryGmtModified(modified);
-        diaryMapper.insertDiary(diaryDO);
+        return diaryMapper.insertDiary(diaryDO);
     }
 
     @Override
-    public void updateDiary(DiaryDO diaryDO) {
+    public int updateDiary(DiaryDO diaryDO) {
         String modified = dateTimeUtil.getCurrentTime();
         diaryDO.setdiaryGmtModified(modified);
-        diaryMapper.updateDiary(diaryDO);
+        return diaryMapper.updateDiary(diaryDO);
     }
 
     @Override
-    public void deleteDiaryById(int diaryId) {
-        diaryMapper.deleteDiaryById(diaryId);
+    public int deleteDiaryById(int diaryId) {
+        return diaryMapper.deleteDiaryById(diaryId);
     }
 }

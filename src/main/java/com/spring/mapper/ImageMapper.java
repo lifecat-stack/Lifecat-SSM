@@ -16,9 +16,9 @@ public interface ImageMapper {
 
     List<ImageDO> selectImageListByClassId(Map<String,Integer> map);
 
-    void insertImage(ImageDO imageDO);
+    int insertImage(ImageDO imageDO);
 
-    void updateImage(ImageDO imageDO);
+    int updateImage(ImageDO imageDO);
 
-    void deleteImageById(int imageId);
+    int deleteImageById(int imageId);
 }

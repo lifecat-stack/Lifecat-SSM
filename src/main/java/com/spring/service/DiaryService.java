@@ -31,19 +31,19 @@ public interface DiaryService {
      *
      * @param diaryDO DO
      */
-    void createDiary(DiaryDO diaryDO);
+    int createDiary(DiaryDO diaryDO);
 
     /**
      * 更新Diary
      *
      * @param diaryDO diary
      */
-    void updateDiary(DiaryDO diaryDO);
+    int updateDiary(DiaryDO diaryDO);
 
     /**
      * 删除Diary
      *
      * @param diaryId diary_id
      */
-    void deleteDiaryById(int diaryId);
+    int deleteDiaryById(int diaryId);
 }
