@@ -24,7 +24,7 @@ public class ImageController {
     @Autowired
     public ImageController(ImageService imageService) {
         this.imageService = imageService;
-        if (this.imageService == null){
+        if (this.imageService == null) {
             throw new ServiceNotFoundException(imageService.getClass().getName());
         }
     }
@@ -75,10 +75,10 @@ public class ImageController {
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseBody
+    @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
     public String deleteImage() {
-        // TODO
-        return null;
+        return "删除操作";
     }
 
     @RequestMapping(value = "/classify", method = RequestMethod.POST)

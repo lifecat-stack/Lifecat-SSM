@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-        if (this.userService == null){
+        if (this.userService == null) {
             throw new ServiceNotFoundException(userService.getClass().getName());
         }
     }
@@ -61,9 +61,9 @@ public class UserController {
         return null;
     }
 
+    @ResponseBody
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public String deleteUser(@PathVariable("userId") String userId) {
-        // TODO
-        return null;
+        return "删除操作";
     }
 }

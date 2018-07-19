@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户注册</title>
+    <link rel="stylesheet" href="/ssm/css/bootstrap/3.3.6/bootstrap.css"/>
+    <link rel="stylesheet" href="/ssm/css/mycss/home-base.css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="col-md-12 show">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            用户注册
+        </div>
+        <div class="panel-body">
 
+            <!--用户名-->
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">用户名</span>
+                    <input name="userName" type="text" class="form-control" placeholder="UserName"
+                           aria-describedby="basic-addon1"/>
+                </div>
+            </div>
+
+            <!--密码-->
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon2">密码</span>
+                    <input name="userPassword" type="text" class="form-control" placeholder="UserPassword"
+                           aria-describedby="basic-addon1"/>
+                </div>
+            </div>
+
+            <!--提交按钮-->
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="col-md-3"></div>
+                    <span class="col-md-6 input-group-btn">
+                        <button id="user-register" class="btn btn-info" type="button">注册</button>
+                    </span>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
+
+<script src="/ssm/js/myjs/popup/user-register.js"></script>
+
 </html>

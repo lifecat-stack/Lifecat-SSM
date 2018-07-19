@@ -68,6 +68,6 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
     public String deleteDiary(@PathVariable("diaryId") String diaryId) {
-        return null;
+        return "删除操作";
     }
 }

@@ -38,43 +38,43 @@ $.func = {
 };
 
 // 查询
-$(document).on('click', "#user-query", $.func.flush());
+$(document).on('click', "#user-read", $.func.flush());
 
 // 添加
-$(document).on('click', '#user-upload', function () {
+$(document).on('click', '#user-create', function () {
     layer.open({
         type: 2,
         title: '添加日记',
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],
-        content: '/ssm/view/popup/user-upload.html'
+        content: '/ssm/view/popup/user-register.html'
     });
 });
 
 // 删除
-$(document).on('click', ".user-remove", function () {
-    var ii = layer.load();
+$(document).on('click', ".user-delete", function () {
+    var load = layer.load();
 
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='user-id']").text();
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "user/v1/user/" + id,
+        url: "user/v1/" + id,
         type: 'delete',
-        dataType: "text",
+        dataType: "json",
         data: {},
         success: function (msg) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg(msg);
                 $.func.flush();
             }, 1000);
         },
         error: function (error) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg("删除失败");
                 console.log('接口不通' + error);
             }, 1000);
@@ -83,7 +83,7 @@ $(document).on('click', ".user-remove", function () {
 });
 
 // 更新
-$(document).on('click', ".user-edit", function () {
+$(document).on('click', ".user-update", function () {
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='user-id']").text();
     var name = tr.children("td[class='user-name']").text();

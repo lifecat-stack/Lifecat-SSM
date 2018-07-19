@@ -12,9 +12,9 @@ $.func = {
             dataType: "json",//返回的数据类型
             success: function (data) {
                 var operation = '<td class=" text-center">' +
-                    '<a class="diary-remove" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
+                    '<a class="diary-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                     '&nbsp;&nbsp;' +
-                    '<a class="diary-edit" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
+                    '<a class="diary-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
                     '</td>';
                 var html = '';
                 for (var i = 0; i < data.length; i++) {
@@ -39,10 +39,10 @@ $.func = {
 };
 
 // 查询
-$(document).on('click', "#diary-query", $.func.flush());
+$(document).on('click', "#diary-read", $.func.flush());
 
 // 添加
-$(document).on('click', '#diary-upload', function () {
+$(document).on('click', '#diary-create', function () {
     layer.open({
         type: 2,
         title: '添加日记',
@@ -54,28 +54,28 @@ $(document).on('click', '#diary-upload', function () {
 });
 
 // 删除
-$(document).on('click', ".diary-remove", function () {
-    var ii = layer.load();
+$(document).on('click', ".diary-delete", function () {
+    var load = layer.load();
 
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='diary-id']").text();
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "diary/v1/diary/" + id,
+        url: "diary/v1/" + id,
         type: 'delete',
-        dataType: "text",
+        dataType: "json",
         data: {},
         success: function (msg) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg(msg);
                 $.func.flush();
             }, 1000);
         },
         error: function (error) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg("删除失败");
                 console.log('接口不通' + error);
             }, 1000);
@@ -84,7 +84,7 @@ $(document).on('click', ".diary-remove", function () {
 });
 
 // 更新
-$(document).on('click', ".diary-edit", function () {
+$(document).on('click', ".diary-update", function () {
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='diary-id']").text();
     var name = tr.children("td[class='diary-name']").text();

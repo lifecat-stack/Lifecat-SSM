@@ -1,6 +1,8 @@
 $.func = {
     // 获取最新的diary信息
     flush: function () {
+        alert("您没有权限访问");
+
         var userId = 1;
         $.ajax({
             url: "admin/v1/list",

@@ -44,7 +44,7 @@
 
     <!--1 自动扫描 将标注Spring注解的类自动转化Bean-->
     <context:component-scan
-            base-package="com.spring.entity,com.spring.dto,com.spring.mapper, com.spring.controller,com.spring.service"/>
+            base-package="com.spring"/>
 
     <!--aop配置-->
     <!--<context:component-scan base-package="com.spring.aspect"/>-->

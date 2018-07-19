@@ -17,9 +17,8 @@ $(function () {
     console.log("id:" + did + " name:" + name + " text:" + text);
 });
 
-// 获取父iframe值，更新diary
-// TODO 关闭子iframe
-$('#diary-submit').on('click', function () {
+
+$('#diary-update').on('click', function () {
 
         console.log("diary update");
 

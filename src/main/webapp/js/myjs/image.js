@@ -12,9 +12,9 @@ $.func = {
             dataType: "json",//返回的数据类型
             success: function (data) {
                 var operation = '<td class=" text-center">' +
-                    '<a class="image-remove" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
+                    '<a class="image-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                     '&nbsp;&nbsp;' +
-                    '<a class="image-edit" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
+                    '<a class="image-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
                     '</td>';
                 var html = '';
                 for (var i = 0; i < data.length; i++) {
@@ -40,10 +40,10 @@ $.func = {
 };
 
 // 查询
-$(document).on('click', "#image-query", $.func.flush());
+$(document).on('click', "#image-read", $.func.flush());
 
 // 添加
-$(document).on('click', '#image-upload',function () {
+$(document).on('click', "#image-create",function () {
      layer.open({
         type: 2,
         title: '添加日记',
@@ -55,28 +55,28 @@ $(document).on('click', '#image-upload',function () {
 });
 
 // 删除
-$(document).on('click', ".image-remove", function () {
-    var ii = layer.load();
+$(document).on('click', ".image-delete", function () {
+    var load = layer.load();
 
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='image-id']").text();
 
     // 利用ajax将数据提交到后台
     $.ajax({
-        url: "image/v1/image/" + id,
+        url: "image/v1/" + id,
         type: 'delete',
-        dataType: "text",
+        dataType: "json",
         data: {},
         success: function (msg) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg(msg);
                 $.func.flush();
             }, 1000);
         },
         error: function (error) {
             setTimeout(function () {
-                layer.close(ii);
+                layer.close(load);
                 layer.msg("删除失败");
                 console.log('接口不通' + error);
             }, 1000);
@@ -85,7 +85,7 @@ $(document).on('click', ".image-remove", function () {
 });
 
 // 更新
-$(document).on('click', ".image-edit", function () {
+$(document).on('click', ".image-update", function () {
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='image-id']").text();
     var name = tr.children("td[class='image-name']").text();
@@ -93,7 +93,7 @@ $(document).on('click', ".image-edit", function () {
 
     layer.open({
         type: 2,
-        title: '修改日记',
+        title: '修改图片',
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],

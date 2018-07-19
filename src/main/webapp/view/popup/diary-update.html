@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>LifeCat-Admin</title>
+    <title>更新日记</title>
     <link rel="stylesheet" href="/ssm/css/bootstrap/3.3.6/bootstrap.css"/>
     <link rel="stylesheet" href="/ssm/css/mycss/home-base.css"/>
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
@@ -10,32 +10,96 @@
 </head>
 
 <body>
+<div class="col-md-6 show">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            输入框
+        </div>
+        <div class="panel-body">
 
-<div class="container">
-    <div class="table-responsive">
+            <div class="col-md-6">
 
-        <h2>修改当前日记</h2>
+                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                    <input type="text" class="form-control" placeholder="Search for..."/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..."/>
+                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username"
+                           aria-describedby="basic-addon1"/>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Recipient's username"
+                           aria-describedby="basic-addon2"/>
+                    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <label>
+                        <input type="text" class="form-control"
+                               aria-label="Amount (to the nearest dollar)"/>
+                    </label>
+                    <span class="input-group-addon">.00</span>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Action <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <label>
+                        <input type="text" class="form-control" aria-label="..."/>
+                    </label>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <label>
+                        <input type="text" class="form-control" aria-label="..."/>
+                    </label>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Action <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <form>
-            <div class="form-group">
-				<textarea class="form-control" rows="1" cols="20" name="diaryId"
-                          id="diaryid"></textarea>
-            </div>
-            <div class="form-group">
-				<textarea class="form-control" rows="1" cols="20" name="diaryName"
-                          id="diaryname"></textarea>
-            </div>
-            <div class="form-group">
-				<textarea class="form-control" rows="10" cols="20" name="diaryText"
-                          id="diarytext"></textarea>
-            </div>
-            <button id="diary-submit" class="btn btn-primary btn-md btn-block">提交更新</button>
-        </form>
+
+        </div>
     </div>
 </div>
-
 </body>
 
-<script src="/ssm/js/myjs/diary-update.js"></script>
+<script src="/ssm/js/myjs/popup/diary-update.js"></script>
 
 </html>

@@ -1,6 +1,5 @@
-// 上传diary
-// TODO 关闭子iframe
-$('#diary-submit').on('click', function () {
+
+$('#diary-upload').on('click', function () {
         var loading = layer.load();
         var userId = 1;
 
