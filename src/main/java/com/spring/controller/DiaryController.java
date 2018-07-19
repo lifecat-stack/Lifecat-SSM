@@ -2,7 +2,7 @@ package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
 import com.spring.exception.impl.DiaryNotFoundException;
-import com.spring.exception.impl.ServiceNotLoaderException;
+import com.spring.exception.impl.ServiceNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class DiaryController {
     public DiaryController(DiaryService diaryService) {
         this.diaryService = diaryService;
         if (this.diaryService == null){
-            throw new ServiceNotLoaderException(diaryService.getClass().getName());
+            throw new ServiceNotFoundException(diaryService.getClass().getName());
         }
     }
 
@@ -58,10 +58,6 @@ public class DiaryController {
         String diaryText = "text";
         String userId = "1";
         logger.info("diary post" + diaryName + diaryText + userId);
-//        assert diaryName != null;
-//        assert diaryText != null;
-//        assert userId != null;
-//        diaryService.createDiary(diaryName, diaryText, userId);
         return "home";
     }
 

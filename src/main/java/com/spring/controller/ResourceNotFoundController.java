@@ -1,10 +1,7 @@
 package com.spring.controller;
 
 import com.spring.exception.*;
-import com.spring.exception.impl.AdminNotFoundException;
-import com.spring.exception.impl.DiaryNotFoundException;
-import com.spring.exception.impl.ImageNotFoundException;
-import com.spring.exception.impl.UserNotFoundException;
+import com.spring.exception.impl.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,7 +18,8 @@ public class ResourceNotFoundController {
             AdminNotFoundException.class,
             DiaryNotFoundException.class,
             ImageNotFoundException.class,
-            UserNotFoundException.class})
+            UserNotFoundException.class,
+            ServiceNotFoundException.class})
     public Error handleNotFound(ResourceNotFoundException e) {
         return new Error(e.getErrorMsg());
     }

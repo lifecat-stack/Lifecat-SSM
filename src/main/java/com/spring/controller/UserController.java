@@ -2,7 +2,7 @@ package com.spring.controller;
 
 import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
-import com.spring.exception.impl.ServiceNotLoaderException;
+import com.spring.exception.impl.ServiceNotFoundException;
 import com.spring.exception.impl.UserNotFoundException;
 import com.spring.service.*;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
         if (this.userService == null){
-            throw new ServiceNotLoaderException(userService.getClass().getName());
+            throw new ServiceNotFoundException(userService.getClass().getName());
         }
     }
 

@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.exception.impl.AdminNotFoundException;
-import com.spring.exception.impl.ServiceNotLoaderException;
+import com.spring.exception.impl.ServiceNotFoundException;
 import com.spring.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
         if (this.adminService == null){
-            throw new ServiceNotLoaderException(adminService.getClass().getName());
+            throw new ServiceNotFoundException(adminService.getClass().getName());
         }
     }
 

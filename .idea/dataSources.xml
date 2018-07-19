@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="lifecat@localhost" uuid="3119794b-6e42-40bd-874f-eef8bc25944c">
-      <driver-ref>mysql</driver-ref>
+    <data-source source="LOCAL" name="lifecat@111.230.244.153" uuid="ee2deda2-425b-4c2f-b7b7-752a3b107d95">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <remarks>mybatis</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/lifecat?serverTimezone=UTC&amp;characterEncoding=utf-8&amp;useSSL=false</jdbc-url>
+      <remarks>lifecat</remarks>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://111.230.244.153:3306/lifecat</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

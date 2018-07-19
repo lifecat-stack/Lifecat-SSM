@@ -13,7 +13,7 @@ public class DispatcherController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
         logger.info("request to index");
-        return "index";
+        return "error";
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)

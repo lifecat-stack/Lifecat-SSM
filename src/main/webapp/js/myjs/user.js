@@ -2,7 +2,7 @@ $.func = {
     // 获取users信息
     flush: function () {
         $.ajax({
-            url: "user/v1/users/",
+            url: "user/v1/list",
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"
@@ -10,31 +10,20 @@ $.func = {
             data: {},
             dataType: "json",//返回的数据类型
             success: function (data) {
-                var success = data.success;
-                var code = data.code;
-                var errorMsg = data.errorMsg;
-                var userList = data.jsonData;
-
-                if (!success) {
-                    layer.msg(code + " " + errorMsg);
-                }
-
                 var operation = '<td class=" text-center">' +
                     '<a class="user-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                     '&nbsp;&nbsp;' +
                     '<a class="user-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
                     '</td>';
                 var html = '';
-                for (var i = 0; i < userList.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     html = html + '<tr>';
-                    html = html + '<td class="user-id">' + userList[i].userDO.userId + '</td>';
-                    html = html + '<td class="user-name">' + userList[i].userDO.userName + '</td>';
-                    html = html + '<td>' + userList[i].userPropertyDO.propertyNickname + '</td>';
-                    html = html + '<td>' + userList[i].userPropertyDO.propertySignature + '</td>';
-                    html = html + '<td>' + userList[i].userPropertyDO.propertySex + '</td>';
-                    html = html + '<td>' + userList[i].userPropertyDO.propertyEmail + '</td>';
-                    html = html + '<td>' + userList[i].userPropertyDO.propertyLocation + '</td>';
-                    html = html + '<td>' + userList[i].userDO.userGmtCreate + '</td>';
+                    html = html + '<td class="user-id">' + data[i].userId + '</td>';
+                    html = html + '<td class="user-name">' + data[i].userName + '</td>';
+                    html = html + '<td class="user-password">' + data[i].userPassword + '</td>';
+                    html = html + '<td class="user-level">' + data[i].userLevel + '</td>';
+                    html = html + '<td class="user-create">' + data[i].userGmtCreate + '</td>';
+                    html = html + '<td class="user-modified">' + data[i].userGmtModified + '</td>';
                     html = html + operation;
                     html = html + '</tr>';
                 }
@@ -42,7 +31,7 @@ $.func = {
                 $('#user-table').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中
             },
             error: function () {
-                alert("查询失败！");
+                alert("查询失败！" + res.data.message);
             }
         });
     }

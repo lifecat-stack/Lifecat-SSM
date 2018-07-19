@@ -3,7 +3,7 @@ $.func = {
     flush: function () {
         var userId = 1;
         $.ajax({
-            url: "diary/v1/diaries/" + userId,
+            url: "diary/v1/list/" + userId,
             type: "GET",
             headers: {
                 Accept: "application/json;charset=utf-8"
@@ -20,11 +20,11 @@ $.func = {
                 for (var i = 0; i < data.length; i++) {
                     html = html + '<tr>';
                     html = html + '<td class="diary-id">' + data[i].diaryId + '</td>';
-                    html = html + '<td>' + data[i].userId + '</td>';
+                    html = html + '<td class="diary-user">' + data[i].userId + '</td>';
                     html = html + '<td class="diary-name">' + data[i].diaryName + '</td>';
                     html = html + '<td class="diary-text">' + data[i].diaryText + '</td>';
-                    html = html + '<td>' + data[i].diaryGmtCreate + '</td>';
-                    html = html + '<td>' + data[i].diaryGmtModified + '</td>';
+                    html = html + '<td class="diary-create">' + data[i].diaryGmtCreate + '</td>';
+                    html = html + '<td class="diary-modified">' + data[i].diaryGmtModified + '</td>';
                     html = html + operation;
                     html = html + '</tr>';
                 }
@@ -32,7 +32,7 @@ $.func = {
                 $('#diary-table').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中
             },
             error: function () {
-                alert("查询失败！");
+                alert("查询失败！" + res.data.message);
             }
         });
     }
