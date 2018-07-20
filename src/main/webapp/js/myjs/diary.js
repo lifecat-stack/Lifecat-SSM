@@ -65,6 +65,7 @@ $(document).on('click', ".diary-delete", function () {
         url: "/ssm/diary/v1/" + id,
         type: 'delete',
         dataType: "json",
+        contentType: "application/json;charset=utf-8;",
         data: {},
         success: function (msg) {
             setTimeout(function () {

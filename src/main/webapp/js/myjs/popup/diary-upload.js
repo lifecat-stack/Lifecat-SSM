@@ -1,47 +1,39 @@
+$(document).on('click', "#diary-upload", function () {
+        var diaryName = $('input[name="diaryName"]').val();
+        var diaryText = $('textarea[name="diaryText"]').val();
 
-$('#diary-upload').on('click', function () {
-        var loading = layer.load();
-        var userId = 1;
-
-        var name = $('#diaryname').val();
-        var text = $('#diarytext').val();
-
-        // 表单验证
         var success = true;
-        if (name === null) {
-            layer.msg("name is null");
+        if (diaryName === null) {
+            $('#diary-name-label').html("diaryName is null");
             success = false;
         }
-        if (text === null) {
-            layer.msg("text is null");
+        if (diaryText === null) {
+            $('#diary-text-label').html("diaryText is null");
             success = false;
         }
 
         if (success) {
-            console.log("diary name:" + name + " text:" + text);
-
+            var data = {
+                "diaryName": diaryName,
+                "diaryText": diaryText
+            };
+            var jsonData = JSON.stringify(data);
             $.ajax({
-                url: "/ssm/diary/v1/diary",
+                url: "/ssm/diary/v1",
                 type: 'post',
-                contentType: 'charset=utf-8',
-                data: {diaryName: name, diaryText: text, userId: userId},
-                success: function () {
-                    layer.close(loading);
-                    layer.msg("上传成功");
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: jsonData,
+                success: function (res) {
                     setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
+                        console.log(res.message);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)
                 },
-                error: function (error) {
-                    layer.close(loading);
-                    layer.msg("上传失败");
-                    console.log('接口不通' + error);
+                error: function (res) {
                     setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
+                        console.log(res.message);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)

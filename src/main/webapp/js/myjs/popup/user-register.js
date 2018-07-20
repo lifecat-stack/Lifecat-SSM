@@ -1,17 +1,29 @@
-$('#user-register').on('click', function () {
-
+$(document).on('click', "#user-register", function () {
         var userName = $('input[name="userName"]').val();
         var userPassword = $('input[name="userPassword"]').val();
+        var userLevel = $('input[name="userLevel"]').val();
 
         var success = true;
-        if (userName === null || userPassword === null) {
-            console.log("输入信息为空！");
-            alert("输入信息为空！");
+        if (userName === null) {
+            $('#user-name-label').html("userName is null");
+            success = false;
+        }
+        if (userPassword === null) {
+            $('#user-password-label').html("userPassword is null");
+            success = false;
+        }
+        if (userLevel === null) {
+            $('#user-level-label').html("userLevel is null");
             success = false;
         }
 
         if (success) {
-            var jsonData = {"userName": userName, "userPassword": userPassword};
+            var data = {
+                "userName": userName,
+                "userPassword": userPassword,
+                "userLevel": userLevel
+            };
+            var jsonData = JSON.stringify(data);
             $.ajax({
                 url: "/ssm/user/v1",
                 type: 'post',
@@ -20,14 +32,20 @@ $('#user-register').on('click', function () {
                 },
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
-                data: JSON.stringify(jsonData),
-                success: function (data) {
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                data: jsonData,
+                success: function (res) {
+                    setTimeout(function () {
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 },
                 error: function (res) {
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                    setTimeout(function () {
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 }
             });
         }

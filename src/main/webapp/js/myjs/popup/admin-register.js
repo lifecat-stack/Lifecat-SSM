@@ -1,36 +1,41 @@
-$('#admin-register').on('click', function () {
-        var loading = layer.load();
-
+$(document).on('click', "#admin-register", function () {
         var adminName = $('input[name="adminName"]').val();
         var adminPassword = $('input[name="adminPassword"]').val();
 
         var success = true;
         if (adminName === null) {
-            layer.msg("adminName is null");
+            $('#admin-name-label').html("adminName is null");
             success = false;
         }
         if (adminPassword === null) {
-            layer.msg("adminPassword is null");
+            $('#admin-password-label').html("adminPassword is null");
             success = false;
         }
 
         if (success) {
+            var data = {
+                "adminName": adminName,
+                "adminPassword": adminPassword
+            };
+            var jsonData = JSON.stringify(data);
             $.ajax({
                 url: "/ssm/admin/v1",
                 type: 'post',
                 contentType: 'charset=utf-8;application/json',
                 dataType: "json",
-                data: {adminName: adminName, adminPassword: adminPassword},
-                success: function (data) {
+                data: jsonData,
+                success: function (res) {
                     setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("注册成功");
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
                     }, 1000)
                 },
                 error: function (res) {
                     setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("注册失败");
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
                     }, 1000)
                 }
             });
