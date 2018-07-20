@@ -100,7 +100,6 @@ public class ImageServiceImpl implements ImageService {
         checkObjectDataNotNull(imageDO.getImageId());
         checkObjectDataNotNull(imageDO.getClassId());
         checkObjectDataNotNull(imageDO.getImageText());
-        checkObjectDataNotNull(imageDO.getImagePath());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtModified(modified);

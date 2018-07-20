@@ -1,14 +1,13 @@
 var flush = function () {
     alert("您没有权限访问");
 
-    var adminId = 1;
     $.ajax({
         url: "/ssm/admin/v1/list",
         type: "GET",
         headers: {
             Accept: "application/json;charset=utf-8"
         },
-        dataType: "json",//返回的数据类型
+        dataType: "json",
         success: function (data) {
             var operation = '<td class=" text-center">' +
                 '<a class="admin-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
@@ -27,10 +26,10 @@ var flush = function () {
                 html = html + '</tr>';
             }
 
-            $('#admin-table').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中
+            $('#admin-table').html(html);
         },
         error: function (res) {
-            alert("查询失败！" + res.data.message);
+            alert("查询失败！" + res.message);
             location.reload();
         }
     });

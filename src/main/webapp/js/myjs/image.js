@@ -1,4 +1,5 @@
 var flush = function () {
+    // TODO get userID
     var userId = 1;
     $.ajax({
         url: "/ssm/image/v1/list/" + userId,
@@ -91,9 +92,11 @@ $(document).ready(function () {
     // 更新
     $(document).on('click', ".image-update", function () {
         var tr = $(this).parent().parent();
-        var id = tr.children("td[class='image-id']").text();
-        var name = tr.children("td[class='image-name']").text();
-        var text = tr.children("td[class='image-text']").text();
+        var imageId = tr.children("td[class='image-id']").text();
+        var imageText = tr.children("td[class='image-text']").text();
+        var imageClass = tr.children("td[class='image-class']").text();
+        var imageImg = tr.children("td[class='image-img']").html();
+
 
         layer.open({
             type: 2,
@@ -102,6 +105,20 @@ $(document).ready(function () {
             shadeClose: true,
             area: ['800px', '520px'],
             content: '/ssm/view/popup/image-update.html',
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+
+                var idLabel = body.find('span#image-id-label');
+                var textInput = body.find('input#imageText');
+                var classInput = body.find('input#imageClass');
+                var imageDiv = body.find('div#image-div');
+
+                $(idLabel).html(imageId);
+                $(textInput).val(imageText);
+                $(classInput).val(imageClass);
+                $(imageDiv).html(imageImg);
+            },
             end: function () {
                 flush();
             }

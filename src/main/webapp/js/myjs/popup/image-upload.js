@@ -3,39 +3,39 @@ var isInputAllow = function (value) {
     return !(value === '' || value === undefined || value === null || value.length < 1);
 };
 // 检测输入是否为空
-var checkInput = function (diaryName, diaryText) {
+var checkInput = function (imageText, imageClass) {
     var success = true;
-    if (isInputAllow(diaryName)) {
-        $('#diary-name-label').html(" ");
+    if (isInputAllow(imageText)) {
+        $('#image-text-label').html(" ");
     } else {
-        $('#diary-name-label').html("diaryName is null");
+        $('#image-text-label').html("imageText is null");
         success = false;
     }
-    if (isInputAllow(diaryText)) {
-        $('#diary-text-label').html(" ");
+    if (isInputAllow(imageClass)) {
+        $('#image-class-label').html(" ");
     } else {
-        $('#diary-text-label').html("diaryText is null");
+        $('#image-class-label').html("imageClass is null");
         success = false;
     }
     return success;
 };
-$('#image-upload').on('click', function () {
-        var diaryId = $('span#diary-id-label').html().trim();
-        var diaryName = $('input[name="diaryName"]').val();
-        var diaryText = $('textarea[name="diaryText"]').val();
+$('#image-update').on('click', function () {
 
-        var isSuccess = checkInput(diaryName, diaryText);
+        var imageText = $('input#imageText').val();
+        var imageClass = $('input#imageClass').val();
+        // TODO 上传File类型
+
+        var isSuccess = checkInput(imageText, imageClass);
 
         if (isSuccess) {
             var data = {
-                "diaryId": diaryId,
-                "diaryName": diaryName,
-                "diaryText": diaryText
+                "imageText": imageText,
+                "classId": imageClass
             };
             var jsonData = JSON.stringify(data);
             $.ajax({
-                url: "/ssm/diary/v1",
-                type: 'put',
+                url: "/ssm/image/v1",
+                type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 dataType: "json",
                 data: jsonData,

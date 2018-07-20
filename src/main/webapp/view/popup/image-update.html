@@ -15,21 +15,35 @@
             图片更新
         </div>
         <div class="panel-body">
+
+            <!--id-->
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon0">id</span>
+                    <span id="image-id-label" class="input-group-addon"></span>
+                </div>
+            </div>
+
+            <br>
+
             <form>
                 <div class="form-group">
                     <label for="imageText">图片标题</label>
+                    <p id="image-text-label"></p>
                     <input type="text" class="form-control" id="imageText" placeholder="Title"/>
                 </div>
+
                 <div class="form-group">
                     <label for="imageClass">图片类别</label>
+                    <p id="image-class-label"></p>
                     <input type="text" class="form-control" id="imageClass"
                            placeholder="类别"/>
                 </div>
+
                 <div class="form-group">
-                    <label for="image">File input</label>
-                    <input type="file" id="image"/>
-                    <p class="help-block">帮助提示</p>
+                    <div id="image-div"></div>
                 </div>
+
                 <div class="checkbox">
                     <label>
                         <input type="checkbox"/>

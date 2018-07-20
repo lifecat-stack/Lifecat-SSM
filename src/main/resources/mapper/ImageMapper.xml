@@ -79,7 +79,6 @@
         set
             class_id           = #{classId},
             image_text         = #{imageText},
-            image_path         = #{imagePath},
             image_gmt_modified = #{imageGmtModified}
         where image_id = #{imageId}
     </update>
