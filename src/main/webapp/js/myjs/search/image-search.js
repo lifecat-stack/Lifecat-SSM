@@ -1,10 +1,14 @@
+// 检测函数
+var isInputAllow = function (value) {
+    return !(value === '' || value === undefined || value === null || value.length < 1);
+};
 $('#search-btn').on('click', function () {
     var imageName = $('input[name="search-image"]').val();
-    // null
-    if (imageName.length < 1) {
+
+    if (isInputAllow(imageName)) {
         layer.msg("图片标题不能为空");
     }
-    // ajax
+
     else {
         $.ajax({
             url: "image/v1/" + imageName,

@@ -1,10 +1,14 @@
+// 检测函数
+var isInputAllow = function (value) {
+    return !(value === '' || value === undefined || value === null || value.length < 1);
+};
 $('#search-btn').on('click', function () {
     var adminName = $('input[name="search-admin"]').val();
-    // null
-    if (adminName.length < 1) {
+
+    if (isInputAllow(adminName)) {
         layer.msg("用户名不能为空");
     }
-    // ajax
+
     else {
         $.ajax({
             url: "admin/v1/" + adminName,

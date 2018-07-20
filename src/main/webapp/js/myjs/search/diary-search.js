@@ -1,10 +1,14 @@
+// 检测函数
+var isInputAllow = function (value) {
+    return !(value === '' || value === undefined || value === null || value.length < 1);
+};
 $('#search-btn').on('click', function () {
     var diaryName = $('input[name="search-diary"]').val();
-    // null
-    if (diaryName.length < 1) {
+
+    if (isInputAllow(diaryName)) {
         layer.msg("日记标题不能为空");
     }
-    // ajax
+
     else {
         $.ajax({
             url: "diary/v1/" + diaryName,
