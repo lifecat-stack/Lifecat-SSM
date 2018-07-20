@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * Image
  *
- * @date 2018/7/18
- * @auther ten
+ * @author Administrator
  */
 public interface ImageService {
     /**

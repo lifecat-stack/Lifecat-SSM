@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.spring.util.ServiceCheckUtil.*;
+
 @Service("imageService")
 public class ImageServiceImpl implements ImageService {
 
@@ -29,6 +31,11 @@ public class ImageServiceImpl implements ImageService {
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
+    /**
+     * 查询Image
+     *
+     * @param imageText image_text
+     */
     @Override
     public ImageDO readImageByText(String imageText) {
         Map<String, String> map = new HashMap<>(2);
@@ -36,40 +43,83 @@ public class ImageServiceImpl implements ImageService {
         return imageMapper.selectImageByText(map);
     }
 
+    /**
+     * 查询Image List
+     *
+     * @param userId user_id
+     */
     @Override
     public List<ImageDO> readImageListByUserId(int userId) {
         return imageMapper.selectImageListByUserId(userId);
     }
 
+    /**
+     * 查询Image List by Class
+     *
+     * @param userId  user_id
+     * @param classId class_id
+     */
     @Override
     public List<ImageDO> readImageListByClassId(int userId, int classId) {
-        Map<String,Integer> map = new HashMap<>(2);
-        map.put("userId",userId);
-        map.put("classId",classId);
+        Map<String, Integer> map = new HashMap<>(4);
+        map.put("userId", userId);
+        map.put("classId", classId);
         return imageMapper.selectImageListByClassId(map);
     }
 
+    /**
+     * 上传Image
+     *
+     * @param imageDO DO
+     */
     @Override
     public int createImage(ImageDO imageDO) {
+        // check properties
+        checkObjectDataNotNull(imageDO.getImageText());
+        checkObjectDataNotNull(imageDO.getImagePath());
+        // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtCreate(create);
         imageDO.setImageGmtModified(modified);
+        imageDO.setDeleted(1);
+        // TODO
+        imageDO.setUserId(1);
+        imageDO.setClassId(1);
         return imageMapper.insertImage(imageDO);
     }
 
+    /**
+     * 更新图片内容
+     *
+     * @param imageDO DO
+     */
     @Override
     public int updateImage(ImageDO imageDO) {
+        // check properties
+        checkObjectDataNotNull(imageDO.getImageId());
+        checkObjectDataNotNull(imageDO.getClassId());
+        checkObjectDataNotNull(imageDO.getImageText());
+        checkObjectDataNotNull(imageDO.getImagePath());
+        // set properties
         String modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtModified(modified);
+        // TODO
+        imageDO.setUserId(1);
         return imageMapper.updateImage(imageDO);
     }
 
+    /**
+     * 删除Image
+     *
+     * @param imageId image_id
+     */
     @Override
     public int deleteImageById(int imageId) {
         return imageMapper.deleteImageById(imageId);
     }
 
+    // TODO 外部接口 图片分类
     @Override
     public int classifyImage() {
         // TODO

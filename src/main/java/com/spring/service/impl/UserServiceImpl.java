@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.spring.util.ServiceCheckUtil.*;
+
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -28,14 +30,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserIconMapper userIconMapper;
 
-
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
+    /**
+     * 获取所有user信息
+     */
     @Override
     public List<UserDO> readUserList() {
         return userMapper.selectUserList();
     }
 
+    /**
+     * 获取user信息
+     *
+     * @param userName user_name
+     */
     @Override
     public UserDO readUserByName(String userName) {
         Map<String, String> map = new HashMap<>(2);
@@ -43,8 +52,17 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserByName(map);
     }
 
+    /**
+     * 创建user信息
+     *
+     * @param userDO DO
+     */
     @Override
     public int createUser(UserDO userDO) {
+        // check properties
+        checkObjectDataNotNull(userDO.getUserName());
+        checkObjectDataNotNull(userDO.getUserPassword());
+        // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         userDO.setUserGmtCreate(create);
@@ -53,13 +71,28 @@ public class UserServiceImpl implements UserService {
         return userMapper.insertUser(userDO);
     }
 
+    /**
+     * 更新user信息
+     *
+     * @param userDO DO
+     */
     @Override
     public int updateUser(UserDO userDO) {
+        // check properties
+        checkObjectDataNotNull(userDO.getUserId());
+        checkObjectDataNotNull(userDO.getUserName());
+        checkObjectDataNotNull(userDO.getUserPassword());
+        // set properties
         String modified = dateTimeUtil.getCurrentTime();
         userDO.setUserGmtModified(modified);
         return userMapper.updateUser(userDO);
     }
 
+    /**
+     * 删除user信息
+     *
+     * @param userId user_id
+     */
     @Override
     public int deleteUserById(int userId) {
         return userMapper.deleteUserById(userId);

@@ -26,15 +26,20 @@ public class DiaryServiceImpl implements DiaryService {
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
     /**
-     * 获取
+     * 查询Diary List
      *
-     * @param 
+     * @param userId user_id
      */
     @Override
     public List<DiaryDO> readDiaryListByUserId(int userId) {
         return diaryMapper.selectDiaryListByUserId(userId);
     }
 
+    /**
+     * 查询Diary
+     *
+     * @param diaryName diary_name
+     */
     @Override
     public DiaryDO readDiaryByDiaryName(String diaryName) {
         Map<String, String> map = new HashMap<>(2);
@@ -42,8 +47,17 @@ public class DiaryServiceImpl implements DiaryService {
         return diaryMapper.selectDiaryByDiaryName(map);
     }
 
+    /**
+     * 上传Diary
+     *
+     * @param diaryDO DO
+     */
     @Override
     public int createDiary(DiaryDO diaryDO) {
+        // check properties
+        checkObjectDataNotNull(diaryDO.getDiaryName());
+        checkObjectDataNotNull(diaryDO.getdiaryText());
+        // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
         diaryDO.setdiaryGmtCreate(create);
@@ -54,13 +68,28 @@ public class DiaryServiceImpl implements DiaryService {
         return diaryMapper.insertDiary(diaryDO);
     }
 
+    /**
+     * 更新Diary
+     *
+     * @param diaryDO diary
+     */
     @Override
     public int updateDiary(DiaryDO diaryDO) {
+        // check properties
+        checkObjectDataNotNull(diaryDO.getDiaryId());
+        checkObjectDataNotNull(diaryDO.getDiaryName());
+        checkObjectDataNotNull(diaryDO.getdiaryText());
+        // set properties
         String modified = dateTimeUtil.getCurrentTime();
         diaryDO.setdiaryGmtModified(modified);
         return diaryMapper.updateDiary(diaryDO);
     }
 
+    /**
+     * 删除Diary
+     *
+     * @param diaryId diary_id
+     */
     @Override
     public int deleteDiaryById(int diaryId) {
         return diaryMapper.deleteDiaryById(diaryId);
