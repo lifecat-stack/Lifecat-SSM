@@ -6,7 +6,6 @@ import com.spring.mapper.UserMapper;
 import com.spring.mapper.UserPropertyMapper;
 import com.spring.service.UserService;
 import com.spring.util.DateTimeUtil;
-import com.spring.util.MybatisStringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,6 @@ public class UserServiceImpl implements UserService {
         userDO.setUserGmtCreate(create);
         userDO.setUserGmtModified(modified);
         userDO.setUserLevel("user");
-
         return userMapper.insertUser(userDO);
     }
 

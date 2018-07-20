@@ -37,9 +37,8 @@
             req.getRequestDispatcher(jspUrl).forward(req, resp);
         }
 
-        logger.info("Form Filter Success");
-
-        // 提取url请求信息 /xxx
+        logger.info(RequestSuccess
+    // 提取url请求信息 /xxx
         String url = path.substring(path.lastIndexOf("/"), path.lastIndexOf("."));
         logger.info("request url is :{}", url);
 

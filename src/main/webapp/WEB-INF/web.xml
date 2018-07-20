@@ -96,8 +96,8 @@
     </mime-mapping>
 
     <!--配置错误页面-->
-    <error-page>  <!--将错误代码(Error Code)或异常(Exception)的种类对应到web应用资源路径.-->
-        <!--HTTP Error code,例如: 404、403-->
+    <error-page>  <!--将错误代码(RequestError Code)或异常(Exception)的种类对应到web应用资源路径.-->
+        <!--HTTP RequestError code,例如: 404、403-->
         <error-code>404</error-code>
         <!--用来设置发生错误或异常时要显示的页面-->
         <location>/view/error.html</location>

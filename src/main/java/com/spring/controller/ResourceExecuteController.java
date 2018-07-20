@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * 查询失败 not found 404
+ * 增加、修改、删除失败 conflict 409
  *
  * @author Administrator
  */
 @ControllerAdvice
-public class ResourceNotFoundController {
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceExecuteController {
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public RequestError handleNotFound(ResourceNotFoundException e) {
+    @ExceptionHandler(ResourceExecuteException.class)
+    public RequestError handleExecute(ResourceExecuteException e) {
         return new RequestError(e.getErrorMsg());
     }
 }

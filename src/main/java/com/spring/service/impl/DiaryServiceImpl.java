@@ -3,9 +3,7 @@ package com.spring.service.impl;
 import com.spring.entity.DiaryDO;
 import com.spring.mapper.DiaryMapper;
 import com.spring.service.DiaryService;
-import com.spring.service.ImageService;
 import com.spring.util.DateTimeUtil;
-import com.spring.util.MybatisStringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.spring.util.ServiceCheckUtil.*;
 
 @Service("diaryService")
 public class DiaryServiceImpl implements DiaryService {
@@ -25,6 +25,11 @@ public class DiaryServiceImpl implements DiaryService {
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
 
+    /**
+     * 获取
+     *
+     * @param 
+     */
     @Override
     public List<DiaryDO> readDiaryListByUserId(int userId) {
         return diaryMapper.selectDiaryListByUserId(userId);
@@ -43,6 +48,9 @@ public class DiaryServiceImpl implements DiaryService {
         create = modified = dateTimeUtil.getCurrentTime();
         diaryDO.setdiaryGmtCreate(create);
         diaryDO.setdiaryGmtModified(modified);
+        diaryDO.setDeleted(1);
+        // TODO 获取userId
+        diaryDO.setUserId(1);
         return diaryMapper.insertDiary(diaryDO);
     }
 

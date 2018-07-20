@@ -1,14 +1,14 @@
 package com.spring.exception;
 
-public class Error {
+public class RequestError {
 
     private String message;
 
-    public Error(String message) {
+    public RequestError(String message) {
         this.message = message;
     }
 
-    public String getSuccess() {
+    public String getMessage() {
         return message;
     }
 }

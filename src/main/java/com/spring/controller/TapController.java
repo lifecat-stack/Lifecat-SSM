@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home-tap")
 public class TapController {
 
-    private static Logger logger = LoggerFactory.getLogger(TapController.class);
+    private Logger logger = LoggerFactory.getLogger(TapController.class);
 
     @RequestMapping(value = "/main")
     public String main() {

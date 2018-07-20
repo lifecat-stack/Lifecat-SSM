@@ -6,7 +6,6 @@ import com.spring.mapper.ImageFeatureMapper;
 import com.spring.mapper.ImageMapper;
 import com.spring.service.ImageService;
 import com.spring.util.DateTimeUtil;
-import com.spring.util.MybatisStringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

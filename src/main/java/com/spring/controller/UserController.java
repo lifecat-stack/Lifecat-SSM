@@ -1,71 +1,108 @@
 package com.spring.controller;
 
-import com.spring.dto.UserDTO;
 import com.spring.entity.UserDO;
-import com.spring.exception.impl.ServiceNotFoundException;
-import com.spring.exception.impl.UserNotFoundException;
+import com.spring.exception.RequestSuccess;
 import com.spring.service.*;
+
+import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+import static com.spring.util.ControllerCheckUtil.*;
+
+@RestController
 @RequestMapping("/user/v1")
 public class UserController {
 
-    private static Logger logger = LoggerFactory.getLogger(UserController.class);
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-        if (this.userService == null) {
-            throw new ServiceNotFoundException(userService.getClass().getName());
-        }
+        checkResourceNotNull(userService, "userService not load");
     }
 
-    @ResponseBody
+    /**
+     * 查询user list
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
     public List<UserDO> getUserList() {
+        // execute
         List<UserDO> userList = userService.readUserList();
-        if (userList == null) {
-            throw new UserNotFoundException();
-        }
+        // return
+        checkResourceNotNull(userList, "user list is null");
         return userList;
     }
 
-    @ResponseBody
+    /**
+     * 查询user
+     *
+     * @param userName user_name
+     */
     @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET, produces = "application/json")
-    public UserDO getUser(@PathVariable("userName") String userName) {
+    public UserDO getUser(@PathVariable("userName") @NotNull String userName) {
+        // check
+        checkRequestDataNotNull(userName);
+        // execute
         UserDO userDO = userService.readUserByName(userName);
-        if (userDO == null) {
-            throw new UserNotFoundException(userName);
-        }
+        // return
+        checkResourceNotNull(userDO, userName + " is not found");
         return userDO;
     }
 
-    @ResponseBody
+    /**
+     * 创建user
+     *
+     * @param userDO user
+     */
     @RequestMapping(method = RequestMethod.POST)
-    public String postUser(@RequestBody UserDO userDO) {
+    public RequestSuccess postUser(@RequestBody @NotNull UserDO userDO) {
+        // check
+        checkRequestDataNotNull(userDO);
+        // execute
         int result = userService.createUser(userDO);
-        System.out.println("插入操作的行数"+result);
-        return String.valueOf(result);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("user create success");
     }
 
+    /**
+     * 更新user
+     *
+     * @param userDO user
+     */
     @RequestMapping(method = RequestMethod.PUT)
-    public String putUser(@RequestBody UserDTO userDTO) {
-        // TODO
-        return null;
+    public RequestSuccess putUser(@RequestBody @NotNull UserDO userDO) {
+        // check
+        checkRequestDataNotNull(userDO);
+        // execute
+        int result = userService.updateUser(userDO);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("user update success");
     }
 
-    @ResponseBody
+    /**
+     * 删除user
+     *
+     * @param userId user_id
+     */
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
-    public String deleteUser(@PathVariable("userId") String userId) {
-        return "删除操作";
+    public RequestSuccess deleteUser(@PathVariable("userId") @NotNull String userId) {
+        // check
+        checkRequestDataNotNull(userId);
+        checkRquestDataFormatInt(userId);
+        // execute
+        int id = Integer.parseInt(userId);
+        int result = userService.deleteUserById(id);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("user delete success");
     }
 }

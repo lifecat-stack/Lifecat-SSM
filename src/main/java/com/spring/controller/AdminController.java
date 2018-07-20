@@ -1,49 +1,85 @@
 package com.spring.controller;
 
-import com.spring.exception.impl.AdminNotFoundException;
-import com.spring.exception.impl.ServiceNotFoundException;
+import com.spring.entity.AdminDO;
+import com.spring.exception.RequestSuccess;
 import com.spring.service.AdminService;
+import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import static com.spring.util.ControllerCheckUtil.*;
+
+@RestController
 @RequestMapping("/admin/v1")
 public class AdminController {
 
-    private static Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     private final AdminService adminService;
 
     @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
-        if (this.adminService == null){
-            throw new ServiceNotFoundException(adminService.getClass().getName());
-        }
+        checkResourceNotNull(adminService, "adminService not load");
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String getAdmin() {
-        throw new AdminNotFoundException();
+    /**
+     * 查询admin list
+     */
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public RequestSuccess getAdminList() {
+        // execute
+        // TODO
+        // return
+        return new RequestSuccess("admin list is null");
     }
 
+    /**
+     * 创建admin
+     *
+     * @param adminDO admin
+     */
     @RequestMapping(method = RequestMethod.POST)
-    public String postAdmin() {
-       throw new AdminNotFoundException();
+    public RequestSuccess postAdmin(@RequestBody  AdminDO adminDO) {
+        // check
+        checkRequestDataNotNull(adminDO);
+        // execute
+        // TODO
+        // return
+        return new RequestSuccess("admin create is todo");
     }
 
+    /**
+     * 更新admin
+     *
+     * @param adminDO admin
+     */
     @RequestMapping(method = RequestMethod.PUT)
-    public String putAdmin() {
-        throw new AdminNotFoundException();
+    public RequestSuccess putAdmin(@RequestBody @NotNull AdminDO adminDO) {
+        // check
+        checkRequestDataNotNull(adminDO);
+        // execute
+        // TODO
+        // return
+        return new RequestSuccess("admin update is todo");
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteAdmin() {
-        throw new AdminNotFoundException();
+    /**
+     * 删除admin
+     *
+     * @param adminId admin_id
+     */
+    @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
+    public RequestSuccess deleteAdmin(@PathVariable @NotNull String adminId) {
+        // check
+        checkRequestDataNotNull(adminId);
+        checkRquestDataFormatInt(adminId);
+        // execute
+        // TODO
+        // return
+        return new RequestSuccess("admin delete is todo");
     }
 
 }

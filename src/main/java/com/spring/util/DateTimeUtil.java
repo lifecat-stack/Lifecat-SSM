@@ -11,6 +11,7 @@ import java.util.Date;
  *
  * @auther ten
  */
+@Component
 public class DateTimeUtil {
 
     private static volatile DateTimeUtil INSTANCE = null;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class DispatcherController {
 
-    private static Logger logger = LoggerFactory.getLogger(DispatcherController.class);
+    private Logger logger = LoggerFactory.getLogger(DispatcherController.class);
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {

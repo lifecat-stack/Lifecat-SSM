@@ -1,19 +1,20 @@
 package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
-import com.spring.exception.impl.DiaryNotFoundException;
-import com.spring.exception.impl.ServiceNotFoundException;
+import com.spring.exception.RequestSuccess;
 import com.spring.service.*;
+
+import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.spring.util.ControllerCheckUtil.*;
 
-@Controller
+@RestController
 @RequestMapping("/diary/v1")
 public class DiaryController {
 
@@ -24,50 +25,90 @@ public class DiaryController {
     @Autowired
     public DiaryController(DiaryService diaryService) {
         this.diaryService = diaryService;
-        if (this.diaryService == null){
-            throw new ServiceNotFoundException(diaryService.getClass().getName());
-        }
+        checkResourceNotNull(diaryService, "diaryService not load");
     }
 
-    @ResponseBody
+    /**
+     * 查询diary list
+     *
+     * @param userId user_id
+     */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public List<DiaryDO> getDiaryList(@PathVariable("userId") String userId) {
+    public List<DiaryDO> getDiaryList(@PathVariable("userId") @NotNull String userId) {
+        // check
+        checkRquestDataFormatInt(userId);
+        // execute
         int id = Integer.parseInt(userId);
         List<DiaryDO> diaryList = diaryService.readDiaryListByUserId(id);
-        if (diaryList == null) {
-            throw new DiaryNotFoundException(id);
-        }
+        // return
+        checkResourceNotNull(diaryList, userId + " diary list is null");
         return diaryList;
     }
 
-    @ResponseBody
+    /**
+     * 查询diary
+     *
+     * @param diaryName diary_name
+     */
     @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET, produces = "application/json")
-    public DiaryDO getDiary(@PathVariable("diaryName") String diaryName) {
+    public DiaryDO getDiary(@PathVariable("diaryName") @NotNull String diaryName) {
+        // check
+        checkRequestDataNotNull(diaryName);
+        // execute
         DiaryDO diary = diaryService.readDiaryByDiaryName(diaryName);
-        if (diary == null) {
-            throw new DiaryNotFoundException(diaryName);
-        }
+        // return
+        checkResourceNotNull(diary, diaryName + " not found");
         return diary;
     }
 
+    /**
+     * 创建diary
+     *
+     * @param diaryDO diary
+     */
     @RequestMapping(method = RequestMethod.POST)
-    public String postDiary(@RequestBody String param) {
-        System.out.println(param);
-
-        String diaryName = "name";
-        String diaryText = "text";
-        String userId = "1";
-        logger.info("diary post" + diaryName + diaryText + userId);
-        return "home";
+    public RequestSuccess postDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+        // check
+        checkRequestDataNotNull(diaryDO);
+        // execute
+        int result = diaryService.createDiary(diaryDO);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("diary create success");
     }
 
+    /**
+     * 更新diary
+     *
+     * @param diaryDO diary
+     */
     @RequestMapping(method = RequestMethod.PUT)
-    public void putDiary() {
+    public RequestSuccess putDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+        // check
+        checkRequestDataNotNull(diaryDO);
+        // execute
+        int result = diaryService.updateDiary(diaryDO);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("diary update success");
     }
 
-    @ResponseBody
+    /**
+     * 删除diary
+     *
+     * @param diaryId diary_id
+     */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public String deleteDiary(@PathVariable("diaryId") String diaryId) {
-        return "删除操作";
+    public RequestSuccess deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
+        // check
+        checkRequestDataNotNull(diaryId);
+        checkRquestDataFormatInt(diaryId);
+        // execute
+        int id = Integer.parseInt(diaryId);
+        int result = diaryService.deleteDiaryById(id);
+        // return
+        checkExecuteResultSuccess(result);
+        return new RequestSuccess("diary delete success");
     }
+
 }

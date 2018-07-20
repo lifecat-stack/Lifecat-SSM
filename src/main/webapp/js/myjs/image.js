@@ -11,6 +11,7 @@ $.func = {
             data: {},
             dataType: "json",//返回的数据类型
             success: function (data) {
+                data.status
                 var operation = '<td class=" text-center">' +
                     '<a class="image-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                     '&nbsp;&nbsp;' +
