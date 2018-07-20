@@ -1,39 +1,53 @@
-$('#user-update').on('click', function () {
-        var loading = layer.load();
-
+$(document).on('click', "#user-update", function () {
+        var userId = $('span#user-id-label').html().trim();
         var userName = $('input[name="userName"]').val();
         var userPassword = $('input[name="userPassword"]').val();
+        var userLevel = $('input[name="userLevel"]').val();
 
         var success = true;
         if (userName === null) {
-            layer.msg("userName is null");
+            $('#user-name-label').html("userName is null");
             success = false;
         }
         if (userPassword === null) {
-            layer.msg("userPassword is null");
+            $('#user-password-label').html("userPassword is null");
+            success = false;
+        }
+        if (userLevel === null) {
+            $('#user-level-label').html("userLevel is null");
             success = false;
         }
 
         if (success) {
+            var data = {
+                "userId": userId,
+                "userName": userName,
+                "userPassword": userPassword,
+                "userLevel" : userLevel
+            };
+            var jsonData = JSON.stringify(data);
             $.ajax({
                 url: "/ssm/user/v1",
                 type: 'put',
-                contentType: 'charset=utf-8;application/json',
+                contentType: 'application/json;charset=utf-8;',
                 dataType: "json",
-                data: {userName: userName, userPassword: userPassword},
-                success: function (data) {
+                data: jsonData,
+                success: function (res) {
                     setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("更新成功");
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
                     }, 1000)
                 },
                 error: function (res) {
                     setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("更新失败");
+                        console.log(res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
                     }, 1000)
                 }
             });
         }
     }
 );
+

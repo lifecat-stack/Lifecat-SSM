@@ -32,7 +32,7 @@ $('#search-btn').on('click', function () {
                 $('#diary-table').html(html);
             },
             error: function (res) {
-                layer.msg("没有这资源" + data.message);
+                layer.msg("没有这资源" + res.message);
                 alert("查询失败！" + res.data.message);
             }
         });

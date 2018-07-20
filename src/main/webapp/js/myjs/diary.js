@@ -96,6 +96,18 @@ $(document).on('click', ".diary-update", function () {
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],
-        content: '/ssm/view/popup/diary-update.html?id=' + id + "&name=" + name + "&text=" + text
+        content: '/ssm/view/popup/diary-update.html',
+        success: function (layero, index) {
+            var body = layer.getChildFrame('body', index);
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+
+            var idLabel = body.find('span#diary-id-label');
+            var nameInput = body.find('input[name="diaryName"]');
+            var textInput = body.find('textarea[name="diaryText"]');
+
+            $(idLabel).html(id);
+            $(nameInput).val(name);
+            $(textInput).val(text);
+        }
     });
 });

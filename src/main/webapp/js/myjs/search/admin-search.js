@@ -31,7 +31,7 @@ $('#search-btn').on('click', function () {
                 $('#admin-table').html(html);
             },
             error: function (res) {
-                layer.msg("查无此人，请确认管理员用户名" + data.message);
+                layer.msg("查无此人，请确认管理员用户名" + res.message);
                 alert("查询失败！" + res.data.message);
             }
         });

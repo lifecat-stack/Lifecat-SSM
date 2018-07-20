@@ -104,8 +104,6 @@ public class ImageServiceImpl implements ImageService {
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
         imageDO.setImageGmtModified(modified);
-        // TODO
-        imageDO.setUserId(1);
         return imageMapper.updateImage(imageDO);
     }
 

@@ -82,6 +82,7 @@ public class UserServiceImpl implements UserService {
         checkObjectDataNotNull(userDO.getUserId());
         checkObjectDataNotNull(userDO.getUserName());
         checkObjectDataNotNull(userDO.getUserPassword());
+        checkObjectDataNotNull(userDO.getUserLevel());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
         userDO.setUserGmtModified(modified);

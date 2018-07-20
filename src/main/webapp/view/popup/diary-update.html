@@ -17,6 +17,16 @@
         </div>
         <div class="panel-body">
 
+            <!--id-->
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon0">id</span>
+                    <span id="diary-id-label" class="input-group-addon"></span>
+                </div>
+            </div>
+
+            <br>
+
             <!--日记名-->
             <div class="col-md-12">
                 <div class="input-group">
@@ -24,6 +34,7 @@
                     <input name="diaryName" type="text" class="form-control" placeholder="diaryName"
                            aria-describedby="basic-addon1"/>
                 </div>
+                <p id="diary-name-label"></p>
             </div>
 
             <br>
@@ -35,6 +46,7 @@
                     <textarea name="diaryText" rows="10" class="form-control" placeholder="diaryText"
                               aria-describedby="basic-addon1"></textarea>
                 </div>
+                <p id="diary-text-label"></p>
             </div>
 
             <br>
@@ -44,7 +56,7 @@
                 <div class="input-group">
                     <div class="col-md-3"></div>
                     <span class="col-md-6 input-group-btn">
-                        <button id="admin-update" class="btn btn-info" type="button">更新</button>
+                        <button id="diary-update" class="btn btn-info" type="button">更新</button>
                     </span>
                     <div class="col-md-3"></div>
                 </div>

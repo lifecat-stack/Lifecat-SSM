@@ -1,70 +1,41 @@
-// 获取父框架传进的参数
-$(function () {
-    var url = window.location.href;
-    var str = url.split('?')[1];
-    // [id= , name= , text= ]
-    var args = str.split('&');
+$(document).on('click', "#diary-update", function () {
+        var diaryId = $('span#diary-id-label').html().trim();
+        var diaryName = $('input[name="diaryName"]').val();
+        var diaryText = $('textarea[name="diaryText"]').val();
 
-    var did = args[0].split('=')[1];
-    var name = args[1].split('=')[1];
-    var text = args[2].split('=')[1];
-
-    // url编码解码
-    $('#diaryid').val(decodeURI(did));
-    $('#diaryname').val(decodeURI(name));
-    $('#diarytext').val(decodeURI(text));
-
-    console.log("id:" + did + " name:" + name + " text:" + text);
-});
-
-
-$('#diary-update').on('click', function () {
-
-        console.log("/ssm/diary update");
-
-        var did = $('#diaryid').val();
-        var name = $('#diaryname').val();
-        var text = $('#diarytext').val();
-
-        // 表单验证
         var success = true;
-        if (did === null) {
-            layer.msg("id is null");
+        if (diaryName === null) {
+            $('#diary-name-label').html("diaryName is null");
             success = false;
         }
-        if (name === null) {
-            layer.msg("name is null");
-            success = false;
-        }
-        if (text === null) {
-            layer.msg("text is null");
+        if (diaryText === null) {
+            $('#diary-text-label').html("diaryText is null");
             success = false;
         }
 
         if (success) {
-            var args = "id=" + did + " &name=" + name + "&text=" + text;
-
+            var data = {
+                "diaryId": diaryId,
+                "diaryName": diaryName,
+                "diaryText": diaryText
+            };
+            var jsonData = JSON.stringify(data);
             $.ajax({
-                url: "diary/v1/diary?" + args,
-                type: 'PUT',
-                contentType: 'charset=utf-8',
-                success: function () {
-                    layer.close(loading);
-                    layer.msg("更新成功");
+                url: "/ssm/diary/v1",
+                type: 'put',
+                contentType: 'application/json;charset=utf-8;',
+                dataType: "json",
+                data: jsonData,
+                success: function (res) {
                     setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
+                        console.log(res.message);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)
                 },
-                error: function (error) {
-                    layer.close(loading);
-                    layer.msg("更新失败");
-                    console.log('接口不通' + error);
+                error: function (res) {
                     setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
+                        console.log(res.message);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)

@@ -87,7 +87,8 @@ $(document).on('click', ".user-update", function () {
     var tr = $(this).parent().parent();
     var id = tr.children("td[class='user-id']").text();
     var name = tr.children("td[class='user-name']").text();
-    var text = tr.children("td[class='user-text']").text();
+    var password = tr.children("td[class='user-password']").text();
+    var level = tr.children("td[class='user-level']").text();
 
     layer.open({
         type: 2,
@@ -95,6 +96,20 @@ $(document).on('click', ".user-update", function () {
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area: ['800px', '520px'],
-        content: '/ssm/view/popup/user-update.html?id=' + id + "&name=" + name + "&text=" + text
+        content: '/ssm/view/popup/user-update.html',
+        success: function (layero, index) {
+            var body = layer.getChildFrame('body', index);
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+
+            var idLabel = body.find('span#user-id-label');
+            var nameInput = body.find('input[name="userName"]');
+            var passwordInput = body.find('input[name="userPassword"]');
+            var levelInput = body.find('input[name="userLevel"]');
+
+            $(idLabel).html(id);
+            $(nameInput).val(name);
+            $(passwordInput).val(password);
+            $(levelInput).val(level);
+        }
     });
 });

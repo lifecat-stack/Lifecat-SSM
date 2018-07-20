@@ -3,7 +3,7 @@ $.func = {
     flush: function () {
         alert("您没有权限访问");
 
-        var userId = 1;
+        var adminId = 1;
         $.ajax({
             url: "/ssm/admin/v1/list",
             type: "GET",
@@ -37,3 +37,32 @@ $.func = {
         });
     }
 };
+
+// 更新
+$(document).on('click', ".admin-update", function () {
+    var tr = $(this).parent().parent();
+    var id = tr.children("td[class='admin-id']").text();
+    var name = tr.children("td[class='admin-name']").text();
+    var password = tr.children("td[class='admin-password']").text();
+
+    layer.open({
+        type: 2,
+        title: '更新管理员信息',
+        maxmin: true,
+        shadeClose: true, //点击遮罩关闭层
+        area: ['800px', '520px'],
+        content: '/ssm/view/popup/admin-update.html',
+        success: function (layero, index) {
+            var body = layer.getChildFrame('body', index);
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+
+            var idLabel = body.find('span#admin-id-label');
+            var nameInput = body.find('input[name="adminName"]');
+            var passwordInput = body.find('input[name="adminPassword"]');
+
+            $(idLabel).html(id);
+            $(nameInput).val(name);
+            $(passwordInput).val(password);
+        }
+    });
+});
