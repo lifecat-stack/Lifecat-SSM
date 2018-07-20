@@ -1,20 +1,32 @@
+// 检测函数
+var isInputAllow = function (value) {
+    return !(value === '' || value === undefined || value === null || value.length < 1);
+};
+// 检测输入是否为空
+var checkInput = function (userName, userPassword) {
+    var success = true;
+    if (isInputAllow(userName)) {
+        $('#user-name-label').html(" ");
+    } else {
+        $('#user-name-label').html("userName is null");
+        success = false;
+    }
+    if (isInputAllow(userPassword)) {
+        $('#user-password-label').html(" ");
+    } else {
+        $('#user-password-label').html("userPassword is null");
+        success = false;
+    }
+    return success;
+};
 $('#user-login').on('click', function () {
-        var loading = layer.load();
 
         var userName = $('input[name="userName"]').val();
         var userPassword = $('input[name="userPassword"]').val();
 
-        var success = true;
-        if (userName === null) {
-            layer.msg("userName is null");
-            success = false;
-        }
-        if (userPassword === null) {
-            layer.msg("userPassword is null");
-            success = false;
-        }
+        var isSuccess = checkInput(userName, userPassword);
 
-        if (success) {
+        if (isSuccess) {
             $.ajax({
                 url: "/ssm/user/v1/login",
                 type: 'post',
@@ -22,16 +34,18 @@ $('#user-login').on('click', function () {
                 dataType: "json",
                 data: {userName: userName, userPassword: userPassword},
                 success: function (res) {
-                    console.log(res.success);
-
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                    setTimeout(function () {
+                        parent.layer.msg("操作成功 " + res.success);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 },
                 error: function (res) {
-                    console.log(res.message);
-
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                    setTimeout(function () {
+                        parent.layer.msg("操作失败 " + res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 }
             });
         }

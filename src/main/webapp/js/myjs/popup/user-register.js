@@ -1,23 +1,38 @@
+// 检测函数
+var isInputAllow = function (value) {
+    return !(value === '' || value === undefined || value === null || value.length < 1);
+};
+// 检测输入是否为空
+var checkInput = function (userName, userPassword, userLevel) {
+    var success = true;
+    if (isInputAllow(userName)) {
+        $('#user-name-label').html(" ");
+    } else {
+        $('#user-name-label').html("userName is null");
+        success = false;
+    }
+    if (isInputAllow(userPassword)) {
+        $('#user-password-label').html(" ");
+    } else {
+        $('#user-password-label').html("userPassword is null");
+        success = false;
+    }
+    if (isInputAllow(userLevel)) {
+        $('#user-level-label').html(" ");
+    } else {
+        $('#user-level-label').html("userLevel is null");
+        success = false;
+    }
+    return success;
+};
 $(document).on('click', "#user-register", function () {
         var userName = $('input[name="userName"]').val();
         var userPassword = $('input[name="userPassword"]').val();
         var userLevel = $('input[name="userLevel"]').val();
 
-        var success = true;
-        if (userName === null) {
-            $('#user-name-label').html("userName is null");
-            success = false;
-        }
-        if (userPassword === null) {
-            $('#user-password-label').html("userPassword is null");
-            success = false;
-        }
-        if (userLevel === null) {
-            $('#user-level-label').html("userLevel is null");
-            success = false;
-        }
+        var isSuccess = checkInput(userName, userPassword, userLevel);
 
-        if (success) {
+        if (isSuccess) {
             var data = {
                 "userName": userName,
                 "userPassword": userPassword,
@@ -34,16 +49,18 @@ $(document).on('click', "#user-register", function () {
                 dataType: "json",
                 data: jsonData,
                 success: function (res) {
-                    console.log(res.success);
-
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                    setTimeout(function () {
+                        parent.layer.msg("操作成功 " + res.success);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 },
                 error: function (res) {
-                    console.log(res.message);
-
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
+                    setTimeout(function () {
+                        parent.layer.msg("操作失败 " + res.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }, 1000)
                 }
             });
         }
