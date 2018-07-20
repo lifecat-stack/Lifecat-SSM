@@ -8,7 +8,7 @@ $(document).ready(function(){
             text.html(html);
         },
         error: function () {
-            layer.msg("请求失败:(")
+            layer.msg("请求失败:(");
         }
     })
 });

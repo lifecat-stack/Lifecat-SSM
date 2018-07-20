@@ -23,7 +23,7 @@ $(document).on('click', "#user-update", function () {
                 "userId": userId,
                 "userName": userName,
                 "userPassword": userPassword,
-                "userLevel" : userLevel
+                "userLevel": userLevel
             };
             var jsonData = JSON.stringify(data);
             $.ajax({
@@ -33,18 +33,16 @@ $(document).on('click', "#user-update", function () {
                 dataType: "json",
                 data: jsonData,
                 success: function (res) {
-                    setTimeout(function () {
-                        console.log(res.message);
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                    }, 1000)
+                    console.log(res.success);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 },
                 error: function (res) {
-                    setTimeout(function () {
-                        console.log(res.message);
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                    }, 1000)
+                    console.log(res.message);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 }
             });
         }

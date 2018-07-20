@@ -21,17 +21,17 @@ $('#admin-login').on('click', function () {
                 contentType: 'charset=utf-8;application/json',
                 dataType: "json",
                 data: {adminName: adminName, adminPassword: adminPassword},
-                success: function (data) {
-                    setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("登录成功");
-                    }, 1000)
+                success: function (res) {
+                    console.log(res.success);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 },
                 error: function (res) {
-                    setTimeout(function () {
-                        layer.close(loading);
-                        layer.msg("登录失败");
-                    }, 1000)
+                    console.log(res.message);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 }
             });
         }

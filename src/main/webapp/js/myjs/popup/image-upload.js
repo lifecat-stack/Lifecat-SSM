@@ -24,26 +24,17 @@ $('#image-upload').on('click', function () {
                 type: 'post',
                 contentType: 'charset=utf-8',
                 data: {diaryName: name, diaryText: text, userId: userId},
-                success: function () {
-                    layer.close(loading);
-                    layer.msg("上传成功");
-                    setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                    }, 1000)
+                success: function (res) {
+                    console.log(res.success);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 },
-                error: function (error) {
-                    layer.close(loading);
-                    layer.msg("上传失败");
-                    console.log('接口不通' + error);
-                    setTimeout(function () {
-                        parent.location.reload();
-                        // 关闭当前iframe
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                    }, 1000)
+                error: function (res) {
+                    console.log(res.message);
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
                 }
             });
         }

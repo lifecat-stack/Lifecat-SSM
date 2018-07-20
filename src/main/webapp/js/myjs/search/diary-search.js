@@ -33,7 +33,6 @@ $('#search-btn').on('click', function () {
             },
             error: function (res) {
                 layer.msg("没有这资源" + res.message);
-                alert("查询失败！" + res.data.message);
             }
         });
     }
