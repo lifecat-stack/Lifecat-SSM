@@ -76,7 +76,7 @@ public class ImageServiceImpl implements ImageService {
     public int createImage(ImageDO imageDO) {
         // check properties
         checkObjectDataNotNull(imageDO.getImageText());
-        checkObjectDataNotNull(imageDO.getImagePath());
+        checkObjectDataNotNull(imageDO.getClassId());
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
@@ -85,7 +85,9 @@ public class ImageServiceImpl implements ImageService {
         imageDO.setDeleted(1);
         // TODO
         imageDO.setUserId(1);
-        imageDO.setClassId(1);
+        if (imageDO.getImagePath() == null) {
+            imageDO.setImagePath("/ssm/images/user/user.jpg");
+        }
         return imageMapper.insertImage(imageDO);
     }
 

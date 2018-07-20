@@ -19,7 +19,7 @@ var checkInput = function (imageText, imageClass) {
     }
     return success;
 };
-$('#image-update').on('click', function () {
+$('#image-upload').on('click', function () {
 
         var imageText = $('input#imageText').val();
         var imageClass = $('input#imageClass').val();
