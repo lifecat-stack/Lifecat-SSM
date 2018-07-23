@@ -47,20 +47,17 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <!--配置别名-->
         <property name="typeAliasesPackage" value="com.spring.entity;com.spring.dto"/>
     </bean>
 
     <!--配置mapper扫描-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
         <property name="basePackage" value="com.spring.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <!--activemq-->
     <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
-        <!-- 添加信任包在到trustAllPackages -->
         <property name="trustAllPackages" value="true"/>
         <property name="userName" value="admin"/>
         <property name="password" value="admin"/>
@@ -77,7 +74,6 @@
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"
           c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>
     <bean id="lifecatHandler" class="com.spring.jms.AlertHandler"/>
-    <!--消息监听器-->
     <jms:listener-container connection-factory="connectionFactory">
         <jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>
     </jms:listener-container>
@@ -97,7 +93,30 @@
         </property>
     </bean>
 
-    <!--1 自动扫描 将标注Spring注解的类自动转化Bean-->
+    <!--shiro filter-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- Shiro的核心安全接口,这个属性是必须的 -->
+        <property name="securityManager" ref="securityManager" />
+        <!-- 身份认证失败，则跳转到登录页面的配置 -->
+        <property name="loginUrl" value="/view/index" />
+        <!-- 权限认证失败，则跳转到指定页面 -->
+        <property name="unauthorizedUrl" value="/view/error" />
+        <!-- Shiro连接约束配置,即过滤链的定义 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /login=anon
+                /index/**=authc
+            </value>
+        </property>
+    </bean>
+    <!--shiro manager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm"/>
+    </bean>
+    <!--shiro realm-->
+    <bean id="customRealm" class="com.spring.shiro.realm.AdminRealm"/>
+
+    <!--自动扫描-->
     <context:component-scan
             base-package="com.spring"/>
 

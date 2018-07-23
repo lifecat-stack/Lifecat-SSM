@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.spring.util.ControllerCheckUtil.*;
 
+/**
+ * admin rest
+ *
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/admin/v1")
 public class AdminController {
@@ -31,8 +36,9 @@ public class AdminController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public RequestSuccess getAdminList() {
         // execute
-        // TODO
+
         // return
+
         return new RequestSuccess("admin list is null");
     }
 
@@ -42,7 +48,7 @@ public class AdminController {
      * @param adminDO admin
      */
     @RequestMapping(method = RequestMethod.POST)
-    public RequestSuccess postAdmin(@RequestBody  AdminDO adminDO) {
+    public RequestSuccess postAdmin(@RequestBody AdminDO adminDO) {
         // check
         checkRequestDataNotNull(adminDO);
         // execute

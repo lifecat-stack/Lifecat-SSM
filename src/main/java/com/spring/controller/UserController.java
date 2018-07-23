@@ -14,6 +14,11 @@ import java.util.List;
 
 import static com.spring.util.ControllerCheckUtil.*;
 
+/**
+ * user rest
+ *
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/user/v1")
 public class UserController {

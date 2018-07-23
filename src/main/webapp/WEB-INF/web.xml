@@ -5,15 +5,42 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>/view/home.html</welcome-file>
+        <welcome-file>/view/index.html</welcome-file>
     </welcome-file-list>
 
     <!--全局范围内环境参数初始化-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/spring-mybatis.xml</param-value>
+        <param-value>classpath:spring/spring-config.xml</param-value>
     </context-param>
 
+    <!--log4j日志-->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+
+    <!--spring监听器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+    </listener>
+
+    <!--Shiro Filter-->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <!--编码过滤器-->
     <filter>
@@ -29,12 +56,6 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <!--监听器配置-->
-    <!--例:spring监听器-->
-    <listener>        <!--用来设定Listener接口-->
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class><!--定义Listener的类名称-->
-    </listener>
 
     <!--在spring之前截获对资源的访问-->
     <servlet-mapping>
@@ -55,58 +76,33 @@
     </servlet-mapping>
 
     <!---servlet配置-->
-    <!--用来声明一个servlet的数据 -->
     <servlet>
-        <!--指定servlet的名称-->
         <servlet-name>dispatcher</servlet-name>
-        <!--指定servlet的类名称,这里配置了前端控制器-->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!--用来定义参数,可有多个init-param。在servlet类中通过getInitParamenter(String name)方法访问初始化参数    -->
         <init-param>
-            <param-name>contextConfigLocation</param-name>  <!--参数名称-->
-            <param-value>classpath:spring/spring-mvc.xml</param-value> <!--参数值-->
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
-        <!--当值为正数或零时：Servlet容器先加载数值小的servlet，再依次加载其他数值大的servlet.-->
         <load-on-startup>1</load-on-startup>
-        <!--设置是否启用异步支持-->
         <async-supported>true</async-supported>
     </servlet>
-
-    <!--用来定义servlet所对应的URL-->
     <servlet-mapping>
-        <!--指定servlet的名称-->
         <servlet-name>dispatcher</servlet-name>
-        <!--指定servlet所对应的URL-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!--会话超时配置（单位为分钟）-->
     <session-config>
-        <!--如果某个会话在一定时间未被访问，则服务器可以扔掉以节约内存-->
-        <session-timeout>120</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 
-    <!---MIME类型配置 -->
-    <!--设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开-->
-    <mime-mapping>
-        <!--扩展名名称-->
-        <extension>*.ppt</extension>
-        <!--MIME格式-->
-        <mime-type>application/mspowerpoint</mime-type>
-    </mime-mapping>
-
     <!--配置错误页面-->
-    <error-page>  <!--将错误代码(RequestError Code)或异常(Exception)的种类对应到web应用资源路径.-->
-        <!--HTTP RequestError code,例如: 404、403-->
+    <error-page>
         <error-code>404</error-code>
-        <!--用来设置发生错误或异常时要显示的页面-->
         <location>/view/error.html</location>
     </error-page>
-
     <error-page>
-        <!--设置可能会发生的java异常类型,例如:java.lang.Exception-->
         <exception-type>java.lang.Exception</exception-type>
-        <!--用来设置发生错误或异常时要显示的页面-->
         <location>/view/exception.html</location>
     </error-page>
 

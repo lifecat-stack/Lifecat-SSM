@@ -17,6 +17,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.8.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.21" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.0" />
@@ -51,11 +52,10 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat:servlet-api:6.0.44" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.7.3" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.1.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.3.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.1.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.1.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.1.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.1.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.23" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.14" />
           <element id="library" level="project" name="Maven: com.esotericsoftware.reflectasm:reflectasm:1.09" />
@@ -84,6 +84,11 @@
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.4" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.4" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.2.4" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.6.11" />
         </element>
       </element>
       <element id="directory" name="META-INF">

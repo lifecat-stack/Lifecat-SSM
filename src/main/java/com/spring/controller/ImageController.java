@@ -15,6 +15,11 @@ import java.util.List;
 
 import static com.spring.util.ControllerCheckUtil.*;
 
+/**
+ * image rest
+ *
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/image/v1")
 public class ImageController {

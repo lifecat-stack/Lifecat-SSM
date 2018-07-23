@@ -9,6 +9,11 @@ import javax.mail.MessagingException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 异步接受Jms
+ *
+ * @author Administrator
+ */
 public class AlertHandler {
 
     @Autowired
@@ -21,7 +26,7 @@ public class AlertHandler {
         simpleEmail.setSubject(message.getMessage());
 
         Set<String> receivers = new HashSet<>();
-        receivers.add("596823919@qq.com");
+        receivers.add("18861857305@163.com");
         simpleEmail.setToSet(receivers);
 
         simpleEmail.setHtml(false);

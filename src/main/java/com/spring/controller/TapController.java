@@ -5,39 +5,54 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Tap切换栏控制器
+ *
+ * @author Administrator
+ */
 @Controller
 @RequestMapping("/home-tap")
 public class TapController {
 
     private Logger logger = LoggerFactory.getLogger(TapController.class);
 
+    /**
+     * main-tap
+     */
     @RequestMapping(value = "/main")
     public String main() {
-        logger.info("request to /home-tap/main");
         return "home-tap/main";
     }
 
+    /**
+     * admin-tap
+     */
     @RequestMapping(value = "/admin")
     public String admin() {
-        logger.info(" request to /home-tap/admin");
         return "home-tap/admin";
     }
 
+    /**
+     * user-tap
+     */
     @RequestMapping(value = "/user")
     public String user() {
-        logger.info("request to /home-tap/user");
         return "home-tap/user";
     }
 
+    /**
+     * diary-tap
+     */
     @RequestMapping(value = "/diary")
     public String diary() {
-        logger.info(" request to /home-tap/diary");
         return "home-tap/diary";
     }
 
+    /**
+     * image-tap
+     */
     @RequestMapping(value = "/image")
     public String image() {
-        logger.info(" request to /home-tap/image");
         return "home-tap/image";
     }
 }

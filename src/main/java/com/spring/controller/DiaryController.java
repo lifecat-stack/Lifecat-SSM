@@ -14,6 +14,11 @@ import java.util.List;
 
 import static com.spring.util.ControllerCheckUtil.*;
 
+/**
+ * diary rest
+ *
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/diary/v1")
 public class DiaryController {
