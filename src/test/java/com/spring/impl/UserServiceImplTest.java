@@ -25,7 +25,6 @@ public class UserServiceImplTest {
 
     @Before
     public void before() throws Exception {
-        this.userService = new UserServiceImpl();
         assertNotNull(userService);
     }
 

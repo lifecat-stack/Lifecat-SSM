@@ -20,10 +20,14 @@ public class DiaryServiceImpl implements DiaryService {
 
     private Logger logger = LoggerFactory.getLogger(DiaryServiceImpl.class);
 
-    @Autowired
-    private DiaryMapper diaryMapper;
+    private final DiaryMapper diaryMapper;
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
+
+    @Autowired
+    public DiaryServiceImpl(DiaryMapper diaryMapper) {
+        this.diaryMapper = diaryMapper;
+    }
 
     /**
      * 查询Diary List

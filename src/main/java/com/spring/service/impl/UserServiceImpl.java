@@ -23,14 +23,18 @@ public class UserServiceImpl implements UserService {
 
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private UserPropertyMapper userPropertyMapper;
-    @Autowired
-    private UserIconMapper userIconMapper;
+    private final UserMapper userMapper;
+    private final UserPropertyMapper userPropertyMapper;
+    private final UserIconMapper userIconMapper;
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
+
+    @Autowired
+    public UserServiceImpl(UserMapper userMapper, UserPropertyMapper userPropertyMapper, UserIconMapper userIconMapper) {
+        this.userMapper = userMapper;
+        this.userPropertyMapper = userPropertyMapper;
+        this.userIconMapper = userIconMapper;
+    }
 
     /**
      * 获取所有user信息

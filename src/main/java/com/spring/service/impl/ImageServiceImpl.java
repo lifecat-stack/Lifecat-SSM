@@ -22,14 +22,18 @@ public class ImageServiceImpl implements ImageService {
 
     private Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
 
-    @Autowired
-    private ImageMapper imageMapper;
-    @Autowired
-    private ImageFeatureMapper imageFeatureMapper;
-    @Autowired
-    private ImageClassMapper imageClassMapper;
+    private final ImageMapper imageMapper;
+    private final ImageFeatureMapper imageFeatureMapper;
+    private final ImageClassMapper imageClassMapper;
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
+
+    @Autowired
+    public ImageServiceImpl(ImageMapper imageMapper, ImageFeatureMapper imageFeatureMapper, ImageClassMapper imageClassMapper) {
+        this.imageMapper = imageMapper;
+        this.imageFeatureMapper = imageFeatureMapper;
+        this.imageClassMapper = imageClassMapper;
+    }
 
     /**
      * 查询Image

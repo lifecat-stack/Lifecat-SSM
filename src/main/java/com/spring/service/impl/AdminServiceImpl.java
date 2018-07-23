@@ -13,8 +13,12 @@ public class AdminServiceImpl implements AdminService {
 
     private Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
 
-    @Autowired
-    private AdminMapper adminMapper;
+    private final AdminMapper adminMapper;
 
     private DateTimeUtil dateTimeUtil = DateTimeUtil.getInstance();
+
+    @Autowired
+    public AdminServiceImpl(AdminMapper adminMapper) {
+        this.adminMapper = adminMapper;
+    }
 }

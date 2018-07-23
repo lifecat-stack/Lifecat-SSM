@@ -66,8 +66,24 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:2.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-keyvalue:2.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:5.0.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-spring:5.15.4" />
+          <element id="library" level="project" name="Maven: org.apache.xbean:xbean-spring:4.2" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-broker:5.15.4" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-client:5.15.4" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtbuf:hawtbuf:1.11" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-openwire-legacy:5.15.4" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-pool:5.15.4" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-jms-pool:5.15.4" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.0.1B_spec:1.0.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jms:4.3.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.2" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

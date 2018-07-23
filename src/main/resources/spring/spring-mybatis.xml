@@ -4,6 +4,10 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
         http://www.springframework.org/schema/tx
@@ -11,11 +15,23 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd">
 
     <!--加载数据资源属性文件-->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:mail.properties</value>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:jdbc.properties"/>
+        <property name="properties" ref="configProperties"/>
     </bean>
 
     <!--配置数据库参数及连接池-->
@@ -40,6 +56,45 @@
         <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
         <property name="basePackage" value="com.spring.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!--activemq-->
+    <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <!-- 添加信任包在到trustAllPackages -->
+        <property name="trustAllPackages" value="true"/>
+        <property name="userName" value="admin"/>
+        <property name="password" value="admin"/>
+    </bean>
+    <!--<amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>-->
+    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue"
+          c:_0="lifecat.alert.queue"/>
+    <!--<amq:queue id="lifecatQueue" physicalName="lifecat.alert.queue"/>-->
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic"
+          c:_0="lifecat.alert.topic"/>
+    <!--<amq:topic id="lifecatTopic" physicalName="lifecat.alert.topic"/>-->
+
+    <!--jms-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"
+          c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>
+    <bean id="lifecatHandler" class="com.spring.jms.AlertHandler"/>
+    <!--消息监听器-->
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>
+    </jms:listener-container>
+
+    <!-- 邮件发送   -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.host}"/>
+        <property name="username" value="${mail.sysEmailAddress}"/>
+        <property name="password" value="${mail.password}"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+                <prop key="mail.smtp.port">${mail.smtp.port}</prop>
+            </props>
+        </property>
     </bean>
 
     <!--1 自动扫描 将标注Spring注解的类自动转化Bean-->
