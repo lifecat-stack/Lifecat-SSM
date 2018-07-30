@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.DiaryDO;
-import com.spring.exception.RequestSuccess;
+import com.spring.dto.ResponseResult;
 import com.spring.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -72,14 +72,14 @@ public class DiaryController {
      * @param diaryDO diary
      */
     @RequestMapping(method = RequestMethod.POST)
-    public RequestSuccess postDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+    public ResponseResult postDiary(@RequestBody @NotNull DiaryDO diaryDO) {
         // check
         checkRequestDataNotNull(diaryDO);
         // execute
         int result = diaryService.createDiary(diaryDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("diary create success");
+        return new ResponseResult("diary create success");
     }
 
     /**
@@ -88,14 +88,14 @@ public class DiaryController {
      * @param diaryDO diary
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public RequestSuccess putDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+    public ResponseResult putDiary(@RequestBody @NotNull DiaryDO diaryDO) {
         // check
         checkRequestDataNotNull(diaryDO);
         // execute
         int result = diaryService.updateDiary(diaryDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("diary update success");
+        return new ResponseResult("diary update success");
     }
 
     /**
@@ -104,7 +104,7 @@ public class DiaryController {
      * @param diaryId diary_id
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public RequestSuccess deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
+    public ResponseResult deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
         // check
         checkRequestDataNotNull(diaryId);
         checkRquestDataFormatInt(diaryId);
@@ -113,7 +113,7 @@ public class DiaryController {
         int result = diaryService.deleteDiaryById(id);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("diary delete success");
+        return new ResponseResult("diary delete success");
     }
 
 }

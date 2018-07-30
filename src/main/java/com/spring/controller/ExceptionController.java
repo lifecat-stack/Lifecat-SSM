@@ -1,6 +1,6 @@
 package com.spring.controller;
 
-import com.spring.exception.ErrorInfo;
+import com.spring.dto.ResponseResult;
 import com.spring.exception.RequestException;
 import com.spring.exception.impl.*;
 import org.springframework.http.HttpStatus;
@@ -25,8 +25,8 @@ public class ExceptionController {
     @ExceptionHandler({
             RequestDataNullException.class,
             RequestDataFormatException.class})
-    public ErrorInfo requestError(RequestException e) {
-        return new ErrorInfo(400, e.getErrorMsg());
+    public ResponseResult requestError(RequestException e) {
+        return new ResponseResult(400, e.getErrorMsg());
     }
 
     /**
@@ -35,8 +35,8 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ErrorInfo resourceNotFoundError(ResourceNotFoundException e) {
-        return new ErrorInfo(404, e.getErrorMsg());
+    public ResponseResult resourceNotFoundError(ResourceNotFoundException e) {
+        return new ResponseResult(404, e.getErrorMsg());
     }
 
     /**
@@ -45,7 +45,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
     @ExceptionHandler(ResourceExecuteException.class)
-    public ErrorInfo resourceExecuteError(ResourceExecuteException e) {
-        return new ErrorInfo(409, e.getErrorMsg());
+    public ResponseResult resourceExecuteError(ResourceExecuteException e) {
+        return new ResponseResult(409, e.getErrorMsg());
     }
 }

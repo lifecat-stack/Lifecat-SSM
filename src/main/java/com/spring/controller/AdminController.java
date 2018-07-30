@@ -1,7 +1,7 @@
 package com.spring.controller;
 
+import com.spring.dto.ResponseResult;
 import com.spring.entity.AdminDO;
-import com.spring.exception.RequestSuccess;
 import com.spring.service.AdminService;
 import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
@@ -34,12 +34,12 @@ public class AdminController {
      * 查询admin list
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public RequestSuccess getAdminList() {
+    public ResponseResult getAdminList() {
         // execute
 
         // return
 
-        return new RequestSuccess("admin list is null");
+        return new ResponseResult("admin list is null");
     }
 
     /**
@@ -48,13 +48,13 @@ public class AdminController {
      * @param adminDO admin
      */
     @RequestMapping(method = RequestMethod.POST)
-    public RequestSuccess postAdmin(@RequestBody AdminDO adminDO) {
+    public ResponseResult postAdmin(@RequestBody AdminDO adminDO) {
         // check
         checkRequestDataNotNull(adminDO);
         // execute
         // TODO
         // return
-        return new RequestSuccess("admin create is todo");
+        return new ResponseResult("admin create is todo");
     }
 
     /**
@@ -63,13 +63,13 @@ public class AdminController {
      * @param adminDO admin
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public RequestSuccess putAdmin(@RequestBody @NotNull AdminDO adminDO) {
+    public ResponseResult putAdmin(@RequestBody @NotNull AdminDO adminDO) {
         // check
         checkRequestDataNotNull(adminDO);
         // execute
         // TODO
         // return
-        return new RequestSuccess("admin update is todo");
+        return new ResponseResult("admin update is todo");
     }
 
     /**
@@ -78,14 +78,14 @@ public class AdminController {
      * @param adminId admin_id
      */
     @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
-    public RequestSuccess deleteAdmin(@PathVariable @NotNull String adminId) {
+    public ResponseResult deleteAdmin(@PathVariable @NotNull String adminId) {
         // check
         checkRequestDataNotNull(adminId);
         checkRquestDataFormatInt(adminId);
         // execute
         // TODO
         // return
-        return new RequestSuccess("admin delete is todo");
+        return new ResponseResult("admin delete is todo");
     }
 
 }

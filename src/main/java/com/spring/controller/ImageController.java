@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.ImageDO;
-import com.spring.exception.RequestSuccess;
+import com.spring.dto.ResponseResult;
 import com.spring.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -97,14 +97,14 @@ public class ImageController {
      * @param imageDO image
      */
     @RequestMapping(method = RequestMethod.POST)
-    public RequestSuccess postImage(@RequestBody @NotNull ImageDO imageDO) {
+    public ResponseResult postImage(@RequestBody @NotNull ImageDO imageDO) {
         // check
         checkRequestDataNotNull(imageDO);
         // execute
         int result = imageService.createImage(imageDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("image create success");
+        return new ResponseResult("image create success");
     }
 
     /**
@@ -113,14 +113,14 @@ public class ImageController {
      * @param imageDO image
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public RequestSuccess putImage(@RequestBody @NotNull ImageDO imageDO) {
+    public ResponseResult putImage(@RequestBody @NotNull ImageDO imageDO) {
         // check
         checkRequestDataNotNull(imageDO);
         // execute
         int result = imageService.updateImage(imageDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("image update success");
+        return new ResponseResult("image update success");
     }
 
     /**
@@ -129,7 +129,7 @@ public class ImageController {
      * @param diaryId diary_id
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public RequestSuccess deleteImage(@PathVariable @NotNull String diaryId) {
+    public ResponseResult deleteImage(@PathVariable @NotNull String diaryId) {
         // check
         checkRequestDataNotNull(diaryId);
         checkRquestDataFormatInt(diaryId);
@@ -138,7 +138,7 @@ public class ImageController {
         int result = imageService.deleteImageById(id);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("image delete success");
+        return new ResponseResult("image delete success");
     }
 
     /**
@@ -147,13 +147,13 @@ public class ImageController {
      * @param imageId image_id
      */
     @RequestMapping(value = "/classify/{imageId}", method = RequestMethod.GET)
-    public RequestSuccess classifyImage(@PathVariable @NotNull String imageId) {
+    public ResponseResult classifyImage(@PathVariable @NotNull String imageId) {
         // check
         checkRequestDataNotNull(imageId);
         checkRquestDataFormatInt(imageId);
         // execute
         // TODO 调用分类程序
         // return
-        return new RequestSuccess("looking forward to classify...");
+        return new ResponseResult("looking forward to classify...");
     }
 }

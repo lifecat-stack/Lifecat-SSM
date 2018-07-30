@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entity.UserDO;
-import com.spring.exception.RequestSuccess;
+import com.spring.dto.ResponseResult;
 import com.spring.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -67,14 +67,14 @@ public class UserController {
      * @param userDO user
      */
     @RequestMapping(method = RequestMethod.POST)
-    public RequestSuccess postUser(@RequestBody @NotNull UserDO userDO) {
+    public ResponseResult postUser(@RequestBody @NotNull UserDO userDO) {
         // check
         checkRequestDataNotNull(userDO);
         // execute
         int result = userService.createUser(userDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("user create success");
+        return new ResponseResult("user create success");
     }
 
     /**
@@ -83,14 +83,14 @@ public class UserController {
      * @param userDO user
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public RequestSuccess putUser(@RequestBody @NotNull UserDO userDO) {
+    public ResponseResult putUser(@RequestBody @NotNull UserDO userDO) {
         // check
         checkRequestDataNotNull(userDO);
         // execute
         int result = userService.updateUser(userDO);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("user update success");
+        return new ResponseResult("user update success");
     }
 
     /**
@@ -99,7 +99,7 @@ public class UserController {
      * @param userId user_id
      */
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
-    public RequestSuccess deleteUser(@PathVariable("userId") @NotNull String userId) {
+    public ResponseResult deleteUser(@PathVariable("userId") @NotNull String userId) {
         // check
         checkRequestDataNotNull(userId);
         checkRquestDataFormatInt(userId);
@@ -108,6 +108,6 @@ public class UserController {
         int result = userService.deleteUserById(id);
         // return
         checkExecuteResultSuccess(result);
-        return new RequestSuccess("user delete success");
+        return new ResponseResult("user delete success");
     }
 }
