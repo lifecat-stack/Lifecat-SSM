@@ -58,3 +58,8 @@ README -- LifeCat Version2
  
  #### [LifeCat version3 前后端分离springboot后端](https://github.com/kevinten10/springboot-lifecat)
  #### [LifeCat version3 前后端分离vuejs前端](https://github.com/kevinten10/Web-lifecat)
+ *****************************************************************************
+  #### [LifeCat wechat 微信移动端小程序开发](https://github.com/kevinten10/WeChat-lifecat)
+  #### [LifeCat hadoop 分布式平台进行数据处理](https://github.com/kevinten10/Hadoop-lifecat)
+  #### [LifeCat android 相应Android相册应用](https://github.com/kevinten10/Android-lifecat)
+  #### [LifeCat python 机器学习进行图像智能处理](https://github.com/kevinten10/Python-lifecat)
