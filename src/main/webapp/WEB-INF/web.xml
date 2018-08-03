@@ -5,7 +5,7 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>/view/index.html</welcome-file>
+        <welcome-file>/view/home.html</welcome-file>
     </welcome-file-list>
 
     <!--全局范围内环境参数初始化-->
