@@ -20,7 +20,6 @@ public class ExceptionController {
     /**
      * 请求出错 400
      */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     @ExceptionHandler({
             RequestDataNullException.class,
@@ -32,7 +31,6 @@ public class ExceptionController {
     /**
      * 查询失败 not found 404
      */
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseResult resourceNotFoundError(ResourceNotFoundException e) {
@@ -42,7 +40,6 @@ public class ExceptionController {
     /**
      * 增加、修改、删除失败 conflict 409
      */
-    @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
     @ExceptionHandler(ResourceExecuteException.class)
     public ResponseResult resourceExecuteError(ResourceExecuteException e) {
