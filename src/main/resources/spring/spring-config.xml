@@ -47,38 +47,42 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <property name="typeAliasesPackage" value="com.spring.entity;com.spring.dto"/>
+        <property name="typeAliasesPackage" value="com.ten.entity;com.ten.dto"/>
     </bean>
 
     <!--配置mapper扫描-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.spring.mapper"/>
+        <property name="basePackage" value="com.ten.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <!--activemq-->
-    <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
-        <property name="trustAllPackages" value="true"/>
-        <property name="userName" value="admin"/>
-        <property name="password" value="admin"/>
+    <!--shiro filter安全框架-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- Shiro的核心安全接口,这个属性是必须的 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 身份认证失败，则跳转到登录页面的配置 -->
+        <property name="loginUrl" value="/view/index"/>
+        <!-- 权限认证失败，则跳转到指定页面 -->
+        <property name="unauthorizedUrl" value="/view/error"/>
+        <!-- Shiro连接约束配置,即过滤链的定义 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /login=anon
+                /index/**=authc
+            </value>
+        </property>
     </bean>
-    <!--<amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>-->
-    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue"
-          c:_0="lifecat.alert.queue"/>
-    <!--<amq:queue id="lifecatQueue" physicalName="lifecat.alert.queue"/>-->
-    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic"
-          c:_0="lifecat.alert.topic"/>
-    <!--<amq:topic id="lifecatTopic" physicalName="lifecat.alert.topic"/>-->
+    <!--shiro manager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm"/>
+    </bean>
+    <!--shiro realm-->
+    <bean id="customRealm" class="com.ten.shiro.AdminRealm"/>
 
-    <!--jms-->
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"
-          c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>
-    <bean id="lifecatHandler" class="com.spring.jms.AlertHandler"/>
-    <jms:listener-container connection-factory="connectionFactory">
-        <jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>
-    </jms:listener-container>
+    <!--自动扫描-->
+    <context:component-scan base-package="com.ten"/>
 
-    <!-- 邮件发送   -->
+    <!--邮件服务-->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="${mail.host}"/>
         <property name="username" value="${mail.sysEmailAddress}"/>
@@ -93,35 +97,30 @@
         </property>
     </bean>
 
-    <!--shiro filter-->
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <!-- Shiro的核心安全接口,这个属性是必须的 -->
-        <property name="securityManager" ref="securityManager" />
-        <!-- 身份认证失败，则跳转到登录页面的配置 -->
-        <property name="loginUrl" value="/view/index" />
-        <!-- 权限认证失败，则跳转到指定页面 -->
-        <property name="unauthorizedUrl" value="/view/error" />
-        <!-- Shiro连接约束配置,即过滤链的定义 -->
-        <property name="filterChainDefinitions">
-            <value>
-                /login=anon
-                /index/**=authc
-            </value>
-        </property>
-    </bean>
-    <!--shiro manager-->
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="customRealm"/>
-    </bean>
-    <!--shiro realm-->
-    <bean id="customRealm" class="com.spring.shiro.realm.AdminRealm"/>
-
-    <!--自动扫描-->
-    <context:component-scan
-            base-package="com.spring"/>
-
     <!--aop配置-->
     <!--<context:component-scan base-package="com.spring.aspect"/>-->
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+    <!-- 以下为jms+activemq服务，即消息队列服务，需先配置开启activemq -->
+    <!--&lt;!&ndash;activemq&ndash;&gt;-->
+    <!--<bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">-->
+        <!--<property name="trustAllPackages" value="true"/>-->
+        <!--<property name="userName" value="admin"/>-->
+        <!--<property name="password" value="admin"/>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash;<amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>&ndash;&gt;-->
+    <!--<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue"-->
+          <!--c:_0="lifecat.alert.queue"/>-->
+    <!--&lt;!&ndash;<amq:queue id="lifecatQueue" physicalName="lifecat.alert.queue"/>&ndash;&gt;-->
+    <!--<bean id="topic" class="org.apache.activemq.command.ActiveMQTopic"-->
+          <!--c:_0="lifecat.alert.topic"/>-->
+    <!--&lt;!&ndash;<amq:topic id="lifecatTopic" physicalName="lifecat.alert.topic"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;jms&ndash;&gt;-->
+    <!--<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"-->
+          <!--c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>-->
+    <!--<bean id="lifecatHandler" class="com.ten.jms.AlertHandler"/>-->
+    <!--<jms:listener-container connection-factory="connectionFactory">-->
+        <!--<jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>-->
+    <!--</jms:listener-container>-->
 
 </beans>

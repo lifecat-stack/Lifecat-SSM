@@ -1,10 +1,1 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-target
-out
-log
-
-
-src/main/java/com/spring/security/
-src/main/resources/jdbc.properties
-src/main/resources/mail.properties

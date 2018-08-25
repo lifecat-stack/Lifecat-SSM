@@ -24,7 +24,7 @@ var flush = function () {
                 html = html + '<td class="image-class">' + data[i].classId + '</td>';
                 html = html + '<td class="image-create">' + data[i].imageGmtCreate + '</td>';
                 html = html + '<td class="image-modified">' + data[i].imageGmtModified + '</td>';
-                html = html + '<td class="image-img">' + '<img src=' + data[i].imagePath + ' style="height=160px;width=160px;"/>' + '</td>';
+                html = html + '<td class="image-img">' + '<img src=' + data[i].imagePath + ' style="height:160px;width:160px;"/>' + '</td>';
                 html = html + operation;
                 html = html + '</tr>';
             }
