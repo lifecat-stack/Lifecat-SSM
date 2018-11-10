@@ -9,8 +9,8 @@
         <result property="userName" column="user_name"/>
         <result property="userPassword" column="user_password"/>
         <result property="userLevel" column="user_level"/>
-        <result property="userGmtCreate" column="user_gmt_create"/>
-        <result property="userGmtModified" column="user_gmt_modified"/>
+        <result property="createTime" column="user_gmt_create"/>
+        <result property="updateTime" column="user_gmt_modified"/>
     </resultMap>
 
     <select id="selectUserList" resultMap="UserList">
@@ -30,8 +30,8 @@
             user_name as userName,
             user_password as userPassword,
             user_level as userLevel,
-            user_gmt_create as userGmtCreate,
-            user_gmt_modified as userGmtModified
+            user_gmt_create as createTime,
+            user_gmt_modified as updateTime
         from user
         where user_name = #{userName}
     </select>
@@ -47,8 +47,8 @@
             #{userName},
             #{userPassword},
             #{userLevel},
-            #{userGmtCreate},
-            #{userGmtModified})
+            #{createTime},
+            #{updateTime})
     </insert>
 
     <update id="updateUser" parameterType="user">
@@ -57,7 +57,7 @@
             user_name         = #{userName},
             user_password     = #{userPassword},
             user_level        = #{userLevel},
-            user_gmt_modified = #{userGmtModified}
+            user_gmt_modified = #{updateTime}
         where user_id = #{userId}
     </update>
 

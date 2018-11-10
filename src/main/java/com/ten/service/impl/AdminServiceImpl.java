@@ -62,8 +62,8 @@ public class AdminServiceImpl implements AdminService {
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        admin.setAdminGmtCreate(create);
-        admin.setAdminGmtModified(modified);
+        admin.setCreateTime(create);
+        admin.setUpdateTime(modified);
         admin.setAdminLevel("admin");
         return adminMapper.insertAdmin(admin);
     }
@@ -82,7 +82,7 @@ public class AdminServiceImpl implements AdminService {
         checkObjectDataNotNull(admin.getAdminLevel());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        admin.setAdminGmtModified(modified);
+        admin.setUpdateTime(modified);
         return adminMapper.updateAdmin(admin);
     }
 

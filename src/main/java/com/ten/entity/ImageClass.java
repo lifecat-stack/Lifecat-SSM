@@ -1,18 +1,31 @@
 package com.ten.entity;
 
-
 /**
- * DO :image_class
+ * image_class
  *
  * @auther ten
  */
 public class ImageClass {
 
+    private Integer id;
     private Integer imageClassId;
     private String imageClassName;
     private String imageClassDesc;
-    private String classGmtCreate;
-    private String classGmtModified;
+    private String createTime;
+    private String updateTime;
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getImageClassId() {
         return imageClassId;
@@ -38,19 +51,19 @@ public class ImageClass {
         this.imageClassDesc = imageClassDesc;
     }
 
-    public String getClassGmtCreate() {
-        return classGmtCreate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setClassGmtCreate(String classGmtCreate) {
-        this.classGmtCreate = classGmtCreate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getClassGmtModified() {
-        return classGmtModified;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setClassGmtModified(String classGmtModified) {
-        this.classGmtModified = classGmtModified;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

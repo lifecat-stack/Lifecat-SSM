@@ -1,18 +1,44 @@
 package com.ten.entity;
 
-/**
- * DO :user
- *
- * @auther ten
- */
 public class User {
 
+    private Integer id;
     private Integer userId;
     private String userName;
     private String userPassword;
     private String userLevel;
-    private String userGmtCreate;
-    private String userGmtModified;
+    private String createTime;
+    private String updateTime;
+    private Integer isDeleted;
+
+    @Override
+    public String toString() {
+        return "User@{"
+                + "id:" + id
+                + ",userId:" + userId
+                + ",userName:" + userName
+                + ",userPassword:" + userPassword
+                + ",userLevel:" + userLevel
+                + ",createTime:" + createTime
+                + ",updateTime:" + updateTime
+                + "}";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -46,34 +72,19 @@ public class User {
         this.userLevel = userLevel;
     }
 
-    public String getUserGmtCreate() {
-        return userGmtCreate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setUserGmtCreate(String userGmtCreate) {
-        this.userGmtCreate = userGmtCreate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getUserGmtModified() {
-        return userGmtModified;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUserGmtModified(String userGmtModified) {
-        this.userGmtModified = userGmtModified;
-    }
-
-    /**
-     * @return User@1234{ID:'',Name:'',Password:'',Level:'',Create:'',Modified:''}
-     */
-    @Override
-    public String toString() {
-        return "User@" + userId
-                + "{ID:" + userId
-                + ",Name:" + userName
-                + ",Password:" + userPassword
-                + ",Level:" + userLevel
-                + ",Create:" + userGmtCreate
-                + ",Modified:" + userGmtModified
-                + "}";
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

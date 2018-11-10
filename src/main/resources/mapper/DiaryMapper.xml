@@ -50,7 +50,7 @@
         values (
             #{diaryName},
             #{diaryText},
-            #{deleted},
+            #{isDeleted},
             #{userId},
             #{diaryGmtCreate},
             #{diaryGmtModified})

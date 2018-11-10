@@ -1,19 +1,61 @@
 package com.ten.entity;
 
-/**
- * DO :diary
- *
- * @auther ten
- */
 public class Diary {
 
+    private Integer id;
     private Integer diaryId;
     private Integer userId;
     private String diaryName;
     private String diaryText;
-    private Integer deleted;
-    private String diaryGmtCreate;
-    private String diaryGmtModified;
+    private String createTime;
+    private String updateTime;
+    private Integer isDeleted;
+
+    @Override
+    public String toString() {
+        return "Diary@{"
+                + "id:" + id
+                + ",diaryId:" + diaryId
+                + ",userId:" + userId
+                + ",diaryName:" + diaryName
+                + ",diaryText:" + diaryText
+                + ",createTime:" + createTime
+                + ",updateTime:" + updateTime
+                + ",isDeleted:" + isDeleted
+                + "}";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDiaryText() {
+        return diaryText;
+    }
+
+    public void setDiaryText(String diaryText) {
+        this.diaryText = diaryText;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Integer getDiaryId() {
         return diaryId;
@@ -47,43 +89,27 @@ public class Diary {
         this.diaryText = diaryText;
     }
 
-    public Integer getDeleted() {
-        return deleted;
+    public Integer getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public String getdiaryGmtCreate() {
-        return diaryGmtCreate;
+        return createTime;
     }
 
     public void setdiaryGmtCreate(String diaryGmtCreate) {
-        this.diaryGmtCreate = diaryGmtCreate;
+        this.createTime = diaryGmtCreate;
     }
 
     public String getdiaryGmtModified() {
-        return diaryGmtModified;
+        return updateTime;
     }
 
     public void setdiaryGmtModified(String diaryGmtModified) {
-        this.diaryGmtModified = diaryGmtModified;
-    }
-
-    /**
-     * @return Diary@1234{DiaryId:'',UserID:'',Name:'',Text:'',isDeleted:'',Create:'',Modified:''}
-     */
-    @Override
-    public String toString() {
-        return "Diary@" + diaryId
-                + "{DiaryId:" + diaryId
-                + ",UserID:" + userId
-                + ",Name:" + diaryName
-                + ",Text:" + diaryText
-                + ",isDeleted:" + deleted
-                + ",Create:" + diaryGmtCreate
-                + ",Modified:" + diaryGmtModified
-                + "}";
+        this.updateTime = diaryGmtModified;
     }
 }

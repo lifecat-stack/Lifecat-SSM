@@ -84,9 +84,9 @@ public class ImageServiceImpl implements ImageService {
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        image.setImageGmtCreate(create);
-        image.setImageGmtModified(modified);
-        image.setDeleted(1);
+        image.setCreateTime(create);
+        image.setUpdateTime(modified);
+        image.setIsDeleted(1);
         // TODO
         image.setUserId(1);
         if (image.getImagePath() == null) {
@@ -108,7 +108,7 @@ public class ImageServiceImpl implements ImageService {
         checkObjectDataNotNull(image.getImageText());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        image.setImageGmtModified(modified);
+        image.setUpdateTime(modified);
         return imageMapper.updateImage(image);
     }
 

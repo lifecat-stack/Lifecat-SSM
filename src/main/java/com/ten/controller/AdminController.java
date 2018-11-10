@@ -18,6 +18,7 @@ import static com.ten.util.ControllerCheckUtil.*;
 @RequestMapping("/admin/v1")
 public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final String SUCCESS = "SUCCESS";
 
     private final AdminService adminService;
 
@@ -38,7 +39,7 @@ public class AdminController {
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, admin);
         }
-        return new ResultModel(ResponseCode.OK, admin);
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     @RequestMapping(method = RequestMethod.PUT)

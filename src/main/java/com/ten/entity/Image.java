@@ -1,20 +1,54 @@
 package com.ten.entity;
 
 /**
- * DO :image
+ * image
  *
  * @auther ten
  */
 public class Image {
 
+    private Integer id;
     private Integer imageId;
     private Integer userId;
     private Integer classId;
+    private String imageName;
     private String imageText;
     private String imagePath;
-    private Integer deleted;
-    private String imageGmtCreate;
-    private String imageGmtModified;
+    private String createTime;
+    private String updateTime;
+    private Integer isDeleted;
+
+    @Override
+    public String toString() {
+        return "Image@{"
+                + "id:" + id
+                + ",imageId:" + imageId
+                + ",userId:" + userId
+                + ",classId:" + classId
+                + ",imageName:" + imageName
+                + ",imageText:" + imageText
+                + ",imagePath:" + imagePath
+                + ",createTime:" + createTime
+                + ",updateTime:" + updateTime
+                + ",isDeleted:" + isDeleted
+                + "}";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
     public Integer getImageId() {
         return imageId;
@@ -56,44 +90,27 @@ public class Image {
         this.imagePath = imagePath;
     }
 
-    public Integer getDeleted() {
-        return deleted;
+    public Integer getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
-    public String getImageGmtCreate() {
-        return imageGmtCreate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setImageGmtCreate(String imageGmtCreate) {
-        this.imageGmtCreate = imageGmtCreate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getImageGmtModified() {
-        return imageGmtModified;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setImageGmtModified(String imageGmtModified) {
-        this.imageGmtModified = imageGmtModified;
-    }
-
-    /**
-     * @return Image@1234{ImageID:'',UserID:'',ClassID:'',Text:'',Path:'',isDeleted:'',Create:'',Modified:''}
-     */
-    @Override
-    public String toString() {
-        return "Image@" + imageId
-                + "{ImageID:" + imageId
-                + ",UserID:" + userId
-                + ",ClassID:" + classId
-                + ",Text:" + imageText
-                + ",Path:" + imagePath
-                + ",isDeleted:" + deleted
-                + ",Create:" + imageGmtCreate
-                + ",Modified:" + imageGmtModified
-                + "}";
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

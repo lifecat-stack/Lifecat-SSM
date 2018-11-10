@@ -1,18 +1,29 @@
 package com.ten.entity;
 
-/**
- * DO :admin
- *
- * @auther ten
- */
 public class Admin {
 
+    private Integer id;
     private Integer adminId;
     private String adminName;
     private String adminPassword;
     private String adminLevel;
-    private String adminGmtCreate;
-    private String adminGmtModified;
+    private String createTime;
+    private String updateTime;
+    private Integer isDeleted;
+
+    @Override
+    public String toString() {
+        return "Admin@{"
+                + "id:" + id
+                + ",adminId:" + adminId
+                + ",adminName:" + adminName
+                + ",adminPassword:" + adminPassword
+                + ",adminLevel:" + adminLevel
+                + ",createTime:" + createTime
+                + ",updateTime:" + updateTime
+                + ",isDeleted:" + isDeleted
+                + "}";
+    }
 
     public Integer getAdminId() {
         return adminId;
@@ -46,34 +57,35 @@ public class Admin {
         this.adminLevel = adminLevel;
     }
 
-    public String getAdminGmtCreate() {
-        return adminGmtCreate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setAdminGmtCreate(String adminGmtCreate) {
-        this.adminGmtCreate = adminGmtCreate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getAdminGmtModified() {
-        return adminGmtModified;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setAdminGmtModified(String adminGmtModified) {
-        this.adminGmtModified = adminGmtModified;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
-    /**
-     * @return Admin@1234{ID:'',Name:'',Password:'',Level:'',Create:'',Modified:''}
-     */
-    @Override
-    public String toString() {
-        return "Admin@" + adminId
-                + "{ID:" + adminId
-                + ",Name:" + adminName
-                + ",Password:" + adminPassword
-                + ",Level:" + adminLevel
-                + ",Create:" + adminGmtCreate
-                + ",Modified:" + adminGmtModified
-                + "}";
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

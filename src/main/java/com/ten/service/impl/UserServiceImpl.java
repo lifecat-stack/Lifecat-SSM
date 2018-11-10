@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        user.setUserGmtCreate(create);
-        user.setUserGmtModified(modified);
+        user.setCreateTime(create);
+        user.setUpdateTime(modified);
         user.setUserLevel("user");
         return userMapper.insertUser(user);
     }
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
         checkObjectDataNotNull(user.getUserLevel());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        user.setUserGmtModified(modified);
+        user.setUpdateTime(modified);
         return userMapper.updateUser(user);
     }
 

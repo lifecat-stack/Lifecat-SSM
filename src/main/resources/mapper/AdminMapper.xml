@@ -9,8 +9,8 @@
         <result property="adminName" column="admin_name"/>
         <result property="adminPassword" column="admin_password"/>
         <result property="adminLevel" column="admin_level"/>
-        <result property="adminGmtCreate" column="admin_gmt_create"/>
-        <result property="adminGmtModified" column="admin_gmt_modified"/>
+        <result property="createTime" column="admin_gmt_create"/>
+        <result property="updateTime" column="admin_gmt_modified"/>
     </resultMap>
 
     <select id="selectAdminList" resultMap="AdminList">
@@ -30,8 +30,8 @@
             admin_name as adminName,
             admin_password as adminPassword,
             admin_level as adminLevel,
-            admin_gmt_create as adminGmtCreate,
-            admin_gmt_modified as adminGmtModified
+            admin_gmt_create as createTime,
+            admin_gmt_modified as updateTime
         from admin
         where admin_name = #{adminName}
     </select>
@@ -47,8 +47,8 @@
             #{adminName},
             #{adminPassword},
             #{adminLevel},
-            #{adminGmtCreate},
-            #{adminGmtModified})
+            #{createTime},
+            #{updateTime})
     </insert>
 
     <update id="updateAdmin" parameterType="admin">
@@ -57,7 +57,7 @@
             admin_name         = #{adminName},
             admin_password     = #{adminPassword},
             admin_level        = #{adminLevel},
-            admin_gmt_modified = #{adminGmtModified}
+            admin_gmt_modified = #{updateTime}
         where admin_id = #{adminId}
     </update>
 

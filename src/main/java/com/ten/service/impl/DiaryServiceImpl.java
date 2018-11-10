@@ -66,7 +66,7 @@ public class DiaryServiceImpl implements DiaryService {
         create = modified = dateTimeUtil.getCurrentTime();
         diary.setdiaryGmtCreate(create);
         diary.setdiaryGmtModified(modified);
-        diary.setDeleted(1);
+        diary.setIsDeleted(1);
         // TODO 获取userId
         diary.setUserId(1);
         return diaryMapper.insertDiary(diary);

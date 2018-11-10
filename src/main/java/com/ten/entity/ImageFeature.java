@@ -1,17 +1,23 @@
 package com.ten.entity;
 
 /**
- * DO :image_feature
+ * image_feature
  *
  * @auther ten
  */
 public class ImageFeature {
 
+    private Integer id;
     private Integer imageId;
-    private Integer imageClass;
+    private Integer imageClassId;
     private String imageFeaturePath;
     private String featureGmtCreate;
     private String featureGmtModified;
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     public Integer getImageId() {
         return imageId;
@@ -21,12 +27,12 @@ public class ImageFeature {
         this.imageId = imageId;
     }
 
-    public Integer getImageClass() {
-        return imageClass;
+    public Integer getImageClassId() {
+        return imageClassId;
     }
 
-    public void setImageClass(Integer imageClass) {
-        this.imageClass = imageClass;
+    public void setImageClassId(Integer imageClassId) {
+        this.imageClassId = imageClassId;
     }
 
     public String getImageFeaturePath() {

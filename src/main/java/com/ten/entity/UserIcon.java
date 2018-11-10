@@ -1,16 +1,40 @@
 package com.ten.entity;
 
-/**
- * DO :user_icon
- *
- * @auther ten
- */
 public class UserIcon {
 
+    private Integer id;
     private Integer userId;
     private String iconPath;
-    private String iconGmtCreate;
-    private String iconGmtModified;
+    private String createTime;
+    private String updateTime;
+    private Integer isDeleted;
+
+    @Override
+    public String toString() {
+        return "UserIcon@{"
+                + "id:" + id
+                + ",userId:" + userId
+                + ",iconPath:" + iconPath
+                + ",createTime:" + createTime
+                + ",updateTime:" + updateTime
+                + "}";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -28,33 +52,20 @@ public class UserIcon {
         this.iconPath = iconPath;
     }
 
-    public String getIconGmtCreate() {
-        return iconGmtCreate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setIconGmtCreate(String iconGmtCreate) {
-        this.iconGmtCreate = iconGmtCreate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getIconGmtModified() {
-        return iconGmtModified;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setIconGmtModified(String iconGmtModified) {
-        this.iconGmtModified = iconGmtModified;
-    }
-
-    /**
-     * @return UserIcon@1234{UserID:'',Path:'',Create:'',Modified:''}
-     */
-    @Override
-    public String toString() {
-        return "UserIcon@" + userId
-                + "{UserID:" + userId
-                + ",Path:" + iconPath
-                + ",Create:" + iconGmtCreate
-                + ",Modified:" + iconGmtModified
-                + "}";
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }
 
