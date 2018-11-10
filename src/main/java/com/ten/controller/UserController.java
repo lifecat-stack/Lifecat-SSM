@@ -15,6 +15,12 @@ import java.util.List;
 
 import static com.ten.util.ControllerCheckUtil.*;
 
+/**
+ * User Controller
+ *
+ * @author wshten
+ * @date 2018/11/10
+ */
 @RestController
 @RequestMapping("/user/v1")
 public class UserController {

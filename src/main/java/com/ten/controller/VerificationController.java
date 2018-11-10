@@ -11,35 +11,33 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * shiro验证控制器
+ * Admin Login
  *
- * @author Administrator
+ * @author wshten
+ * @date 2018/11/10
  */
 @Controller
-@RequestMapping(value = "/verify")
+@RequestMapping(value = "/login")
 public class VerificationController {
     private static final Logger logger = LoggerFactory.getLogger(VerificationController.class);
 
-    /**
-     * admin login
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView adminLogin(@RequestBody Admin admin) {
-        System.out.println("admin login verification");
-        ModelAndView mv = new ModelAndView();
-        String adminName = admin.getAdminName();
-        String adminPassword = admin.getAdminPassword();
-        // verify
-        UsernamePasswordToken token = new UsernamePasswordToken(adminName, adminPassword);
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView adminLogin(@RequestParam String name,
+                                   @RequestParam String password) {
+        logger.info("Admin Login:{},{}", name, password);
+        Admin admin = new Admin();
+        admin.setAdminName(name);
+        admin.setAdminPassword(password);
+
+        UsernamePasswordToken token = new UsernamePasswordToken(name, password);
         Subject subject = SecurityUtils.getSubject();
+        ModelAndView mv = new ModelAndView();
         try {
             subject.login(token);
-            // success: send message
-            AlertMessage message = new AlertMessage("admin login success");
-//            userAlertService.sendLoginAlert(message);
             mv.addObject("admin", admin);
             mv.setViewName("home");
             return mv;

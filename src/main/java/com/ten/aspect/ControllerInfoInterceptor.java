@@ -4,6 +4,7 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
 /**
  * TODO
  *
@@ -17,22 +18,23 @@ public class ControllerInfoInterceptor {
     private Logger logger = LoggerFactory.getLogger(ControllerInfoInterceptor.class);
 
     @Pointcut("execution(public * com.ten.controller.UserController.*(..))")
-    public void infoToken(){}
+    public void infoToken() {
+    }
 
     @Before("infoToken()")
-    public void beforeInfoToken(){
+    public void beforeInfoToken() {
         System.out.println("controller execute before");
         logger.info("controller execute before");
     }
 
     @After("infoToken()")
-    public void afterInfoToken(){
+    public void afterInfoToken() {
         System.out.println("controller execute before");
         logger.info("controller execute before");
     }
 
     @AfterThrowing
-    public void afterThrowing(){
+    public void afterThrowing() {
         logger.warn("controller execute exception");
     }
 }

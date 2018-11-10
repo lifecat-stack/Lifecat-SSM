@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Test</title>
+    <title>SSM后台管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Lifecat, SSM, JavaWeb"/>
+
+    <link href="../css/index.css" rel='stylesheet' type='text/css'/>
+    <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
 </head>
+
+<script type="application/javascript">
+    // 弹出登录信息
+    $(document).ready(function (c) {
+        var error = '${errormsg}';
+        if (error != null) {
+            alert(error)
+        }
+    });
+</script>
+
 <body>
-<div>
-    <p>Test</p>
+<h1>SSM后台管理系统</h1>
+<div class="login-form">
+    <div class="close"></div>
+    <div class="head-info">
+        <label class="lbl-1"> </label>
+        <label class="lbl-2"> </label>
+        <label class="lbl-3"> </label>
+    </div>
+    <div class="clear"></div>
+    <div class="avtar">
+        <img src="../images/index/avtar.png"/>
+    </div>
+    <form action="/login" method="post">
+        <label>
+            <input type="text" class="text" value="admin" name="Username"
+                   onFocus="this.value = '';"
+                   onBlur="if (this.value === '') {this.value = 'Username';}">
+        </label>
+        <div class="key">
+            <label>
+                <input type="password" value="admin" name="Password"
+                       onFocus="this.value = '';"
+                       onBlur="if (this.value === '') {this.value = 'Password';}">
+            </label>
+        </div>
+        <div class="signin"><input type="submit" value="Login"></div>
+    </form>
+
+</div>
+<div class="copy-rights">
+    <p>Copyright &copy; 2018.大气质量监测系统</p>
 </div>
 </body>
+
 </html>

@@ -24,10 +24,6 @@ public class ResultModel {
         this.data = data;
     }
 
-    public static ResultModel error(String errorMsg){
-        return new ResultModel(ResponseCode.LOGIN_ERROR.getCode(), errorMsg ,"");
-    }
-
     @Override
     public String toString() {
         return "{" + "code=" + code + ", msg=" + msg + ", data=" + data + "}";
