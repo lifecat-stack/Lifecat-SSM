@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ten.mapper.ImageDao">
+
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.ten.entity.Image">
+        <result column="id" property="id"/>
+        <result column="image_id" property="imageId"/>
+        <result column="user_id" property="userId"/>
+        <result column="class_id" property="classId"/>
+        <result column="image_name" property="imageName"/>
+        <result column="image_text" property="imageText"/>
+        <result column="image_path" property="imagePath"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        image_id,
+        user_id,
+        class_id,
+        image_name,
+        image_text,
+        image_path,
+        create_time,
+        update_time,
+        is_deleted
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO image
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null">id,</if>
+            <if test="pojo.imageId != null">image_id,</if>
+            <if test="pojo.userId != null">user_id,</if>
+            <if test="pojo.classId != null">class_id,</if>
+            <if test="pojo.imageName != null">image_name,</if>
+            <if test="pojo.imageText != null">image_text,</if>
+            <if test="pojo.imagePath != null">image_path,</if>
+            <if test="pojo.createTime != null">create_time,</if>
+            <if test="pojo.updateTime != null">update_time,</if>
+            <if test="pojo.isDeleted != null">is_deleted,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null">#{pojo.id},</if>
+            <if test="pojo.imageId != null">#{pojo.imageId},</if>
+            <if test="pojo.userId != null">#{pojo.userId},</if>
+            <if test="pojo.classId != null">#{pojo.classId},</if>
+            <if test="pojo.imageName != null">#{pojo.imageName},</if>
+            <if test="pojo.imageText != null">#{pojo.imageText},</if>
+            <if test="pojo.imagePath != null">#{pojo.imagePath},</if>
+            <if test="pojo.createTime != null">#{pojo.createTime},</if>
+            <if test="pojo.updateTime != null">#{pojo.updateTime},</if>
+            <if test="pojo.isDeleted != null">#{pojo.isDeleted},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO image(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.imageId},
+            #{pojo.userId},
+            #{pojo.classId},
+            #{pojo.imageName},
+            #{pojo.imageText},
+            #{pojo.imagePath},
+            #{pojo.createTime},
+            #{pojo.updateTime},
+            #{pojo.isDeleted}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE image
+        <set>
+            <if test="pojo.id != null">id = #{pojo.id},</if>
+            <if test="pojo.imageId != null">image_id = #{pojo.imageId},</if>
+            <if test="pojo.userId != null">user_id = #{pojo.userId},</if>
+            <if test="pojo.classId != null">class_id = #{pojo.classId},</if>
+            <if test="pojo.imageName != null">image_name = #{pojo.imageName},</if>
+            <if test="pojo.imageText != null">image_text = #{pojo.imageText},</if>
+            <if test="pojo.imagePath != null">image_path = #{pojo.imagePath},</if>
+            <if test="pojo.createTime != null">create_time = #{pojo.createTime},</if>
+            <if test="pojo.isDeleted != null">is_deleted = #{pojo.isDeleted},</if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT
+        <include refid="all_column"/>
+        FROM image
+        <where>
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.imageId != null">AND image_id = #{pojo.imageId}</if>
+            <if test="pojo.userId != null">AND user_id = #{pojo.userId}</if>
+            <if test="pojo.classId != null">AND class_id = #{pojo.classId}</if>
+            <if test="pojo.imageName != null">AND image_name = #{pojo.imageName}</if>
+            <if test="pojo.imageText != null">AND image_text = #{pojo.imageText}</if>
+            <if test="pojo.imagePath != null">AND image_path = #{pojo.imagePath}</if>
+            <if test="pojo.createTime != null">AND create_time = #{pojo.createTime}</if>
+            <if test="pojo.updateTime != null">AND update_time = #{pojo.updateTime}</if>
+            <if test="pojo.isDeleted != null">AND is_deleted = #{pojo.isDeleted}</if>
+        </where>
+        LIMIT 1000
+    </select>
+
+    <!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM image where id = #{pojo.id}
+    </delete>
+</mapper>
