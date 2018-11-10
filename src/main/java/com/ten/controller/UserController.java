@@ -6,6 +6,8 @@ import com.ten.entity.User;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     private static final String SUCCESS = "SUCCESS";
 
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
+
     private final UserService userService;
 
     @Autowired
@@ -37,12 +42,14 @@ public class UserController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultModel getUserList() {
-        logger.info("访问方法:"+Thread.currentThread().getStackTrace()[1].getMethodName());
-        List<User> userList = userService.readUserList();
-        if (userList.size() < 1) {
-            return new ResultModel(ResponseCode.SERVER_ERROR, "用户集合查询失败");
+        User user = new User()
+                .setIsDeleted(0);
+
+        List<User> users = userService.select(user);
+        if (users.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "用户查询为空");
         }
-        return new ResultModel(ResponseCode.OK, userList);
+        return new ResultModel(ResponseCode.OK, users);
     }
 
     /**
@@ -50,20 +57,34 @@ public class UserController {
      */
     @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
     public ResultModel getUser(@PathVariable("userName") @NotNull String userName) {
-        logger.info("访问方法:"+Thread.currentThread().getStackTrace()[1].getMethodName());
-        User user = userService.readUserByName(userName);
-        if (user == null) {
+        User user = new User()
+                .setUserName(userName)
+                .setIsDeleted(0);
+
+        List<User> users = userService.select(user);
+        if (users.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "未查询到指定用户{userName:" + userName + "}");
         }
-        return new ResultModel(ResponseCode.OK, user);
+        return new ResultModel(ResponseCode.OK, users.get(0));
     }
 
     /**
      * Create New User
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResultModel postUser(@RequestBody @NotNull User user) {
-        Integer result = userService.createUser(user);
+    public ResultModel postUser(@RequestParam @NotNull String userName,
+                                @RequestParam @NotNull String userPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        User user = new User()
+                .setUserName(userName)
+                .setUserPassword(userPassword)
+                .setUserLevel("user")
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = userService.insert(user);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "创建用户失败:" + user);
         }
@@ -74,8 +95,16 @@ public class UserController {
      * Update User
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResultModel putUser(@RequestBody @NotNull User user) {
-        Integer result = userService.updateUser(user);
+    public ResultModel putUser(@RequestParam @NotNull String userName,
+                               @RequestParam @NotNull String userPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        User user = new User()
+                .setUserName(userName)
+                .setUserPassword(userPassword)
+                .setUpdateTime(current);
+
+        Integer result = userService.update(user);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "更新用户失败:" + user);
         }
@@ -87,9 +116,16 @@ public class UserController {
      */
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public ResultModel deleteUser(@PathVariable("userId") @NotNull String userId) {
-        checkFormatIsInt(userId);
+        checkUtil.isFormatInt(userId);
 
-        Integer result = userService.deleteUserById(Integer.parseInt(userId));
+        String current = timeUtil.getCurrentTime();
+
+        User user = new User()
+                .setId(Integer.valueOf(userId))
+                .setUpdateTime(current)
+                .setIsDeleted(1);
+
+        Integer result = userService.update(user);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "删除用户失败:" + userId);
         }

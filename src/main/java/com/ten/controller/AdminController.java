@@ -41,7 +41,10 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultModel getAdminList() {
-        List<Admin> admins = adminService.select(new Admin());
+        Admin admin = new Admin()
+                .setIsDeleted(0);
+
+        List<Admin> admins = adminService.select(admin);
 
         if (admins.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员查询失败");
@@ -97,8 +100,14 @@ public class AdminController {
      */
     @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
     public ResultModel deleteAdmin(@PathVariable @NotNull String adminId) {
-        checkFormatIsInt(adminId);
-        Integer result = adminService.(Integer.parseInt(adminId));
+        checkUtil.isFormatInt(adminId);
+
+        Admin admin = new Admin()
+                .setId(Integer.valueOf(adminId))
+                .setUpdateTime(timeUtil.getCurrentTime())
+                .setIsDeleted(1);
+
+        Integer result = adminService.update(admin);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员删除失败:" + adminId);
         }

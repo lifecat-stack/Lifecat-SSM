@@ -7,4 +7,7 @@ package com.ten.aspect;
  * @date 2018/11/10
  */
 public class LoggerInfoAspect {
+    /**
+     * logger.info("访问方法:" + Thread.currentThread().getStackTrace()[1].getMethodName());
+     */
 }

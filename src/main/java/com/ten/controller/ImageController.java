@@ -6,6 +6,8 @@ import com.ten.entity.Image;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class ImageController {
     private Logger logger = LoggerFactory.getLogger(ImageController.class);
     private static final String SUCCESS = "SUCCESS";
 
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
+
     private final ImageService imageService;
 
     @Autowired
@@ -38,11 +43,15 @@ public class ImageController {
      */
     @RequestMapping(value = "/{imageName}", method = RequestMethod.GET)
     public ResultModel getImage(@PathVariable("imageName") @NotNull String imageName) {
-        Image image = imageService.readImageByText(imageName);
-        if (image == null) {
+        Image image = new Image()
+                .setImageName(imageName)
+                .setIsDeleted(0);
+
+        List<Image> result = imageService.select(image);
+        if (result.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, imageName:" + imageName);
         }
-        return new ResultModel(ResponseCode.OK, image);
+        return new ResultModel(ResponseCode.OK, result.get(0));
     }
 
     /**
@@ -50,8 +59,13 @@ public class ImageController {
      */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
     public ResultModel getImageList(@PathVariable("userId") @NotNull String userId) {
-        checkFormatIsInt(userId);
-        List<Image> imageList = imageService.readImageListByUserId(Integer.parseInt(userId));
+        checkUtil.isFormatInt(userId);
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setIsDeleted(0);
+
+        List<Image> imageList = imageService.select(image);
         if (imageList.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, userId:" + userId);
         }
@@ -61,14 +75,18 @@ public class ImageController {
     /**
      * Get Image Class By UserId And ClassId
      */
-    @RequestMapping(value = "/class/{userId}/{classId}", method = RequestMethod.GET)
-    public ResultModel getImageClassList(@PathVariable("userId") @NotNull String userId,
-                                         @PathVariable("classId") @NotNull String classId) {
-        checkFormatIsInt(userId);
-        checkFormatIsInt(classId);
-        int userid = Integer.parseInt(userId);
-        int classid = Integer.parseInt(classId);
-        List<Image> imageList = imageService.readImageListByClassId(userid, classid);
+    @RequestMapping(value = "/class", method = RequestMethod.GET)
+    public ResultModel getImageClassList(@RequestParam @NotNull String userId,
+                                         @RequestParam @NotNull String classId) {
+        checkUtil.isFormatInt(userId);
+        checkUtil.isFormatInt(classId);
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setClassId(Integer.valueOf(classId))
+                .setIsDeleted(0);
+
+        List<Image> imageList = imageService.select(image);
         if (imageList.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, userId:" + userId + ", classId:" + classId);
         }
@@ -79,8 +97,26 @@ public class ImageController {
      * Create Image
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResultModel postImage(@RequestBody @NotNull Image image) {
-        Integer result = imageService.createImage(image);
+    public ResultModel postImage(@RequestParam @NotNull String userId,
+                                 @RequestParam @NotNull String imageName,
+                                 @RequestParam @NotNull String imageText) {
+        checkUtil.isFormatInt(userId);
+
+        String current = timeUtil.getCurrentTime();
+
+        // TODO 将图片保存到磁盘
+        String imagePath = "images/user/user.jpg";
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setImageName(imageName)
+                .setImageText(imageText)
+                .setImagePath(imagePath)
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = imageService.insert(image);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片创建失败:" + image);
         }
@@ -91,8 +127,16 @@ public class ImageController {
      * Update Image
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResultModel putImage(@RequestBody @NotNull Image image) {
-        Integer result = imageService.updateImage(image);
+    public ResultModel putImage(@RequestParam @NotNull String imageName,
+                                @RequestParam @NotNull String imageText) {
+        String current = timeUtil.getCurrentTime();
+
+        Image image = new Image()
+                .setImageName(imageName)
+                .setImageText(imageText)
+                .setUpdateTime(current);
+
+        Integer result = imageService.update(image);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片更新失败:" + image);
         }
@@ -102,12 +146,20 @@ public class ImageController {
     /**
      * Delete Image
      */
-    @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public ResultModel deleteImage(@PathVariable @NotNull String diaryId) {
-        checkFormatIsInt(diaryId);
-        Integer result = imageService.deleteImageById(Integer.parseInt(diaryId));
+    @RequestMapping(value = "/{imageId}", method = RequestMethod.DELETE)
+    public ResultModel deleteImage(@PathVariable @NotNull String imageId) {
+        checkUtil.isFormatInt(imageId);
+
+        String current = timeUtil.getCurrentTime();
+
+        Image image = new Image()
+                .setId(Integer.valueOf(imageId))
+                .setUpdateTime(current)
+                .setIsDeleted(1);
+
+        Integer result = imageService.update(image);
         if (result < 1) {
-            return new ResultModel(ResponseCode.SERVER_ERROR, "图片删除失败:" + diaryId);
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片删除失败:" + imageId);
         }
         return new ResultModel(ResponseCode.OK, SUCCESS);
     }
