@@ -1,0 +1,13 @@
+-- auto Generated on 2018-11-10 21:09:42 
+-- DROP TABLE IF EXISTS `admin`; 
+CREATE TABLE admin(
+    `id` INTEGER(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `admin_id` INTEGER(12) NOT NULL DEFAULT -1 COMMENT 'adminId',
+    `admin_name` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'adminName',
+    `admin_password` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'adminPassword',
+    `admin_level` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'adminLevel',
+    `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'createTime',
+    `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updateTime',
+    `is_deleted` INTEGER(12) NOT NULL DEFAULT -1 COMMENT 'isDeleted',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'admin';

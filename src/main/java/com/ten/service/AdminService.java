@@ -1,40 +1,31 @@
 package com.ten.service;
 
-import com.ten.entity.Admin;
-
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
 import java.util.List;
+import com.ten.entity.Admin;
+import com.ten.mapper.AdminDao;
 
-public interface AdminService {
-    /**
-     * 获取所有admin信息
-     */
-    List<Admin> readAdminList();
+@Service
+public class AdminService {
 
-    /**
-     * 获取admin信息
-     *
-     * @param adminName admin_name
-     */
-    Admin readAdminByName(String adminName);
+    @Resource
+    private AdminDao adminDao;
 
-    /**
-     * 创建admin信息
-     *
-     * @param admin DO
-     */
-    int createAdmin(Admin admin);
+    public int insert(Admin pojo){
+        return adminDao.insert(pojo);
+    }
 
-    /**
-     * 更新admin信息
-     *
-     * @param admin DO
-     */
-    int updateAdmin(Admin admin);
+    public int insertList(List< Admin> pojos){
+        return adminDao.insertList(pojos);
+    }
 
-    /**
-     * 删除admin信息
-     *
-     * @param adminId admin_id
-     */
-    int deleteAdminById(int adminId);
+    public List<Admin> select(Admin pojo){
+        return adminDao.select(pojo);
+    }
+
+    public int update(Admin pojo){
+        return adminDao.update(pojo);
+    }
+
 }

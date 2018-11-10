@@ -1,0 +1,13 @@
+-- auto Generated on 2018-11-10 21:11:03 
+-- DROP TABLE IF EXISTS `user`; 
+CREATE TABLE user(
+    `id` INTEGER(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `user_id` INTEGER(12) NOT NULL DEFAULT -1 COMMENT 'userId',
+    `user_name` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'userName',
+    `user_password` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'userPassword',
+    `user_level` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'userLevel',
+    `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'createTime',
+    `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updateTime',
+    `is_deleted` INTEGER(12) NOT NULL DEFAULT -1 COMMENT 'isDeleted',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'user';

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ten.mapper.DiaryDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.ten.entity.Diary">
+        <result column="id" property="id"/>
+        <result column="diary_id" property="diaryId"/>
+        <result column="user_id" property="userId"/>
+        <result column="diary_name" property="diaryName"/>
+        <result column="diary_text" property="diaryText"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        diary_id,
+        user_id,
+        diary_name,
+        diary_text,
+        create_time,
+        update_time,
+        is_deleted
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO diary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.diaryId != null"> diary_id, </if>
+            <if test="pojo.userId != null"> user_id, </if>
+            <if test="pojo.diaryName != null"> diary_name, </if>
+            <if test="pojo.diaryText != null"> diary_text, </if>
+            <if test="pojo.createTime != null"> create_time, </if>
+            <if test="pojo.updateTime != null"> update_time, </if>
+            <if test="pojo.isDeleted != null"> is_deleted, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.diaryId != null"> #{pojo.diaryId}, </if>
+            <if test="pojo.userId != null"> #{pojo.userId}, </if>
+            <if test="pojo.diaryName != null"> #{pojo.diaryName}, </if>
+            <if test="pojo.diaryText != null"> #{pojo.diaryText}, </if>
+            <if test="pojo.createTime != null"> #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> #{pojo.updateTime}, </if>
+            <if test="pojo.isDeleted != null"> #{pojo.isDeleted}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO diary(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.diaryId},
+            #{pojo.userId},
+            #{pojo.diaryName},
+            #{pojo.diaryText},
+            #{pojo.createTime},
+            #{pojo.updateTime},
+            #{pojo.isDeleted}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE diary
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.diaryId != null"> diary_id = #{pojo.diaryId}, </if>
+            <if test="pojo.userId != null"> user_id = #{pojo.userId}, </if>
+            <if test="pojo.diaryName != null"> diary_name = #{pojo.diaryName}, </if>
+            <if test="pojo.diaryText != null"> diary_text = #{pojo.diaryText}, </if>
+            <if test="pojo.createTime != null"> create_time = #{pojo.createTime}, </if>
+            <if test="pojo.isDeleted != null"> is_deleted = #{pojo.isDeleted}, </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM diary
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.diaryId != null"> AND diary_id = #{pojo.diaryId} </if>
+            <if test="pojo.userId != null"> AND user_id = #{pojo.userId} </if>
+            <if test="pojo.diaryName != null"> AND diary_name = #{pojo.diaryName} </if>
+            <if test="pojo.diaryText != null"> AND diary_text = #{pojo.diaryText} </if>
+            <if test="pojo.createTime != null"> AND create_time = #{pojo.createTime} </if>
+            <if test="pojo.updateTime != null"> AND update_time = #{pojo.updateTime} </if>
+            <if test="pojo.isDeleted != null"> AND is_deleted = #{pojo.isDeleted} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM diary where id = #{pojo.id}
+    </delete>
+</mapper>

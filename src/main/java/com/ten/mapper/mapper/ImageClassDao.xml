@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ten.mapper.ImageClassDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.ten.entity.ImageClass">
+        <result column="id" property="id"/>
+        <result column="image_class_id" property="imageClassId"/>
+        <result column="image_class_name" property="imageClassName"/>
+        <result column="image_class_desc" property="imageClassDesc"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        image_class_id,
+        image_class_name,
+        image_class_desc,
+        create_time,
+        update_time
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO image_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.imageClassId != null"> image_class_id, </if>
+            <if test="pojo.imageClassName != null"> image_class_name, </if>
+            <if test="pojo.imageClassDesc != null"> image_class_desc, </if>
+            <if test="pojo.createTime != null"> create_time, </if>
+            <if test="pojo.updateTime != null"> update_time, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.imageClassId != null"> #{pojo.imageClassId}, </if>
+            <if test="pojo.imageClassName != null"> #{pojo.imageClassName}, </if>
+            <if test="pojo.imageClassDesc != null"> #{pojo.imageClassDesc}, </if>
+            <if test="pojo.createTime != null"> #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> #{pojo.updateTime}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO image_class(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.imageClassId},
+            #{pojo.imageClassName},
+            #{pojo.imageClassDesc},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE image_class
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.imageClassId != null"> image_class_id = #{pojo.imageClassId}, </if>
+            <if test="pojo.imageClassName != null"> image_class_name = #{pojo.imageClassName}, </if>
+            <if test="pojo.imageClassDesc != null"> image_class_desc = #{pojo.imageClassDesc}, </if>
+            <if test="pojo.createTime != null"> create_time = #{pojo.createTime}, </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM image_class
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.imageClassId != null"> AND image_class_id = #{pojo.imageClassId} </if>
+            <if test="pojo.imageClassName != null"> AND image_class_name = #{pojo.imageClassName} </if>
+            <if test="pojo.imageClassDesc != null"> AND image_class_desc = #{pojo.imageClassDesc} </if>
+            <if test="pojo.createTime != null"> AND create_time = #{pojo.createTime} </if>
+            <if test="pojo.updateTime != null"> AND update_time = #{pojo.updateTime} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM image_class where id = #{pojo.id}
+    </delete>
+</mapper>

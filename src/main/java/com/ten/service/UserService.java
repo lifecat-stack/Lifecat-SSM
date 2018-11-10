@@ -1,46 +1,31 @@
 package com.ten.service;
 
-import com.ten.entity.User;
-
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
 import java.util.List;
+import com.ten.entity.User;
+import com.ten.mapper.UserDao;
 
-/**
- * User
- *
- * @date 2018/7/17
- * @auther ten
- */
-public interface UserService {
-    /**
-     * 获取所有user信息
-     */
-    List<User> readUserList();
+@Service
+public class UserService {
 
-    /**
-     * 获取user信息
-     *
-     * @param userName user_name
-     */
-    User readUserByName(String userName);
+    @Resource
+    private UserDao userDao;
 
-    /**
-     * 创建user信息
-     *
-     * @param user DO
-     */
-    int createUser(User user);
+    public int insert(User pojo){
+        return userDao.insert(pojo);
+    }
 
-    /**
-     * 更新user信息
-     *
-     * @param user DO
-     */
-    int updateUser(User user);
+    public int insertList(List< User> pojos){
+        return userDao.insertList(pojos);
+    }
 
-    /**
-     * 删除user信息
-     *
-     * @param userId user_id
-     */
-    int deleteUserById(int userId);
+    public List<User> select(User pojo){
+        return userDao.select(pojo);
+    }
+
+    public int update(User pojo){
+        return userDao.update(pojo);
+    }
+
 }
