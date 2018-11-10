@@ -1,6 +1,6 @@
 package com.ten.service.impl;
 
-import com.ten.entity.UserDO;
+import com.ten.entity.User;
 import com.ten.mapper.UserIconMapper;
 import com.ten.mapper.UserMapper;
 import com.ten.mapper.UserPropertyMapper;
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
      * 获取所有user信息
      */
     @Override
-    public List<UserDO> readUserList() {
+    public List<User> readUserList() {
         return userMapper.selectUserList();
     }
 
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
      * @param userName user_name
      */
     @Override
-    public UserDO readUserByName(String userName) {
+    public User readUserByName(String userName) {
         Map<String, String> map = new HashMap<>(2);
         map.put("userName", userName);
         return userMapper.selectUserByName(map);
@@ -59,38 +59,38 @@ public class UserServiceImpl implements UserService {
     /**
      * 创建user信息
      *
-     * @param userDO DO
+     * @param user DO
      */
     @Override
-    public int createUser(UserDO userDO) {
+    public int createUser(User user) {
         // check properties
-        checkObjectDataNotNull(userDO.getUserName());
-        checkObjectDataNotNull(userDO.getUserPassword());
+        checkObjectDataNotNull(user.getUserName());
+        checkObjectDataNotNull(user.getUserPassword());
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        userDO.setUserGmtCreate(create);
-        userDO.setUserGmtModified(modified);
-        userDO.setUserLevel("user");
-        return userMapper.insertUser(userDO);
+        user.setUserGmtCreate(create);
+        user.setUserGmtModified(modified);
+        user.setUserLevel("user");
+        return userMapper.insertUser(user);
     }
 
     /**
      * 更新user信息
      *
-     * @param userDO DO
+     * @param user DO
      */
     @Override
-    public int updateUser(UserDO userDO) {
+    public int updateUser(User user) {
         // check properties
-        checkObjectDataNotNull(userDO.getUserId());
-        checkObjectDataNotNull(userDO.getUserName());
-        checkObjectDataNotNull(userDO.getUserPassword());
-        checkObjectDataNotNull(userDO.getUserLevel());
+        checkObjectDataNotNull(user.getUserId());
+        checkObjectDataNotNull(user.getUserName());
+        checkObjectDataNotNull(user.getUserPassword());
+        checkObjectDataNotNull(user.getUserLevel());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        userDO.setUserGmtModified(modified);
-        return userMapper.updateUser(userDO);
+        user.setUserGmtModified(modified);
+        return userMapper.updateUser(user);
     }
 
     /**

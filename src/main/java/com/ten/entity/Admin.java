@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class AdminDO {
+public class Admin {
 
     private Integer adminId;
     private String adminName;
@@ -63,11 +63,11 @@ public class AdminDO {
     }
 
     /**
-     * @return AdminDO@1234{ID:'',Name:'',Password:'',Level:'',Create:'',Modified:''}
+     * @return Admin@1234{ID:'',Name:'',Password:'',Level:'',Create:'',Modified:''}
      */
     @Override
     public String toString() {
-        return "AdminDO@" + adminId
+        return "Admin@" + adminId
                 + "{ID:" + adminId
                 + ",Name:" + adminName
                 + ",Password:" + adminPassword

@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class UserIconDO {
+public class UserIcon {
 
     private Integer userId;
     private String iconPath;
@@ -45,11 +45,11 @@ public class UserIconDO {
     }
 
     /**
-     * @return UserIconDO@1234{UserID:'',Path:'',Create:'',Modified:''}
+     * @return UserIcon@1234{UserID:'',Path:'',Create:'',Modified:''}
      */
     @Override
     public String toString() {
-        return "UserIconDO@" + userId
+        return "UserIcon@" + userId
                 + "{UserID:" + userId
                 + ",Path:" + iconPath
                 + ",Create:" + iconGmtCreate

@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class DiaryDO {
+public class Diary {
 
     private Integer diaryId;
     private Integer userId;
@@ -72,11 +72,11 @@ public class DiaryDO {
     }
 
     /**
-     * @return DiaryDO@1234{DiaryId:'',UserID:'',Name:'',Text:'',isDeleted:'',Create:'',Modified:''}
+     * @return Diary@1234{DiaryId:'',UserID:'',Name:'',Text:'',isDeleted:'',Create:'',Modified:''}
      */
     @Override
     public String toString() {
-        return "DiaryDO@" + diaryId
+        return "Diary@" + diaryId
                 + "{DiaryId:" + diaryId
                 + ",UserID:" + userId
                 + ",Name:" + diaryName

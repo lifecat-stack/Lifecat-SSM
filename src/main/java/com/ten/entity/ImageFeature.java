@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class ImageFeatureDO {
+public class ImageFeature {
 
     private Integer imageId;
     private Integer imageClass;

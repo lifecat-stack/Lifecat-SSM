@@ -1,20 +1,20 @@
 package com.ten.mapper;
 
 
-import com.ten.entity.UserDO;
+import com.ten.entity.User;
 
 import java.util.List;
 import java.util.Map;
 
 
 public interface UserMapper {
-    List<UserDO> selectUserList();
+    List<User> selectUserList();
 
-    UserDO selectUserByName(Map<String,String> userMap);
+    User selectUserByName(Map<String,String> userMap);
 
-    int insertUser(UserDO userDO);
+    int insertUser(User user);
 
-    int updateUser(UserDO userDO);
+    int updateUser(User user);
 
     int deleteUserById(int userId);
 }

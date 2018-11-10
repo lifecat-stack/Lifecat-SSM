@@ -1,7 +1,8 @@
 package com.ten.controller;
 
-import com.ten.entity.UserDO;
-import com.ten.dto.ResponseResult;
+import com.ten.dto.ResponseCode;
+import com.ten.dto.ResultModel;
+import com.ten.entity.User;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -14,100 +15,80 @@ import java.util.List;
 
 import static com.ten.util.ControllerCheckUtil.*;
 
-/**
- * user rest
- *
- * @author Administrator
- */
 @RestController
 @RequestMapping("/user/v1")
 public class UserController {
-
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final String SUCCESS = "SUCCESS";
 
     private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-        checkResourceNotNull(userService, "userService not load");
     }
 
     /**
-     * 查询user list
+     * Get All User Data
      */
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-    public List<UserDO> getUserList() {
-        // execute
-        List<UserDO> userList = userService.readUserList();
-        // return
-        checkResourceNotNull(userList, "user list is null");
-        return userList;
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResultModel getUserList() {
+        logger.info("访问方法:"+Thread.currentThread().getStackTrace()[1].getMethodName());
+        List<User> userList = userService.readUserList();
+        if (userList.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "用户集合查询失败");
+        }
+        return new ResultModel(ResponseCode.OK, userList);
     }
 
     /**
-     * 查询user
-     *
-     * @param userName user_name
+     * Get User By UserName
      */
-    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET, produces = "application/json")
-    public UserDO getUser(@PathVariable("userName") @NotNull String userName) {
-        // check
-        checkRequestDataNotNull(userName);
-        // execute
-        UserDO userDO = userService.readUserByName(userName);
-        // return
-        checkResourceNotNull(userDO, userName + " is not found");
-        return userDO;
+    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
+    public ResultModel getUser(@PathVariable("userName") @NotNull String userName) {
+        logger.info("访问方法:"+Thread.currentThread().getStackTrace()[1].getMethodName());
+        User user = userService.readUserByName(userName);
+        if (user == null) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "未查询到指定用户{userName:" + userName + "}");
+        }
+        return new ResultModel(ResponseCode.OK, user);
     }
 
     /**
-     * 创建user
-     *
-     * @param userDO user
+     * Create New User
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postUser(@RequestBody @NotNull UserDO userDO) {
-        // check
-        checkRequestDataNotNull(userDO);
-        // execute
-        int result = userService.createUser(userDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("user create success");
+    public ResultModel postUser(@RequestBody @NotNull User user) {
+        Integer result = userService.createUser(user);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "创建用户失败:" + user);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 更新user
-     *
-     * @param userDO user
+     * Update User
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putUser(@RequestBody @NotNull UserDO userDO) {
-        // check
-        checkRequestDataNotNull(userDO);
-        // execute
-        int result = userService.updateUser(userDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("user update success");
+    public ResultModel putUser(@RequestBody @NotNull User user) {
+        Integer result = userService.updateUser(user);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "更新用户失败:" + user);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 删除user
-     *
-     * @param userId user_id
+     * Delete User By UserId
      */
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteUser(@PathVariable("userId") @NotNull String userId) {
-        // check
-        checkRequestDataNotNull(userId);
+    public ResultModel deleteUser(@PathVariable("userId") @NotNull String userId) {
         checkRquestDataFormatInt(userId);
-        // execute
-        int id = Integer.parseInt(userId);
-        int result = userService.deleteUserById(id);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("user delete success");
+
+        Integer result = userService.deleteUserById(Integer.parseInt(userId));
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "删除用户失败:" + userId);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 }

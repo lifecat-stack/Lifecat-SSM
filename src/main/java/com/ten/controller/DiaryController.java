@@ -1,7 +1,6 @@
 package com.ten.controller;
 
-import com.ten.entity.DiaryDO;
-import com.ten.dto.ResponseResult;
+import com.ten.entity.Diary;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -39,12 +38,12 @@ public class DiaryController {
      * @param userId user_id
      */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public List<DiaryDO> getDiaryList(@PathVariable("userId") @NotNull String userId) {
+    public List<Diary> getDiaryList(@PathVariable("userId") @NotNull String userId) {
         // check
         checkRquestDataFormatInt(userId);
         // execute
         int id = Integer.parseInt(userId);
-        List<DiaryDO> diaryList = diaryService.readDiaryListByUserId(id);
+        List<Diary> diaryList = diaryService.readDiaryListByUserId(id);
         // return
         checkResourceNotNull(diaryList, userId + " diary list is null");
         return diaryList;
@@ -56,11 +55,11 @@ public class DiaryController {
      * @param diaryName diary_name
      */
     @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET, produces = "application/json")
-    public DiaryDO getDiary(@PathVariable("diaryName") @NotNull String diaryName) {
+    public Diary getDiary(@PathVariable("diaryName") @NotNull String diaryName) {
         // check
         checkRequestDataNotNull(diaryName);
         // execute
-        DiaryDO diary = diaryService.readDiaryByDiaryName(diaryName);
+        Diary diary = diaryService.readDiaryByDiaryName(diaryName);
         // return
         checkResourceNotNull(diary, diaryName + " not found");
         return diary;
@@ -69,33 +68,33 @@ public class DiaryController {
     /**
      * 创建diary
      *
-     * @param diaryDO diary
+     * @param diary diary
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+    public ResultModel postDiary(@RequestBody @NotNull Diary diary) {
         // check
-        checkRequestDataNotNull(diaryDO);
+        checkRequestDataNotNull(diary);
         // execute
-        int result = diaryService.createDiary(diaryDO);
+        int result = diaryService.createDiary(diary);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("diary create success");
+        return new ResultModel("diary create success");
     }
 
     /**
      * 更新diary
      *
-     * @param diaryDO diary
+     * @param diary diary
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putDiary(@RequestBody @NotNull DiaryDO diaryDO) {
+    public ResultModel putDiary(@RequestBody @NotNull Diary diary) {
         // check
-        checkRequestDataNotNull(diaryDO);
+        checkRequestDataNotNull(diary);
         // execute
-        int result = diaryService.updateDiary(diaryDO);
+        int result = diaryService.updateDiary(diary);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("diary update success");
+        return new ResultModel("diary update success");
     }
 
     /**
@@ -104,7 +103,7 @@ public class DiaryController {
      * @param diaryId diary_id
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
+    public ResultModel deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
         // check
         checkRequestDataNotNull(diaryId);
         checkRquestDataFormatInt(diaryId);
@@ -113,7 +112,7 @@ public class DiaryController {
         int result = diaryService.deleteDiaryById(id);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("diary delete success");
+        return new ResultModel("diary delete success");
     }
 
 }

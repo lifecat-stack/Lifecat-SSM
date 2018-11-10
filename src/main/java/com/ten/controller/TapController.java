@@ -6,15 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Tap切换栏控制器
+ * View Controller -> Home.page -> Change Tap Page
  *
- * @author Administrator
+ * @author wshten
+ * @date 2018/11/10
  */
 @Controller
 @RequestMapping("/home-tap")
 public class TapController {
-
-    private Logger logger = LoggerFactory.getLogger(TapController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TapController.class);
 
     /**
      * main-tap

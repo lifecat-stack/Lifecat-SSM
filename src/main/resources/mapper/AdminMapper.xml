@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ten.mapper.AdminMapper">
 
-    <resultMap id="AdminList" type="adminDO">
+    <resultMap id="AdminList" type="admin">
         <id property="adminId" column="admin_id"/>
         <result property="adminName" column="admin_name"/>
         <result property="adminPassword" column="admin_password"/>
@@ -24,7 +24,7 @@
         from admin;
     </select>
 
-    <select id="selectAdminByName" parameterType="map" resultType="adminDO">
+    <select id="selectAdminByName" parameterType="map" resultType="admin">
         select
             admin_id as adminId,
             admin_name as adminName,
@@ -36,7 +36,7 @@
         where admin_name = #{adminName}
     </select>
 
-    <insert id="insertAdmin" parameterType="adminDO">
+    <insert id="insertAdmin" parameterType="admin">
         INSERT INTO admin (
             admin_name,
             admin_password,
@@ -51,7 +51,7 @@
             #{adminGmtModified})
     </insert>
 
-    <update id="updateAdmin" parameterType="adminDO">
+    <update id="updateAdmin" parameterType="admin">
         update admin
         set
             admin_name         = #{adminName},

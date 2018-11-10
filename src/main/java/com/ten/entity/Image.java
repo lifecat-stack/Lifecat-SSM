@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class ImageDO {
+public class Image {
 
     private Integer imageId;
     private Integer userId;
@@ -81,11 +81,11 @@ public class ImageDO {
     }
 
     /**
-     * @return ImageDO@1234{ImageID:'',UserID:'',ClassID:'',Text:'',Path:'',isDeleted:'',Create:'',Modified:''}
+     * @return Image@1234{ImageID:'',UserID:'',ClassID:'',Text:'',Path:'',isDeleted:'',Create:'',Modified:''}
      */
     @Override
     public String toString() {
-        return "ImageDO@" + imageId
+        return "Image@" + imageId
                 + "{ImageID:" + imageId
                 + ",UserID:" + userId
                 + ",ClassID:" + classId

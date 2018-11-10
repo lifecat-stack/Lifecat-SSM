@@ -1,6 +1,6 @@
 package com.ten.service;
 
-import com.ten.entity.UserDO;
+import com.ten.entity.User;
 
 import java.util.List;
 
@@ -14,28 +14,28 @@ public interface UserService {
     /**
      * 获取所有user信息
      */
-    List<UserDO> readUserList();
+    List<User> readUserList();
 
     /**
      * 获取user信息
      *
      * @param userName user_name
      */
-    UserDO readUserByName(String userName);
+    User readUserByName(String userName);
 
     /**
      * 创建user信息
      *
-     * @param userDO DO
+     * @param user DO
      */
-    int createUser(UserDO userDO);
+    int createUser(User user);
 
     /**
      * 更新user信息
      *
-     * @param userDO DO
+     * @param user DO
      */
-    int updateUser(UserDO userDO);
+    int updateUser(User user);
 
     /**
      * 删除user信息

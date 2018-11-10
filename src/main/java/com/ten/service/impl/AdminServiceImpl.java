@@ -1,6 +1,6 @@
 package com.ten.service.impl;
 
-import com.ten.entity.AdminDO;
+import com.ten.entity.Admin;
 import com.ten.mapper.AdminMapper;
 import com.ten.service.AdminService;
 import com.ten.util.DateTimeUtil;
@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService {
      * 获取所有admin信息
      */
     @Override
-    public List<AdminDO> readAdminList() {
+    public List<Admin> readAdminList() {
         return adminMapper.selectAdminList();
     }
 
@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
      * @param adminName admin_name
      */
     @Override
-    public AdminDO readAdminByName(String adminName) {
+    public Admin readAdminByName(String adminName) {
         Map<String, String> map = new HashMap<>(2);
         map.put("adminName", adminName);
         return adminMapper.selectAdminByName(map);
@@ -52,38 +52,38 @@ public class AdminServiceImpl implements AdminService {
     /**
      * 创建admin信息
      *
-     * @param adminDO DO
+     * @param admin DO
      */
     @Override
-    public int createAdmin(AdminDO adminDO) {
+    public int createAdmin(Admin admin) {
         // check properties
-        checkObjectDataNotNull(adminDO.getAdminName());
-        checkObjectDataNotNull(adminDO.getAdminPassword());
+        checkObjectDataNotNull(admin.getAdminName());
+        checkObjectDataNotNull(admin.getAdminPassword());
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        adminDO.setAdminGmtCreate(create);
-        adminDO.setAdminGmtModified(modified);
-        adminDO.setAdminLevel("admin");
-        return adminMapper.insertAdmin(adminDO);
+        admin.setAdminGmtCreate(create);
+        admin.setAdminGmtModified(modified);
+        admin.setAdminLevel("admin");
+        return adminMapper.insertAdmin(admin);
     }
 
     /**
      * 更新admin信息
      *
-     * @param adminDO DO
+     * @param admin DO
      */
     @Override
-    public int updateAdmin(AdminDO adminDO) {
+    public int updateAdmin(Admin admin) {
         // check properties
-        checkObjectDataNotNull(adminDO.getAdminId());
-        checkObjectDataNotNull(adminDO.getAdminName());
-        checkObjectDataNotNull(adminDO.getAdminPassword());
-        checkObjectDataNotNull(adminDO.getAdminLevel());
+        checkObjectDataNotNull(admin.getAdminId());
+        checkObjectDataNotNull(admin.getAdminName());
+        checkObjectDataNotNull(admin.getAdminPassword());
+        checkObjectDataNotNull(admin.getAdminLevel());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        adminDO.setAdminGmtModified(modified);
-        return adminMapper.updateAdmin(adminDO);
+        admin.setAdminGmtModified(modified);
+        return adminMapper.updateAdmin(admin);
     }
 
     /**

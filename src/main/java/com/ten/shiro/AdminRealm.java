@@ -1,6 +1,6 @@
 package com.ten.shiro;
 
-import com.ten.entity.AdminDO;
+import com.ten.entity.Admin;
 import com.ten.service.AdminService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -56,7 +56,7 @@ public class AdminRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         // 2.从UsernamePasswordToken获取username
         String adminName = token.getUsername();
-        AdminDO admin = adminService.readAdminByName(adminName);
+        Admin admin = adminService.readAdminByName(adminName);
         // 3.验证
         if (admin != null) {
             return new SimpleAuthenticationInfo(

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ten.mapper.UserMapper">
 
-    <resultMap id="UserList" type="userDO">
+    <resultMap id="UserList" type="user">
         <id property="userId" column="user_id"/>
         <result property="userName" column="user_name"/>
         <result property="userPassword" column="user_password"/>
@@ -24,7 +24,7 @@
         from user;
     </select>
 
-    <select id="selectUserByName" parameterType="map" resultType="userDO">
+    <select id="selectUserByName" parameterType="map" resultType="user">
         select
             user_id as userId,
             user_name as userName,
@@ -36,7 +36,7 @@
         where user_name = #{userName}
     </select>
 
-    <insert id="insertUser" parameterType="userDO">
+    <insert id="insertUser" parameterType="user">
         INSERT INTO user (
             user_name,
             user_password,
@@ -51,7 +51,7 @@
             #{userGmtModified})
     </insert>
 
-    <update id="updateUser" parameterType="userDO">
+    <update id="updateUser" parameterType="user">
         update user
         set
             user_name         = #{userName},

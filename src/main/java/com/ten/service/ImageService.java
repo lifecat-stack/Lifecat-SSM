@@ -1,6 +1,6 @@
 package com.ten.service;
 
-import com.ten.entity.ImageDO;
+import com.ten.entity.Image;
 
 import java.util.List;
 
@@ -15,14 +15,14 @@ public interface ImageService {
      *
      * @param imageText image_text
      */
-    ImageDO readImageByText(String imageText);
+    Image readImageByText(String imageText);
 
     /**
      * 查询Image List
      *
      * @param userId user_id
      */
-    List<ImageDO> readImageListByUserId(int userId);
+    List<Image> readImageListByUserId(int userId);
 
     /**
      * 查询Image List by Class
@@ -30,21 +30,21 @@ public interface ImageService {
      * @param userId  user_id
      * @param classId class_id
      */
-    List<ImageDO> readImageListByClassId(int userId, int classId);
+    List<Image> readImageListByClassId(int userId, int classId);
 
     /**
      * 上传Image
      *
-     * @param imageDO DO
+     * @param image DO
      */
-    int createImage(ImageDO imageDO);
+    int createImage(Image image);
 
     /**
      * 更新图片内容
      *
-     * @param imageDO DO
+     * @param image DO
      */
-    int updateImage(ImageDO imageDO);
+    int updateImage(Image image);
 
     /**
      * 删除Image

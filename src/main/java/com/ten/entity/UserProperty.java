@@ -5,7 +5,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class UserPropertyDO {
+public class UserProperty {
 
     private Integer userId;
     private String propertyNickname;
@@ -90,11 +90,11 @@ public class UserPropertyDO {
     }
 
     /**
-     * @return UserPropertyDO@1234{UserID:'',Nickname:'',Signature:'',Sex:'',Email:'',Location:'',Birthday :'',Create:'',Modified:''}
+     * @return UserProperty@1234{UserID:'',Nickname:'',Signature:'',Sex:'',Email:'',Location:'',Birthday :'',Create:'',Modified:''}
      */
     @Override
     public String toString() {
-        return "UserDO@" + userId
+        return "User@" + userId
                 + "{UserID:" + userId
                 + ",Nickname:" + propertyNickname
                 + ",Signature:" + propertySignature

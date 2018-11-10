@@ -1,19 +1,19 @@
 package com.ten.mapper;
 
-import com.ten.entity.AdminDO;
+import com.ten.entity.Admin;
 
 import java.util.List;
 import java.util.Map;
 
 
 public interface AdminMapper {
-    List<AdminDO> selectAdminList();
+    List<Admin> selectAdminList();
 
-    AdminDO selectAdminByName(Map<String,String> adminMap);
+    Admin selectAdminByName(Map<String,String> adminMap);
 
-    int insertAdmin(AdminDO adminDO);
+    int insertAdmin(Admin admin);
 
-    int updateAdmin(AdminDO adminDO);
+    int updateAdmin(Admin admin);
 
     int deleteAdminById(int adminId);
 }

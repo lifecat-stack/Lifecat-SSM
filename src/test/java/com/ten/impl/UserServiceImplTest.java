@@ -1,6 +1,6 @@
 package com.ten.impl;
 
-import com.ten.entity.UserDO;
+import com.ten.entity.User;
 import com.ten.service.UserService;
 import org.junit.After;
 import org.junit.Before;
@@ -35,7 +35,7 @@ public class UserServiceImplTest {
      */
     @Test
     public void testReadUserList() throws Exception {
-        List<UserDO> userList = userService.readUserList();
+        List<User> userList = userService.readUserList();
         System.out.println(userList.get(0).getUserId());
     }
 
@@ -44,13 +44,13 @@ public class UserServiceImplTest {
      */
     @Test
     public void testReadUserByName() throws Exception {
-        UserDO userDO = userService.readUserByName("one");
-        assertNotNull(userDO);
-        System.out.println(userDO.getUserId());
+        User user = userService.readUserByName("one");
+        assertNotNull(user);
+        System.out.println(user.getUserId());
     }
 
     /**
-     * Method: createUser(UserDO userDO)
+     * Method: createUser(User userDO)
      */
     @Test
     public void testCreateUser() throws Exception {
@@ -58,7 +58,7 @@ public class UserServiceImplTest {
     }
 
     /**
-     * Method: updateUser(UserDO userDO)
+     * Method: updateUser(User userDO)
      */
     @Test
     public void testUpdateUser() throws Exception {

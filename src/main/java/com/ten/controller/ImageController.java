@@ -1,7 +1,6 @@
 package com.ten.controller;
 
-import com.ten.entity.ImageDO;
-import com.ten.dto.ResponseResult;
+import com.ten.entity.Image;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
@@ -40,14 +39,14 @@ public class ImageController {
      * @param imageName image_name
      */
     @RequestMapping(value = "/{imageName}", method = RequestMethod.GET, produces = "application/json")
-    public ImageDO getImage(@PathVariable("imageName") @NotNull String imageName) {
+    public Image getImage(@PathVariable("imageName") @NotNull String imageName) {
         // check
         checkRequestDataNotNull(imageName);
         // execute
-        ImageDO imageDO = imageService.readImageByText(imageName);
+        Image image = imageService.readImageByText(imageName);
         // return
-        checkResourceNotNull(imageDO, imageName + " not found");
-        return imageDO;
+        checkResourceNotNull(image, imageName + " not found");
+        return image;
     }
 
     /**
@@ -56,13 +55,13 @@ public class ImageController {
      * @param userId user_id
      */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public List<ImageDO> getImageList(@PathVariable("userId") @NotNull String userId) {
+    public List<Image> getImageList(@PathVariable("userId") @NotNull String userId) {
         // check
         checkRequestDataNotNull(userId);
         checkRquestDataFormatInt(userId);
         // execute
         int id = Integer.parseInt(userId);
-        List<ImageDO> imageList = imageService.readImageListByUserId(id);
+        List<Image> imageList = imageService.readImageListByUserId(id);
         // return
         checkResourceNotNull(imageList, userId + " image list is null");
         return imageList;
@@ -75,8 +74,8 @@ public class ImageController {
      * @param classId class_id
      */
     @RequestMapping(value = "/class/{userId}/{classId}", method = RequestMethod.GET, produces = "application/json")
-    public List<ImageDO> getImageClassList(@PathVariable("userId") @NotNull String userId,
-                                           @PathVariable("classId") @NotNull String classId) {
+    public List<Image> getImageClassList(@PathVariable("userId") @NotNull String userId,
+                                         @PathVariable("classId") @NotNull String classId) {
         // check
         checkRequestDataNotNull(userId);
         checkRequestDataNotNull(classId);
@@ -85,7 +84,7 @@ public class ImageController {
         // execute
         int userid = Integer.parseInt(userId);
         int classid = Integer.parseInt(classId);
-        List<ImageDO> imageList = imageService.readImageListByClassId(userid, classid);
+        List<Image> imageList = imageService.readImageListByClassId(userid, classid);
         // return
         checkResourceNotNull(imageList, "userid:" + userId + ",classid:" + classId + " image list is null");
         return imageList;
@@ -94,33 +93,33 @@ public class ImageController {
     /**
      * 创建image
      *
-     * @param imageDO image
+     * @param image image
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postImage(@RequestBody @NotNull ImageDO imageDO) {
+    public ResultModel postImage(@RequestBody @NotNull Image image) {
         // check
-        checkRequestDataNotNull(imageDO);
+        checkRequestDataNotNull(image);
         // execute
-        int result = imageService.createImage(imageDO);
+        int result = imageService.createImage(image);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("image create success");
+        return new ResultModel("image create success");
     }
 
     /**
      * 更新image
      *
-     * @param imageDO image
+     * @param image image
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putImage(@RequestBody @NotNull ImageDO imageDO) {
+    public ResultModel putImage(@RequestBody @NotNull Image image) {
         // check
-        checkRequestDataNotNull(imageDO);
+        checkRequestDataNotNull(image);
         // execute
-        int result = imageService.updateImage(imageDO);
+        int result = imageService.updateImage(image);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("image update success");
+        return new ResultModel("image update success");
     }
 
     /**
@@ -129,7 +128,7 @@ public class ImageController {
      * @param diaryId diary_id
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteImage(@PathVariable @NotNull String diaryId) {
+    public ResultModel deleteImage(@PathVariable @NotNull String diaryId) {
         // check
         checkRequestDataNotNull(diaryId);
         checkRquestDataFormatInt(diaryId);
@@ -138,7 +137,7 @@ public class ImageController {
         int result = imageService.deleteImageById(id);
         // return
         checkExecuteResultSuccess(result);
-        return new ResponseResult("image delete success");
+        return new ResultModel("image delete success");
     }
 
     /**
@@ -147,13 +146,13 @@ public class ImageController {
      * @param imageId image_id
      */
     @RequestMapping(value = "/classify/{imageId}", method = RequestMethod.GET)
-    public ResponseResult classifyImage(@PathVariable @NotNull String imageId) {
+    public ResultModel classifyImage(@PathVariable @NotNull String imageId) {
         // check
         checkRequestDataNotNull(imageId);
         checkRquestDataFormatInt(imageId);
         // execute
         // TODO 调用分类程序
         // return
-        return new ResponseResult("looking forward to classify...");
+        return new ResultModel("looking forward to classify...");
     }
 }

@@ -1,6 +1,6 @@
 package com.ten.service;
 
-import com.ten.entity.DiaryDO;
+import com.ten.entity.Diary;
 
 import java.util.List;
 
@@ -17,28 +17,28 @@ public interface DiaryService {
      *
      * @param userId user_id
      */
-    List<DiaryDO> readDiaryListByUserId(int userId);
+    List<Diary> readDiaryListByUserId(int userId);
 
     /**
      * 查询Diary
      *
      * @param diaryName diary_name
      */
-    DiaryDO readDiaryByDiaryName(String diaryName);
+    Diary readDiaryByDiaryName(String diaryName);
 
     /**
      * 上传Diary
      *
-     * @param diaryDO DO
+     * @param diary DO
      */
-    int createDiary(DiaryDO diaryDO);
+    int createDiary(Diary diary);
 
     /**
      * 更新Diary
      *
-     * @param diaryDO diary
+     * @param diary diary
      */
-    int updateDiary(DiaryDO diaryDO);
+    int updateDiary(Diary diary);
 
     /**
      * 删除Diary

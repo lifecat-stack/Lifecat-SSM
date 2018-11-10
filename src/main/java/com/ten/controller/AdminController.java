@@ -1,7 +1,8 @@
 package com.ten.controller;
 
-import com.ten.dto.ResponseResult;
-import com.ten.entity.AdminDO;
+import com.ten.dto.ResponseCode;
+import com.ten.dto.ResultModel;
+import com.ten.entity.Admin;
 import com.ten.service.AdminService;
 import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
@@ -9,81 +10,56 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static com.ten.util.ControllerCheckUtil.*;
 
-/**
- * admin rest
- *
- * @author Administrator
- */
 @RestController
 @RequestMapping("/admin/v1")
 public class AdminController {
-
-    private Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     private final AdminService adminService;
 
     @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
-        checkResourceNotNull(adminService, "adminService not load");
     }
 
-    /**
-     * 查询admin list
-     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseResult getAdminList() {
-        // execute
-        // return
-        return new ResponseResult("admin list is null");
+    public ResultModel getAdminList() {
+        List<Admin> admins = adminService.readAdminList();
+        return new ResultModel(ResponseCode.OK, admins);
     }
 
-    /**
-     * 创建admin
-     *
-     * @param adminDO admin
-     */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postAdmin(@RequestBody AdminDO adminDO) {
-        // check
-        checkRequestDataNotNull(adminDO);
-        // execute
-        // TODO
-        // return
-        return new ResponseResult("admin create is todo");
+    public ResultModel postAdmin(@RequestBody @NotNull Admin admin) {
+        Integer result = adminService.createAdmin(admin);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, admin);
+        }
+        return new ResultModel(ResponseCode.OK, admin);
     }
 
-    /**
-     * 更新admin
-     *
-     * @param adminDO admin
-     */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putAdmin(@RequestBody @NotNull AdminDO adminDO) {
+    public ResultModel putAdmin(@RequestBody @NotNull Admin admin) {
         // check
-        checkRequestDataNotNull(adminDO);
+        checkRequestDataNotNull(admin);
         // execute
         // TODO
         // return
-        return new ResponseResult("admin update is todo");
+        return new ResultModel("admin update is todo");
     }
 
-    /**
-     * 删除admin
-     *
-     * @param adminId admin_id
-     */
     @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteAdmin(@PathVariable @NotNull String adminId) {
+    public ResultModel deleteAdmin(@PathVariable @NotNull String adminId) {
         // check
         checkRequestDataNotNull(adminId);
         checkRquestDataFormatInt(adminId);
         // execute
         // TODO
         // return
-        return new ResponseResult("admin delete is todo");
+        return new ResultModel("admin delete is todo");
     }
 
 }

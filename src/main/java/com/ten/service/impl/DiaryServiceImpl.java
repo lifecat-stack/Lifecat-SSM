@@ -1,6 +1,6 @@
 package com.ten.service.impl;
 
-import com.ten.entity.DiaryDO;
+import com.ten.entity.Diary;
 import com.ten.mapper.DiaryMapper;
 import com.ten.service.DiaryService;
 import com.ten.util.DateTimeUtil;
@@ -35,7 +35,7 @@ public class DiaryServiceImpl implements DiaryService {
      * @param userId user_id
      */
     @Override
-    public List<DiaryDO> readDiaryListByUserId(int userId) {
+    public List<Diary> readDiaryListByUserId(int userId) {
         return diaryMapper.selectDiaryListByUserId(userId);
     }
 
@@ -45,7 +45,7 @@ public class DiaryServiceImpl implements DiaryService {
      * @param diaryName diary_name
      */
     @Override
-    public DiaryDO readDiaryByDiaryName(String diaryName) {
+    public Diary readDiaryByDiaryName(String diaryName) {
         Map<String, String> map = new HashMap<>(2);
         map.put("diaryName", diaryName);
         return diaryMapper.selectDiaryByDiaryName(map);
@@ -54,39 +54,39 @@ public class DiaryServiceImpl implements DiaryService {
     /**
      * 上传Diary
      *
-     * @param diaryDO DO
+     * @param diary DO
      */
     @Override
-    public int createDiary(DiaryDO diaryDO) {
+    public int createDiary(Diary diary) {
         // check properties
-        checkObjectDataNotNull(diaryDO.getDiaryName());
-        checkObjectDataNotNull(diaryDO.getdiaryText());
+        checkObjectDataNotNull(diary.getDiaryName());
+        checkObjectDataNotNull(diary.getdiaryText());
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        diaryDO.setdiaryGmtCreate(create);
-        diaryDO.setdiaryGmtModified(modified);
-        diaryDO.setDeleted(1);
+        diary.setdiaryGmtCreate(create);
+        diary.setdiaryGmtModified(modified);
+        diary.setDeleted(1);
         // TODO 获取userId
-        diaryDO.setUserId(1);
-        return diaryMapper.insertDiary(diaryDO);
+        diary.setUserId(1);
+        return diaryMapper.insertDiary(diary);
     }
 
     /**
      * 更新Diary
      *
-     * @param diaryDO diary
+     * @param diary diary
      */
     @Override
-    public int updateDiary(DiaryDO diaryDO) {
+    public int updateDiary(Diary diary) {
         // check properties
-        checkObjectDataNotNull(diaryDO.getDiaryId());
-        checkObjectDataNotNull(diaryDO.getDiaryName());
-        checkObjectDataNotNull(diaryDO.getdiaryText());
+        checkObjectDataNotNull(diary.getDiaryId());
+        checkObjectDataNotNull(diary.getDiaryName());
+        checkObjectDataNotNull(diary.getdiaryText());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        diaryDO.setdiaryGmtModified(modified);
-        return diaryMapper.updateDiary(diaryDO);
+        diary.setdiaryGmtModified(modified);
+        return diaryMapper.updateDiary(diary);
     }
 
     /**

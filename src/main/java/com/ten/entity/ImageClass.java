@@ -6,7 +6,7 @@ package com.ten.entity;
  *
  * @auther ten
  */
-public class ImageClassDO {
+public class ImageClass {
 
     private Integer imageClassId;
     private String imageClassName;

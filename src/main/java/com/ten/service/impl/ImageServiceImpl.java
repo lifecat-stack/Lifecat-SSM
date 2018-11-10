@@ -1,6 +1,6 @@
 package com.ten.service.impl;
 
-import com.ten.entity.ImageDO;
+import com.ten.entity.Image;
 import com.ten.mapper.ImageClassMapper;
 import com.ten.mapper.ImageFeatureMapper;
 import com.ten.mapper.ImageMapper;
@@ -41,7 +41,7 @@ public class ImageServiceImpl implements ImageService {
      * @param imageText image_text
      */
     @Override
-    public ImageDO readImageByText(String imageText) {
+    public Image readImageByText(String imageText) {
         Map<String, String> map = new HashMap<>(2);
         map.put("imageText", imageText);
         return imageMapper.selectImageByText(map);
@@ -53,7 +53,7 @@ public class ImageServiceImpl implements ImageService {
      * @param userId user_id
      */
     @Override
-    public List<ImageDO> readImageListByUserId(int userId) {
+    public List<Image> readImageListByUserId(int userId) {
         return imageMapper.selectImageListByUserId(userId);
     }
 
@@ -64,7 +64,7 @@ public class ImageServiceImpl implements ImageService {
      * @param classId class_id
      */
     @Override
-    public List<ImageDO> readImageListByClassId(int userId, int classId) {
+    public List<Image> readImageListByClassId(int userId, int classId) {
         Map<String, Integer> map = new HashMap<>(4);
         map.put("userId", userId);
         map.put("classId", classId);
@@ -74,42 +74,42 @@ public class ImageServiceImpl implements ImageService {
     /**
      * 上传Image
      *
-     * @param imageDO DO
+     * @param image DO
      */
     @Override
-    public int createImage(ImageDO imageDO) {
+    public int createImage(Image image) {
         // check properties
-        checkObjectDataNotNull(imageDO.getImageText());
-        checkObjectDataNotNull(imageDO.getClassId());
+        checkObjectDataNotNull(image.getImageText());
+        checkObjectDataNotNull(image.getClassId());
         // set properties
         String create, modified;
         create = modified = dateTimeUtil.getCurrentTime();
-        imageDO.setImageGmtCreate(create);
-        imageDO.setImageGmtModified(modified);
-        imageDO.setDeleted(1);
+        image.setImageGmtCreate(create);
+        image.setImageGmtModified(modified);
+        image.setDeleted(1);
         // TODO
-        imageDO.setUserId(1);
-        if (imageDO.getImagePath() == null) {
-            imageDO.setImagePath("/ssm/images/user/user.jpg");
+        image.setUserId(1);
+        if (image.getImagePath() == null) {
+            image.setImagePath("/ssm/images/user/user.jpg");
         }
-        return imageMapper.insertImage(imageDO);
+        return imageMapper.insertImage(image);
     }
 
     /**
      * 更新图片内容
      *
-     * @param imageDO DO
+     * @param image DO
      */
     @Override
-    public int updateImage(ImageDO imageDO) {
+    public int updateImage(Image image) {
         // check properties
-        checkObjectDataNotNull(imageDO.getImageId());
-        checkObjectDataNotNull(imageDO.getClassId());
-        checkObjectDataNotNull(imageDO.getImageText());
+        checkObjectDataNotNull(image.getImageId());
+        checkObjectDataNotNull(image.getClassId());
+        checkObjectDataNotNull(image.getImageText());
         // set properties
         String modified = dateTimeUtil.getCurrentTime();
-        imageDO.setImageGmtModified(modified);
-        return imageMapper.updateImage(imageDO);
+        image.setImageGmtModified(modified);
+        return imageMapper.updateImage(image);
     }
 
     /**

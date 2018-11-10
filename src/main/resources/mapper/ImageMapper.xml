@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ten.mapper.ImageMapper">
 
-    <resultMap id="ImageList" type="imageDO">
+    <resultMap id="ImageList" type="image">
         <id property="imageId" column="image_id"/>
         <result property="userId" column="user_id"/>
         <result property="classId" column="class_id"/>
@@ -14,7 +14,7 @@
         <result property="imageGmtModified" column="image_gmt_modified"/>
     </resultMap>
 
-    <select id="selectImageByText" parameterType="map" resultType="imageDO">
+    <select id="selectImageByText" parameterType="map" resultType="image">
         SELECT
             image_id as imageId,
             user_id as userId,
@@ -55,7 +55,7 @@
               and is_deleted = '1'
     </select>
 
-    <insert id="insertImage" parameterType="imageDO">
+    <insert id="insertImage" parameterType="image">
         INSERT INTO image (
             image_text,
             image_path,
@@ -74,7 +74,7 @@
             ##{imageGmtModified})
     </insert>
 
-    <update id="updateImage" parameterType="imageDO">
+    <update id="updateImage" parameterType="image">
         UPDATE image
         set
             class_id           = #{classId},
