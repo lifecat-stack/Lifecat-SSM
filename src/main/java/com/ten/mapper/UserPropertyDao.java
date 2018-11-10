@@ -1,4 +1,4 @@
-package com.ten.entity;
+package com.ten.mapper;
 
 import org.apache.ibatis.annotations.Param;
 

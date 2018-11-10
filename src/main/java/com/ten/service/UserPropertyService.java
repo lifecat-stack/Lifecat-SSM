@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 import com.ten.entity.UserProperty;
-import com.ten.entity.UserPropertyDao;
+import com.ten.mapper.UserPropertyDao;
 
 @Service
 public class UserPropertyService {
