@@ -30,4 +30,8 @@ public class UserService {
         return userDao.update(pojo);
     }
 
+    public int delete(User pojo) {
+        return userDao.delete(pojo);
+    }
+
 }

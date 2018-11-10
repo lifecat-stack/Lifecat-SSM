@@ -1,14 +1,8 @@
 package com.ten.entity;
 
-/**
- * image
- *
- * @auther ten
- */
 public class Image {
 
     private Integer id;
-    private Integer imageId;
     private Integer userId;
     private Integer classId;
     private String imageName;
@@ -22,7 +16,6 @@ public class Image {
     public String toString() {
         return "Image@{"
                 + "id:" + id
-                + ",imageId:" + imageId
                 + ",userId:" + userId
                 + ",classId:" + classId
                 + ",imageName:" + imageName
@@ -38,79 +31,80 @@ public class Image {
         return id;
     }
 
-    public void setId(Integer id) {
+    public Image setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getImageName() {
         return imageName;
     }
 
-    public void setImageName(String imageName) {
+    public Image setImageName(String imageName) {
         this.imageName = imageName;
-    }
-
-    public Integer getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
+        return this;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public Image setUserId(Integer userId) {
         this.userId = userId;
+        return this;
     }
 
     public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(Integer classId) {
+    public Image setClassId(Integer classId) {
         this.classId = classId;
+        return this;
     }
 
     public String getImageText() {
         return imageText;
     }
 
-    public void setImageText(String imageText) {
+    public Image setImageText(String imageText) {
         this.imageText = imageText;
+        return this;
     }
 
     public String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public Image setImagePath(String imagePath) {
         this.imagePath = imagePath;
+        return this;
     }
 
     public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
+    public Image setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
+        return this;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public Image setCreateTime(String createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public Image setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 }

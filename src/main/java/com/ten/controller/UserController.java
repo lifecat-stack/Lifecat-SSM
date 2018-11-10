@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.ten.util.ControllerCheckUtil.*;
-
 /**
  * User Controller
  *
@@ -89,7 +87,7 @@ public class UserController {
      */
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public ResultModel deleteUser(@PathVariable("userId") @NotNull String userId) {
-        checkRquestDataFormatInt(userId);
+        checkFormatIsInt(userId);
 
         Integer result = userService.deleteUserById(Integer.parseInt(userId));
         if (result < 1) {

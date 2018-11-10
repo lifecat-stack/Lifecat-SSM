@@ -134,6 +134,20 @@
 
     <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM user_property where id = #{pojo.id}
+        DELETE FROM user_property
+        <where>
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.userId != null">AND user_id = #{pojo.userId}</if>
+            <if test="pojo.userName != null">AND user_name = #{pojo.userName}</if>
+            <if test="pojo.nickname != null">AND nickname = #{pojo.nickname}</if>
+            <if test="pojo.signature != null">AND signature = #{pojo.signature}</if>
+            <if test="pojo.sex != null">AND sex = #{pojo.sex}</if>
+            <if test="pojo.email != null">AND email = #{pojo.email}</if>
+            <if test="pojo.location != null">AND location = #{pojo.location}</if>
+            <if test="pojo.birthday != null">AND birthday = #{pojo.birthday}</if>
+            <if test="pojo.createTime != null">AND create_time = #{pojo.createTime}</if>
+            <if test="pojo.updateTime != null">AND update_time = #{pojo.updateTime}</if>
+            <if test="pojo.isDeleted != null">AND is_deleted = #{pojo.isDeleted}</if>
+        </where>
     </delete>
 </mapper>

@@ -30,4 +30,8 @@ public class UserIconService {
         return userIconDao.update(pojo);
     }
 
+    public int delete(UserIcon pojo) {
+        return userIconDao.delete(pojo);
+    }
+
 }

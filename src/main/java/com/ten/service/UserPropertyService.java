@@ -30,4 +30,8 @@ public class UserPropertyService {
         return userPropertyDao.update(pojo);
     }
 
+    public int delete(UserProperty pojo) {
+        return userPropertyDao.delete(pojo);
+    }
+
 }

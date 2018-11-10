@@ -16,4 +16,6 @@ public interface UserIconDao {
 
     int update(@Param("pojo") UserIcon pojo);
 
+    int delete(@Param("pojo") UserIcon pojo);
+
 }

@@ -92,6 +92,14 @@
 
     <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM user_icon where id = #{pojo.id}
+        DELETE FROM user_icon
+        <where>
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.userId != null">AND user_id = #{pojo.userId}</if>
+            <if test="pojo.iconPath != null">AND icon_path = #{pojo.iconPath}</if>
+            <if test="pojo.createTime != null">AND create_time = #{pojo.createTime}</if>
+            <if test="pojo.updateTime != null">AND update_time = #{pojo.updateTime}</if>
+            <if test="pojo.isDeleted != null">AND is_deleted = #{pojo.isDeleted}</if>
+        </where>
     </delete>
 </mapper>

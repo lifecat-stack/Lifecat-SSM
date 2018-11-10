@@ -36,95 +36,107 @@ public class UserProperty {
         return id;
     }
 
-    public void setId(Integer id) {
+    public UserProperty setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public UserProperty setUserName(String userName) {
         this.userName = userName;
+        return this;
     }
 
     public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
+    public UserProperty setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
+        return this;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public UserProperty setUserId(Integer userId) {
         this.userId = userId;
+        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public UserProperty setNickname(String nickname) {
         this.nickname = nickname;
+        return this;
     }
 
     public String getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public UserProperty setSignature(String signature) {
         this.signature = signature;
+        return this;
     }
 
     public String getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public UserProperty setSex(String sex) {
         this.sex = sex;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserProperty setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public UserProperty setLocation(String location) {
         this.location = location;
+        return this;
     }
 
     public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public UserProperty setBirthday(String birthday) {
         this.birthday = birthday;
+        return this;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public UserProperty setCreateTime(String createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public UserProperty setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 }

@@ -16,4 +16,6 @@ public interface ImageDao {
 
     int update(@Param("pojo") Image pojo);
 
+    int delete(@Param("pojo") Image pojo);
+
 }

@@ -6,17 +6,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 时间工具类
+ * Date Time Utils
  *
- * @auther ten
+ * @author wshten
+ * @date 2018/11/10
  */
 @Component
 public class DateTimeUtil {
-
     private static volatile DateTimeUtil INSTANCE = null;
 
     private DateTimeUtil() {
-        System.out.println("MyDate load time:" + this);
     }
 
     public static DateTimeUtil getInstance() {

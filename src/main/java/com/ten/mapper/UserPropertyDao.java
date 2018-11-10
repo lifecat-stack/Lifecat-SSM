@@ -16,4 +16,6 @@ public interface UserPropertyDao {
 
     int update(@Param("pojo") UserProperty pojo);
 
+    int delete(@Param("pojo") UserProperty pojo);
+
 }

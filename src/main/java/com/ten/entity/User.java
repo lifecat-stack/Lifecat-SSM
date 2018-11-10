@@ -3,7 +3,6 @@ package com.ten.entity;
 public class User {
 
     private Integer id;
-    private Integer userId;
     private String userName;
     private String userPassword;
     private String userLevel;
@@ -15,7 +14,6 @@ public class User {
     public String toString() {
         return "User@{"
                 + "id:" + id
-                + ",userId:" + userId
                 + ",userName:" + userName
                 + ",userPassword:" + userPassword
                 + ",userLevel:" + userLevel
@@ -28,63 +26,62 @@ public class User {
         return id;
     }
 
-    public void setId(Integer id) {
+    public User setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
+    public User setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+        return this;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public User setUserName(String userName) {
         this.userName = userName;
+        return this;
     }
 
     public String getUserPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
+    public User setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+        return this;
     }
 
     public String getUserLevel() {
         return userLevel;
     }
 
-    public void setUserLevel(String userLevel) {
+    public User setUserLevel(String userLevel) {
         this.userLevel = userLevel;
+        return this;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public User setCreateTime(String createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public User setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 }

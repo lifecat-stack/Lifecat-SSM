@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.ten.util.ControllerCheckUtil.*;
-
 /**
  * Diary Controller
  *
@@ -39,7 +37,7 @@ public class DiaryController {
      */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
     public ResultModel getDiaryList(@PathVariable("userId") @NotNull String userId) {
-        checkRquestDataFormatInt(userId);
+        checkFormatIsInt(userId);
         List<Diary> diaryList = diaryService.readDiaryListByUserId(Integer.parseInt(userId));
         if (diaryList.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "日记查询失败, userId:" + userId);
@@ -88,7 +86,7 @@ public class DiaryController {
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
     public ResultModel deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
-        checkRquestDataFormatInt(diaryId);
+        checkFormatIsInt(diaryId);
         Integer result = diaryService.deleteDiaryById(Integer.parseInt(diaryId));
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "日记删除失败:" + diaryId);

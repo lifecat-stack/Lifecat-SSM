@@ -5,7 +5,6 @@
     <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.ten.entity.Admin">
         <result column="id" property="id"/>
-        <result column="admin_id" property="adminId"/>
         <result column="admin_name" property="adminName"/>
         <result column="admin_password" property="adminPassword"/>
         <result column="admin_level" property="adminLevel"/>
@@ -17,7 +16,6 @@
     <!--auto generated Code-->
     <sql id="all_column">
         id,
-        admin_id,
         admin_name,
         admin_password,
         admin_level,
@@ -31,7 +29,6 @@
         INSERT INTO admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null">id,</if>
-            <if test="pojo.adminId != null">admin_id,</if>
             <if test="pojo.adminName != null">admin_name,</if>
             <if test="pojo.adminPassword != null">admin_password,</if>
             <if test="pojo.adminLevel != null">admin_level,</if>
@@ -42,7 +39,6 @@
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null">#{pojo.id},</if>
-            <if test="pojo.adminId != null">#{pojo.adminId},</if>
             <if test="pojo.adminName != null">#{pojo.adminName},</if>
             <if test="pojo.adminPassword != null">#{pojo.adminPassword},</if>
             <if test="pojo.adminLevel != null">#{pojo.adminLevel},</if>
@@ -60,7 +56,6 @@
         <foreach collection="pojos" item="pojo" index="index" separator=",">
             (
             #{pojo.id},
-            #{pojo.adminId},
             #{pojo.adminName},
             #{pojo.adminPassword},
             #{pojo.adminLevel},
@@ -76,7 +71,6 @@
         UPDATE admin
         <set>
             <if test="pojo.id != null">id = #{pojo.id},</if>
-            <if test="pojo.adminId != null">admin_id = #{pojo.adminId},</if>
             <if test="pojo.adminName != null">admin_name = #{pojo.adminName},</if>
             <if test="pojo.adminPassword != null">admin_password = #{pojo.adminPassword},</if>
             <if test="pojo.adminLevel != null">admin_level = #{pojo.adminLevel},</if>
@@ -93,7 +87,6 @@
         FROM admin
         <where>
             <if test="pojo.id != null">AND id = #{pojo.id}</if>
-            <if test="pojo.adminId != null">AND admin_id = #{pojo.adminId}</if>
             <if test="pojo.adminName != null">AND admin_name = #{pojo.adminName}</if>
             <if test="pojo.adminPassword != null">AND admin_password = #{pojo.adminPassword}</if>
             <if test="pojo.adminLevel != null">AND admin_level = #{pojo.adminLevel}</if>
@@ -106,6 +99,16 @@
 
     <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM admin where id = #{pojo.id}
+        DELETE FROM admin
+        <where>
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.adminName != null">AND admin_name = #{pojo.adminName}</if>
+            <if test="pojo.adminPassword != null">AND admin_password = #{pojo.adminPassword}</if>
+            <if test="pojo.adminLevel != null">AND admin_level = #{pojo.adminLevel}</if>
+            <if test="pojo.createTime != null">AND create_time = #{pojo.createTime}</if>
+            <if test="pojo.updateTime != null">AND update_time = #{pojo.updateTime}</if>
+            <if test="pojo.isDeleted != null">AND is_deleted = #{pojo.isDeleted}</if>
+        </where>
     </delete>
+
 </mapper>

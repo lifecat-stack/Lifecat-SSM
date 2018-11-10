@@ -16,4 +16,6 @@ public interface ImageClassDao {
 
     int update(@Param("pojo") ImageClass pojo);
 
+    int delete(@Param("pojo") ImageClass pojo);
+
 }

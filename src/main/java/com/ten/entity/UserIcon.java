@@ -24,48 +24,54 @@ public class UserIcon {
         return id;
     }
 
-    public void setId(Integer id) {
+    public UserIcon setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
+    public UserIcon setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
+        return this;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public UserIcon setUserId(Integer userId) {
         this.userId = userId;
+        return this;
     }
 
     public String getIconPath() {
         return iconPath;
     }
 
-    public void setIconPath(String iconPath) {
+    public UserIcon setIconPath(String iconPath) {
         this.iconPath = iconPath;
+        return this;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public UserIcon setCreateTime(String createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public UserIcon setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 }
 

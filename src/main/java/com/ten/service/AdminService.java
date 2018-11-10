@@ -30,4 +30,8 @@ public class AdminService {
         return adminDao.update(pojo);
     }
 
+    public int delete(Admin pojo) {
+        return adminDao.delete(pojo);
+    }
+
 }

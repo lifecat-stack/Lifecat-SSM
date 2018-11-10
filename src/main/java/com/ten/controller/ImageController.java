@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.String;
 import java.util.List;
 
-import static com.ten.util.ControllerCheckUtil.*;
-
 /**
  * Image Controller
  *
@@ -52,7 +50,7 @@ public class ImageController {
      */
     @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
     public ResultModel getImageList(@PathVariable("userId") @NotNull String userId) {
-        checkRquestDataFormatInt(userId);
+        checkFormatIsInt(userId);
         List<Image> imageList = imageService.readImageListByUserId(Integer.parseInt(userId));
         if (imageList.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, userId:" + userId);
@@ -66,8 +64,8 @@ public class ImageController {
     @RequestMapping(value = "/class/{userId}/{classId}", method = RequestMethod.GET)
     public ResultModel getImageClassList(@PathVariable("userId") @NotNull String userId,
                                          @PathVariable("classId") @NotNull String classId) {
-        checkRquestDataFormatInt(userId);
-        checkRquestDataFormatInt(classId);
+        checkFormatIsInt(userId);
+        checkFormatIsInt(classId);
         int userid = Integer.parseInt(userId);
         int classid = Integer.parseInt(classId);
         List<Image> imageList = imageService.readImageListByClassId(userid, classid);
@@ -106,7 +104,7 @@ public class ImageController {
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
     public ResultModel deleteImage(@PathVariable @NotNull String diaryId) {
-        checkRquestDataFormatInt(diaryId);
+        checkFormatIsInt(diaryId);
         Integer result = imageService.deleteImageById(Integer.parseInt(diaryId));
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "图片删除失败:" + diaryId);

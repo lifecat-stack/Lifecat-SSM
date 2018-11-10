@@ -16,4 +16,6 @@ public interface DiaryDao {
 
     int update(@Param("pojo") Diary pojo);
 
+    int delete(@Param("pojo") Diary pojo);
+
 }

@@ -5,7 +5,6 @@
     <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.ten.entity.Image">
         <result column="id" property="id"/>
-        <result column="image_id" property="imageId"/>
         <result column="user_id" property="userId"/>
         <result column="class_id" property="classId"/>
         <result column="image_name" property="imageName"/>
@@ -19,7 +18,6 @@
     <!--auto generated Code-->
     <sql id="all_column">
         id,
-        image_id,
         user_id,
         class_id,
         image_name,
@@ -35,7 +33,6 @@
         INSERT INTO image
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null">id,</if>
-            <if test="pojo.imageId != null">image_id,</if>
             <if test="pojo.userId != null">user_id,</if>
             <if test="pojo.classId != null">class_id,</if>
             <if test="pojo.imageName != null">image_name,</if>
@@ -48,7 +45,6 @@
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null">#{pojo.id},</if>
-            <if test="pojo.imageId != null">#{pojo.imageId},</if>
             <if test="pojo.userId != null">#{pojo.userId},</if>
             <if test="pojo.classId != null">#{pojo.classId},</if>
             <if test="pojo.imageName != null">#{pojo.imageName},</if>
@@ -68,7 +64,6 @@
         <foreach collection="pojos" item="pojo" index="index" separator=",">
             (
             #{pojo.id},
-            #{pojo.imageId},
             #{pojo.userId},
             #{pojo.classId},
             #{pojo.imageName},
@@ -86,7 +81,6 @@
         UPDATE image
         <set>
             <if test="pojo.id != null">id = #{pojo.id},</if>
-            <if test="pojo.imageId != null">image_id = #{pojo.imageId},</if>
             <if test="pojo.userId != null">user_id = #{pojo.userId},</if>
             <if test="pojo.classId != null">class_id = #{pojo.classId},</if>
             <if test="pojo.imageName != null">image_name = #{pojo.imageName},</if>
@@ -105,7 +99,6 @@
         FROM image
         <where>
             <if test="pojo.id != null">AND id = #{pojo.id}</if>
-            <if test="pojo.imageId != null">AND image_id = #{pojo.imageId}</if>
             <if test="pojo.userId != null">AND user_id = #{pojo.userId}</if>
             <if test="pojo.classId != null">AND class_id = #{pojo.classId}</if>
             <if test="pojo.imageName != null">AND image_name = #{pojo.imageName}</if>
@@ -120,6 +113,17 @@
 
     <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM image where id = #{pojo.id}
+        DELETE FROM image
+        <where>
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.userId != null">AND user_id = #{pojo.userId}</if>
+            <if test="pojo.classId != null">AND class_id = #{pojo.classId}</if>
+            <if test="pojo.imageName != null">AND image_name = #{pojo.imageName}</if>
+            <if test="pojo.imageText != null">AND image_text = #{pojo.imageText}</if>
+            <if test="pojo.imagePath != null">AND image_path = #{pojo.imagePath}</if>
+            <if test="pojo.createTime != null">AND create_time = #{pojo.createTime}</if>
+            <if test="pojo.updateTime != null">AND update_time = #{pojo.updateTime}</if>
+            <if test="pojo.isDeleted != null">AND is_deleted = #{pojo.isDeleted}</if>
+        </where>
     </delete>
 </mapper>

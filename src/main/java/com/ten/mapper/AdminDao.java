@@ -16,4 +16,5 @@ public interface AdminDao {
 
     int update(@Param("pojo") Admin pojo);
 
+    int delete(@Param("pojo") Admin pojo);
 }

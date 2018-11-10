@@ -8,7 +8,6 @@ package com.ten.entity;
 public class ImageClass {
 
     private Integer id;
-    private Integer imageClassId;
     private String imageClassName;
     private String imageClassDesc;
     private String createTime;
@@ -23,47 +22,39 @@ public class ImageClass {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getImageClassId() {
-        return imageClassId;
-    }
-
-    public void setImageClassId(Integer imageClassId) {
-        this.imageClassId = imageClassId;
+    public ImageClass setId(Integer id) {
+        this.id = id;return this;
     }
 
     public String getImageClassName() {
         return imageClassName;
     }
 
-    public void setImageClassName(String imageClassName) {
-        this.imageClassName = imageClassName;
+    public ImageClass setImageClassName(String imageClassName) {
+        this.imageClassName = imageClassName;return this;
     }
 
     public String getImageClassDesc() {
         return imageClassDesc;
     }
 
-    public void setImageClassDesc(String imageClassDesc) {
-        this.imageClassDesc = imageClassDesc;
+    public ImageClass setImageClassDesc(String imageClassDesc) {
+        this.imageClassDesc = imageClassDesc;return this;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public ImageClass setCreateTime(String createTime) {
+        this.createTime = createTime;return this;
     }
 
     public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
+    public ImageClass setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;return this;
     }
 }

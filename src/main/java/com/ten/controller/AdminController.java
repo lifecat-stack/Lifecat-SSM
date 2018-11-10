@@ -5,14 +5,14 @@ import com.ten.dto.ResultModel;
 import com.ten.entity.Admin;
 import com.ten.service.AdminService;
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static com.ten.util.ControllerCheckUtil.*;
 
 /**
  * Admin Controller
@@ -26,6 +26,9 @@ public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     private static final String SUCCESS = "SUCCESS";
 
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
+
     private final AdminService adminService;
 
     @Autowired
@@ -38,7 +41,8 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultModel getAdminList() {
-        List<Admin> admins = adminService.readAdminList();
+        List<Admin> admins = adminService.select(new Admin());
+
         if (admins.size() < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员查询失败");
         }
@@ -49,8 +53,19 @@ public class AdminController {
      * Create Admin
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResultModel postAdmin(@RequestBody @NotNull Admin admin) {
-        Integer result = adminService.createAdmin(admin);
+    public ResultModel postAdmin(@RequestParam @NotNull String adminName,
+                                 @RequestParam @NotNull String adminPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        Admin admin = new Admin()
+                .setAdminName(adminName)
+                .setAdminPassword(adminPassword)
+                .setAdminLevel("admin")
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = adminService.insert(admin);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员创建失败:" + admin);
         }
@@ -61,8 +76,16 @@ public class AdminController {
      * Update Admin
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResultModel putAdmin(@RequestBody @NotNull Admin admin) {
-        Integer result = adminService.updateAdmin(admin);
+    public ResultModel putAdmin(@RequestParam @NotNull String adminName,
+                                @RequestParam @NotNull String adminPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        Admin admin = new Admin()
+                .setAdminName(adminName)
+                .setAdminPassword(adminPassword)
+                .setUpdateTime(current);
+
+        Integer result = adminService.update(admin);
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员更新失败:" + admin);
         }
@@ -74,8 +97,8 @@ public class AdminController {
      */
     @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
     public ResultModel deleteAdmin(@PathVariable @NotNull String adminId) {
-        checkRquestDataFormatInt(adminId);
-        Integer result = adminService.deleteAdminById(Integer.parseInt(adminId));
+        checkFormatIsInt(adminId);
+        Integer result = adminService.(Integer.parseInt(adminId));
         if (result < 1) {
             return new ResultModel(ResponseCode.SERVER_ERROR, "管理员删除失败:" + adminId);
         }

@@ -30,4 +30,8 @@ public class DiaryService {
         return diaryDao.update(pojo);
     }
 
+    public int delete(Diary pojo) {
+        return diaryDao.delete(pojo);
+    }
+
 }

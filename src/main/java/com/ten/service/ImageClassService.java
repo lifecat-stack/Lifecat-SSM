@@ -30,4 +30,8 @@ public class ImageClassService {
         return imageClassDao.update(pojo);
     }
 
+    public int delete(ImageClass pojo) {
+        return imageClassDao.delete(pojo);
+    }
+
 }

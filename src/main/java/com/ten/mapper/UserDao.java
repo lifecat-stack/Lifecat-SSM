@@ -16,4 +16,6 @@ public interface UserDao {
 
     int update(@Param("pojo") User pojo);
 
+    int delete(@Param("pojo") User pojo);
+
 }
