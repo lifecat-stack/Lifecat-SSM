@@ -1,6 +1,6 @@
 package com.ten.exception.impl;
 
-public class ResourceExecuteException extends RuntimeException{
+public class  ResourceExecuteException extends RuntimeException{
 
     private String errorMsg;
 

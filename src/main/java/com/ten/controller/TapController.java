@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * View Controller -> Home.page -> Change Tap Page
+ * View Controller For Home.page -> Change Tap Page
  *
  * @author wshten
  * @date 2018/11/10
