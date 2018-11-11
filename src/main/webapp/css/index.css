@@ -108,7 +108,7 @@ img {
 /*end reset*/
 /****-----start-body----****/
 body {
-    background: url(../images/index/bg1.jpg) no-repeat 0 0;
+    background: url(/ssm/images/index/bg1.jpg) no-repeat 0 0;
     font-family: 'Open Sans', sans-serif;
     background-size: cover;
     height: 100%;
@@ -122,7 +122,7 @@ body {
     width: 80%;
 }
 
-body a, form li, input[type="submit"], input[type="text"], .sixth-login input[type="submit"], .third-login input[type="submit"] {
+body a, form li, button[name="submit"], input[type="text"], .sixth-login button[name="submit"], .third-login button[name="submit"] {
     transition: 0.1s all;
     -webkit-transition: 0.1s all;
     -moz-transition: 0.1s all;
@@ -131,7 +131,7 @@ body a, form li, input[type="submit"], input[type="text"], .sixth-login input[ty
 
 /*--close--*/
 .close {
-    background: url('../images/index/close.png') no-repeat 0px 0px;
+    background: url('/ssm/images/index/close.png') no-repeat 0px 0px;
     cursor: pointer;
     width: 20px;
     height: 20px;
@@ -198,7 +198,7 @@ input[type="text"] {
     color: #9199aa;
     font-size: 18px;
     outline: none;
-    background: url(../images/index/adm.png) no-repeat 10px 15px;
+    background: url(/ssm/images/index/adm.png) no-repeat 10px 15px;
     border: none;
     font-weight: 100;
     border-bottom: 1px solid #484856;
@@ -211,7 +211,7 @@ input[type="password"] {
     color: #dd3e3e;
     font-size: 18px;
     outline: none;
-    background: url(../images/index/key.png) no-repeat 10px 23px;
+    background: url(/ssm/images/index/key.png) no-repeat 10px 23px;
     border: none;
     font-weight: 100;
     border-bottom: 1px solid #484856;
@@ -219,10 +219,10 @@ input[type="password"] {
 }
 
 .key {
-    background: url(../images/index/pass.png) no-repeat 447px 17px;
+    background: url(/ssm/images/index/pass.png) no-repeat 447px 17px;
 }
 
-input[type="submit"] {
+button[name="submit"] {
     font-size: 30px;
     color: #fff;
     outline: none;
@@ -241,7 +241,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+button[name="submit"]:hover {
     background: #ff2775;
     border-bottom-left-radius: 15px;
     -webkit-border-bottom-left-radius: 15px;
@@ -322,7 +322,7 @@ label.lbl-3 {
 /*--start-responsive-design--*/
 @media (max-width: 1440px) {
     .key {
-        background: url(../images/index/pass.png) no-repeat 376px 17px;
+        background: url(/ssm/images/index/pass.png) no-repeat 376px 17px;
     }
 
     body {
@@ -332,7 +332,7 @@ label.lbl-3 {
 
 @media (max-width: 1366px) {
     .key {
-        background: url(../images/index/pass.png) no-repeat 358px 19px;
+        background: url(/ssm/images/index/pass.png) no-repeat 358px 19px;
     }
 
     .copy-rights {
@@ -346,7 +346,7 @@ label.lbl-3 {
 
 @media (max-width: 1280px) {
     .key {
-        background: url(../images/index/pass.png) no-repeat 336px 18px;
+        background: url(/ssm/images/index/pass.png) no-repeat 336px 18px;
     }
 
     body {
@@ -364,7 +364,7 @@ label.lbl-3 {
     }
 
     .key {
-        background: url(../images/index/pass.png) no-repeat 339px 18px;
+        background: url(/ssm/images/index/pass.png) no-repeat 339px 18px;
     }
 
     .copy-rights {
@@ -387,7 +387,7 @@ label.lbl-3 {
     }
 
     .key {
-        background: url(../images/index/pass.png) no-repeat 342px 18px;
+        background: url(/ssm/images/index/pass.png) no-repeat 342px 18px;
     }
 
     body {
@@ -402,7 +402,7 @@ label.lbl-3 {
     }
 
     .key {
-        background: url(../images/index/pass.png) no-repeat 342px 19px;
+        background: url(/ssm/images/index/pass.png) no-repeat 342px 19px;
     }
 }
 
@@ -436,11 +436,11 @@ label.lbl-3 {
         font-size: 17px;
         margin-top: .5em;
         margin-bottom: 2em;
-        background: url(../images/index/key.png) no-repeat 8px 23px;
+        background: url(/ssm/images/index/key.png) no-repeat 8px 23px;
     }
 
     .key {
-        background: url(../images/index/pass.png) no-repeat 235px 27px;
+        background: url(/ssm/images/index/pass.png) no-repeat 235px 27px;
     }
 
     .avtar img {
@@ -476,7 +476,7 @@ label.lbl-3 {
         min-height: 504px;
     }
 
-    input[type="submit"] {
+    button[name="submit"] {
         font-size: 28px;
         padding: 10px 0;
     }

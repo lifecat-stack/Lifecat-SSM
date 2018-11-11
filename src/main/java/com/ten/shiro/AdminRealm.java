@@ -46,23 +46,24 @@ public class AdminRealm extends AuthorizingRealm {
     }
 
     /**
-     * 认证
-     * <p>
-     * subject.login()
+     * 认证 :subject.login()
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        // 1.把AuthenticationToken转换成UsernamePasswordToken
+        // 把AuthenticationToken转换成UsernamePasswordToken
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-        // 2.从UsernamePasswordToken获取username
+
+        // 从UsernamePasswordToken获取username
         String adminName = token.getUsername();
         Admin entity = new Admin().setAdminName(adminName).setIsDeleted(0);
         Admin admin = adminService.select(entity).get(0);
-        // 3.验证
+
+        // SUCCESS
         if (admin != null) {
-            return new SimpleAuthenticationInfo(
-                    admin.getAdminName(), admin.getAdminPassword(), getName());
-        } else {
+            return new SimpleAuthenticationInfo(admin.getAdminName(), admin.getAdminPassword(), getName());
+        }
+        // ERROR
+        else {
             throw new UnknownAccountException();
         }
     }
