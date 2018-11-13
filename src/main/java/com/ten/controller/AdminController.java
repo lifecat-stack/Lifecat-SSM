@@ -1,89 +1,117 @@
 package com.ten.controller;
 
-import com.ten.dto.ResponseResult;
-import com.ten.entity.AdminDO;
+import com.ten.dto.ResponseCode;
+import com.ten.dto.ResultModel;
+import com.ten.entity.Admin;
 import com.ten.service.AdminService;
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import static com.ten.util.ControllerCheckUtil.*;
+import java.util.List;
 
 /**
- * admin rest
+ * Admin Controller
  *
- * @author Administrator
+ * @author wshten
+ * @date 2018/11/10
  */
 @RestController
 @RequestMapping("/admin/v1")
 public class AdminController {
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final String SUCCESS = "SUCCESS";
 
-    private Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
 
     private final AdminService adminService;
 
     @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
-        checkResourceNotNull(adminService, "adminService not load");
     }
 
     /**
-     * 查询admin list
+     * Get All Admin
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseResult getAdminList() {
-        // execute
-        // return
-        return new ResponseResult("admin list is null");
+    public ResultModel getAdminList() {
+        Admin admin = new Admin()
+                .setIsDeleted(0);
+
+        List<Admin> admins = adminService.select(admin);
+
+        if (admins.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "管理员查询失败");
+        }
+        return new ResultModel(ResponseCode.OK, admins);
     }
 
     /**
-     * 创建admin
-     *
-     * @param adminDO admin
+     * Create Admin
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postAdmin(@RequestBody AdminDO adminDO) {
-        // check
-        checkRequestDataNotNull(adminDO);
-        // execute
-        // TODO
-        // return
-        return new ResponseResult("admin create is todo");
+    public ResultModel postAdmin(@RequestParam @NotNull String adminName,
+                                 @RequestParam @NotNull String adminPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        Admin admin = new Admin()
+                .setAdminName(adminName)
+                .setAdminPassword(adminPassword)
+                .setAdminLevel("admin")
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = adminService.insert(admin);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "管理员创建失败:" + admin);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 更新admin
-     *
-     * @param adminDO admin
+     * Update Admin
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putAdmin(@RequestBody @NotNull AdminDO adminDO) {
-        // check
-        checkRequestDataNotNull(adminDO);
-        // execute
-        // TODO
-        // return
-        return new ResponseResult("admin update is todo");
+    public ResultModel putAdmin(@RequestParam @NotNull String adminName,
+                                @RequestParam @NotNull String adminPassword) {
+        String current = timeUtil.getCurrentTime();
+
+        Admin admin = new Admin()
+                .setAdminName(adminName)
+                .setAdminPassword(adminPassword)
+                .setUpdateTime(current);
+
+        Integer result = adminService.update(admin);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "管理员更新失败:" + admin);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 删除admin
-     *
-     * @param adminId admin_id
+     * Delete Admin By adminId
      */
     @RequestMapping(value = "/{adminId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteAdmin(@PathVariable @NotNull String adminId) {
-        // check
-        checkRequestDataNotNull(adminId);
-        checkRquestDataFormatInt(adminId);
-        // execute
-        // TODO
-        // return
-        return new ResponseResult("admin delete is todo");
+    public ResultModel deleteAdmin(@PathVariable @NotNull String adminId) {
+        checkUtil.isFormatInt(adminId);
+
+        Admin admin = new Admin()
+                .setId(Integer.valueOf(adminId))
+                .setUpdateTime(timeUtil.getCurrentTime())
+                .setIsDeleted(1);
+
+        Integer result = adminService.update(admin);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "管理员删除失败:" + adminId);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
 }

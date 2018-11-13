@@ -1,59 +1,37 @@
 package com.ten.service;
 
-import com.ten.entity.ImageDO;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Image
- *
- * @author Administrator
- */
-public interface ImageService {
-    /**
-     * 查询Image
-     *
-     * @param imageText image_text
-     */
-    ImageDO readImageByText(String imageText);
+import com.ten.entity.Image;
+import com.ten.mapper.ImageDao;
 
-    /**
-     * 查询Image List
-     *
-     * @param userId user_id
-     */
-    List<ImageDO> readImageListByUserId(int userId);
+@Service
+public class ImageService {
 
-    /**
-     * 查询Image List by Class
-     *
-     * @param userId  user_id
-     * @param classId class_id
-     */
-    List<ImageDO> readImageListByClassId(int userId, int classId);
+    @Resource
+    private ImageDao imageDao;
 
-    /**
-     * 上传Image
-     *
-     * @param imageDO DO
-     */
-    int createImage(ImageDO imageDO);
+    public int insert(Image pojo) {
+        return imageDao.insert(pojo);
+    }
 
-    /**
-     * 更新图片内容
-     *
-     * @param imageDO DO
-     */
-    int updateImage(ImageDO imageDO);
+    public int insertList(List<Image> pojos) {
+        return imageDao.insertList(pojos);
+    }
 
-    /**
-     * 删除Image
-     *
-     * @param imageId image_id
-     */
-    int deleteImageById(int imageId);
+    public List<Image> select(Image pojo) {
+        return imageDao.select(pojo);
+    }
 
-    // TODO 外部接口 图片分类
-    int classifyImage();
+    public int update(Image pojo) {
+        return imageDao.update(pojo);
+    }
+
+    public int delete(Image pojo) {
+        return imageDao.delete(pojo);
+    }
 
 }

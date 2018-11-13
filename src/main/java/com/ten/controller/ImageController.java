@@ -1,10 +1,13 @@
 package com.ten.controller;
 
-import com.ten.entity.ImageDO;
-import com.ten.dto.ResponseResult;
+import com.ten.dto.ResponseCode;
+import com.ten.dto.ResultModel;
+import com.ten.entity.Image;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,147 +16,152 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.String;
 import java.util.List;
 
-import static com.ten.util.ControllerCheckUtil.*;
-
 /**
- * image rest
+ * Image Controller
  *
- * @author Administrator
+ * @author wshten
+ * @date 2018/11/10
  */
 @RestController
 @RequestMapping("/image/v1")
 public class ImageController {
-
     private Logger logger = LoggerFactory.getLogger(ImageController.class);
+    private static final String SUCCESS = "SUCCESS";
+
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
 
     private final ImageService imageService;
 
     @Autowired
     public ImageController(ImageService imageService) {
         this.imageService = imageService;
-        checkResourceNotNull(imageService, "imageService not load");
     }
 
     /**
-     * 查询image
-     *
-     * @param imageName image_name
+     * Get Image By imageName
      */
-    @RequestMapping(value = "/{imageName}", method = RequestMethod.GET, produces = "application/json")
-    public ImageDO getImage(@PathVariable("imageName") @NotNull String imageName) {
-        // check
-        checkRequestDataNotNull(imageName);
-        // execute
-        ImageDO imageDO = imageService.readImageByText(imageName);
-        // return
-        checkResourceNotNull(imageDO, imageName + " not found");
-        return imageDO;
+    @RequestMapping(value = "/{imageName}", method = RequestMethod.GET)
+    public ResultModel getImage(@PathVariable("imageName") @NotNull String imageName) {
+        Image image = new Image()
+                .setImageName(imageName)
+                .setIsDeleted(0);
+
+        List<Image> result = imageService.select(image);
+        if (result.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, imageName:" + imageName);
+        }
+        return new ResultModel(ResponseCode.OK, result.get(0));
     }
 
     /**
-     * 查询image list
-     *
-     * @param userId user_id
+     * Get Image List By UserId
      */
-    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public List<ImageDO> getImageList(@PathVariable("userId") @NotNull String userId) {
-        // check
-        checkRequestDataNotNull(userId);
-        checkRquestDataFormatInt(userId);
-        // execute
-        int id = Integer.parseInt(userId);
-        List<ImageDO> imageList = imageService.readImageListByUserId(id);
-        // return
-        checkResourceNotNull(imageList, userId + " image list is null");
-        return imageList;
+    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
+    public ResultModel getImageList(@PathVariable("userId") @NotNull String userId) {
+        checkUtil.isFormatInt(userId);
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setIsDeleted(0);
+
+        List<Image> imageList = imageService.select(image);
+        if (imageList.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, userId:" + userId);
+        }
+        return new ResultModel(ResponseCode.OK, imageList);
     }
 
     /**
-     * 查询image list
-     *
-     * @param userId  user_id
-     * @param classId class_id
+     * Get Image Class By UserId And ClassId
      */
-    @RequestMapping(value = "/class/{userId}/{classId}", method = RequestMethod.GET, produces = "application/json")
-    public List<ImageDO> getImageClassList(@PathVariable("userId") @NotNull String userId,
-                                           @PathVariable("classId") @NotNull String classId) {
-        // check
-        checkRequestDataNotNull(userId);
-        checkRequestDataNotNull(classId);
-        checkRquestDataFormatInt(userId);
-        checkRquestDataFormatInt(classId);
-        // execute
-        int userid = Integer.parseInt(userId);
-        int classid = Integer.parseInt(classId);
-        List<ImageDO> imageList = imageService.readImageListByClassId(userid, classid);
-        // return
-        checkResourceNotNull(imageList, "userid:" + userId + ",classid:" + classId + " image list is null");
-        return imageList;
+    @RequestMapping(value = "/class", method = RequestMethod.GET)
+    public ResultModel getImageClassList(@RequestParam @NotNull String userId,
+                                         @RequestParam @NotNull String classId) {
+        checkUtil.isFormatInt(userId);
+        checkUtil.isFormatInt(classId);
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setClassId(Integer.valueOf(classId))
+                .setIsDeleted(0);
+
+        List<Image> imageList = imageService.select(image);
+        if (imageList.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片查询失败, userId:" + userId + ", classId:" + classId);
+        }
+        return new ResultModel(ResponseCode.OK, imageList);
     }
 
     /**
-     * 创建image
-     *
-     * @param imageDO image
+     * Create Image
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postImage(@RequestBody @NotNull ImageDO imageDO) {
-        // check
-        checkRequestDataNotNull(imageDO);
-        // execute
-        int result = imageService.createImage(imageDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("image create success");
+    public ResultModel postImage(@RequestParam @NotNull String userId,
+                                 @RequestParam @NotNull String imageName,
+                                 @RequestParam @NotNull String imageText) {
+        checkUtil.isFormatInt(userId);
+
+        String current = timeUtil.getCurrentTime();
+
+        // TODO 将图片保存到磁盘
+        String imagePath = "images/user/user.jpg";
+
+        Image image = new Image()
+                .setUserId(Integer.valueOf(userId))
+                .setImageName(imageName)
+                .setImageText(imageText)
+                .setImagePath(imagePath)
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = imageService.insert(image);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片创建失败:" + image);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 更新image
-     *
-     * @param imageDO image
+     * Update Image
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putImage(@RequestBody @NotNull ImageDO imageDO) {
-        // check
-        checkRequestDataNotNull(imageDO);
-        // execute
-        int result = imageService.updateImage(imageDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("image update success");
+    public ResultModel putImage(@RequestParam @NotNull String imageName,
+                                @RequestParam @NotNull String imageText) {
+        String current = timeUtil.getCurrentTime();
+
+        Image image = new Image()
+                .setImageName(imageName)
+                .setImageText(imageText)
+                .setUpdateTime(current);
+
+        Integer result = imageService.update(image);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片更新失败:" + image);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 删除image
-     *
-     * @param diaryId diary_id
+     * Delete Image
      */
-    @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteImage(@PathVariable @NotNull String diaryId) {
-        // check
-        checkRequestDataNotNull(diaryId);
-        checkRquestDataFormatInt(diaryId);
-        // execute
-        int id = Integer.parseInt(diaryId);
-        int result = imageService.deleteImageById(id);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("image delete success");
+    @RequestMapping(value = "/{imageId}", method = RequestMethod.DELETE)
+    public ResultModel deleteImage(@PathVariable @NotNull String imageId) {
+        checkUtil.isFormatInt(imageId);
+
+        String current = timeUtil.getCurrentTime();
+
+        Image image = new Image()
+                .setId(Integer.valueOf(imageId))
+                .setUpdateTime(current)
+                .setIsDeleted(1);
+
+        Integer result = imageService.update(image);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "图片删除失败:" + imageId);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
-    /**
-     * TODO :对image进行分类
-     *
-     * @param imageId image_id
-     */
-    @RequestMapping(value = "/classify/{imageId}", method = RequestMethod.GET)
-    public ResponseResult classifyImage(@PathVariable @NotNull String imageId) {
-        // check
-        checkRequestDataNotNull(imageId);
-        checkRquestDataFormatInt(imageId);
-        // execute
-        // TODO 调用分类程序
-        // return
-        return new ResponseResult("looking forward to classify...");
-    }
 }

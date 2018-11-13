@@ -1,49 +1,37 @@
 package com.ten.service;
 
-import com.ten.entity.DiaryDO;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Diary
- *
- * @date 2018/7/18
- * @auther ten
- */
-public interface DiaryService {
+import com.ten.entity.Diary;
+import com.ten.mapper.DiaryDao;
 
-    /**
-     * 查询Diary List
-     *
-     * @param userId user_id
-     */
-    List<DiaryDO> readDiaryListByUserId(int userId);
+@Service
+public class DiaryService {
 
-    /**
-     * 查询Diary
-     *
-     * @param diaryName diary_name
-     */
-    DiaryDO readDiaryByDiaryName(String diaryName);
+    @Resource
+    private DiaryDao diaryDao;
 
-    /**
-     * 上传Diary
-     *
-     * @param diaryDO DO
-     */
-    int createDiary(DiaryDO diaryDO);
+    public int insert(Diary pojo) {
+        return diaryDao.insert(pojo);
+    }
 
-    /**
-     * 更新Diary
-     *
-     * @param diaryDO diary
-     */
-    int updateDiary(DiaryDO diaryDO);
+    public int insertList(List<Diary> pojos) {
+        return diaryDao.insertList(pojos);
+    }
 
-    /**
-     * 删除Diary
-     *
-     * @param diaryId diary_id
-     */
-    int deleteDiaryById(int diaryId);
+    public List<Diary> select(Diary pojo) {
+        return diaryDao.select(pojo);
+    }
+
+    public int update(Diary pojo) {
+        return diaryDao.update(pojo);
+    }
+
+    public int delete(Diary pojo) {
+        return diaryDao.delete(pojo);
+    }
+
 }

@@ -1,10 +1,13 @@
 package com.ten.controller;
 
-import com.ten.entity.DiaryDO;
-import com.ten.dto.ResponseResult;
+import com.ten.dto.ResponseCode;
+import com.ten.dto.ResultModel;
+import com.ten.entity.Diary;
 import com.ten.service.*;
 
 import com.sun.istack.internal.NotNull;
+import com.ten.util.ControllerUtil;
+import com.ten.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,108 +15,127 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.ten.util.ControllerCheckUtil.*;
-
 /**
- * diary rest
+ * Diary Controller
  *
- * @author Administrator
+ * @author wshten
+ * @date 2018/11/10
  */
 @RestController
 @RequestMapping("/diary/v1")
 public class DiaryController {
+    private static final Logger logger = LoggerFactory.getLogger(DiaryController.class);
+    private static final String SUCCESS = "SUCCESS";
 
-    private Logger logger = LoggerFactory.getLogger(DiaryController.class);
+    private ControllerUtil checkUtil = ControllerUtil.getInstance();
+    private DateTimeUtil timeUtil = DateTimeUtil.getInstance();
 
     private final DiaryService diaryService;
 
     @Autowired
     public DiaryController(DiaryService diaryService) {
         this.diaryService = diaryService;
-        checkResourceNotNull(diaryService, "diaryService not load");
     }
 
     /**
-     * 查询diary list
-     *
-     * @param userId user_id
+     * Get All Diary By UserId
      */
-    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET, produces = "application/json")
-    public List<DiaryDO> getDiaryList(@PathVariable("userId") @NotNull String userId) {
-        // check
-        checkRquestDataFormatInt(userId);
-        // execute
-        int id = Integer.parseInt(userId);
-        List<DiaryDO> diaryList = diaryService.readDiaryListByUserId(id);
-        // return
-        checkResourceNotNull(diaryList, userId + " diary list is null");
-        return diaryList;
+    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
+    public ResultModel getDiaryList(@PathVariable("userId") @NotNull String userId) {
+        checkUtil.isFormatInt(userId);
+
+        Diary diary = new Diary()
+                .setUserId(Integer.valueOf(userId))
+                .setIsDeleted(0);
+
+        List<Diary> diaryList = diaryService.select(diary);
+        if (diaryList.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "日记查询失败, userId:" + userId);
+        }
+        return new ResultModel(ResponseCode.OK, diaryList);
     }
 
     /**
-     * 查询diary
-     *
-     * @param diaryName diary_name
+     * Get Diary By diaryName
      */
-    @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET, produces = "application/json")
-    public DiaryDO getDiary(@PathVariable("diaryName") @NotNull String diaryName) {
-        // check
-        checkRequestDataNotNull(diaryName);
-        // execute
-        DiaryDO diary = diaryService.readDiaryByDiaryName(diaryName);
-        // return
-        checkResourceNotNull(diary, diaryName + " not found");
-        return diary;
+    @RequestMapping(value = "/{diaryName}", method = RequestMethod.GET)
+    public ResultModel getDiary(@PathVariable("diaryName") @NotNull String diaryName) {
+        Diary diary = new Diary()
+                .setDiaryName(diaryName)
+                .setIsDeleted(0);
+
+        List<Diary> result = diaryService.select(diary);
+        if (result.size() < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "日记查询失败, diaryName:" + diaryName);
+        }
+        return new ResultModel(ResponseCode.OK, result.get(0));
     }
 
     /**
-     * 创建diary
-     *
-     * @param diaryDO diary
+     * Create Diary
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseResult postDiary(@RequestBody @NotNull DiaryDO diaryDO) {
-        // check
-        checkRequestDataNotNull(diaryDO);
-        // execute
-        int result = diaryService.createDiary(diaryDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("diary create success");
+    public ResultModel postDiary(@RequestParam @NotNull String diaryName,
+                                 @RequestParam @NotNull String diaryText,
+                                 @RequestParam @NotNull String userId) {
+        checkUtil.isFormatInt(userId);
+
+        String current = timeUtil.getCurrentTime();
+
+        Diary diary = new Diary()
+                .setUserId(Integer.valueOf(userId))
+                .setDiaryName(diaryName)
+                .setdiaryText(diaryText)
+                .setCreateTime(current)
+                .setUpdateTime(current)
+                .setIsDeleted(0);
+
+        Integer result = diaryService.insert(diary);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "日记创建失败:" + diary);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 更新diary
-     *
-     * @param diaryDO diary
+     * Update Diary
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseResult putDiary(@RequestBody @NotNull DiaryDO diaryDO) {
-        // check
-        checkRequestDataNotNull(diaryDO);
-        // execute
-        int result = diaryService.updateDiary(diaryDO);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("diary update success");
+    public ResultModel putDiary(@RequestParam @NotNull String diaryName,
+                                @RequestParam @NotNull String diaryText) {
+        String current = timeUtil.getCurrentTime();
+
+        Diary diary = new Diary()
+                .setDiaryName(diaryName)
+                .setdiaryText(diaryText)
+                .setUpdateTime(current);
+
+        Integer result = diaryService.update(diary);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "日记更新失败:" + diary);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
     /**
-     * 删除diary
-     *
-     * @param diaryId diary_id
+     * Delete Diary By diaryId
      */
     @RequestMapping(value = "/{diaryId}", method = RequestMethod.DELETE)
-    public ResponseResult deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
-        // check
-        checkRequestDataNotNull(diaryId);
-        checkRquestDataFormatInt(diaryId);
-        // execute
-        int id = Integer.parseInt(diaryId);
-        int result = diaryService.deleteDiaryById(id);
-        // return
-        checkExecuteResultSuccess(result);
-        return new ResponseResult("diary delete success");
+    public ResultModel deleteDiary(@PathVariable("diaryId") @NotNull String diaryId) {
+        checkUtil.isFormatInt(diaryId);
+
+        String current = timeUtil.getCurrentTime();
+
+        Diary diary = new Diary()
+                .setId(Integer.valueOf(diaryId))
+                .setUpdateTime(current)
+                .setIsDeleted(1);
+
+        Integer result = diaryService.update(diary);
+        if (result < 1) {
+            return new ResultModel(ResponseCode.SERVER_ERROR, "日记删除失败:" + diaryId);
+        }
+        return new ResultModel(ResponseCode.OK, SUCCESS);
     }
 
 }
