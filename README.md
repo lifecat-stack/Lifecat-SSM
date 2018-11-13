@@ -4,17 +4,11 @@
 ![许可](https://img.shields.io/dub/l/vibe-d.svg) 
 :cat: :smiley_cat: :kissing_cat:
 
-> 这是lifecat项目的第二篇，是与项目一相对应的后台管理系统，它使用Spring+SpringMVC+Mybatis的项目架构搭建，同时引入使用了一些如消息邮件等中间件服务，有良好的注释以及代码规范适合SSM框架的学习
+> Spring + SpringMVC + Mybatis + jQuery，搭建JavaWeb后台管理系统，使用shiro权限控制 + activemq消息队列 + mail邮件服务，实现了AOP日志服务 + 统一异常处理 + 自定义注解处理器等功能。
 
 #### [线上DEMO地址](http://www.lifecat.club:8080/ssm)
 
-### 后续项目线上地址 (建议由浅入深的按顺序学习)
-
-[lifecatweb的jsp+servlet项目](http://www.lifecat.club:8080/lifecatweb)
-
-[Vuejs+SpringBoot前后端分离重构lifecatweb(仅部署前端)](http://www.lifecat.club/lifecat)
-
-[Vuejs+SpringBoot前后端分离重构后台管理系统(仅部署前端)](http://www.lifecat.club/admin)
+> 登录用户名:admin 登录密码:123456
 
 ## 项目部署
 ### 本地部署
