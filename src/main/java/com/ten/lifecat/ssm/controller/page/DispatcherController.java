@@ -1,4 +1,4 @@
-package com.ten.lifecat.ssm.controller;
+package com.ten.lifecat.ssm.controller.page;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
