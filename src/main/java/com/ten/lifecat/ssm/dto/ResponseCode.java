@@ -6,9 +6,10 @@ package com.ten.lifecat.ssm.dto;
 public enum ResponseCode {
     // 0 SUCCESS
     OK(0, "成功"),
+    ERROR(1, "失败"),
 
     // 1xx 验证错误
-    LOGIN_ERROR(100,"账号密码错误"),
+    LOGIN_ERROR(100, "账号密码错误"),
 
     // 4xx 客户端错误
     CLIENT_ERROR(400, "请求错误"),
@@ -28,7 +29,10 @@ public enum ResponseCode {
 
     @Override
     public String toString() {
-        return "Response@{code:" + code + ",msg:" + msg + "}";
+        return "ResponseCode{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 
     public int getCode() {

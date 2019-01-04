@@ -7,11 +7,16 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
+    <!--自动扫描-->
+    <context:component-scan base-package="com.ten.lifecat.ssm"/>
+
     <!--加载数据资源属性文件-->
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
+                <!--邮件配置-->
                 <value>classpath:mail.properties</value>
+                <!--数据库配置-->
                 <value>classpath:jdbc.properties</value>
             </list>
         </property>
@@ -32,41 +37,17 @@
     <!--配置SqlSessionFactory处理类-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <!--配置mapper.xml扫描路径-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <property name="typeAliasesPackage" value="com.ten.entity;com.ten.dto"/>
+        <!--配置entity扫描路径-->
+        <property name="typeAliasesPackage" value="com.ten.lifecat.ssm.entity;com.ten.lifecat.ssm.dto"/>
     </bean>
 
-    <!--配置mapper扫描-->
+    <!--配置mapper接口扫描路径-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ten.mapper"/>
+        <property name="basePackage" value="com.ten.lifecat.ssm.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
-    <!--shiro filter安全框架-->
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <!-- Shiro的核心安全接口,这个属性是必须的 -->
-        <property name="securityManager" ref="securityManager"/>
-        <!-- 身份认证失败，则跳转到登录页面的配置 -->
-        <property name="loginUrl" value="/view/index"/>
-        <!-- 权限认证失败，则跳转到指定页面 -->
-        <property name="unauthorizedUrl" value="/view/error"/>
-        <!-- Shiro连接约束配置,即过滤链的定义 -->
-        <property name="filterChainDefinitions">
-            <value>
-                /login=anon
-                /index/**=authc
-            </value>
-        </property>
-    </bean>
-    <!--shiro manager-->
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="customRealm"/>
-    </bean>
-    <!--shiro realm-->
-    <bean id="customRealm" class="com.ten.lifecat.ssm.shiro.AdminRealm"/>
-
-    <!--自动扫描-->
-    <context:component-scan base-package="com.ten"/>
 
     <!--邮件服务-->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -82,10 +63,6 @@
             </props>
         </property>
     </bean>
-
-    <!--aop配置-->
-    <!--<context:component-scan base-package="com.spring.aspect"/>-->
-    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
     <!-- 以下为jms+activemq服务，即消息队列服务，需先配置开启activemq.exe服务 -->
 

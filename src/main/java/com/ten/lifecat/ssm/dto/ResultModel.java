@@ -7,10 +7,7 @@ public class ResultModel {
 
     private int code;
     private String msg;
-    private Object data = new Object();
-
-    public ResultModel() {
-    }
+    private Object data;
 
     public ResultModel(ResponseCode code, Object data) {
         this.code = code.getCode();
@@ -24,9 +21,29 @@ public class ResultModel {
         this.data = data;
     }
 
+    public static ResultModel ok() {
+        return new ResultModel(ResponseCode.OK, "");
+    }
+
+    public static ResultModel ok(String msg) {
+        return new ResultModel(ResponseCode.OK, msg);
+    }
+
+    public static ResultModel error() {
+        return new ResultModel(ResponseCode.ERROR, "");
+    }
+
+    public static ResultModel error(String msg) {
+        return new ResultModel(ResponseCode.ERROR, msg);
+    }
+
     @Override
     public String toString() {
-        return "{" + "code=" + code + ", msg=" + msg + ", data=" + data + "}";
+        return "ResultModel{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 
     public int getCode() {

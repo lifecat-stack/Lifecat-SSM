@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lifecat后台管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Lifecat, SSM, JavaWeb"/>
+
+    <!--框架引入-->
+    <link rel="stylesheet" href="/ssm/static/css/bootstrap/3.3.6/bootstrap.css"/>
+    <script type="text/javascript" src="/ssm/static/js/jquery/jquery.min.js"></script>
+    <script src="/ssm/static/js/layer/layer.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!--页面引入-->
+    <link rel='stylesheet' type='text/css' href="/ssm/static/css/view/index.css"/>
+</head>
+
+<body>
+<h1>Lifecat后台管理系统</h1>
+<div class="login-form">
+    <div class="close"></div>
+    <div class="head-info">
+        <label class="lbl-1"></label>
+        <label class="lbl-2"></label>
+        <label class="lbl-3"></label>
+    </div>
+    <div class="clear"></div>
+    <div class="avtar">
+        <img src="/ssm/static/images/index/avtar.png"/>
+    </div>
+    <div>
+        <label>
+            <input id="user-name-label" type="text" class="text" value="admin" name="Username"
+                   onFocus="this.value = '';"
+                   onBlur="if (this.value === '') {this.value = 'Username';}">
+        </label>
+        <div class="key">
+            <label>
+                <input id="user-psw-label" type="password" value="admin" name="Password"
+                       onFocus="this.value = '';"
+                       onBlur="if (this.value === '') {this.value = 'Password';}">
+            </label>
+        </div>
+        <div class="signin">
+            <button id="login-btn" name="submit">Login</button>
+        </div>
+    </div>
+</div>
+<div class="copy-rights">
+    <p>Copyright &copy; kevinten10 Lifecat后台管理系统</p>
+</div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // 登录
+        $('#login-btn').on('click', function () {
+            var name = $('#user-name-label').val();
+            var psw = $('#user-psw-label').val();
+
+            var data = {
+                adminName: name,
+                adminPassword: psw
+            };
+
+            $.ajax({
+                url: '/ssm/admin/login',
+                type: 'POST',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8',
+                success: function (res) {
+                    if (res.code === 0) {
+                        layer.msg("登录成功");
+                        // 跳转到home
+                        window.location.href = "/ssm/home";
+                    } else {
+                        layer.msg("登录失败:" + res.msg + "," + res.data)
+                    }
+                },
+                error: function () {
+                    layer.msg("网络不通畅，请求失败:(")
+                }
+            })
+        });
+    });
+</script>
+
+</html>

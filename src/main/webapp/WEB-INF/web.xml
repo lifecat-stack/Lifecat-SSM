@@ -5,7 +5,7 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>/view/index.html</welcome-file>
+        <welcome-file>/WEB-INF/view/index.html</welcome-file>
     </welcome-file-list>
 
     <!--全局范围内环境参数初始化-->
@@ -27,20 +27,6 @@
     <listener>
         <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
     </listener>
-
-    <!--Shiro Filter-->
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <!--编码过滤器-->
     <filter>
@@ -99,11 +85,11 @@
     <!--配置错误页面-->
     <error-page>
         <error-code>404</error-code>
-        <location>/view/error.html</location>
+        <location>/WEB-INF/view/error.html</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/view/exception.html</location>
+        <location>/WEB-INF/view/exception.html</location>
     </error-page>
 
 </web-app>
