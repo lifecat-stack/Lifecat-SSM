@@ -7,9 +7,12 @@ import com.ten.lifecat.ssm.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -24,6 +27,16 @@ public class AdminController extends BaseController<Admin> {
     @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
+    }
+
+    /**
+     * 管理员登录与授权
+     *
+     * @param session 登录信息保存在session中
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResultModel login(HttpSession session, @RequestBody Admin admin) {
+        return adminService.login(session, admin);
     }
 
     @Override

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/**
+ * 继承 : 类/方法注解有效，参数注解无效
+ */
 @RestController
 public abstract class BaseController<Entity> {
 
