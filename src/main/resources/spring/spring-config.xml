@@ -63,7 +63,7 @@
         <property name="realm" ref="customRealm"/>
     </bean>
     <!--shiro realm-->
-    <bean id="customRealm" class="com.ten.shiro.AdminRealm"/>
+    <bean id="customRealm" class="com.ten.lifecat.ssm.shiro.AdminRealm"/>
 
     <!--自动扫描-->
     <context:component-scan base-package="com.ten"/>
@@ -91,9 +91,9 @@
 
     <!--activemq-->
     <!--<bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">-->
-        <!--<property name="trustAllPackages" value="true"/>-->
-        <!--<property name="userName" value="admin"/>-->
-        <!--<property name="password" value="admin"/>-->
+    <!--<property name="trustAllPackages" value="true"/>-->
+    <!--<property name="userName" value="admin"/>-->
+    <!--<property name="password" value="admin"/>-->
     <!--</bean>-->
 
     <!--<amq:connectionFactory id="connectionFactory" brokerURL="tcp://localhost:61616"/>-->
@@ -106,10 +106,10 @@
 
     <!--jms-->
     <!--<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate"-->
-          <!--c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>-->
+    <!--c:_0-ref="connectionFactory" p:defaultDestinationName="lifecat.alert.queue"/>-->
     <!--<bean id="lifecatHandler" class="com.ten.jms.AlertHandler"/>-->
     <!--<jms:listener-container connection-factory="connectionFactory">-->
-        <!--<jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>-->
+    <!--<jms:listener destination="lifecat.alert.queue" ref="lifecatHandler" method="handleLoginAlert"/>-->
     <!--</jms:listener-container>-->
 
 </beans>

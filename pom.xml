@@ -4,14 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>LifeCat</groupId>
-    <artifactId>SSM-lifecat</artifactId>
+    <groupId>com.ten.lifecat</groupId>
+    <artifactId>ssm</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>LifeCat Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.lifecatweb.club</url>
+    <name>ssm</name>
+    <url>http://www.lifecat.club:8080/ssm/#</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,7 +74,7 @@
             <artifactId>spring-context-support</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-        <!--spring_jdbc-->
+        <!--spring jdbc-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -87,7 +86,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
-        <!-- spring、mybatis整合 -->
+        <!-- spring mybatis整合 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
@@ -182,7 +181,7 @@
             <artifactId>jsoup</artifactId>
             <version>1.7.3</version>
         </dependency>
-        <!--其他-->
+        <!--security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
