@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Lifecat-SSM" target="8" />
+      <module name="Lifecat-SSM" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

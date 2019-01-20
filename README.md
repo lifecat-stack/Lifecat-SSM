@@ -31,6 +31,8 @@ git clone https://github.com/kevinten10/Lifecat-SSM
 
  ![show](doc/image/show2-1.png)
  
+ ![show](doc/image/show2-2.png)
+ 
  ![show](doc/image/show2-3.png)
   
 
