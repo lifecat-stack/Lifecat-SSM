@@ -1,17 +1,11 @@
 package com.ten.lifecat.ssm.util;
 
-import org.springframework.stereotype.Component;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Date Time Utils
- *
- * @author wshten
- * @date 2018/11/10
  */
-@Component
 public class DateTimeUtil {
     private static volatile DateTimeUtil INSTANCE = null;
 
@@ -31,12 +25,11 @@ public class DateTimeUtil {
 
     /**
      * 获取当前时间
-     * yyyy-MM-dd HH:mm:ss
      *
      * @return yyyy-MM-dd HH:mm:ss
      */
     public String getCurrentTime() {
-        String tempStr = "";
+        String tempStr;
         Date dt = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         tempStr = sdf.format(dt);

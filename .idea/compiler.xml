@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SSM-lifecat" />
+        <module name="Lifecat-SSM" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SSM-lifecat" target="1.7" />
+      <module name="Lifecat-SSM" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -5,12 +5,8 @@ import com.ten.lifecat.ssm.exception.impl.RequestDataNullException;
 import org.springframework.stereotype.Component;
 
 /**
- * Utils
- *
- * @author wshten
- * @date 2018/11/10
+ * Params Utils
  */
-@Component
 public class ParamUtil {
     private static final ParamUtil INSTANCE = new ParamUtil();
 

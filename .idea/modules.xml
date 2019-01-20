@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SSM-lifecat.iml" filepath="$PROJECT_DIR$/SSM-lifecat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lifecat-SSM.iml" filepath="$PROJECT_DIR$/Lifecat-SSM.iml" />
     </modules>
   </component>
 </project>

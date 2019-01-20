@@ -1,10 +1,9 @@
 package com.ten.lifecat.ssm.dto;
 
 /**
- * 系统中公用常量
+ * FIXME 系统中公用常量
  */
 public interface PublicConstant {
-
     /*--------------------------- mybatis分页插件相关 ---------------------------*/
     String PAGE_DEFAULT = "10";//每页默认数据条数
 
