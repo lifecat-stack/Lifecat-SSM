@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/image")
 public class ImageController extends BaseController<Image> {
-    private Logger logger = LoggerFactory.getLogger(ImageController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ImageController.class);
 
     private final ImageService imageService;
 
@@ -23,7 +23,6 @@ public class ImageController extends BaseController<Image> {
     public ImageController(ImageService imageService) {
         this.imageService = imageService;
     }
-
 
     @Override
     public ResultModel list(Image image) {

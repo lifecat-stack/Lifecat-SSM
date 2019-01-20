@@ -27,90 +27,55 @@ public class Diary {
         return id;
     }
 
-    public Diary setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    public String getDiaryText() {
-        return diaryText;
-    }
-
-    public Diary setDiaryText(String diaryText) {
-        this.diaryText = diaryText;
-        return this;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public Diary setCreateTime(String createTime) {
-        this.createTime = createTime;
-        return this;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public Diary setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-        return this;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public Diary setUserId(Integer userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
-        return this;
     }
 
     public String getDiaryName() {
         return diaryName;
     }
 
-    public Diary setDiaryName(String diaryName) {
+    public void setDiaryName(String diaryName) {
         this.diaryName = diaryName;
-        return this;
     }
 
-    public String getdiaryText() {
+    public String getDiaryText() {
         return diaryText;
     }
 
-    public Diary setdiaryText(String diaryText) {
+    public void setDiaryText(String diaryText) {
         this.diaryText = diaryText;
-        return this;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public Diary setIsDeleted(Integer isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
-        return this;
     }
-
-    public String getdiaryGmtCreate() {
-        return createTime;
-    }
-
-    public Diary setdiaryGmtCreate(String diaryGmtCreate) {
-        this.createTime = diaryGmtCreate;
-        return this;
-    }
-
-    public String getdiaryGmtModified() {
-        return updateTime;
-    }
-
-    public Diary setdiaryGmtModified(String diaryGmtModified) {
-        this.updateTime = diaryGmtModified;
-        return this;
-    }
-
 }

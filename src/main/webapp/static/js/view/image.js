@@ -1,16 +1,15 @@
 var flush = function () {
-    // TODO get userID
-    var userId = 1;
     $.ajax({
-        url: "/ssm/image/list/" + userId,
+        url: "/ssm/image/list",
         type: "GET",
         headers: {
             Accept: "application/json;charset=utf-8"
         },
-        data: {},
         dataType: "json",
-        success: function (data) {
-            var operation = '<td class=" text-center">' +
+        success: function (res) {
+            var data = res.data
+            var operation =
+                '<td class=" text-center">' +
                 '<a class="image-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                 '&nbsp;&nbsp;' +
                 '<a class="image-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
@@ -18,21 +17,20 @@ var flush = function () {
             var html = '';
             for (var i = 0; i < data.length; i++) {
                 html = html + '<tr>';
-                html = html + '<td class="image-id">' + data[i].imageId + '</td>';
+                html = html + '<td class="image-id">' + data[i].id + '</td>';
                 html = html + '<td class="image-user">' + data[i].userId + '</td>';
+                html = html + '<td class="image-name">' + data[i].imageName + '</td>';
                 html = html + '<td class="image-text">' + data[i].imageText + '</td>';
-                html = html + '<td class="image-class">' + data[i].classId + '</td>';
-                html = html + '<td class="image-create">' + data[i].imageGmtCreate + '</td>';
-                html = html + '<td class="image-modified">' + data[i].imageGmtModified + '</td>';
+                html = html + '<td class="image-create">' + data[i].createTime + '</td>';
+                html = html + '<td class="image-update">' + data[i].updateTime + '</td>';
                 html = html + '<td class="image-img">' + '<img src=' + data[i].imagePath + ' style="height:160px;width:160px;"/>' + '</td>';
                 html = html + operation;
                 html = html + '</tr>';
             }
-
             $('#image-table').html(html);
         },
         error: function (res) {
-            alert("查询失败！" + res.message);
+            alert("查询失败！" + res.msg);
             location.reload();
         }
     });
@@ -72,17 +70,17 @@ $(document).ready(function () {
             dataType: "json",
             contentType: "application/json;charset=utf-8;",
             data: {},
-            success: function (msg) {
+            success: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除成功" + msg.success);
+                    layer.msg("删除成功" + res.data);
                     flush();
                 }, 1000);
             },
-            error: function (msg) {
+            error: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除失败" + msg.message);
+                    layer.msg("删除失败" + res.msg);
                     flush();
                 }, 1000);
             }
@@ -96,7 +94,6 @@ $(document).ready(function () {
         var imageText = tr.children("td[class='image-text']").text();
         var imageClass = tr.children("td[class='image-class']").text();
         var imageImg = tr.children("td[class='image-img']").html();
-
 
         layer.open({
             type: 2,

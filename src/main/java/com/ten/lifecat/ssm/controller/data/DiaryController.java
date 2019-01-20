@@ -24,7 +24,6 @@ public class DiaryController extends BaseController<Diary> {
         this.diaryService = diaryService;
     }
 
-
     @Override
     public ResultModel list(Diary diary) {
         diary.setIsDeleted(0);
@@ -51,9 +50,9 @@ public class DiaryController extends BaseController<Diary> {
     public ResultModel post(Diary diary) {
         String current = super.dateTimeUtil.getCurrentTime();
 
-        diary.setCreateTime(current)
-                .setUpdateTime(current)
-                .setIsDeleted(0);
+        diary.setCreateTime(current);
+        diary.setUpdateTime(current);
+        diary.setIsDeleted(0);
 
         Integer result = diaryService.insert(diary);
         if (result < 1) {
@@ -79,8 +78,8 @@ public class DiaryController extends BaseController<Diary> {
     public ResultModel delete(Diary diary) {
         String current = super.dateTimeUtil.getCurrentTime();
 
-        diary.setUpdateTime(current)
-                .setIsDeleted(1);
+        diary.setUpdateTime(current);
+        diary.setIsDeleted(1);
 
         Integer result = diaryService.update(diary);
         if (result < 1) {

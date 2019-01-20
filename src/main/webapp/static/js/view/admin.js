@@ -1,6 +1,4 @@
 var flush = function () {
-    alert("您没有权限访问");
-
     $.ajax({
         url: "/ssm/admin/list",
         type: "GET",
@@ -8,8 +6,10 @@ var flush = function () {
             Accept: "application/json;charset=utf-8"
         },
         dataType: "json",
-        success: function (data) {
-            var operation = '<td class=" text-center">' +
+        success: function (res) {
+            var data = res.data
+            var operation =
+                '<td class=" text-center">' +
                 '<a class="admin-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                 '&nbsp;&nbsp;' +
                 '<a class="admin-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
@@ -17,11 +17,11 @@ var flush = function () {
             var html = '';
             for (var i = 0; i < data.length; i++) {
                 html = html + '<tr>';
-                html = html + '<td class="admin-id">' + data[i].adminId + '</td>';
+                html = html + '<td class="admin-id">' + data[i].id + '</td>';
                 html = html + '<td class="admin-name">' + data[i].adminName + '</td>';
                 html = html + '<td class="admin-password">' + data[i].adminPassword + '</td>';
-                html = html + '<td class="admin-datetime">' + data[i].adminGmtCreate + '</td>';
-                html = html + '<td class="admin-datetime">' + data[i].adminGmtModified + '</td>';
+                html = html + '<td class="admin-datetime">' + data[i].createTime + '</td>';
+                html = html + '<td class="admin-datetime">' + data[i].updateTime + '</td>';
                 html = html + operation;
                 html = html + '</tr>';
             }
@@ -29,7 +29,7 @@ var flush = function () {
             $('#admin-table').html(html);
         },
         error: function (res) {
-            alert("查询失败！" + res.message);
+            alert("查询失败！" + res.msg);
             location.reload();
         }
     });
@@ -79,7 +79,7 @@ $(document).ready(function () {
             error: function (msg) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除失败" + msg.message);
+                    layer.msg("删除失败" + msg.msg);
                     flush();
                 }, 1000);
             }

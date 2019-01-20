@@ -29,7 +29,7 @@ $(document).on('click', "#admin-update", function () {
 
         if (isSuccess) {
             var data = {
-                "adminId": adminId,
+                "id": adminId,
                 "adminName": adminName,
                 "adminPassword": adminPassword
             };

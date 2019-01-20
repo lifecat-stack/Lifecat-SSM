@@ -5,10 +5,11 @@ var flush = function () {
         headers: {
             Accept: "application/json;charset=utf-8"
         },
-        data: {},
         dataType: "json",
-        success: function (data) {
-            var operation = '<td class=" text-center">' +
+        success: function (res) {
+            var data = res.data
+            var operation =
+                '<td class=" text-center">' +
                 '<a class="user-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                 '&nbsp;&nbsp;' +
                 '<a class="user-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
@@ -16,20 +17,19 @@ var flush = function () {
             var html = '';
             for (var i = 0; i < data.length; i++) {
                 html = html + '<tr>';
-                html = html + '<td class="user-id">' + data[i].userId + '</td>';
+                html = html + '<td class="user-id">' + data[i].id + '</td>';
                 html = html + '<td class="user-name">' + data[i].userName + '</td>';
                 html = html + '<td class="user-password">' + data[i].userPassword + '</td>';
                 html = html + '<td class="user-level">' + data[i].userLevel + '</td>';
-                html = html + '<td class="user-create">' + data[i].userGmtCreate + '</td>';
-                html = html + '<td class="user-modified">' + data[i].userGmtModified + '</td>';
+                html = html + '<td class="user-create">' + data[i].createTime + '</td>';
+                html = html + '<td class="user-update">' + data[i].updateTime + '</td>';
                 html = html + operation;
                 html = html + '</tr>';
             }
-
             $('#user-table').html(html);
         },
         error: function (res) {
-            alert("查询失败！" + res.message);
+            alert("查询失败！" + res.msg);
             location.reload();
         }
     });
@@ -69,17 +69,17 @@ $(document).ready(function () {
             dataType: "json",
             contentType: "application/json;charset=utf-8;",
             data: {},
-            success: function (msg) {
+            success: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除成功" + msg.success);
+                    layer.msg("删除成功" + res.success);
                     flush();
                 }, 1000);
             },
-            error: function (msg) {
+            error: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除失败" + msg.message);
+                    layer.msg("删除失败" + res.msg);
                     flush();
                 }, 1000);
             }
