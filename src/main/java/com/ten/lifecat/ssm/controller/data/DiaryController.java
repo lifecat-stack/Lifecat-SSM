@@ -7,6 +7,7 @@ import com.ten.lifecat.ssm.service.DiaryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class DiaryController extends BaseController<Diary> {
     }
 
     @Override
-    public ResultModel get(Diary diary) {
+    public ResultModel get(@RequestBody Diary diary) {
         diary.setIsDeleted(0);
 
         List<Diary> result = diaryService.select(diary);
@@ -47,7 +48,7 @@ public class DiaryController extends BaseController<Diary> {
     }
 
     @Override
-    public ResultModel post(Diary diary) {
+    public ResultModel post(@RequestBody Diary diary) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         diary.setCreateTime(current);
@@ -62,7 +63,7 @@ public class DiaryController extends BaseController<Diary> {
     }
 
     @Override
-    public ResultModel update(Diary diary) {
+    public ResultModel update(@RequestBody Diary diary) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         diary.setUpdateTime(current);
@@ -75,7 +76,7 @@ public class DiaryController extends BaseController<Diary> {
     }
 
     @Override
-    public ResultModel delete(Diary diary) {
+    public ResultModel delete(@RequestBody Diary diary) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         diary.setUpdateTime(current);

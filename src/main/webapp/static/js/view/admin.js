@@ -63,23 +63,26 @@ $(document).ready(function () {
         var tr = $(this).parent().parent();
         var id = tr.children("td[class='admin-id']").text();
 
+        var data = {
+            id: id
+        }
         $.ajax({
-            url: "/ssm/admin/" + id,
+            url: "/ssm/admin",
             type: 'delete',
             dataType: "json",
             contentType: "application/json;charset=utf-8;",
-            data: {},
-            success: function (msg) {
+            data: JSON.stringify(data),
+            success: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除成功" + msg.success);
+                    layer.msg("删除成功" + res.data);
                     flush();
                 }, 1000);
             },
-            error: function (msg) {
+            error: function (res) {
                 setTimeout(function () {
                     layer.close(load);
-                    layer.msg("删除失败" + msg.msg);
+                    layer.msg("删除失败" + res.msg);
                     flush();
                 }, 1000);
             }

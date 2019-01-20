@@ -64,12 +64,15 @@ $(document).ready(function () {
         var tr = $(this).parent().parent();
         var id = tr.children("td[class='image-id']").text();
 
+        var data = {
+            id: id
+        }
         $.ajax({
-            url: "/ssm/image/" + id,
+            url: "/ssm/image/",
             type: 'delete',
             dataType: "json",
             contentType: "application/json;charset=utf-8;",
-            data: {},
+            data: JSON.stringify(data),
             success: function (res) {
                 setTimeout(function () {
                     layer.close(load);

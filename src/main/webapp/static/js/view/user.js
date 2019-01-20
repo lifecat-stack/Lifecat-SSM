@@ -63,12 +63,15 @@ $(document).ready(function () {
         var tr = $(this).parent().parent();
         var id = tr.children("td[class='user-id']").text();
 
+        var data = {
+            id: id
+        }
         $.ajax({
-            url: "/ssm/user/" + id,
+            url: "/ssm/user/",
             type: 'delete',
             dataType: "json",
             contentType: "application/json;charset=utf-8;",
-            data: {},
+            data: JSON.stringify(data),
             success: function (res) {
                 setTimeout(function () {
                     layer.close(load);

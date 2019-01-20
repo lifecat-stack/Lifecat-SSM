@@ -35,14 +35,14 @@ $('#user-login').on('click', function () {
                 data: {userName: userName, userPassword: userPassword},
                 success: function (res) {
                     setTimeout(function () {
-                        parent.layer.msg("操作成功 " + res.success);
+                        parent.layer.msg("操作成功 " + res.data);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)
                 },
                 error: function (res) {
                     setTimeout(function () {
-                        parent.layer.msg("操作失败 " + res.message);
+                        parent.layer.msg("操作失败 " + res.msg);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     }, 1000)

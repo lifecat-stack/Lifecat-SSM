@@ -51,7 +51,7 @@ public class AdminController extends BaseController<Admin> {
     }
 
     @Override
-    public ResultModel get(Admin admin) {
+    public ResultModel get(@RequestBody Admin admin) {
         admin.setIsDeleted(0);
         List<Admin> admins = adminService.select(admin);
 
@@ -62,7 +62,7 @@ public class AdminController extends BaseController<Admin> {
     }
 
     @Override
-    public ResultModel post(Admin admin) {
+    public ResultModel post(@RequestBody Admin admin) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         admin.setAdminLevel(LEVEL)
@@ -78,7 +78,7 @@ public class AdminController extends BaseController<Admin> {
     }
 
     @Override
-    public ResultModel update(Admin admin) {
+    public ResultModel update(@RequestBody Admin admin) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         admin.setUpdateTime(current);
@@ -91,7 +91,7 @@ public class AdminController extends BaseController<Admin> {
     }
 
     @Override
-    public ResultModel delete(Admin admin) {
+    public ResultModel delete(@RequestBody Admin admin) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         admin.setUpdateTime(current)

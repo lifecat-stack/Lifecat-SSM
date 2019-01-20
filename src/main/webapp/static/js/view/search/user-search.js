@@ -1,6 +1,6 @@
 // 检测函数
 var isInputAllow = function (value) {
-    return !(value === '' || value === undefined || value === null || value.length < 1);
+    return (value === '' || value === undefined || value === null || value.length < 1);
 };
 $('#search-btn').on('click', function () {
 
@@ -11,33 +11,37 @@ $('#search-btn').on('click', function () {
     }
 
     else {
+        var data = {
+            userName: userName
+        }
         $.ajax({
-            url: "user/user/" + userName,
+            url: "/ssm/user",
             type: "GET",
-            headers: {
-                Accept: "application/json;charset=utf-8"
-            },
             dataType: "json",
-            success: function (data) {
-                var operation = '<td class=" text-center">' +
+            contentType: "application/json;charset=utf-8;",
+            data: JSON.stringify(data),
+            success: function (res) {
+                var data = res.data
+                var operation =
+                    '<td class=" text-center">' +
                     '<a class="user-delete" href="#"><i class="glyphicon glyphicon-remove"></i></a>' +
                     '&nbsp;&nbsp;' +
                     '<a class="user-update" href="#"><i class="glyphicon glyphicon-edit"></i></a>' +
                     '</td>';
                 var html = '';
                 html = html + '<tr>';
-                html = html + '<td class="user-id">' + data.userId + '</td>';
+                html = html + '<td class="user-id">' + data.id + '</td>';
                 html = html + '<td class="user-name">' + data.userName + '</td>';
                 html = html + '<td class="user-password">' + data.userPassword + '</td>';
                 html = html + '<td class="user-level">' + data.userLevel + '</td>';
-                html = html + '<td class="user-create">' + data.userGmtCreate + '</td>';
-                html = html + '<td class="user-modified">' + data.userGmtModified + '</td>';
+                html = html + '<td class="user-create">' + data.createTime + '</td>';
+                html = html + '<td class="user-modified">' + data.updateTime + '</td>';
                 html = html + operation;
                 html = html + '</tr>';
                 $('#user-table').html(html);
             },
             error: function (res) {
-                layer.msg("查无此人，请确认用户名" + res.message);
+                layer.msg("查无此人，请确认用户名" + res.msg);
             }
         });
     }

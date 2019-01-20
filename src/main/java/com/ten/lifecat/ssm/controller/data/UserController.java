@@ -7,6 +7,7 @@ import com.ten.lifecat.ssm.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +39,7 @@ public class UserController extends BaseController<User> {
     }
 
     @Override
-    public ResultModel get(User user) {
+    public ResultModel get(@RequestBody User user) {
         user.setIsDeleted(0);
 
         List<User> users = userService.select(user);
@@ -49,7 +50,7 @@ public class UserController extends BaseController<User> {
     }
 
     @Override
-    public ResultModel post(User user) {
+    public ResultModel post(@RequestBody User user) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         user.setUserLevel(LEVEL)
@@ -65,7 +66,7 @@ public class UserController extends BaseController<User> {
     }
 
     @Override
-    public ResultModel update(User user) {
+    public ResultModel update(@RequestBody User user) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         user.setUpdateTime(current);
@@ -78,7 +79,7 @@ public class UserController extends BaseController<User> {
     }
 
     @Override
-    public ResultModel delete(User user) {
+    public ResultModel delete(@RequestBody User user) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         user.setUpdateTime(current)

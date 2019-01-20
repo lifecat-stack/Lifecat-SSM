@@ -4,6 +4,7 @@ package com.ten.lifecat.ssm.controller.data;
 import com.ten.lifecat.ssm.dto.ResultModel;
 import com.ten.lifecat.ssm.util.DateTimeUtil;
 import com.ten.lifecat.ssm.util.ParamUtil;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,14 +33,14 @@ public abstract class BaseController<Entity> {
     public abstract ResultModel list(Entity entity);
 
     @RequestMapping(method = RequestMethod.GET)
-    public abstract ResultModel get(Entity entity);
+    public abstract ResultModel get(@RequestBody Entity entity);
 
     @RequestMapping(method = RequestMethod.POST)
-    public abstract ResultModel post(Entity entity);
+    public abstract ResultModel post(@RequestBody Entity entity);
 
     @RequestMapping(method = RequestMethod.PUT)
-    public abstract ResultModel update(Entity entity);
+    public abstract ResultModel update(@RequestBody Entity entity);
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public abstract ResultModel delete(Entity entity);
+    public abstract ResultModel delete(@RequestBody Entity entity);
 }

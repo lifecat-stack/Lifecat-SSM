@@ -7,6 +7,7 @@ import com.ten.lifecat.ssm.service.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class ImageController extends BaseController<Image> {
     }
 
     @Override
-    public ResultModel get(Image image) {
+    public ResultModel get(@RequestBody Image image) {
         image.setIsDeleted(0);
 
         List<Image> imageList = imageService.select(image);
@@ -47,7 +48,7 @@ public class ImageController extends BaseController<Image> {
     }
 
     @Override
-    public ResultModel post(Image image) {
+    public ResultModel post(@RequestBody Image image) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         // TODO 将图片保存到磁盘
@@ -66,7 +67,7 @@ public class ImageController extends BaseController<Image> {
     }
 
     @Override
-    public ResultModel update(Image image) {
+    public ResultModel update(@RequestBody Image image) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         image.setUpdateTime(current);
@@ -79,7 +80,7 @@ public class ImageController extends BaseController<Image> {
     }
 
     @Override
-    public ResultModel delete(Image image) {
+    public ResultModel delete(@RequestBody Image image) {
         String current = super.dateTimeUtil.getCurrentTime();
 
         image.setUpdateTime(current)
